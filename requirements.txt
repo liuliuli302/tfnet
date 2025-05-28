@@ -1,0 +1,17 @@
+# Requirements for video captioning
+opencv-python>=4.8.0
+numpy>=1.24.0
+tqdm>=4.64.0
+
+# For GPT-4o captioning
+openai>=1.0.0
+
+# For Gemini captioning  
+google-generativeai>=0.3.0
+
+# For LLaVA Video captioning
+torch>=2.0.0
+transformers>=4.30.0
+accelerate>=0.20.0
+decord>=0.6.0
+# Install LLaVA-Video with: pip install git+https://github.com/PKU-YuanGroup/LLaVA-Video.git
