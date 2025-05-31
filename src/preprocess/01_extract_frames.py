@@ -16,17 +16,16 @@ def main():
     """Main function to extract frames from all videos in a directory."""
     extract_frames_from_directory(
         video_dir='/root/autodl-tmp/data/SumMe/videos',
-        output_folder='/root/autodl-tmp/data/SumMe/frames',
+        output_folder='/root/autodl-tmp/experiment_cache/tfnet/SumMe/frames',
         frame_interval=1
     )
     
     extract_frames_from_directory(
         video_dir='/root/autodl-tmp/data/TVSum/videos',
-        output_folder='/root/autodl-tmp/data/TVSum/frames',
+        output_folder='/root/autodl-tmp/experiment_cache/tfnet/TVSum/frames',
         frame_interval=1
     )
     
-
 
 if __name__ == '__main__':
     main()
