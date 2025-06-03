@@ -8,6 +8,9 @@ import os
 import sys
 import argparse
 import torch 
+from tqdm import tqdm # 导入 tqdm
+import warnings # 导入 warnings 模块
+warnings.filterwarnings("ignore") # 忽略所有警告 - 移动到全局作用域
  
 # 将父目录 (src) 添加到 sys.path 以便导入 handler.llm_client
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
@@ -33,8 +36,8 @@ def arg_parser():
     parser.add_argument(
         '--caption_prompt',
         type=str,
-        default="详细描述此视频的内容。", # 默认提示改为中文
-        help="用于视频字幕的提示 (默认: '详细描述此视频的内容。')。"
+        default="Describe this video in detail.",
+        help="用于视频字幕的提示 (默认: 'Describe this video in detail.')。"
     )
     parser.add_argument(
         '--torch_dtype',
@@ -47,6 +50,18 @@ def arg_parser():
         type=str,
         default=None, # 如果未指定，则为 None
         help="Attention 实现，例如 'flash_attention_2'。如果未设置，将使用模型默认值。"
+    )
+    parser.add_argument(
+        '--num_frames',
+        type=int,
+        default=8, # 默认帧数，可以根据需要调整
+        help="从视频中采样的帧数 (默认: 8)。"
+    )
+    parser.add_argument(
+        '--max_new_tokens',
+        type=int,
+        default=1024, 
+        help="生成新 token 的最大数量 (默认: 1024)。"
     )
     args = parser.parse_args()
 
@@ -100,20 +115,27 @@ def main():
             print(f"警告: 未找到 {dataset['name']} 的视频目录: {video_dir}。正在跳过。")
             continue
 
-        for video_filename in os.listdir(video_dir):
+        video_files = [f for f in os.listdir(video_dir) if os.path.isfile(os.path.join(video_dir, f)) and f.lower().endswith(('.mp4', '.avi', '.mov', '.mkv'))]
+        
+        if not video_files:
+            print(f"在 {video_dir} 中未找到视频文件。正在跳过数据集 {dataset['name']}。")
+            continue
+
+        for video_filename in tqdm(video_files, desc=f"为 {dataset['name']} 添加字幕"): # 使用 tqdm 包装
             video_filepath = os.path.join(video_dir, video_filename) # 视频文件的完整路径
             
-            if not os.path.isfile(video_filepath):
-                # 如果不是文件 (例如子目录)，则跳过
-                print(f"正在跳过非文件项: {video_filepath}")
-                continue
+            # 以下检查现在在 video_files 列表推导式中处理，但保留以防万一
+            # if not os.path.isfile(video_filepath):
+            #     # 如果不是文件 (例如子目录)，则跳过
+            #     print(f"正在跳过非文件项: {video_filepath}")
+            #     continue
 
-            # 对常见视频扩展名的基本检查，可以扩展
-            if not video_filename.lower().endswith(('.mp4', '.avi', '.mov', '.mkv')):
-                print(f"正在跳过非视频文件 (按扩展名): {video_filepath}")
-                continue
+            # # 对常见视频扩展名的基本检查，可以扩展
+            # if not video_filename.lower().endswith(('.mp4', '.avi', '.mov', '.mkv')):
+            #     print(f"正在跳过非视频文件 (按扩展名): {video_filepath}")
+            #     continue
             
-            print(f"正在为视频添加字幕: {video_filepath}")
+            # print(f"正在为视频添加字幕: {video_filepath}") # tqdm 会显示进度，所以这个可以注释掉或调整
 
             # 构建对话内容
             conversation = [
@@ -126,7 +148,7 @@ def main():
                 }
             ]
             
-            caption_list = client.generate_response(conversation) # 生成字幕
+            caption_list = client.generate_response(conversation, num_frames=args.num_frames, max_new_tokens=args.max_new_tokens) # 生成字幕
             # 如果字幕列表不为空，则取第一个字幕，否则提供默认消息
             caption_text = caption_list[0] if caption_list else f"无法为 {video_filename} 生成字幕。"
 

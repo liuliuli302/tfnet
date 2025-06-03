@@ -45,7 +45,8 @@ class Qwen25VLClient:
         self,
         conversation: List[Dict[str, Any]], # 对话历史
         max_new_tokens: int = 128, # 生成新 token 的最大数量
-        video_fps: int = 1, # 视频处理的帧率
+        num_frames: int | None = None, # 从视频中采样的帧数
+        video_fps: int = 1, # 视频处理的帧率 (如果未提供 num_frames，则使用)
         add_vision_id: bool = False, # 是否在提示中为视觉元素添加 ID
     ) -> List[str]:
         """
@@ -74,25 +75,32 @@ class Qwen25VLClient:
                     }
                 ]
             max_new_tokens (int): 要生成的最大新 token 数量。
-            video_fps (int): 用于视频处理的每秒帧数。
+            num_frames (int, optional): 从视频中采样的帧数。如果提供，则优先于 video_fps。
+            video_fps (int): 用于视频处理的每秒帧数 (仅当未指定 num_frames 时相关)。
             add_vision_id (bool): 是否在提示中为视觉元素添加 ID。
 
         Returns:
             List[str]: 包含生成的文本响应的列表。
         """
         # 应用聊天模板处理输入
-        inputs = self.processor.apply_chat_template(
-            conversation,
-            video_fps=video_fps,
-            add_generation_prompt=True, # 添加生成提示
-            tokenize=True, # 进行分词
-            return_dict=True, # 返回字典格式
-            return_tensors="pt", # 返回 PyTorch 张量
-            add_vision_id=add_vision_id,
-        ).to(self.model.device) # 将输入移动到模型所在的设备
+        template_args = {
+            "conversation": conversation,
+            "add_generation_prompt": True,  # 添加生成提示
+            "tokenize": True,  # 进行分词
+            "return_dict": True,  # 返回字典格式
+            "return_tensors": "pt",  # 返回 PyTorch 张量
+            "add_vision_id": add_vision_id,
+        }
+        if num_frames is not None:
+            template_args["num_frames"] = num_frames
+        else:
+            template_args["video_fps"] = video_fps
+            
+        inputs = self.processor.apply_chat_template(**template_args).to(self.model.device) # 将输入移动到模型所在的设备
 
         # 生成输出 ID
-        output_ids = self.model.generate(**inputs, max_new_tokens=max_new_tokens)
+        with torch.no_grad(): # 取消梯度计算
+            output_ids = self.model.generate(**inputs, max_new_tokens=max_new_tokens)
         
         # 对于单个对话，inputs.input_ids 的形状为 [1, seq_len]
         # output_ids 的形状为 [1, seq_len + new_tokens]
