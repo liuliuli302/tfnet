@@ -15,9 +15,7 @@ batch_size: 1              # Batch size for inference / 推理批大小
 
 # Output configuration - step-specific output directories
 # 输出配置 - 步骤特定的输出目录
-output:
-  step1_dir: "step1_frame_scores" # Step 1: Frame importance scores / 第一步：帧重要性分数
-
+output: "./out"
 # TensorBoard logging configuration
 # TensorBoard日志配置
 logging:

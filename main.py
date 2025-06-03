@@ -67,12 +67,11 @@ def main():
         dataset_paths=config["dataset_paths"],
         frame_context_window=config["frame_context_window"],
         frame_interval=config["frame_interval"],
-        output_config=config["output"],
+        output_dir=config["output"],
         model_name=config["model_name"],
         device_map=config["device_map"],
         importance_prompt=config["importance_prompt"],
         logger=tb_logger,
-        batch_size=config.get("batch_size", 1)
     )
 
     results = pipeline.run()
