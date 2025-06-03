@@ -147,11 +147,7 @@ class LLaVAVideoCaptioner(VideoCaptioner):
             if self.device.type == 'cuda':
                 video = video.half()
         elif torch.cuda.is_available():
-            try:
-                video = video.cuda().half()
-            except RuntimeError:
-                print("Warning: Failed to move to CUDA, using CPU")
-                video = video.float()
+            video = video.cuda().half()
         
         time_instruction = f"The video lasts for {video_time:.2f} seconds, with frames at {frame_time}."
         question_text = custom_prompt or "Please describe this video in detail."
@@ -168,10 +164,7 @@ class LLaVAVideoCaptioner(VideoCaptioner):
         if hasattr(self, 'device'):
             input_ids = input_ids.to(self.device)
         elif torch.cuda.is_available():
-            try:
-                input_ids = input_ids.cuda()
-            except RuntimeError:
-                print("Warning: Failed to move input_ids to CUDA, using CPU")
+            input_ids = input_ids.cuda()
         
         with torch.no_grad():
             cont = self.model.generate(input_ids, images=[video], modalities=["video"], 

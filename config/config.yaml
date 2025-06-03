@@ -4,21 +4,26 @@
 # Dataset paths - modify these to your actual dataset locations
 # 数据集路径 - 请修改为您的实际数据集位置
 dataset_paths:
-  - "./data/SumMe"
-  - "./data/TVSum"
+  - "/root/autodl-tmp/experiment_cache/tfnet/SumMe"
+  - "/root/autodl-tmp/experiment_cache/tfnet/TVSum"
 
 # Pipeline parameters
 # 流程参数
 frame_context_window: 3    # Frame context window length / 帧上下文窗口长度
 frame_interval: 15         # Frame sampling interval / 帧采样间隔
-output_dir: "./results"    # Output directory / 输出目录
+batch_size: 1              # Batch size for inference / 推理批大小
+
+# Output configuration - step-specific output directories
+# 输出配置 - 步骤特定的输出目录
+output:
+  step1_dir: "step1_frame_scores" # Step 1: Frame importance scores / 第一步：帧重要性分数
 
 # TensorBoard logging configuration
 # TensorBoard日志配置
 logging:
   enabled: true              # Enable TensorBoard logging / 启用TensorBoard日志
-  log_dir: "./tensorboard_logs"  # TensorBoard log directory / TensorBoard日志目录
-  experiment_name: null      # Experiment name (auto-generated if null) / 实验名称（为null时自动生成）
+  log_dir: "./logs"   # TensorBoard log directory / TensorBoard日志目录
+  experiment_name: pipeline_01      # Experiment name (auto-generated if null) / 实验名称（为null时自动生成）
   comment: ""                # Additional comment for experiment / 实验的额外注释
 
 # Model parameters
@@ -29,16 +34,14 @@ device_map: "auto"         # Device mapping: "auto", "cuda:0", "cpu", etc.
 # Importance query prompt
 # 重要性查询提示词
 importance_prompt: |
-  Please evaluate the importance of this frame for video summarization.
-  Consider the following factors:
-  1. Key moments of scene changes
-  2. Important actions or events
-  3. Appearance of key people or objects
-  4. Plot turning points
-
-  Please provide an importance score between 0 and 1, where:
-  - 0 means completely unimportant
-  - 0.5 means moderately important
-  - 1 means extremely important
-
-  Only respond with a numerical score, no explanation needed.
+  Analyze the importance of this frame sequence for video summarization.
+  
+  Rate from 0.0 to 1.0 based on:
+  - Scene changes and transitions
+  - Key actions or events  
+  - Important people or objects
+  - Story progression moments
+  
+  Examples: 0.1, 0.5, 0.8, 1.0
+  
+  IMPORTANT: Respond with ONLY a decimal number between 0.0 and 1.0. No text, no explanation.

@@ -69,15 +69,11 @@ def main():
             print(f"警告: 未找到 {dataset['name']} 的字幕目录: {captions_dir}。正在跳过。")
             continue
 
-        try:
-            # 使用 BLIP2FeatureExtractor 从字幕中提取文本特征
-            extractor.extract_caption_features(
-                captions_folder=captions_dir,
-                output_folder=output_dir
-            )
-        except Exception as e:
-            print(f"处理数据集 {dataset['name']} 时出错: {e}")
-            continue
+        # 使用 BLIP2FeatureExtractor 从字幕中提取文本特征
+        extractor.extract_caption_features(
+            captions_folder=captions_dir,
+            output_folder=output_dir
+        )
 
     print("字幕文本特征提取完成。")
 

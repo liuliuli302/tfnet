@@ -75,16 +75,12 @@ def main():
             print(f"警告: 未找到 {dataset['name']} 的帧目录: {frames_dir}。正在跳过。")
             continue
 
-        try:
-            # 使用 BLIP2FeatureExtractor 从已提取的帧中提取视觉特征
-            extractor.extract_visual_features_from_frames(
-                frames_folder=frames_dir,
-                output_folder=output_dir,
-                interval=args.interval
-            )
-        except Exception as e:
-            print(f"处理数据集 {dataset['name']} 时出错: {e}")
-            continue
+        # 使用 BLIP2FeatureExtractor 从已提取的帧中提取视觉特征
+        extractor.extract_visual_features_from_frames(
+            frames_folder=frames_dir,
+            output_folder=output_dir,
+            interval=args.interval
+        )
 
     print("视频视觉特征提取完成。")
 

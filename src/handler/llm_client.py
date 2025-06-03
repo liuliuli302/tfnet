@@ -170,28 +170,22 @@ if __name__ == '__main__':
 
     # 示例 1: 单图像推理
     print("--- 示例 1: 单图像推理 ---")
-    try:
-        client = Qwen25VLClient() # 使用默认的 Qwen/Qwen2.5-VL-7B-Instruct
-                                  # 对于 Flash Attention 2 (如果硬件支持并且已安装 flash-attn):
-                                  # client = Qwen25VLClient(torch_dtype=torch.bfloat16, attn_implementation="flash_attention_2")
-        
-        image_conversation = [
-            {
-                "role":"user",
-                "content":[
-                    # 使用公共图像 URL 进行测试
-                    {"type":"image", "url": "https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg"},
-                    {"type":"text", "text":"描述这张图片。"}
-                ]
-            }
-        ]
-        response = client.generate_response(image_conversation)
-        print(f"图像响应: {response}")
-    except Exception as e:
-        print(f"示例 1 (图像) 错误: {e}")
-        print("请确保已安装 transformers, torch 和其他依赖项。")
-        print("对于某些模型，您可能需要登录到 Hugging Face。")
-        print("对于 Flash Attention 2, 请确保已安装 'flash-attn' 并且您的硬件兼容。")
+    client = Qwen25VLClient() # 使用默认的 Qwen/Qwen2.5-VL-7B-Instruct
+                              # 对于 Flash Attention 2 (如果硬件支持并且已安装 flash-attn):
+                              # client = Qwen25VLClient(torch_dtype=torch.bfloat16, attn_implementation="flash_attention_2")
+    
+    image_conversation = [
+        {
+            "role":"user",
+            "content":[
+                # 使用公共图像 URL 进行测试
+                {"type":"image", "url": "https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg"},
+                {"type":"text", "text":"描述这张图片。"}
+            ]
+        }
+    ]
+    response = client.generate_response(image_conversation)
+    print(f"图像响应: {response}")
 
     # 示例 2: 单视频推理 (需要视频文件)
     # print("\n--- 示例 2: 单视频推理 ---")
@@ -221,57 +215,50 @@ if __name__ == '__main__':
 
     # 示例 3: 批量混合媒体推理
     print("\n--- 示例 3: 批量混合媒体推理 ---")
-    try:
-        client = Qwen25VLClient()
-        conversation1 = [ # 图像
-            {"role": "user", "content": [
-                {"type": "image", "url": "https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg"},
-                {"type": "text", "text": "描述这张图片。"}
-            ]}
-        ]
-        conversation2 = [ # 纯文本
-            {"role": "user", "content": [{"type": "text", "text": "你是谁?"}]}
-        ]
-        # conversation3 = [ # 视频 (需要视频文件)
-        #     {
-        #         "role": "user",
-        #         "content": [
-        #             {"type": "video", "path": "dummy_video.mp4"}, # 替换为您的视频路径
-        #             {"type": "text", "text": "总结这个视频。"},
-        #         ],
-        #     }
-        # ]
+    client = Qwen25VLClient()
+    conversation1 = [ # 图像
+        {"role": "user", "content": [
+            {"type": "image", "url": "https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg"},
+            {"type": "text", "text": "描述这张图片。"}
+        ]}
+    ]
+    conversation2 = [ # 纯文本
+        {"role": "user", "content": [{"type": "text", "text": "你是谁?"}]}
+    ]
+    # conversation3 = [ # 视频 (需要视频文件)
+    #     {
+    #         "role": "user",
+    #         "content": [
+    #             {"type": "video", "path": "dummy_video.mp4"}, # 替换为您的视频路径
+    #             {"type": "text", "text": "总结这个视频。"},
+    #         ],
+    #     }
+    # ]
 
-        # batch_conversations = [conversation1, conversation2, conversation3]
-        batch_conversations = [conversation1, conversation2] # 暂时排除视频
-        
-        # responses = client.generate_batch_response(batch_conversations)
-        # for i, r in enumerate(responses):
-        #     print(f"批量响应 {i+1}: {r}")
-        print("批量示例已注释掉，因为它可能占用大量资源或需要特定设置。")
-        print("根据需要取消注释并调整路径/URL。")
-
-    except Exception as e:
-        print(f"示例 3 (批量) 错误: {e}")
+    # batch_conversations = [conversation1, conversation2, conversation3]
+    batch_conversations = [conversation1, conversation2] # 暂时排除视频
+    
+    # responses = client.generate_batch_response(batch_conversations)
+    # for i, r in enumerate(responses):
+    #     print(f"批量响应 {i+1}: {r}")
+    print("批量示例已注释掉，因为它可能占用大量资源或需要特定设置。")
+    print("根据需要取消注释并调整路径/URL。")
 
     # 示例 4: 使用 add_vision_id
     print("\n--- 示例 4: 使用 add_vision_id ---")
-    try:
-        client = Qwen25VLClient()
-        multi_image_conversation = [
-            {
-                "role": "user",
-                "content": [
-                    {"type": "image", "url": "https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg"},
-                    {"type": "image", "url": "https://www.ilankelman.org/stopsigns/australia.jpg"}, # 另一张图片
-                    {"type": "text", "text": "这些图片里有什么? 如果可能的话，请引用它们。"}
-                ]
-            }
-        ]
-        response_with_ids = client.generate_response(multi_image_conversation, add_vision_id=True)
-        print(f"带视觉 ID 的响应: {response_with_ids}")
-    except Exception as e:
-        print(f"示例 4 (视觉 ID) 错误: {e}")
+    client = Qwen25VLClient()
+    multi_image_conversation = [
+        {
+            "role": "user",
+            "content": [
+                {"type": "image", "url": "https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg"},
+                {"type": "image", "url": "https://www.ilankelman.org/stopsigns/australia.jpg"}, # 另一张图片
+                {"type": "text", "text": "这些图片里有什么? 如果可能的话，请引用它们。"}
+            ]
+        }
+    ]
+    response_with_ids = client.generate_response(multi_image_conversation, add_vision_id=True)
+    print(f"带视觉 ID 的响应: {response_with_ids}")
 
     # 示例 5: 调整分辨率 (概念性的，实际效果取决于模型和内容)
     # print("\n--- 示例 5: 调整分辨率 ---")

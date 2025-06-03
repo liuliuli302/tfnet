@@ -17,11 +17,7 @@ from datetime import datetime
 project_root = Path(__file__).parent.parent.parent
 sys.path.append(str(project_root))
 
-try:
-    from src.handler.llm_client import Qwen25VLClient
-except ImportError:
-    # 如果绝对导入失败，尝试相对导入
-    from ..handler.llm_client import Qwen25VLClient
+from src.handler.llm_client import Qwen25VLClient
 
 # TensorBoard相关导入
 from pytorch_lightning.loggers import TensorBoardLogger
@@ -59,11 +55,11 @@ class VideoSummaryPipeline:
         self.frame_interval = frame_interval
         
         # TensorBoard logger配置
-        self.tb_writer = logger
+        self.logger = logger
         self.log_dir = None
         
-        if self.tb_writer:
-            self.log_dir = Path(self.tb_writer.log_dir)
+        if self.logger:
+            self.log_dir = Path(self.logger.log_dir)
             self.output_dir = self.log_dir / "results"
             self.output_dir.mkdir(parents=True, exist_ok=True)
         else:
@@ -80,21 +76,21 @@ class VideoSummaryPipeline:
     
     def log_hyperparameters(self):
         """记录超参数到TensorBoard"""
-        if self.tb_writer:
+        if self.logger:
             hparams = {
                 'frame_context_window': self.frame_context_window,
                 'frame_interval': self.frame_interval,
                 'dataset_count': len(self.dataset_paths)
             }
-            self.tb_writer.log_hyperparams(hparams)
+            self.logger.log_hyperparams(hparams)
     
     def log_video_scores(self, video_name: str, scores: List[float], step_offset: int = 0):
         """记录视频的重要性分数到TensorBoard"""
-        if self.tb_writer:
+        if self.logger:
             metrics = {}
             for i, score in enumerate(scores):
                 metrics[f'frame_importance/{video_name}'] = score
-                self.tb_writer.log_metrics(metrics, step=step_offset + i)
+                self.logger.log_metrics(metrics, step=step_offset + i)
             
             if scores:
                 stats = {
@@ -103,11 +99,11 @@ class VideoSummaryPipeline:
                     f'video_stats/{video_name}/min_score': np.min(scores),
                     f'video_stats/{video_name}/std_score': np.std(scores)
                 }
-                self.tb_writer.log_metrics(stats)
+                self.logger.log_metrics(stats)
     
     def log_dataset_summary(self, dataset_name: str, video_results: Dict[str, Dict]):
         """记录数据集汇总信息到TensorBoard"""
-        if self.tb_writer:
+        if self.logger:
             total_videos = len(video_results)
             total_frames = sum(result.get('total_frames', 0) for result in video_results.values())
             total_sampled = sum(result.get('sampled_frames', 0) for result in video_results.values())
@@ -127,7 +123,7 @@ class VideoSummaryPipeline:
             if all_mean_scores:
                 summary_metrics[f'dataset_summary/{dataset_name}/overall_mean_score'] = np.mean(all_mean_scores)
             
-            self.tb_writer.log_metrics(summary_metrics)
+            self.logger.log_metrics(summary_metrics)
     
     def get_video_frames(self, video_frames_dir: Path) -> List[str]:
         """
@@ -317,8 +313,8 @@ class VideoSummaryPipeline:
     
     def close_logger(self):
         """关闭TensorBoard logger"""
-        if self.tb_writer:
-            self.tb_writer.finalize("success")
+        if self.logger:
+            self.logger.finalize("success")
     
     def run(self):
         """执行流程的run方法，调用第一步流程"""

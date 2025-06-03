@@ -28,16 +28,9 @@ class BLIP2FeatureExtractor:
             self.device = device
         
         print(f"Loading BLIP-2 model: {model_name} on device: {self.device}")
-        try:
-            self.processor = Blip2Processor.from_pretrained(model_name)
-            self.model = Blip2Model.from_pretrained(model_name).to(self.device)
-            self.model.eval() # Set model to evaluation mode
-        except Exception as e:
-            print(f"Error loading model {model_name}: {e}")
-            print("Please ensure you have a working internet connection to download the model,")
-            print("or that the model is available in your local Hugging Face cache.")
-            print("Required packages: transformers, torch, Pillow, opencv-python, numpy, sentencepiece (for some BLIP-2 models)")
-            raise
+        self.processor = Blip2Processor.from_pretrained(model_name)
+        self.model = Blip2Model.from_pretrained(model_name).to(self.device)
+        self.model.eval() # Set model to evaluation mode
 
     @torch.no_grad()
     def extract_visual_features(self, video_path_or_folder, output_folder, frame_skip=15):
@@ -90,22 +83,18 @@ class BLIP2FeatureExtractor:
 
                 video_features_list = []
                 for frame_file_path in extracted_frame_files:
-                    try:
-                        frame_pil = Image.open(frame_file_path).convert("RGB")
-                        inputs = self.processor(images=frame_pil, return_tensors="pt").to(self.device)
-                        image_features = self.model.get_image_features(**inputs) 
-                        # 正确处理 BLIP-2 模型输出
-                        if hasattr(image_features, 'last_hidden_state'):
-                            features = image_features.last_hidden_state.squeeze(0).cpu().numpy()
-                        elif hasattr(image_features, 'pooler_output'):
-                            features = image_features.pooler_output.squeeze(0).cpu().numpy()
-                        else:
-                            # 如果是张量，直接处理
-                            features = image_features.squeeze(0).cpu().numpy()
-                        video_features_list.append(features)
-                    except Exception as e_frame:
-                        print(f"Error processing frame {frame_file_path}: {e_frame}")
-                        continue # Skip problematic frames
+                    frame_pil = Image.open(frame_file_path).convert("RGB")
+                    inputs = self.processor(images=frame_pil, return_tensors="pt").to(self.device)
+                    image_features = self.model.get_image_features(**inputs) 
+                    # 正确处理 BLIP-2 模型输出
+                    if hasattr(image_features, 'last_hidden_state'):
+                        features = image_features.last_hidden_state.squeeze(0).cpu().numpy()
+                    elif hasattr(image_features, 'pooler_output'):
+                        features = image_features.pooler_output.squeeze(0).cpu().numpy()
+                    else:
+                        # 如果是张量，直接处理
+                        features = image_features.squeeze(0).cpu().numpy()
+                    video_features_list.append(features)
                 
                 if not video_features_list:
                     print(f"No features extracted for video {video_path} after processing frames. Skipping.")
@@ -123,11 +112,8 @@ class BLIP2FeatureExtractor:
             finally:
                 # Clean up the temporary directory
                 if temp_frame_dir and os.path.exists(temp_frame_dir):
-                    try:
-                        shutil.rmtree(temp_frame_dir)
-                        print(f"Cleaned up temporary frame directory: {temp_frame_dir}")
-                    except Exception as e_clean:
-                        print(f"Error cleaning up temporary directory {temp_frame_dir}: {e_clean}")
+                    shutil.rmtree(temp_frame_dir)
+                    print(f"Cleaned up temporary frame directory: {temp_frame_dir}")
 
     @torch.no_grad()
     def extract_textual_features(self, text_path_or_folder, output_folder):
@@ -158,31 +144,27 @@ class BLIP2FeatureExtractor:
             return
 
         for text_path in tqdm(text_paths, desc="提取文本特征"):
-            try:
-                with open(text_path, 'r', encoding='utf-8') as f:
-                    text_content = f.read().strip()
-                
-                if not text_content:
-                    continue
+            with open(text_path, 'r', encoding='utf-8') as f:
+                text_content = f.read().strip()
+            
+            if not text_content:
+                continue
 
-                inputs = self.processor(text=text_content, return_tensors="pt").to(self.device)
-                text_features = self.model.get_text_features(**inputs)
-                
-                # 正确处理 BLIP-2 模型输出
-                if hasattr(text_features, 'last_hidden_state'):
-                    features = text_features.last_hidden_state.squeeze(0).cpu().numpy()
-                elif hasattr(text_features, 'pooler_output'):
-                    features = text_features.pooler_output.squeeze(0).cpu().numpy()
-                else:
-                    # 如果是张量，直接处理
-                    features = text_features.squeeze(0).cpu().numpy()
+            inputs = self.processor(text=text_content, return_tensors="pt").to(self.device)
+            text_features = self.model.get_text_features(**inputs)
+            
+            # 正确处理 BLIP-2 模型输出
+            if hasattr(text_features, 'last_hidden_state'):
+                features = text_features.last_hidden_state.squeeze(0).cpu().numpy()
+            elif hasattr(text_features, 'pooler_output'):
+                features = text_features.pooler_output.squeeze(0).cpu().numpy()
+            else:
+                # 如果是张量，直接处理
+                features = text_features.squeeze(0).cpu().numpy()
 
-                base_name = os.path.splitext(os.path.basename(text_path))[0]
-                output_path = os.path.join(output_folder, f"{base_name}.npy")
-                np.save(output_path, features)
-
-            except Exception as e:
-                print(f"Error processing text file {text_path}: {e}")
+            base_name = os.path.splitext(os.path.basename(text_path))[0]
+            output_path = os.path.join(output_folder, f"{base_name}.npy")
+            np.save(output_path, features)
 
     @torch.no_grad()
     def extract_visual_features_from_frames(self, frames_folder, output_folder, interval=15):
@@ -206,62 +188,52 @@ class BLIP2FeatureExtractor:
         for video_name in tqdm(video_frame_dirs, desc="提取视觉特征"):
             video_frame_dir = os.path.join(frames_folder, video_name)
             
-            try:
-                # 获取所有帧文件并排序
-                frame_files = sorted([f for f in os.listdir(video_frame_dir) if f.lower().endswith(('.jpg', '.jpeg', '.png'))])
-                
-                if not frame_files:
-                    continue
-                
-                # 根据间隔选择帧
-                selected_frames = frame_files[::interval]  # 每隔 interval 帧选择一帧
-                
-                video_features_list = []
-                for frame_file in tqdm(selected_frames, desc=f"{video_name}", leave=False):
-                    frame_path = os.path.join(video_frame_dir, frame_file)
-                    try:
-                        frame_pil = Image.open(frame_path).convert("RGB")
-                        inputs = self.processor(images=frame_pil, return_tensors="pt").to(self.device)
-                        
-                        # 通过完整的 BLIP-2 pipeline 获取经过 projection 的视觉特征
-                        # 1. 视觉编码器
-                        vision_outputs = self.model.vision_model(**inputs)
-                        image_embeds = vision_outputs.last_hidden_state
-                        
-                        # 2. QFormer 处理
-                        image_attention_mask = torch.ones(image_embeds.size()[:-1], dtype=torch.long, device=image_embeds.device)
-                        query_tokens = self.model.query_tokens.expand(image_embeds.shape[0], -1, -1)
-                        query_outputs = self.model.qformer(
-                            query_embeds=query_tokens,
-                            encoder_hidden_states=image_embeds,
-                            encoder_attention_mask=image_attention_mask,
-                            return_dict=True,
-                        )
-                        
-                        # 3. Language projection - 将特征投影到与文本相同的空间 (2560维)
-                        projected_features = self.model.language_projection(query_outputs.last_hidden_state)
-                        
-                        # 输出形状: (1, 32, 2560) -> (32, 2560) 
-                        features = projected_features.squeeze(0).cpu().numpy()
-                        video_features_list.append(features)
-                        
-                    except Exception as e_frame:
-                        print(f"处理帧 {frame_file} 时出错: {e_frame}")
-                        continue
-                
-                if not video_features_list:
-                    continue
-                
-                # 保存所有帧的特征：形状为 (num_frames, num_tokens, feature_dim)
-                final_video_features = np.array(video_features_list)
-                output_path = os.path.join(output_folder, f"{video_name}.npy")
-                np.save(output_path, final_video_features)
-                
-                print(f"已保存视觉特征: {video_name}.npy, 形状: {final_video_features.shape}")
-                
-            except Exception as e:
-                print(f"处理视频 {video_name} 时出错: {e}")
+            # 获取所有帧文件并排序
+            frame_files = sorted([f for f in os.listdir(video_frame_dir) if f.lower().endswith(('.jpg', '.jpeg', '.png'))])
+            
+            if not frame_files:
                 continue
+            
+            # 根据间隔选择帧
+            selected_frames = frame_files[::interval]  # 每隔 interval 帧选择一帧
+            
+            video_features_list = []
+            for frame_file in tqdm(selected_frames, desc=f"{video_name}", leave=False):
+                frame_path = os.path.join(video_frame_dir, frame_file)
+                frame_pil = Image.open(frame_path).convert("RGB")
+                inputs = self.processor(images=frame_pil, return_tensors="pt").to(self.device)
+                
+                # 通过完整的 BLIP-2 pipeline 获取经过 projection 的视觉特征
+                # 1. 视觉编码器
+                vision_outputs = self.model.vision_model(**inputs)
+                image_embeds = vision_outputs.last_hidden_state
+                
+                # 2. QFormer 处理
+                image_attention_mask = torch.ones(image_embeds.size()[:-1], dtype=torch.long, device=image_embeds.device)
+                query_tokens = self.model.query_tokens.expand(image_embeds.shape[0], -1, -1)
+                query_outputs = self.model.qformer(
+                    query_embeds=query_tokens,
+                    encoder_hidden_states=image_embeds,
+                    encoder_attention_mask=image_attention_mask,
+                    return_dict=True,
+                )
+                
+                # 3. Language projection - 将特征投影到与文本相同的空间 (2560维)
+                projected_features = self.model.language_projection(query_outputs.last_hidden_state)
+                
+                # 输出形状: (1, 32, 2560) -> (32, 2560) 
+                features = projected_features.squeeze(0).cpu().numpy()
+                video_features_list.append(features)
+            
+            if not video_features_list:
+                continue
+            
+            # 保存所有帧的特征：形状为 (num_frames, num_tokens, feature_dim)
+            final_video_features = np.array(video_features_list)
+            output_path = os.path.join(output_folder, f"{video_name}.npy")
+            np.save(output_path, final_video_features)
+            
+            print(f"已保存视觉特征: {video_name}.npy, 形状: {final_video_features.shape}")
 
     @torch.no_grad()
     def extract_caption_features(self, captions_folder, output_folder):
