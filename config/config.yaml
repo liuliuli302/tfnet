@@ -4,8 +4,8 @@
 # Dataset paths - modify these to your actual dataset locations
 # 数据集路径 - 请修改为您的实际数据集位置
 dataset_paths:
-  - "/root/autodl-tmp/experiment_cache/tfnet/SumMe"
-  - "/root/autodl-tmp/experiment_cache/tfnet/TVSum"
+  - "/root/autodl-tmp/data/SumMe"
+  - "/root/autodl-tmp/data/TVSum"
 
 # Pipeline parameters
 # 流程参数

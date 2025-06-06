@@ -48,13 +48,13 @@ def main():
     datasets = [
         {
             "name": "SumMe",
-            "captions_path": "/root/autodl-tmp/experiment_cache/tfnet/SumMe/captions/Qwen25VL", # SumMe 数据集字幕路径
-            "feature_output_path": "/root/autodl-tmp/experiment_cache/tfnet/SumMe/text_features/BLIP2" # SumMe 文本特征输出路径
+            "captions_path": "/root/autodl-tmp/data/SumMe/captions/Qwen25VL", # SumMe 数据集字幕路径
+            "feature_output_path": "/root/autodl-tmp/data/SumMe/text_features/BLIP2" # SumMe 文本特征输出路径
         },
         {
             "name": "TVSum",
-            "captions_path": "/root/autodl-tmp/experiment_cache/tfnet/TVSum/captions/Qwen25VL", # TVSum 数据集字幕路径
-            "feature_output_path": "/root/autodl-tmp/experiment_cache/tfnet/TVSum/text_features/BLIP2" # TVSum 文本特征输出路径
+            "captions_path": "/root/autodl-tmp/data/TVSum/captions/Qwen25VL", # TVSum 数据集字幕路径
+            "feature_output_path": "/root/autodl-tmp/data/TVSum/text_features/BLIP2" # TVSum 文本特征输出路径
         }
     ]
 

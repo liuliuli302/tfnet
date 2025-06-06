@@ -95,12 +95,12 @@ def main():
         {
             "name": "SumMe",
             "video_path": "/root/autodl-tmp/data/SumMe/videos", # SumMe 数据集视频路径
-            "caption_output_path": "/root/autodl-tmp/experiment_cache/tfnet/SumMe/captions/Qwen25VL" # SumMe 字幕输出路径
+            "caption_output_path": "/root/autodl-tmp/data/SumMe/captions/Qwen25VL" # SumMe 字幕输出路径
         },
         {
             "name": "TVSum",
             "video_path": "/root/autodl-tmp/data/TVSum/videos", # TVSum 数据集视频路径 (已修正)
-            "caption_output_path": "/root/autodl-tmp/experiment_cache/tfnet/TVSum/captions/Qwen25VL" # TVSum 字幕输出路径
+            "caption_output_path": "/root/autodl-tmp/data/TVSum/captions/Qwen25VL" # TVSum 字幕输出路径
         }
     ]
 

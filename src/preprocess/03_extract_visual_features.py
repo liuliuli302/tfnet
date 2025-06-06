@@ -54,13 +54,13 @@ def main():
     datasets = [
         {
             "name": "SumMe",
-            "frames_path": "/root/autodl-tmp/experiment_cache/tfnet/SumMe/frames", # SumMe 数据集帧路径
-            "feature_output_path": "/root/autodl-tmp/experiment_cache/tfnet/SumMe/visual_features/BLIP2" # SumMe 视觉特征输出路径
+            "frames_path": "/root/autodl-tmp/data/SumMe/frames", # SumMe 数据集帧路径
+            "feature_output_path": "/root/autodl-tmp/data/SumMe/visual_features/BLIP2" # SumMe 视觉特征输出路径
         },
         {
             "name": "TVSum",
-            "frames_path": "/root/autodl-tmp/experiment_cache/tfnet/TVSum/frames", # TVSum 数据集帧路径
-            "feature_output_path": "/root/autodl-tmp/experiment_cache/tfnet/TVSum/visual_features/BLIP2" # TVSum 视觉特征输出路径
+            "frames_path": "/root/autodl-tmp/data/TVSum/frames", # TVSum 数据集帧路径
+            "feature_output_path": "/root/autodl-tmp/data/TVSum/visual_features/BLIP2" # TVSum 视觉特征输出路径
         }
     ]
 
