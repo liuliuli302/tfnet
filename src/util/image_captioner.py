@@ -1,4 +1,3 @@
-import argparse
 import json
 import os
 from pathlib import Path
@@ -18,10 +17,10 @@ def load_images_from_paths(image_paths):
             try:
                 img = Image.open(path).convert('RGB')
                 images.append(img)
-            except Exception as e:
-                print(f"Warning: Failed to load image {path}: {e}")
-        else:
-            print(f"Warning: Image file not found: {path}")
+            except Exception:
+                # Silently skip failed images
+                continue
+        # Silently skip missing files
     return images
 
 
@@ -81,13 +80,13 @@ class ImageCaptioner:
         num_frames = len(frame_files)
         
         if num_frames == 0:
-            print(f"Warning: No frame files found in {video_dir}")
-            return
+            return  # Silently skip empty directories
 
         for batch_start_frame in tqdm(
             range(0, num_frames, self.batch_size * self.frame_interval),
-            desc=f"Processing {video_dir}",
+            desc=f"Processing {os.path.basename(video_dir)}",
             unit="batch",
+            leave=False,
         ):
             batch_end_frame = min(
                 batch_start_frame + (self.batch_size * self.frame_interval), num_frames
@@ -120,78 +119,55 @@ class ImageCaptioner:
         with open(output_path, "w") as f:
             json.dump(video_captions, f, indent=4)
 
+    def caption_frames(self, frames_dir, frame_interval=15, batch_size=None, resume=True, pathname="*.json"):
+        """
+        为指定文件夹中的视频帧生成caption
+        
+        Args:
+            frames_dir: 包含视频帧文件夹的目录路径，如 /frames
+            frame_interval: 帧跳数，默认为15，表示每隔15帧抽取一帧做caption
+            batch_size: 批处理大小，如果为None则使用初始化时的batch_size
+            resume: 是否跳过已处理的视频
+            pathname: 用于判断已处理视频的文件模式
+        """
+        # 设置输出目录为 /captions/Blip2/
+        captions_output_dir = Path(frames_dir).parent / "captions" / "Blip2"
+        captions_output_dir.mkdir(parents=True, exist_ok=True)
+        
+        # 临时保存原来的设置
+        original_output_dir = self.output_dir
+        original_frame_interval = self.frame_interval
+        original_batch_size = self.batch_size
+        
+        # 设置新的参数
+        self.output_dir = captions_output_dir
+        self.frame_interval = frame_interval
+        if batch_size is not None:
+            self.batch_size = batch_size
+        self.frame_interval = frame_interval
+        
+        try:
+            # 从视频帧文件夹获取所有视频目录
+            video_dirs = []
+            if os.path.exists(frames_dir):
+                for item in os.listdir(frames_dir):
+                    item_path = os.path.join(frames_dir, item)
+                    if os.path.isdir(item_path):
+                        video_dirs.append(item_path)
+            else:
+                raise FileNotFoundError(f"Video frames directory not found: {frames_dir}")
+            
+            if resume:
+                video_dirs = find_unprocessed_videos(video_dirs, self.output_dir, pathname)
 
-def run(
-    video_frames_dir,
-    batch_size,
-    frame_interval,
-    imagefile_template,
-    pretrained_model_name,
-    output_dir,
-    dtype,
-    resume,
-    pathname,
-):
-    captioner = ImageCaptioner(
-        batch_size,
-        frame_interval,
-        imagefile_template,
-        pretrained_model_name,
-        dtype,
-        output_dir,
-    )
-
-    # 从视频帧文件夹获取所有视频目录
-    video_dirs = []
-    if os.path.exists(video_frames_dir):
-        for item in os.listdir(video_frames_dir):
-            item_path = os.path.join(video_frames_dir, item)
-            if os.path.isdir(item_path):
-                video_dirs.append(item_path)
-    else:
-        print(f"Error: Video frames directory not found: {video_frames_dir}")
-        return
-    
-    if resume:
-        video_dirs = find_unprocessed_videos(video_dirs, captioner.output_dir, pathname)
-
-    for video_dir in video_dirs:
-        captioner.process_video(video_dir)
-
-
-def parse_args():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--video_frames_dir", type=str, required=True, 
-                       help="Directory containing video frame folders")
-    parser.add_argument("--batch_size", type=int, default=1)
-    parser.add_argument("--frame_interval", type=int, default=15)
-    parser.add_argument("--imagefile_template", type=str, default="frame_{:06d}.jpg")
-    parser.add_argument(
-        "--pretrained_model_name", type=str, default="Salesforce/blip2-opt-6.7b-coco"
-    )
-    parser.add_argument("--output_dir", type=str, required=True)
-    parser.add_argument(
-        "--dtype",
-        type=str,
-        choices=["float16", "float32"],
-        default="float16",
-        help="Data type (float16 or float32)",
-    )
-    parser.add_argument("--resume", action="store_true")
-    parser.add_argument("--pathname", type=str, default="*.json")
-    return parser.parse_args()
+            # Add progress bar for video processing
+            for video_dir in tqdm(video_dirs, desc="Processing videos", unit="video"):
+                self.process_video(video_dir)
+                
+        finally:
+            # 恢复原来的设置
+            self.output_dir = original_output_dir
+            self.frame_interval = original_frame_interval
+            self.batch_size = original_batch_size
 
 
-if __name__ == "__main__":
-    args = parse_args()
-    run(
-        args.video_frames_dir,
-        args.batch_size,
-        args.frame_interval,
-        args.imagefile_template,
-        args.pretrained_model_name,
-        args.output_dir,
-        args.dtype,
-        args.resume,
-        args.pathname,
-    )

@@ -1,6 +1,58 @@
 """
 视频摘要流程 - 第一步实现
 免训练的视频摘要流程，通过多模态大模型查询帧重要性
+
+免训练的视频摘要流程
+
+1 查询多模态大模型
+
+输入：
+帧+上下文帧
+
+关键参数包括
+查询该帧在视频摘要维度重要性程度的Prompt
+帧上下文窗口长度N
+帧跳数(inteval) M，表示对于视频，每隔15帧采样一次
+
+
+例子：
+帧上下文窗口长度为3，帧跳数为15时
+当前帧为0时，输入到模型的帧为[0 15]
+当前帧为15时，输入模型的帧为[0 15 30]
+当前帧为采样帧序列的最后一帧时候，输入模型的帧为[last-15 last]
+
+这个阶段需要完成的任务如下
+已知且已准备好的资源如下
+有两个数据集
+每个数据集有一个frames文件夹，里面有若干以视频名字标注的子文件夹
+子文件内有该视频的所有帧
+
+你需要，首先统计帧数，之后按照帧跳数采样
+比如帧跳数为15，则采样[0 15 30 ...]帧，计帧数为N1
+
+之后针对采样的每帧，以帧上下文长度N+Prompt送入多模态大模型，查询以视频摘要为目的的该帧的重要性分数（分数范围为0到1）
+
+最终经历过N1次查询，你得到一个长度为N1的得分序列，作为该视频的的最初的得分序列
+你需要将所有数据集的所有视频的得分序列都拿到
+
+并保存其结果json到指定文件夹下
+
+目前已完成第一阶段
+
+2 计算视觉文本相似度
+~/autodl-tmp/data/SumMe/
+以及
+~/autodl-tmp/data/TVSum/
+文件夹下包含着文本和视觉特征文件
+
+你需要完成计算一个视频的视频帧特征与视频文本摘要形成的文本特征的相似度计算
+得到一个帧相似度分数序列，范围从0到1
+
+帧特征：(N, 32, 2560)
+文本特征：(M, 2560)
+
+
+
 """
 
 import json
@@ -12,6 +64,8 @@ from PIL import Image
 import numpy as np
 from tqdm import tqdm
 from datetime import datetime
+import torch
+import torch.nn.functional as F
 
 # 添加项目根目录到Python路径以支持绝对导入
 project_root = Path(__file__).parent.parent.parent
@@ -35,7 +89,9 @@ class VideoSummaryPipeline:
         model_name: str = "Qwen/Qwen2.5-VL-7B-Instruct",
         device_map: str = "auto",
         importance_prompt: str = None,
-        logger: Optional[TensorBoardLogger] = None
+        logger: Optional[TensorBoardLogger] = None,
+        skip_step1: bool = False,
+        skip_step2: bool = False
     ):
         """
         初始化视频摘要流程
@@ -49,8 +105,14 @@ class VideoSummaryPipeline:
             device_map: 设备映射
             importance_prompt: 查询帧重要性的提示词
             logger: TensorBoard logger对象
+            skip_step1: 是否跳过第一步
+            skip_step2: 是否跳过第二步
         """
         self.dataset_paths = [Path(path) for path in dataset_paths]
+        self.frame_context_window = frame_context_window
+        self.frame_interval = frame_interval
+        self.skip_step1 = skip_step1
+        self.skip_step2 = skip_step2
         self.frame_context_window = frame_context_window
         self.frame_interval = frame_interval
         
@@ -290,8 +352,268 @@ class VideoSummaryPipeline:
         self.log_dataset_summary(dataset_name, dataset_results["videos"])
         return dataset_results
     
-    def step1_query_multimodal_model(self) -> Dict[str, Any]:
+    def load_features(self, dataset_path: Path, video_name: str) -> Dict[str, Any]:
+        """加载视频的视觉和文本特征"""
+        features = {}
+        
+        # 查找视觉特征文件
+        visual_feature_paths = [
+            dataset_path / "visual_features" / "BLIP2" / f"{video_name}.npy",
+            dataset_path / "visual_features" / f"{video_name}.npy",
+            dataset_path / f"visual_features_{video_name}.npy",
+            dataset_path / f"{video_name}_visual_features.npy"
+        ]
+        
+        for visual_path in visual_feature_paths:
+            if visual_path.exists():
+                try:
+                    features['visual'] = np.load(visual_path)
+                    break
+                except Exception as e:
+                    print(f"Error loading visual features from {visual_path}: {e}")
+                    continue
+        
+        # 查找文本特征文件  
+        text_feature_paths = [
+            dataset_path / "text_features" / "BLIP2" / f"{video_name}.npy",
+            dataset_path / "text_features" / f"{video_name}.npy",
+            dataset_path / f"text_features_{video_name}.npy",
+            dataset_path / f"{video_name}_text_features.npy"
+        ]
+        
+        for text_path in text_feature_paths:
+            if text_path.exists():
+                try:
+                    features['text'] = np.load(text_path)
+                    break
+                except Exception as e:
+                    print(f"Error loading text features from {text_path}: {e}")
+                    continue
+                
+        return features
+    
+    def compute_visual_text_similarity(self, visual_features: np.ndarray, text_features: np.ndarray, method: str = "mean") -> List[float]:
+        """
+        计算视觉特征和文本特征的相似度
+        
+        Args:
+            visual_features: (N, 32, 2560) 帧特征
+            text_features: (M, 2560) 文本特征
+            method: 相似度计算方法，"mean" 或 "max"
+            
+        Returns:
+            相似度序列 (N,) 每帧对应一个相似度分数
+        """
+        
+        # 确保输入维度正确
+        if visual_features.ndim != 3:
+            raise ValueError(f"Expected visual features shape (N, 32, 2560), got {visual_features.shape}")
+        if visual_features.shape[1] != 32 or visual_features.shape[2] != 2560:
+            raise ValueError(f"Expected visual features shape (N, 32, 2560), got {visual_features.shape}")
+            
+        # 处理文本特征
+        if text_features.ndim == 1:
+            text_features = text_features.reshape(1, -1)
+        elif text_features.ndim != 2:
+            raise ValueError(f"Unexpected text features shape: {text_features.shape}")
+        if text_features.shape[1] != 2560:
+            raise ValueError(f"Expected text features shape (M, 2560), got {text_features.shape}")
+            
+        # 转换为torch张量
+        visual_tensor = torch.tensor(visual_features, dtype=torch.float32)  # (N, 32, 2560)
+        text_tensor = torch.tensor(text_features, dtype=torch.float32)      # (M, 2560)
+        
+        # L2归一化特征
+        visual_tensor_norm = F.normalize(visual_tensor, dim=2)  # (N, 32, 2560)
+        text_tensor_norm = F.normalize(text_tensor, dim=1)      # (M, 2560)
+        
+        # 计算特征矩阵 (N, 32, M)
+        # 对于每帧，计算32个patch与M个文本特征的相似度
+        N, patches, feat_dim = visual_tensor_norm.shape
+        M = text_tensor_norm.shape[0]
+        
+        similarity_matrix = torch.zeros(N, patches, M, dtype=torch.float32)
+        
+        for i in range(N):
+            # 计算第i帧的32个patch与所有文本特征的相似度矩阵 (32, M)
+            frame_patches = visual_tensor_norm[i]  # (32, 2560)
+            patch_text_sim = torch.matmul(frame_patches, text_tensor_norm.T)  # (32, M)
+            similarity_matrix[i] = patch_text_sim
+        
+        # 对每帧的相似度矩阵进行聚合
+        if method == "mean":
+            # 方法1：求平均 - 对32个patch和M个文本取平均
+            frame_similarities = similarity_matrix.mean(dim=(1, 2))  # (N,)
+        elif method == "max":
+            # 方法2：求最大 - 先对M个文本取最大，再对32个patch取最大
+            max_over_text = similarity_matrix.max(dim=2)[0]  # (N, 32) - 每个patch的最大文本相似度
+            frame_similarities = max_over_text.max(dim=1)[0]  # (N,) - 每帧的最大patch相似度
+        else:
+            raise ValueError(f"Unknown method: {method}. Choose 'mean' or 'max'")
+        
+        # 确保相似度在[0,1]范围内
+        frame_similarities = torch.clamp(frame_similarities, 0.0, 1.0)
+        
+        return frame_similarities.cpu().numpy().tolist()
+    
+    def process_video_step2(self, dataset_path: Path, video_name: str) -> Dict[str, Any]:
+        """处理单个视频的视觉文本相似度计算"""
+        
+        # 加载特征
+        features = self.load_features(dataset_path, video_name)
+        
+        if 'visual' not in features or 'text' not in features:
+            missing = []
+            if 'visual' not in features:
+                missing.append('visual')
+            if 'text' not in features:
+                missing.append('text')
+                
+            return {
+                "video_name": video_name,
+                "status": "missing_features",
+                "missing_features": missing,
+                "similarities": []
+            }
+        
+        # 计算相似度 - 使用两种方法
+        visual_features = features['visual']
+        text_features = features['text']
+        
+        try:
+            # 方法1：求平均
+            similarities_mean = self.compute_visual_text_similarity(visual_features, text_features, method="mean")
+            
+            # 方法2：求最大
+            similarities_max = self.compute_visual_text_similarity(visual_features, text_features, method="max")
+            
+            # 记录到TensorBoard
+            if self.logger:
+                for i, (sim_mean, sim_max) in enumerate(zip(similarities_mean, similarities_max)):
+                    self.logger.log_metrics({
+                        f'visual_text_similarity_mean/{video_name}': sim_mean,
+                        f'visual_text_similarity_max/{video_name}': sim_max
+                    }, step=i)
+                    
+                if similarities_mean and similarities_max:
+                    stats = {
+                        f'similarity_stats_mean/{video_name}/mean': np.mean(similarities_mean),
+                        f'similarity_stats_mean/{video_name}/max': np.max(similarities_mean),
+                        f'similarity_stats_mean/{video_name}/min': np.min(similarities_mean),
+                        f'similarity_stats_mean/{video_name}/std': np.std(similarities_mean),
+                        f'similarity_stats_max/{video_name}/mean': np.mean(similarities_max),
+                        f'similarity_stats_max/{video_name}/max': np.max(similarities_max),
+                        f'similarity_stats_max/{video_name}/min': np.min(similarities_max),
+                        f'similarity_stats_max/{video_name}/std': np.std(similarities_max)
+                    }
+                    self.logger.log_metrics(stats)
+            
+            return {
+                "video_name": video_name,
+                "status": "success",
+                "visual_feature_shape": list(visual_features.shape),
+                "text_feature_shape": list(text_features.shape),
+                "num_similarities": len(similarities_mean),
+                "similarities_mean": {
+                    "values": similarities_mean,
+                    "mean": float(np.mean(similarities_mean)) if similarities_mean else 0.0,
+                    "max": float(np.max(similarities_mean)) if similarities_mean else 0.0,
+                    "min": float(np.min(similarities_mean)) if similarities_mean else 0.0,
+                    "std": float(np.std(similarities_mean)) if similarities_mean else 0.0
+                },
+                "similarities_max": {
+                    "values": similarities_max,
+                    "mean": float(np.mean(similarities_max)) if similarities_max else 0.0,
+                    "max": float(np.max(similarities_max)) if similarities_max else 0.0,
+                    "min": float(np.min(similarities_max)) if similarities_max else 0.0,
+                    "std": float(np.std(similarities_max)) if similarities_max else 0.0
+                }
+            }
+            
+        except Exception as e:
+            return {
+                "video_name": video_name,
+                "status": "computation_error",
+                "error": str(e),
+                "visual_feature_shape": list(visual_features.shape),
+                "text_feature_shape": list(text_features.shape),
+                "similarities_mean": {"values": []},
+                "similarities_max": {"values": []}
+            }
+    
+    def process_dataset_step2(self, dataset_path: Path) -> Dict[str, Any]:
+        """处理单个数据集的视觉文本相似度计算"""
+        dataset_name = dataset_path.name
+        
+        # 查找视频目录
+        frames_dir = dataset_path / "frames"
+        if not frames_dir.exists():
+            return {
+                "dataset_name": dataset_name,
+                "dataset_path": str(dataset_path),
+                "status": "no_frames_dir", 
+                "total_videos": 0,
+                "videos": {}
+            }
+            
+        video_dirs = [d for d in frames_dir.iterdir() if d.is_dir()]
+        video_names = [d.name for d in video_dirs]
+        
+        dataset_results = {
+            "dataset_name": dataset_name,
+            "dataset_path": str(dataset_path),
+            "total_videos": len(video_names),
+            "videos": {}
+        }
+        
+        for video_name in tqdm(video_names, desc=f"Processing {dataset_name} similarities"):
+            video_result = self.process_video_step2(dataset_path, video_name)
+            dataset_results["videos"][video_name] = video_result
+            
+        return dataset_results
+    
+    def step2_compute_visual_text_similarity(self, skip: bool = None) -> Dict[str, Any]:
+        """第二步：计算视觉文本相似度"""
+        if skip is None:
+            skip = self.skip_step2
+            
+        if skip:
+            return {
+                "step": 2,
+                "description": "Compute visual-text similarity scores (SKIPPED)",
+                "status": "skipped",
+                "datasets": {}
+            }
+        
+        all_results = {
+            "step": 2,
+            "description": "Compute visual-text similarity scores",
+            "parameters": {
+                "frame_interval": self.frame_interval
+            },
+            "datasets": {}
+        }
+        
+        for dataset_path in self.dataset_paths:
+            dataset_result = self.process_dataset_step2(dataset_path)
+            dataset_name = dataset_result["dataset_name"]
+            all_results["datasets"][dataset_name] = dataset_result
+            
+        return all_results
+    
+    def step1_query_multimodal_model(self, skip: bool = None) -> Dict[str, Any]:
         """第一步：查询多模态大模型获取帧重要性分数"""
+        if skip is None:
+            skip = self.skip_step1
+            
+        if skip:
+            return {
+                "step": 1,
+                "description": "Query multimodal model for frame importance scores (SKIPPED)",
+                "status": "skipped",
+                "datasets": {}
+            }
+            
         self.log_hyperparameters()
         
         all_results = {
@@ -323,9 +645,24 @@ class VideoSummaryPipeline:
             self.logger.finalize("success")
     
     def run(self):
-        """执行流程的run方法，调用第一步流程"""
-        results = self.step1_query_multimodal_model()
-        self.save_results(results)
+        """执行流程的run方法，调用第一步和第二步流程"""
+        results = {}
+        
+        # 执行第一步 - 强制跳过
+        print("Step 1 skipped (forced)")
+        step1_results = self.step1_query_multimodal_model(skip=True)
+        self.save_results(step1_results, "step1_results.json")
+        results['step1'] = step1_results
+            
+        # 执行第二步
+        if not self.skip_step2:
+            print("Running Step 2: Compute visual-text similarity...")
+            step2_results = self.step2_compute_visual_text_similarity()
+            self.save_results(step2_results, "step2_results.json")
+            results['step2'] = step2_results
+        else:
+            print("Step 2 skipped")
+            
         self.close_logger()
         return results
 
