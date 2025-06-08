@@ -262,11 +262,17 @@ class VideoSummaryPipeline:
     
     def process_dataset(self, dataset_path: Path) -> Dict[str, Any]:
         """处理单个数据集"""
+        dataset_name = dataset_path.name
         frames_dir = dataset_path / "frames"
         if not frames_dir.exists():
-            return {"dataset_path": str(dataset_path), "videos": {}}
+            print(f"Warning: frames directory not found for dataset {dataset_name}: {frames_dir}")
+            return {
+                "dataset_name": dataset_name,
+                "dataset_path": str(dataset_path), 
+                "total_videos": 0,
+                "videos": {}
+            }
         
-        dataset_name = dataset_path.name
         video_dirs = [d for d in frames_dir.iterdir() if d.is_dir()]
         
         dataset_results = {

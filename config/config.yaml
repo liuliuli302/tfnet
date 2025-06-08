@@ -9,7 +9,7 @@ dataset_paths:
 
 # Pipeline parameters
 # 流程参数
-frame_context_window: 3    # Frame context window length / 帧上下文窗口长度
+frame_context_window: 4    # Frame context window length / 帧上下文窗口长度
 frame_interval: 15         # Frame sampling interval / 帧采样间隔
 batch_size: 1              # Batch size for inference / 推理批大小
 
