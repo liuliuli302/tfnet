@@ -1,5 +1,5 @@
 # 0 视频摘要框架的基础支持
-## 0.1 视频帧提取
+## 0.1 视频帧提取 ✅
 将视频帧提取到输出文件夹
 
 关键参数：
@@ -15,6 +15,8 @@ out_dir：输出文件夹
 ### 具体实现 01
 
 简单的帧提取实现
+
+提取到的路径：frames/
 
 代码路径：src/util/video_utils.py
 
@@ -38,6 +40,16 @@ frames_dir：帧文件夹
 
 代码路径：src/util/feature_extractor.py
 
+### 具体实现 02
+
+纯粹复用文献TFVTG的代码
+
+提取到的路径：features/visual
+
+形状：(N, 32, 256)
+
+代码路径：src/util/0_2_2_feature_extraction.py
+
 ## 0.3 视频帧Caption
 
 生成视频帧字幕
@@ -55,6 +67,8 @@ frames_dir：帧文件夹
 ### 具体实现 01
 
 利用Blip2模型提取帧级别字幕
+
+提取到的路径：captions/Blip2
 
 代码路径：src/util/image_captioner.py
 
@@ -74,8 +88,6 @@ video_dir：视频文件夹
 
 将视频+摘要所需prompt直接送入Video-LLM，生成视频Caption/Summarization
 
-实现：TODO
-
 ### 技术路径 2
 
 以视频帧Caption为原始输出，利用LLM实现摘要/聚合
@@ -85,6 +97,8 @@ video_dir：视频文件夹
 ### 具体实现 01
 
 采用技术路径 1，利用Qwen2.5VL多模态大模型提取视频的Caption，采样帧数8，均匀采样
+
+提取到的路径：captions/Blip2
 
 代码路径：src/util/video_captioner.py
 
@@ -104,9 +118,19 @@ text_dir：帧Caption/视频Caption等文本信息存在位置
 
 ### 具体实现 01
 
-利用Blip2模型提取文本特征
+自己编写的利用Blip2模型提取文本特征
+
+提取路径：text_feature
 
 代码路径：src/util/feature_extractor.py
+
+### 具体实现 02
+
+纯粹复用的TFVTG的特征提取方法
+
+提取路径：features/text
+
+代码路径：src/util/0_5_2_text_feature_extraction.py
 
 # 1 预处理
 
@@ -115,4 +139,8 @@ text_dir：帧Caption/视频Caption等文本信息存在位置
 ## 噪声去除
 
 ## 冗余去除
+
+
+
+
 

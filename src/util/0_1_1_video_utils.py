@@ -104,3 +104,23 @@ if __name__ == '__main__':
         extract_frames_from_directory(test_video_dir, test_batch_output, frame_interval=30)
     else:
         print(f"Test video directory '{test_video_dir}' not found. Skipping batch test.")
+
+
+
+def main():
+    """Main function to extract frames from all videos in a directory."""
+    extract_frames_from_directory(
+        video_dir='/root/autodl-tmp/data/SumMe/videos',
+        output_folder='/root/autodl-tmp/data/SumMe/frames',
+        frame_interval=1
+    )
+    
+    extract_frames_from_directory(
+        video_dir='/root/autodl-tmp/data/TVSum/videos',
+        output_folder='/root/autodl-tmp/data/TVSum/frames',
+        frame_interval=1
+    )
+    
+
+if __name__ == '__main__':
+    main()
