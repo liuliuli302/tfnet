@@ -58,6 +58,7 @@
 import json
 import os
 import sys
+import re
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 from PIL import Image
@@ -72,6 +73,7 @@ project_root = Path(__file__).parent.parent.parent
 sys.path.append(str(project_root))
 
 from src.handler.llm_client import Qwen25VLClient
+from src.util.similarity_calculator import SimilarityCalculator
 
 # TensorBoard相关导入
 from pytorch_lightning.loggers import TensorBoardLogger
@@ -91,7 +93,8 @@ class VideoSummaryPipeline:
         importance_prompt: str = None,
         logger: Optional[TensorBoardLogger] = None,
         skip_step1: bool = False,
-        skip_step2: bool = False
+        skip_step2: bool = False,
+        batch_size: int = 32
     ):
         """
         初始化视频摘要流程
@@ -107,12 +110,14 @@ class VideoSummaryPipeline:
             logger: TensorBoard logger对象
             skip_step1: 是否跳过第一步
             skip_step2: 是否跳过第二步
+            batch_size: 批处理大小
         """
         self.dataset_paths = [Path(path) for path in dataset_paths]
         self.frame_context_window = frame_context_window
         self.frame_interval = frame_interval
         self.skip_step1 = skip_step1
         self.skip_step2 = skip_step2
+        self.batch_size = batch_size
         self.frame_context_window = frame_context_window
         self.frame_interval = frame_interval
         
@@ -133,6 +138,15 @@ class VideoSummaryPipeline:
             model_name=model_name,
             device_map=device_map
         )
+        
+        # 初始化相似度计算器
+        device = 'cuda' if torch.cuda.is_available() else 'cpu'
+        self.similarity_calculator = SimilarityCalculator(device=device)
+        
+        # 预加载相似度计算模型（如果不跳过第二步）
+        if not self.skip_step2:
+            print("Pre-loading BLIP2 model for similarity calculation...")
+            self.similarity_calculator.load_model()
         
         self.importance_prompt = importance_prompt
     
@@ -203,7 +217,6 @@ class VideoSummaryPipeline:
         
         # 按帧编号排序（支持frame_xxxxxx.jpg格式）
         def extract_frame_number(file_path):
-            import re
             filename = file_path.name
             # 匹配frame_xxxxxx.jpg格式
             match = re.search(r'frame_(\d+)', filename)
@@ -352,181 +365,143 @@ class VideoSummaryPipeline:
         self.log_dataset_summary(dataset_name, dataset_results["videos"])
         return dataset_results
     
-    def load_features(self, dataset_path: Path, video_name: str) -> Dict[str, Any]:
-        """加载视频的视觉和文本特征"""
-        features = {}
-        
-        # 查找视觉特征文件
-        visual_feature_paths = [
-            dataset_path / "visual_features" / "BLIP2" / f"{video_name}.npy",
-            dataset_path / "visual_features" / f"{video_name}.npy",
-            dataset_path / f"visual_features_{video_name}.npy",
-            dataset_path / f"{video_name}_visual_features.npy"
+    def find_video_file(self, dataset_path: Path, video_name: str) -> Optional[str]:
+        """查找视频文件路径"""
+        # 尝试多个可能的视频文件位置和扩展名
+        video_paths = [
+            dataset_path / "videos" / f"{video_name}.mp4",
+            dataset_path / "videos" / f"{video_name}.avi", 
+            dataset_path / "videos" / f"{video_name}.mov",
+            dataset_path / "videos" / f"{video_name}.mkv",
+            dataset_path / f"{video_name}.mp4",
+            dataset_path / f"{video_name}.avi",
+            dataset_path / f"{video_name}.mov",
+            dataset_path / f"{video_name}.mkv"
         ]
         
-        for visual_path in visual_feature_paths:
-            if visual_path.exists():
-                try:
-                    features['visual'] = np.load(visual_path)
-                    break
-                except Exception as e:
-                    print(f"Error loading visual features from {visual_path}: {e}")
-                    continue
+        for video_path in video_paths:
+            if video_path.exists():
+                return str(video_path)
         
-        # 查找文本特征文件  
-        text_feature_paths = [
-            dataset_path / "text_features" / "BLIP2" / f"{video_name}.npy",
-            dataset_path / "text_features" / f"{video_name}.npy",
-            dataset_path / f"text_features_{video_name}.npy",
-            dataset_path / f"{video_name}_text_features.npy"
+        # 如果没有找到，尝试在videos目录下查找任何匹配的视频文件
+        videos_dir = dataset_path / "videos"
+        if videos_dir.exists():
+            for ext in ['*.mp4', '*.avi', '*.mov', '*.mkv']:
+                matching_files = list(videos_dir.glob(f"{video_name}*{ext}"))
+                if matching_files:
+                    return str(matching_files[0])
+        
+        return None
+
+    def load_video_frames_using_extract(self, dataset_path: Path, video_name: str) -> List[Image.Image]:
+        """使用SimilarityCalculator的extract_frames方法加载视频帧"""
+        # 查找视频文件
+        video_path = self.find_video_file(dataset_path, video_name)
+        if not video_path:
+            print(f"Video file not found for {video_name} in {dataset_path}")
+            return []
+        
+        try:
+            # 使用SimilarityCalculator的extract_frames方法
+            frames, frame_indices, fps = self.similarity_calculator.extract_frames(
+                video_path=video_path,
+                stride=self.frame_interval  # 使用配置的帧间隔
+            )
+            return frames
+        except Exception as e:
+            print(f"Error extracting frames from {video_path}: {e}")
+            return []
+    
+    def load_text_summary(self, dataset_path: Path, video_name: str) -> str:
+        """加载视频的文本摘要"""
+        # 尝试多个可能的文本摘要文件位置
+        text_paths = [
+            dataset_path / "text_summaries" / f"{video_name}.txt",
+            dataset_path / "summaries" / f"{video_name}.txt", 
+            dataset_path / f"{video_name}_summary.txt",
+            dataset_path / f"{video_name}.txt"
         ]
         
-        for text_path in text_feature_paths:
+        for text_path in text_paths:
             if text_path.exists():
                 try:
-                    features['text'] = np.load(text_path)
-                    break
+                    with open(text_path, 'r', encoding='utf-8') as f:
+                        return f.read().strip()
                 except Exception as e:
-                    print(f"Error loading text features from {text_path}: {e}")
+                    print(f"Error loading text from {text_path}: {e}")
                     continue
-                
-        return features
-    
-    def compute_visual_text_similarity(self, visual_features: np.ndarray, text_features: np.ndarray, method: str = "mean") -> List[float]:
-        """
-        计算视觉特征和文本特征的相似度
         
-        Args:
-            visual_features: (N, 32, 2560) 帧特征
-            text_features: (M, 2560) 文本特征
-            method: 相似度计算方法，"mean" 或 "max"
-            
-        Returns:
-            相似度序列 (N,) 每帧对应一个相似度分数
-        """
-        
-        # 确保输入维度正确
-        if visual_features.ndim != 3:
-            raise ValueError(f"Expected visual features shape (N, 32, 2560), got {visual_features.shape}")
-        if visual_features.shape[1] != 32 or visual_features.shape[2] != 2560:
-            raise ValueError(f"Expected visual features shape (N, 32, 2560), got {visual_features.shape}")
-            
-        # 处理文本特征
-        if text_features.ndim == 1:
-            text_features = text_features.reshape(1, -1)
-        elif text_features.ndim != 2:
-            raise ValueError(f"Unexpected text features shape: {text_features.shape}")
-        if text_features.shape[1] != 2560:
-            raise ValueError(f"Expected text features shape (M, 2560), got {text_features.shape}")
-            
-        # 转换为torch张量
-        visual_tensor = torch.tensor(visual_features, dtype=torch.float32)  # (N, 32, 2560)
-        text_tensor = torch.tensor(text_features, dtype=torch.float32)      # (M, 2560)
-        
-        # L2归一化特征
-        visual_tensor_norm = F.normalize(visual_tensor, dim=2)  # (N, 32, 2560)
-        text_tensor_norm = F.normalize(text_tensor, dim=1)      # (M, 2560)
-        
-        # 计算特征矩阵 (N, 32, M)
-        # 对于每帧，计算32个patch与M个文本特征的相似度
-        N, patches, feat_dim = visual_tensor_norm.shape
-        M = text_tensor_norm.shape[0]
-        
-        similarity_matrix = torch.zeros(N, patches, M, dtype=torch.float32)
-        
-        for i in range(N):
-            # 计算第i帧的32个patch与所有文本特征的相似度矩阵 (32, M)
-            frame_patches = visual_tensor_norm[i]  # (32, 2560)
-            patch_text_sim = torch.matmul(frame_patches, text_tensor_norm.T)  # (32, M)
-            similarity_matrix[i] = patch_text_sim
-        
-        # 对每帧的相似度矩阵进行聚合
-        if method == "mean":
-            # 方法1：求平均 - 对32个patch和M个文本取平均
-            frame_similarities = similarity_matrix.mean(dim=(1, 2))  # (N,)
-        elif method == "max":
-            # 方法2：求最大 - 先对M个文本取最大，再对32个patch取最大
-            max_over_text = similarity_matrix.max(dim=2)[0]  # (N, 32) - 每个patch的最大文本相似度
-            frame_similarities = max_over_text.max(dim=1)[0]  # (N,) - 每帧的最大patch相似度
-        else:
-            raise ValueError(f"Unknown method: {method}. Choose 'mean' or 'max'")
-        
-        # 确保相似度在[0,1]范围内
-        frame_similarities = torch.clamp(frame_similarities, 0.0, 1.0)
-        
-        return frame_similarities.cpu().numpy().tolist()
+        # 如果没有找到文本文件，返回默认查询
+        return "video summary"
     
     def process_video_step2(self, dataset_path: Path, video_name: str) -> Dict[str, Any]:
-        """处理单个视频的视觉文本相似度计算"""
+        """处理单个视频的视觉文本相似度计算 - 使用SimilarityCalculator"""
         
-        # 加载特征
-        features = self.load_features(dataset_path, video_name)
+        # 确保模型已加载（应该在初始化时已经加载）
+        if self.similarity_calculator.model is None:
+            print(f"Warning: Model not loaded for {video_name}, loading now...")
+            try:
+                self.similarity_calculator.load_model()
+            except Exception as e:
+                return {
+                    "video_name": video_name,
+                    "status": "model_load_error",
+                    "error": str(e),
+                    "similarities": []
+                }
         
-        if 'visual' not in features or 'text' not in features:
-            missing = []
-            if 'visual' not in features:
-                missing.append('visual')
-            if 'text' not in features:
-                missing.append('text')
-                
+        # 加载视频帧
+        frames = self.load_video_frames_using_extract(dataset_path, video_name)
+        if not frames:
             return {
                 "video_name": video_name,
-                "status": "missing_features",
-                "missing_features": missing,
+                "status": "no_frames",
                 "similarities": []
             }
         
-        # 计算相似度 - 使用两种方法
-        visual_features = features['visual']
-        text_features = features['text']
+        # 加载文本摘要
+        text_summary = self.load_text_summary(dataset_path, video_name)
         
         try:
-            # 方法1：求平均
-            similarities_mean = self.compute_visual_text_similarity(visual_features, text_features, method="mean")
+            # 使用SimilarityCalculator计算相似度
+            similarities = self.similarity_calculator.compute_similarity(
+                frames=frames,
+                text=text_summary,
+                batch_size=self.batch_size
+            )
             
-            # 方法2：求最大
-            similarities_max = self.compute_visual_text_similarity(visual_features, text_features, method="max")
+            # 确保相似度是列表格式
+            if isinstance(similarities, np.ndarray):
+                similarities = similarities.tolist()
             
             # 记录到TensorBoard
             if self.logger:
-                for i, (sim_mean, sim_max) in enumerate(zip(similarities_mean, similarities_max)):
+                for i, similarity in enumerate(similarities):
                     self.logger.log_metrics({
-                        f'visual_text_similarity_mean/{video_name}': sim_mean,
-                        f'visual_text_similarity_max/{video_name}': sim_max
+                        f'visual_text_similarity/{video_name}': similarity
                     }, step=i)
                     
-                if similarities_mean and similarities_max:
+                if similarities:
                     stats = {
-                        f'similarity_stats_mean/{video_name}/mean': np.mean(similarities_mean),
-                        f'similarity_stats_mean/{video_name}/max': np.max(similarities_mean),
-                        f'similarity_stats_mean/{video_name}/min': np.min(similarities_mean),
-                        f'similarity_stats_mean/{video_name}/std': np.std(similarities_mean),
-                        f'similarity_stats_max/{video_name}/mean': np.mean(similarities_max),
-                        f'similarity_stats_max/{video_name}/max': np.max(similarities_max),
-                        f'similarity_stats_max/{video_name}/min': np.min(similarities_max),
-                        f'similarity_stats_max/{video_name}/std': np.std(similarities_max)
+                        f'similarity_stats/{video_name}/mean': np.mean(similarities),
+                        f'similarity_stats/{video_name}/max': np.max(similarities),
+                        f'similarity_stats/{video_name}/min': np.min(similarities),
+                        f'similarity_stats/{video_name}/std': np.std(similarities)
                     }
                     self.logger.log_metrics(stats)
             
             return {
                 "video_name": video_name,
                 "status": "success",
-                "visual_feature_shape": list(visual_features.shape),
-                "text_feature_shape": list(text_features.shape),
-                "num_similarities": len(similarities_mean),
-                "similarities_mean": {
-                    "values": similarities_mean,
-                    "mean": float(np.mean(similarities_mean)) if similarities_mean else 0.0,
-                    "max": float(np.max(similarities_mean)) if similarities_mean else 0.0,
-                    "min": float(np.min(similarities_mean)) if similarities_mean else 0.0,
-                    "std": float(np.std(similarities_mean)) if similarities_mean else 0.0
-                },
-                "similarities_max": {
-                    "values": similarities_max,
-                    "mean": float(np.mean(similarities_max)) if similarities_max else 0.0,
-                    "max": float(np.max(similarities_max)) if similarities_max else 0.0,
-                    "min": float(np.min(similarities_max)) if similarities_max else 0.0,
-                    "std": float(np.std(similarities_max)) if similarities_max else 0.0
+                "num_frames": len(frames),
+                "text_summary": text_summary,
+                "num_similarities": len(similarities),
+                "similarities": {
+                    "values": similarities,
+                    "mean": float(np.mean(similarities)) if similarities else 0.0,
+                    "max": float(np.max(similarities)) if similarities else 0.0,
+                    "min": float(np.min(similarities)) if similarities else 0.0,
+                    "std": float(np.std(similarities)) if similarities else 0.0
                 }
             }
             
@@ -535,10 +510,9 @@ class VideoSummaryPipeline:
                 "video_name": video_name,
                 "status": "computation_error",
                 "error": str(e),
-                "visual_feature_shape": list(visual_features.shape),
-                "text_feature_shape": list(text_features.shape),
-                "similarities_mean": {"values": []},
-                "similarities_max": {"values": []}
+                "num_frames": len(frames),
+                "text_summary": text_summary,
+                "similarities": {"values": []}
             }
     
     def process_dataset_step2(self, dataset_path: Path) -> Dict[str, Any]:
@@ -573,23 +547,39 @@ class VideoSummaryPipeline:
         return dataset_results
     
     def step2_compute_visual_text_similarity(self, skip: bool = None) -> Dict[str, Any]:
-        """第二步：计算视觉文本相似度"""
+        """第二步：计算视觉文本相似度 - 使用BLIP2模型和SimilarityCalculator"""
         if skip is None:
             skip = self.skip_step2
             
         if skip:
             return {
                 "step": 2,
-                "description": "Compute visual-text similarity scores (SKIPPED)",
+                "description": "Compute visual-text similarity scores using SimilarityCalculator (SKIPPED)",
                 "status": "skipped",
                 "datasets": {}
             }
         
+        # 确保模型已加载
+        if self.similarity_calculator.model is None:
+            print("Loading BLIP2 model for step 2...")
+            try:
+                self.similarity_calculator.load_model()
+            except Exception as e:
+                return {
+                    "step": 2,
+                    "description": "Compute visual-text similarity scores using BLIP2 and SimilarityCalculator",
+                    "status": "model_load_error",
+                    "error": str(e),
+                    "datasets": {}
+                }
+        
         all_results = {
             "step": 2,
-            "description": "Compute visual-text similarity scores",
+            "description": "Compute visual-text similarity scores using BLIP2 and SimilarityCalculator",
             "parameters": {
-                "frame_interval": self.frame_interval
+                "frame_interval": self.frame_interval,
+                "similarity_model": "BLIP2",
+                "method": "End-to-end feature extraction and cosine similarity"
             },
             "datasets": {}
         }

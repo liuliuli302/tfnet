@@ -72,6 +72,9 @@ def main():
         device_map=config["device_map"],
         importance_prompt=config["importance_prompt"],
         logger=tb_logger,
+        skip_step1=config.get("skip_step1", False),
+        skip_step2=config.get("skip_step2", False),
+        batch_size=config.get("batch_size", 32),
     )
 
     results = pipeline.run()
