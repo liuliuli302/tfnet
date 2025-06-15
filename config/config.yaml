@@ -31,7 +31,7 @@ device_map: "auto"         # Device mapping: "auto", "cuda:0", "cpu", etc.
 
 # Pipeline step control
 # 流程步骤控制
-skip_step1: false          # Skip step 1 (multimodal model querying) / 跳过第一步（多模态模型查询）
+skip_step1: true          # Skip step 1 (multimodal model querying) / 跳过第一步（多模态模型查询）
 skip_step2: false          # Skip step 2 (visual-text similarity) / 跳过第二步（视觉文本相似度计算）
 
 # Importance query prompt

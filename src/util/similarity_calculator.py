@@ -12,8 +12,8 @@ from typing import List, Tuple, Optional, Union
 class SimilarityCalculator:
     """A class for calculating similarity between video frames and text queries using BLIP2."""
     
-    def __init__(self, device: str = 'cuda', model_name: str = "blip2_feature_extractor", 
-                 model_type: str = "pretrain"):
+    def __init__(self, device: str = 'cuda', model_name: str = "blip2_image_text_matching", 
+                 model_type: str = "coco"):
         """
         Initialize the SimilarityCalculator.
         
@@ -32,36 +32,10 @@ class SimilarityCalculator:
     def load_model(self):
         """Load the BLIP2 model and processors."""
         print("Loading BLIP2 model...")
-        try:
-            # First try with the default configuration
-            self.model, self.vis_processors, self.text_processors = load_model_and_preprocess(
-                self.model_name, self.model_type, device=self.device, is_eval=True
-            )
-            print("Model loaded successfully.")
-        except RuntimeError as e:
-            if "size mismatch" in str(e):
-                print(f"Model loading failed with size mismatch: {e}")
-                print("Trying alternative model configuration...")
-                try:
-                    # Try with a different model variant
-                    self.model_name = "blip2_feature_extractor"
-                    self.model_type = "pretrain_vitL"
-                    self.model, self.vis_processors, self.text_processors = load_model_and_preprocess(
-                        self.model_name, self.model_type, device=self.device, is_eval=True
-                    )
-                    print("Alternative model loaded successfully.")
-                except Exception as e2:
-                    print(f"Alternative model also failed: {e2}")
-                    print("Trying basic BLIP2 model...")
-                    # Final fallback
-                    self.model_name = "blip2_opt"
-                    self.model_type = "pretrain_opt2.7b"
-                    self.model, self.vis_processors, self.text_processors = load_model_and_preprocess(
-                        self.model_name, self.model_type, device=self.device, is_eval=True
-                    )
-                    print("Basic BLIP2 model loaded successfully.")
-            else:
-                raise e
+        self.model, self.vis_processors, self.text_processors = load_model_and_preprocess(
+            self.model_name, self.model_type, device=self.device, is_eval=True
+        )
+        print("Model loaded successfully.")
         
     def extract_frames(self, video_path: str, fps: Optional[float] = None, 
                       stride: int = 15, max_duration: Optional[float] = None) -> Tuple[List[Image.Image], List[int], float]:

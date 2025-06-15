@@ -39,19 +39,9 @@
 
 目前已完成第一阶段
 
-2 计算视觉文本相似度
-~/autodl-tmp/data/SumMe/
-以及
-~/autodl-tmp/data/TVSum/
-文件夹下包含着文本和视觉特征文件
-
-你需要完成计算一个视频的视频帧特征与视频文本摘要形成的文本特征的相似度计算
+2 计算相似度分数
+使用src/util中的相似度计算器计算视频帧与查询文本之间的相似度分数
 得到一个帧相似度分数序列，范围从0到1
-
-帧特征：(N, 32, 2560)
-文本特征：(M, 2560)
-
-
 
 """
 
@@ -94,7 +84,8 @@ class VideoSummaryPipeline:
         logger: Optional[TensorBoardLogger] = None,
         skip_step1: bool = False,
         skip_step2: bool = False,
-        batch_size: int = 32
+        batch_size: int = 32,
+        similarity_query: str = "video summary"
     ):
         """
         初始化视频摘要流程
@@ -111,6 +102,7 @@ class VideoSummaryPipeline:
             skip_step1: 是否跳过第一步
             skip_step2: 是否跳过第二步
             batch_size: 批处理大小
+            similarity_query: 相似度计算时使用的查询文本
         """
         self.dataset_paths = [Path(path) for path in dataset_paths]
         self.frame_context_window = frame_context_window
@@ -118,8 +110,7 @@ class VideoSummaryPipeline:
         self.skip_step1 = skip_step1
         self.skip_step2 = skip_step2
         self.batch_size = batch_size
-        self.frame_context_window = frame_context_window
-        self.frame_interval = frame_interval
+        self.similarity_query = similarity_query
         
         # TensorBoard logger配置
         self.logger = logger
@@ -133,20 +124,21 @@ class VideoSummaryPipeline:
             self.output_dir = Path(output_dir)
             self.output_dir.mkdir(parents=True, exist_ok=True)
         
-        # 初始化多模态大模型客户端
-        self.llm_client = Qwen25VLClient(
-            model_name=model_name,
-            device_map=device_map
-        )
+        # 初始化多模态大模型客户端（仅在不跳过第一步时加载）
+        if not self.skip_step1:
+            self.llm_client = Qwen25VLClient(
+                model_name=model_name,
+                device_map=device_map
+            )
+        else:
+            self.llm_client = None
         
-        # 初始化相似度计算器
-        device = 'cuda' if torch.cuda.is_available() else 'cpu'
-        self.similarity_calculator = SimilarityCalculator(device=device)
-        
-        # 预加载相似度计算模型（如果不跳过第二步）
+        # 初始化相似度计算器（仅在不跳过第二步时加载）
         if not self.skip_step2:
-            print("Pre-loading BLIP2 model for similarity calculation...")
-            self.similarity_calculator.load_model()
+            device = 'cuda' if torch.cuda.is_available() else 'cpu'
+            self.similarity_calculator = SimilarityCalculator(device=device)
+        else:
+            self.similarity_calculator = None
         
         self.importance_prompt = importance_prompt
     
@@ -156,7 +148,9 @@ class VideoSummaryPipeline:
             hparams = {
                 'frame_context_window': self.frame_context_window,
                 'frame_interval': self.frame_interval,
-                'dataset_count': len(self.dataset_paths)
+                'dataset_count': len(self.dataset_paths),
+                'batch_size': self.batch_size,
+                'similarity_query': self.similarity_query
             }
             self.logger.log_hyperparams(hparams)
     
@@ -174,6 +168,23 @@ class VideoSummaryPipeline:
                     f'video_stats/{video_name}/max_score': np.max(scores),
                     f'video_stats/{video_name}/min_score': np.min(scores),
                     f'video_stats/{video_name}/std_score': np.std(scores)
+                }
+                self.logger.log_metrics(stats)
+    
+    def log_similarity_scores(self, video_name: str, similarities: List[float]):
+        """记录视频的相似度分数到TensorBoard"""
+        if self.logger:
+            for i, similarity in enumerate(similarities):
+                self.logger.log_metrics({
+                    f'frame_similarity/{video_name}': similarity
+                }, step=i)
+            
+            if similarities:
+                stats = {
+                    f'similarity_stats/{video_name}/mean': np.mean(similarities),
+                    f'similarity_stats/{video_name}/max': np.max(similarities),
+                    f'similarity_stats/{video_name}/min': np.min(similarities),
+                    f'similarity_stats/{video_name}/std': np.std(similarities)
                 }
                 self.logger.log_metrics(stats)
     
@@ -273,6 +284,9 @@ class VideoSummaryPipeline:
     
     def query_frame_importance(self, frame_paths: List[str]) -> float:
         """查询帧的重要性分数"""
+        if self.llm_client is None:
+            raise RuntimeError("LLM client not initialized. Cannot query frame importance when step 1 is skipped.")
+            
         conversation_content = []
         
         for frame_path in frame_paths:
@@ -365,231 +379,115 @@ class VideoSummaryPipeline:
         self.log_dataset_summary(dataset_name, dataset_results["videos"])
         return dataset_results
     
-    def find_video_file(self, dataset_path: Path, video_name: str) -> Optional[str]:
-        """查找视频文件路径"""
-        # 尝试多个可能的视频文件位置和扩展名
-        video_paths = [
-            dataset_path / "videos" / f"{video_name}.mp4",
-            dataset_path / "videos" / f"{video_name}.avi", 
-            dataset_path / "videos" / f"{video_name}.mov",
-            dataset_path / "videos" / f"{video_name}.mkv",
-            dataset_path / f"{video_name}.mp4",
-            dataset_path / f"{video_name}.avi",
-            dataset_path / f"{video_name}.mov",
-            dataset_path / f"{video_name}.mkv"
-        ]
-        
-        for video_path in video_paths:
-            if video_path.exists():
-                return str(video_path)
-        
-        # 如果没有找到，尝试在videos目录下查找任何匹配的视频文件
-        videos_dir = dataset_path / "videos"
-        if videos_dir.exists():
-            for ext in ['*.mp4', '*.avi', '*.mov', '*.mkv']:
-                matching_files = list(videos_dir.glob(f"{video_name}*{ext}"))
-                if matching_files:
-                    return str(matching_files[0])
-        
-        return None
-
-    def load_video_frames_using_extract(self, dataset_path: Path, video_name: str) -> List[Image.Image]:
-        """使用SimilarityCalculator的extract_frames方法加载视频帧"""
-        # 查找视频文件
-        video_path = self.find_video_file(dataset_path, video_name)
-        if not video_path:
-            print(f"Video file not found for {video_name} in {dataset_path}")
-            return []
-        
-        try:
-            # 使用SimilarityCalculator的extract_frames方法
-            frames, frame_indices, fps = self.similarity_calculator.extract_frames(
-                video_path=video_path,
-                stride=self.frame_interval  # 使用配置的帧间隔
-            )
-            return frames
-        except Exception as e:
-            print(f"Error extracting frames from {video_path}: {e}")
-            return []
-    
-    def load_text_summary(self, dataset_path: Path, video_name: str) -> str:
-        """加载视频的文本摘要"""
-        # 尝试多个可能的文本摘要文件位置
-        text_paths = [
-            dataset_path / "text_summaries" / f"{video_name}.txt",
-            dataset_path / "summaries" / f"{video_name}.txt", 
-            dataset_path / f"{video_name}_summary.txt",
-            dataset_path / f"{video_name}.txt"
-        ]
-        
-        for text_path in text_paths:
-            if text_path.exists():
-                try:
-                    with open(text_path, 'r', encoding='utf-8') as f:
-                        return f.read().strip()
-                except Exception as e:
-                    print(f"Error loading text from {text_path}: {e}")
-                    continue
-        
-        # 如果没有找到文本文件，返回默认查询
-        return "video summary"
-    
-    def process_video_step2(self, dataset_path: Path, video_name: str) -> Dict[str, Any]:
-        """处理单个视频的视觉文本相似度计算 - 使用SimilarityCalculator"""
-        
-        # 确保模型已加载（应该在初始化时已经加载）
-        if self.similarity_calculator.model is None:
-            print(f"Warning: Model not loaded for {video_name}, loading now...")
-            try:
-                self.similarity_calculator.load_model()
-            except Exception as e:
-                return {
-                    "video_name": video_name,
-                    "status": "model_load_error",
-                    "error": str(e),
-                    "similarities": []
-                }
-        
-        # 加载视频帧
-        frames = self.load_video_frames_using_extract(dataset_path, video_name)
-        if not frames:
+    def process_video_similarity(self, video_frames_dir: Path, video_name: str) -> Dict[str, Any]:
+        """处理单个视频的相似度计算"""
+        if self.similarity_calculator is None:
             return {
                 "video_name": video_name,
-                "status": "no_frames",
+                "status": "calculator_not_available",
+                "error": "SimilarityCalculator not initialized",
                 "similarities": []
             }
-        
-        # 加载文本摘要
-        text_summary = self.load_text_summary(dataset_path, video_name)
-        
+            
         try:
-            # 使用SimilarityCalculator计算相似度
+            # 获取视频帧路径
+            frame_paths = self.get_video_frames(video_frames_dir)
+            if not frame_paths:
+                return {
+                    "video_name": video_name,
+                    "status": "no_frames",
+                    "total_frames": 0,
+                    "similarities": []
+                }
+            
+            # 采样帧
+            sampled_indices = self.sample_frames(frame_paths)
+            sampled_frame_paths = [frame_paths[idx] for idx in sampled_indices]
+            
+            # 加载图像
+            images = []
+            for frame_path in sampled_frame_paths:
+                try:
+                    img = Image.open(frame_path).convert('RGB')
+                    images.append(img)
+                except Exception as e:
+                    print(f"Error loading image {frame_path}: {e}")
+                    continue
+            
+            if not images:
+                return {
+                    "video_name": video_name,
+                    "status": "no_valid_images",
+                    "total_frames": len(frame_paths),
+                    "similarities": []
+                }
+            
+            # 计算相似度
             similarities = self.similarity_calculator.compute_similarity(
-                frames=frames,
-                text=text_summary,
+                images=images,
+                text=self.similarity_query,
                 batch_size=self.batch_size
             )
             
-            # 确保相似度是列表格式
-            if isinstance(similarities, np.ndarray):
-                similarities = similarities.tolist()
+            # 确保相似度在0-1范围内
+            similarities = np.clip(similarities, 0.0, 1.0)
             
             # 记录到TensorBoard
-            if self.logger:
-                for i, similarity in enumerate(similarities):
-                    self.logger.log_metrics({
-                        f'visual_text_similarity/{video_name}': similarity
-                    }, step=i)
-                    
-                if similarities:
-                    stats = {
-                        f'similarity_stats/{video_name}/mean': np.mean(similarities),
-                        f'similarity_stats/{video_name}/max': np.max(similarities),
-                        f'similarity_stats/{video_name}/min': np.min(similarities),
-                        f'similarity_stats/{video_name}/std': np.std(similarities)
-                    }
-                    self.logger.log_metrics(stats)
+            self.log_similarity_scores(video_name, similarities.tolist())
             
             return {
                 "video_name": video_name,
                 "status": "success",
-                "num_frames": len(frames),
-                "text_summary": text_summary,
-                "num_similarities": len(similarities),
+                "total_frames": len(frame_paths),
+                "sampled_frames": len(images),
+                "sampled_indices": sampled_indices,
+                "query_text": self.similarity_query,
                 "similarities": {
-                    "values": similarities,
-                    "mean": float(np.mean(similarities)) if similarities else 0.0,
-                    "max": float(np.max(similarities)) if similarities else 0.0,
-                    "min": float(np.min(similarities)) if similarities else 0.0,
-                    "std": float(np.std(similarities)) if similarities else 0.0
+                    "values": similarities.tolist(),
+                    "mean": float(np.mean(similarities)),
+                    "max": float(np.max(similarities)),
+                    "min": float(np.min(similarities)),
+                    "std": float(np.std(similarities))
                 }
             }
             
         except Exception as e:
             return {
                 "video_name": video_name,
-                "status": "computation_error",
+                "status": "error",
                 "error": str(e),
-                "num_frames": len(frames),
-                "text_summary": text_summary,
-                "similarities": {"values": []}
+                "similarities": []
             }
     
-    def process_dataset_step2(self, dataset_path: Path) -> Dict[str, Any]:
-        """处理单个数据集的视觉文本相似度计算"""
+    def process_dataset_similarity(self, dataset_path: Path) -> Dict[str, Any]:
+        """处理单个数据集的相似度计算"""
         dataset_name = dataset_path.name
-        
-        # 查找视频目录
         frames_dir = dataset_path / "frames"
+        
         if not frames_dir.exists():
             return {
                 "dataset_name": dataset_name,
                 "dataset_path": str(dataset_path),
-                "status": "no_frames_dir", 
+                "status": "no_frames_dir",
                 "total_videos": 0,
                 "videos": {}
             }
-            
+        
         video_dirs = [d for d in frames_dir.iterdir() if d.is_dir()]
-        video_names = [d.name for d in video_dirs]
         
         dataset_results = {
             "dataset_name": dataset_name,
             "dataset_path": str(dataset_path),
-            "total_videos": len(video_names),
+            "total_videos": len(video_dirs),
             "videos": {}
         }
         
-        for video_name in tqdm(video_names, desc=f"Processing {dataset_name} similarities"):
-            video_result = self.process_video_step2(dataset_path, video_name)
+        for video_dir in tqdm(video_dirs, desc=f"Computing similarities for {dataset_name}"):
+            video_name = video_dir.name
+            video_result = self.process_video_similarity(video_dir, video_name)
             dataset_results["videos"][video_name] = video_result
-            
+        
         return dataset_results
-    
-    def step2_compute_visual_text_similarity(self, skip: bool = None) -> Dict[str, Any]:
-        """第二步：计算视觉文本相似度 - 使用BLIP2模型和SimilarityCalculator"""
-        if skip is None:
-            skip = self.skip_step2
-            
-        if skip:
-            return {
-                "step": 2,
-                "description": "Compute visual-text similarity scores using SimilarityCalculator (SKIPPED)",
-                "status": "skipped",
-                "datasets": {}
-            }
-        
-        # 确保模型已加载
-        if self.similarity_calculator.model is None:
-            print("Loading BLIP2 model for step 2...")
-            try:
-                self.similarity_calculator.load_model()
-            except Exception as e:
-                return {
-                    "step": 2,
-                    "description": "Compute visual-text similarity scores using BLIP2 and SimilarityCalculator",
-                    "status": "model_load_error",
-                    "error": str(e),
-                    "datasets": {}
-                }
-        
-        all_results = {
-            "step": 2,
-            "description": "Compute visual-text similarity scores using BLIP2 and SimilarityCalculator",
-            "parameters": {
-                "frame_interval": self.frame_interval,
-                "similarity_model": "BLIP2",
-                "method": "End-to-end feature extraction and cosine similarity"
-            },
-            "datasets": {}
-        }
-        
-        for dataset_path in self.dataset_paths:
-            dataset_result = self.process_dataset_step2(dataset_path)
-            dataset_name = dataset_result["dataset_name"]
-            all_results["datasets"][dataset_name] = dataset_result
-            
-        return all_results
     
     def step1_query_multimodal_model(self, skip: bool = None) -> Dict[str, Any]:
         """第一步：查询多模态大模型获取帧重要性分数"""
@@ -623,11 +521,67 @@ class VideoSummaryPipeline:
         
         return all_results
     
-    def save_results(self, results: Dict[str, Any], filename: str = "step1_results.json"):
+    def step2_compute_similarity_scores(self, skip: bool = None) -> Dict[str, Any]:
+        """第二步：使用相似度计算器计算帧与查询文本的相似度分数"""
+        if skip is None:
+            skip = self.skip_step2
+            
+        if skip:
+            return {
+                "step": 2,
+                "description": "Compute frame-text similarity scores using SimilarityCalculator (SKIPPED)",
+                "status": "skipped",
+                "datasets": {}
+            }
+        
+        if self.similarity_calculator is None:
+            return {
+                "step": 2,
+                "description": "Compute frame-text similarity scores using SimilarityCalculator",
+                "status": "calculator_not_initialized",
+                "error": "SimilarityCalculator not initialized. Cannot compute similarity when step 2 is skipped.",
+                "datasets": {}
+            }
+        
+        print("Loading similarity calculation model...")
+        try:
+            # 确保相似度计算器已初始化
+            if not hasattr(self.similarity_calculator, 'model') or self.similarity_calculator.model is None:
+                self.similarity_calculator.load_model()
+        except Exception as e:
+            return {
+                "step": 2,
+                "description": "Compute frame-text similarity scores using SimilarityCalculator",
+                "status": "model_load_error",
+                "error": str(e),
+                "datasets": {}
+            }
+        
+        all_results = {
+            "step": 2,
+            "description": "Compute frame-text similarity scores using SimilarityCalculator",
+            "parameters": {
+                "frame_interval": self.frame_interval,
+                "batch_size": self.batch_size,
+                "query_text": self.similarity_query,
+                "similarity_model": self.similarity_calculator.__class__.__name__
+            },
+            "datasets": {}
+        }
+        
+        for dataset_path in self.dataset_paths:
+            dataset_result = self.process_dataset_similarity(dataset_path)
+            dataset_name = dataset_result["dataset_name"]
+            all_results["datasets"][dataset_name] = dataset_result
+        
+        return all_results
+    
+    def save_results(self, results: Dict[str, Any], filename: str):
         """保存结果到JSON文件"""
         output_path = self.output_dir / filename
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(results, f, ensure_ascii=False, indent=2)
+        print(f"Results saved to: {output_path}")
     
     def close_logger(self):
         """关闭TensorBoard logger"""
@@ -635,19 +589,22 @@ class VideoSummaryPipeline:
             self.logger.finalize("success")
     
     def run(self):
-        """执行流程的run方法，调用第一步和第二步流程"""
+        """执行完整流程"""
         results = {}
         
-        # 执行第一步 - 强制跳过
-        print("Step 1 skipped (forced)")
-        step1_results = self.step1_query_multimodal_model(skip=True)
-        self.save_results(step1_results, "step1_results.json")
-        results['step1'] = step1_results
+        # 执行第一步
+        if not self.skip_step1:
+            print("Running Step 1: Query multimodal model for frame importance...")
+            step1_results = self.step1_query_multimodal_model()
+            self.save_results(step1_results, "step1_results.json")
+            results['step1'] = step1_results
+        else:
+            print("Step 1 skipped")
             
         # 执行第二步
         if not self.skip_step2:
-            print("Running Step 2: Compute visual-text similarity...")
-            step2_results = self.step2_compute_visual_text_similarity()
+            print("Running Step 2: Compute similarity scores...")
+            step2_results = self.step2_compute_similarity_scores()
             self.save_results(step2_results, "step2_results.json")
             results['step2'] = step2_results
         else:
@@ -668,7 +625,9 @@ if __name__ == "__main__":
         dataset_paths=dataset_paths,
         frame_context_window=3,
         frame_interval=15,
-        output_dir="./results"
+        output_dir="./results",
+        similarity_query="video summary",
+        skip_step1=True  # 跳过第一步，不加载Qwen模型
     )
     
     results = pipeline.run()
