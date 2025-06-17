@@ -1,3 +1,62 @@
+resource文件夹中有两个结果分数文件。首先设定一个可变参数a：[0, 0.1, 0.2, ... 1]
+将这两个结果文件对应的分数以a求加权和。之后将这个分数进行评测。
+然后找出两个数据集最高的f1分数。（两个数据集的a可以不一样）
+=== step1_results.json 详细结构 ===
+顶层键:
+  - step
+  - description
+  - parameters
+  - datasets
+
+parameters 键下的内容:
+  - frame_context_window
+  - frame_interval
+
+datasets 键下的内容:
+  - SumMe
+    数据集属性:
+      - dataset_name
+      - dataset_path
+      - total_videos
+      - videos
+        视频示例 (Air_Force_One) 的属性:
+          - video_name
+          - total_frames
+          - sampled_frames
+          - sampled_indices
+          - scores
+          - frame_interval
+          - context_window
+
+=== step2_similarity_scores.json 详细结构 ===
+顶层键:
+  - step
+  - description
+  - parameters
+  - timestamp
+  - datasets
+
+parameters 键下的内容:
+  - frame_interval
+  - batch_size
+  - model_name
+  - model_type
+  - device
+
+datasets 键下的内容:
+  - SumMe
+    数据集属性:
+      - dataset_name
+      - dataset_path
+      - total_videos
+      - videos
+        视频示例 (Air_Force_One) 的属性:
+          - video_name
+          - total_frames
+          - sampled_frames
+          - sampled_indices
+          - query_text
+          - similarities
 # 0 视频摘要框架的基础支持
 ## 0.1 视频帧提取 ✅
 将视频帧提取到输出文件夹
