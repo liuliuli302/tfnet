@@ -7,6 +7,10 @@ from lavis.models import load_model_and_preprocess
 import torch.nn.functional as F
 import os
 from typing import List, Tuple, Optional, Union
+import warnings
+
+# 忽略所有警告信息
+warnings.filterwarnings("ignore")
 
 
 class SimilarityCalculator:
@@ -31,11 +35,11 @@ class SimilarityCalculator:
         
     def load_model(self):
         """Load the BLIP2 model and processors."""
-        print("Loading BLIP2 model...")
+        # print("Loading BLIP2 model...")
         self.model, self.vis_processors, self.text_processors = load_model_and_preprocess(
             self.model_name, self.model_type, device=self.device, is_eval=True
         )
-        print("Model loaded successfully.")
+        # print("Model loaded successfully.")
         
     def extract_frames(self, video_path: str, fps: Optional[float] = None, 
                       stride: int = 15, max_duration: Optional[float] = None) -> Tuple[List[Image.Image], List[int], float]:
@@ -229,13 +233,13 @@ class SimilarityCalculator:
         Returns:
             Similarity scores as numpy array
         """
-        print("Extracting text features...")
+        # print("Extracting text features...")
         text_features = self.extract_text_features(text)
         
-        print("Extracting visual features...")
+        # print("Extracting visual features...")
         visual_features = self.extract_visual_features_batch(frames, batch_size)
         
-        print("Computing similarities from features...")
+        # print("Computing similarities from features...")
         similarities = self.compute_similarity_from_features(text_features, visual_features)
         
         return similarities
@@ -290,7 +294,7 @@ class SimilarityCalculator:
         plt.savefig(plot_path, dpi=300, bbox_inches='tight')
         plt.show()
         
-        print(f"Plot saved to: {plot_path}")
+        # print(f"Plot saved to: {plot_path}")
         return plot_path
     
     def save_similarity_data(self, similarities: np.ndarray, frame_indices: List[int], 
@@ -317,7 +321,7 @@ class SimilarityCalculator:
                  frame_indices=frame_indices, 
                  fps=fps,
                  text=text)
-        print(f"Raw data saved to: {data_path}")
+        # print(f"Raw data saved to: {data_path}")
         return data_path
     
     def process_video(self, video_path: str, text: str, output_dir: str,
@@ -344,20 +348,20 @@ class SimilarityCalculator:
         if self.model is None:
             self.load_model()
         
-        print("Extracting frames from video...")
+        # print("Extracting frames from video...")
         frames, frame_indices, original_fps = self.extract_frames(
             video_path, fps=fps, stride=stride, max_duration=max_duration
         )
         
-        print(f"Extracted {len(frames)} frames from video")
-        print(f"Original FPS: {original_fps}")
+        # print(f"Extracted {len(frames)} frames from video")
+        # print(f"Original FPS: {original_fps}")
         
-        print("Computing similarity scores...")
+        # print("Computing similarity scores...")
         similarities = self.compute_similarity(frames, text, batch_size)
         
-        print(f"Computed similarities for {len(similarities)} frames")
-        print(f"Similarity shape: {similarities.shape}")
-        print(f"Similarity range: {similarities.min():.3f} - {similarities.max():.3f}")
+        # print(f"Computed similarities for {len(similarities)} frames")
+        # print(f"Similarity shape: {similarities.shape}")
+        # print(f"Similarity range: {similarities.min():.3f} - {similarities.max():.3f}")
         
         # Get video name for saving
         video_name = os.path.splitext(os.path.basename(video_path))[0]
@@ -372,7 +376,7 @@ class SimilarityCalculator:
         }
         
         if save_plot:
-            print("Creating similarity plot...")
+            # print("Creating similarity plot...")
             plot_path = self.plot_similarity_timeline(
                 similarities, frame_indices, original_fps, text, output_dir, video_name
             )
