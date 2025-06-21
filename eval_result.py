@@ -182,13 +182,112 @@ def evaluate_all_step2_segments(step2_data):
     
     return all_results, best_by_dataset
 
+def evaluate_step3_redundancy_scores(step3_data, redundancy_type="mean_similarity"):
+    """评估step3生成的冗余度分数"""
+    results = {}
+    
+    for dataset_name in step3_data['datasets']:
+        dataset_videos = step3_data['datasets'][dataset_name]
+        
+        # 根据数据集名称推断数据集路径
+        if dataset_name == "SumMe":
+            dataset_path = "/root/autodl-tmp/data/SumMe"
+        elif dataset_name == "TVSum":
+            dataset_path = "/root/autodl-tmp/data/TVSum"
+        else:
+            print(f"Unknown dataset: {dataset_name}")
+            continue
+            
+        evaluator = create_evaluator(dataset_name, dataset_path)
+        pred_scores = {}
+        
+        processed_videos = 0
+        for video_name in dataset_videos:
+            if video_name in evaluator.dataset.video_name_dict:
+                video_data = dataset_videos[video_name]
+                
+                if redundancy_type in video_data and 'scores' in video_data[redundancy_type]:
+                    redundancy_scores = np.array(video_data[redundancy_type]['scores'])
+                    # 使用1-冗余度作为重要性分数
+                    importance_scores = 1 - redundancy_scores
+                    
+                    video_key = evaluator.dataset.video_name_dict[video_name]
+                    pred_scores[video_key] = importance_scores.tolist()
+                    processed_videos += 1
+        
+        if pred_scores:
+            mean_f1 = evaluator.evaluate_batch(pred_scores)
+            results[dataset_name] = {
+                'f1_score': mean_f1,
+                'processed_videos': processed_videos,
+                'total_videos': len(dataset_videos)
+            }
+            print(f"{dataset_name}: F1={mean_f1:.4f} ({processed_videos}/{len(dataset_videos)} videos)")
+        else:
+            print(f"No valid scores found for {dataset_name}")
+    
+    return results
+
+def evaluate_three_step_weighted_scores(step1_data, step2_data, step3_data, weight_a, weight_b, weight_c, segment_type="seg_2", redundancy_type="mean_similarity"):
+    """评估三步加权分数 (weight_a * step1 + weight_b * step2 + weight_c * (1-step3))"""
+    results = {}
+    
+    for dataset_name in step1_data['datasets']:
+        if dataset_name not in step2_data['datasets'] or dataset_name not in step3_data['datasets']:
+            continue
+            
+        dataset1 = step1_data['datasets'][dataset_name]
+        dataset2 = step2_data['datasets'][dataset_name]
+        dataset3 = step3_data['datasets'][dataset_name]
+        
+        evaluator = create_evaluator(dataset_name, dataset1['dataset_path'])
+        pred_scores = {}
+        
+        for video_name in dataset1['videos']:
+            if (video_name in dataset2 and video_name in dataset3 and 
+                video_name in evaluator.dataset.video_name_dict):
+                
+                # Step1 scores
+                scores1 = extract_scores(dataset1['videos'][video_name]['scores'])
+                
+                # Step2 scores
+                if segment_type in dataset2[video_name]:
+                    scores2 = np.array(dataset2[video_name][segment_type]['similarities'])
+                else:
+                    continue
+                
+                # Step3 scores (1 - redundancy)
+                if redundancy_type in dataset3[video_name] and 'scores' in dataset3[video_name][redundancy_type]:
+                    redundancy_scores = np.array(dataset3[video_name][redundancy_type]['scores'])
+                    scores3 = 1 - redundancy_scores
+                else:
+                    continue
+                
+                # 确保长度一致
+                min_len = min(len(scores1), len(scores2), len(scores3))
+                scores1 = scores1[:min_len]
+                scores2 = scores2[:min_len]
+                scores3 = scores3[:min_len]
+                
+                # 三步加权
+                weighted_scores = weight_a * scores1 + weight_b * scores2 + weight_c * (1-scores3)
+                
+                video_key = evaluator.dataset.video_name_dict[video_name]
+                pred_scores[video_key] = weighted_scores.tolist()
+        
+        if pred_scores:
+            mean_f1 = evaluator.evaluate_batch(pred_scores)
+            results[dataset_name] = mean_f1
+    
+    return results
+
 def main():
     # 评估step2的相似度分数
     print("Evaluating Step2 Similarity Scores")
     print("=" * 50)
     
     # 加载step2数据
-    with open('out/step2_simple_results.json') as f:
+    with open('resource/step2_simple_results.json') as f:
         step2_data = json.load(f)
     
     # 评估所有分段类型
@@ -251,6 +350,64 @@ def main():
             
     except FileNotFoundError as e:
         print(f"\nSkipping combined evaluation due to missing file: {e}")
+    
+    # 评估step3冗余度分数
+    print("\n" + "=" * 50)
+    print("Evaluating Step3 Redundancy Scores")
+    print("=" * 50)
+    
+    # 加载step3数据
+    with open('resource/step3_redundancy_results.json') as f:
+        step3_data = json.load(f)
+    
+    # 评估不同冗余度类型
+    redundancy_types = ["mean_similarity", "topk_similarity", "threshold_count"]
+    step3_results = {}
+    
+    for red_type in redundancy_types:
+        print(f"\nEvaluating {red_type}:")
+        results = evaluate_step3_redundancy_scores(step3_data, red_type)
+        step3_results[red_type] = results
+        
+        if results:
+            avg_f1 = np.mean([r['f1_score'] for r in results.values()])
+            print(f"{red_type} average F1: {avg_f1:.4f}")
+    
+    # 三步结合评估
+    print("\n" + "=" * 50)
+    print("Evaluating Three-Step Combined Scores")
+    print("=" * 50)
+    
+    try:
+        with open('resource/step1_results.json') as f:
+            step1_data = json.load(f)
+        with open('resource/step2_simple_results.json') as f:
+            step2_data = json.load(f)
+        
+        # 测试不同权重组合
+        weight_combinations = [
+            (0.5, 0.3, 0.2),  # step1主导
+            (0.3, 0.5, 0.2),  # step2主导
+            (0, 0, 1),  # step3主导
+            (0.33, 0.33, 0.34)  # 平均权重
+        ]
+        
+        print("Testing weight combinations (step1, step2, step3):")
+        for weight_a, weight_b, weight_c in weight_combinations:
+            results = evaluate_three_step_weighted_scores(
+                step1_data, step2_data, step3_data, 
+                weight_a, weight_b, weight_c, 
+                segment_type="seg_2", redundancy_type="mean_similarity"
+            )
+            
+            if results:
+                avg_f1 = np.mean(list(results.values()))
+                print(f"Weights ({weight_a:.2f}, {weight_b:.2f}, {weight_c:.2f}): Avg F1={avg_f1:.4f}")
+                for dataset_name, f1_score in results.items():
+                    print(f"  {dataset_name}: {f1_score:.4f}")
+            
+    except FileNotFoundError as e:
+        print(f"Skipping three-step evaluation due to missing file: {e}")
     
     return step2_results
     
