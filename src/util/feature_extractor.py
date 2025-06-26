@@ -10,7 +10,7 @@ import shutil # For removing directory tree
 from tqdm import tqdm # 导入 tqdm
 
 # Import from sibling module util
-from .video_utils import extract_frames as util_extract_frames
+from .extract_frames import extract_frames as util_extract_frames
 
 class BLIP2FeatureExtractor:
     def __init__(self, model_name="Salesforce/blip2-opt-2.7b", device=None):
