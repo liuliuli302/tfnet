@@ -15,10 +15,11 @@ def main():
     frames_dir_summe = "/root/autodl-tmp/data/SumMe/frames"
     frames_dir_tvsum = "/root/autodl-tmp/data/TVSum/frames"
     out_dir = "/root/tfnet/out"
-    batch_size = 4
+    batch_size = 2048
+    frame_interval = 5
 
-    temporal_scene_clustering_used(frames_dir_summe, out_dir, batch_size)
-    temporal_scene_clustering_used(frames_dir_tvsum, out_dir, batch_size)
+    temporal_scene_clustering_used(frames_dir_summe, out_dir, batch_size, "SumMe", frame_interval)
+    temporal_scene_clustering_used(frames_dir_tvsum, out_dir, batch_size, "TVSum", frame_interval)
 
 
 if __name__ == "__main__":

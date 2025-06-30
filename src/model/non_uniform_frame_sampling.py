@@ -70,33 +70,58 @@ class loading_img(Dataset):
         return len(self.img_list)
 
     def __getitem__(self, idx):
-        return self.preprocess(Image.open(self.img_list[idx]))
+        img_path = self.img_list[idx]
+        with Image.open(img_path) as img:
+            img = img.convert("RGB")  # 保证 RGB 格式
+            img = img.copy()  # 强制载入图像到内存，释放文件句柄
+        return self.preprocess(img)
 
 
 # select frames
 @torch.inference_mode()
-def select_frames(folder, preprocess, resnet18_pretrained, device, batch_size):
+def select_frames(folder, preprocess, resnet18_pretrained, device, batch_size, frame_interval):
     # for folder in folder_list:
     img_list = natsort.natsorted(glob.glob(f"{folder}/*.jpg"))
+    # 每隔 frame_interval 帧采样
+    # frame_interval = 15
+    img_list = img_list[::frame_interval]
     img_feats = []
 
+    # 旧版本，会导致显存爆炸
+    # img_set = loading_img(img_list, preprocess)
+    # img_loader = DataLoader(img_set, batch_size=batch_size,
+    #                         shuffle=False, num_workers=16)
+    # for imgtensor in img_loader:
+    #     img_feats.append(imgtensor)
+    # img_feats = torch.concat(img_feats, dim=0).to(device)
+
+    # 新版本，修改为batch的方式
     img_set = loading_img(img_list, preprocess)
     img_loader = DataLoader(img_set, batch_size=batch_size,
-                            shuffle=False, num_workers=16)
-
-    for imgtensor in img_loader:
-        img_feats.append(imgtensor)
-    img_feats = torch.concat(img_feats, dim=0).to(device)
+                            shuffle=False, num_workers=8)
+    features = []
+    with torch.no_grad():
+        for imgtensor in img_loader:
+            imgtensor = imgtensor.to(device)
+            feats = resnet18_pretrained(imgtensor)
+            features.append(feats.cpu())  # 可直接保存在CPU，避免占GPU
+    featuremap = torch.cat(features, dim=0)
 
     with torch.no_grad():
-        featuremap = resnet18_pretrained(img_feats)
+        # 旧版本
+        # featuremap = resnet18_pretrained(img_feats)
         frame_num = featuremap.shape[0]
 
+        # 旧版本，一个一个计算距离，太慢了
         dist_list = []
         for img_feat in featuremap:
             dist_list.append(torch.mean(torch.sqrt(
                 (featuremap-img_feat)**2), dim=-1))
         dist_list = torch.concat(dist_list).reshape(frame_num, frame_num)
+
+        # 新版本，使用cdist计算距离
+        # with torch.no_grad():
+        #     dist_list = torch.cdist(featuremap, featuremap, p=2)
 
         idx_list = [_ for _ in range(frame_num)]
         loop_idx = 0
@@ -177,8 +202,9 @@ def temporal_scene_clustering_org():
                 test_token = False
                 break
 
+
 @torch.inference_mode()
-def temporal_scene_clustering_used(frames_dir, output_dir, batch_size):
+def temporal_scene_clustering_used(frames_dir, output_dir, batch_size, dataset_name, frame_interval):
     # Init
     random.seed(10)
     device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -192,16 +218,35 @@ def temporal_scene_clustering_used(frames_dir, output_dir, batch_size):
     for video_name in tqdm(os.listdir(frames_dir), desc="Processing NFS for videos"):
         video_frames_dir = os.path.join(frames_dir, video_name)
         out_frames, output_result = select_frames(
-            video_frames_dir, preprocess, resnet18_pretrained, device, batch_size)
+            video_frames_dir, preprocess, resnet18_pretrained, device, batch_size, frame_interval)
         output_results[video_name] = {
             "out_frames": out_frames,
-            "output_result": output_result
+            "output_result": output_result,
+            "num_frame_picks": len(out_frames)
         }
-
+    def convert_to_builtin_type(obj):
+        if isinstance(obj, dict):
+            return {k: convert_to_builtin_type(v) for k, v in obj.items()}
+        elif isinstance(obj, list):
+            return [convert_to_builtin_type(v) for v in obj]
+        elif isinstance(obj, tuple):
+            return tuple(convert_to_builtin_type(v) for v in obj)
+        elif isinstance(obj, (np.integer,)):
+            return int(obj)
+        elif isinstance(obj, (np.floating,)):
+            return float(obj)
+        elif isinstance(obj, np.ndarray):
+            return obj.tolist()
+        elif isinstance(obj, torch.Tensor):
+            return obj.detach().cpu().tolist()
+        else:
+            return obj
     # 保存为json
-    with open(f"{output_dir}/nfs_output.json", "w") as f:
-        json.dump(output_results, f, indent=4)
-
+    # with open(f"{output_dir}/nfs_output.json", "w") as f:
+    #     json.dump(output_results, f, indent=4)
+    with open(f"{output_dir}/{dataset_name}_nfs_output.json", "w") as f:
+        json.dump(convert_to_builtin_type(output_results), f, indent=4)
+        
     # 释放显存
     del out_frames, output_result
     torch.cuda.empty_cache()
