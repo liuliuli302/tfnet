@@ -1,0 +1,5 @@
+Please help me score the frames for selecting important frames from the video according to the given query. Here is the process you will follow: 
+1. Firstly, you will read the descriptions of frames from the same video across different ranges. 
+2. After that, you will review each frame's descriptions and establish a relationship between them based on the given user query. 
+3. The range for scoring the frames should be 1 to 5; a higher score represents greater significance for the video and the query. Using the frame descriptions, you must assign scores to each frame. It is suggested to allocate more low scores and fewer higher scores. 
+4. Lastly, you must output the frame scores in JSON format, excluding any descriptions of frames. The presented descriptions of frames are as follows:

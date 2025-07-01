@@ -6,7 +6,12 @@ from PIL import Image
 
 import torch
 from tqdm import tqdm
-from transformers import Blip2ForConditionalGeneration, Blip2Processor
+from transformers import (
+    Blip2ForConditionalGeneration, 
+    Blip2Processor,
+    BlipForConditionalGeneration,
+    BlipProcessor
+)
 
 
 def load_images_from_paths(image_paths):
@@ -55,10 +60,19 @@ class ImageCaptioner:
         self.imagefile_template = imagefile_template
         self.dtype = self._get_dtype(dtype_str)
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
-        self.processor = Blip2Processor.from_pretrained(pretrained_model_name)
-        self.model = Blip2ForConditionalGeneration.from_pretrained(
-            pretrained_model_name, torch_dtype=self.dtype
-        )
+        
+        # 根据模型名称自动选择BLIP或BLIP-2
+        if "blip2" in pretrained_model_name.lower():
+            self.processor = Blip2Processor.from_pretrained(pretrained_model_name)
+            self.model = Blip2ForConditionalGeneration.from_pretrained(
+                pretrained_model_name, torch_dtype=self.dtype
+            )
+        else:
+            self.processor = BlipProcessor.from_pretrained(pretrained_model_name)
+            self.model = BlipForConditionalGeneration.from_pretrained(
+                pretrained_model_name, torch_dtype=self.dtype
+            )
+        
         self.model.to(self.device)
         self.output_dir = Path(output_dir)
 
@@ -93,8 +107,8 @@ class ImageCaptioner:
             )
             batch_frame_idxs = range(batch_start_frame, batch_end_frame, self.frame_interval)
             batch_frame_paths = [
-                Path(video_dir) / self.imagefile_template.format(frame_idx)
-                for frame_idx in batch_frame_idxs
+                frame_files[frame_idx] for frame_idx in batch_frame_idxs 
+                if frame_idx < len(frame_files)
             ]
             batch_raw_images = load_images_from_paths(batch_frame_paths)
             

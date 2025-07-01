@@ -22,10 +22,10 @@ def main():
     
     # Initialize ImageCaptioner with default parameters
     captioner = ImageCaptioner(
-        batch_size=8,  # Process 4 images at once for better efficiency
-        frame_interval=15,  # Will be overridden by caption_frames method
+        batch_size=128,  # Process 4 images at once for better efficiency
+        frame_interval=1,  # Will be overridden by caption_frames method
         imagefile_template="frame_{:06d}.jpg",  # Standard frame naming format
-        pretrained_model_name="Salesforce/blip2-opt-2.7b",  # Smaller model for faster processing
+        pretrained_model_name="Salesforce/blip-image-captioning-base",  # Smaller model for faster processing
         dtype_str="float16",  # Use half precision for memory efficiency
         output_dir="/tmp",  # Will be overridden by caption_frames method
     )
@@ -41,8 +41,8 @@ def main():
             try:
                 captioner.caption_frames(
                     frames_dir=frames_dir,
-                    frame_interval=15,  # Caption every 15th frame
-                    batch_size=8,  # Override batch size for captioning
+                    frame_interval=1,  # Caption every 15th frame
+                    batch_size=1024,  # Override batch size for captioning
                     resume=True,  # Skip already processed videos
                     pathname="*.json"
                 )
