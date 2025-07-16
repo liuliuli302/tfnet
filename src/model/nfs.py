@@ -251,17 +251,3 @@ def temporal_scene_clustering_used(frames_dir, output_dir, batch_size, dataset_n
     del out_frames, output_result
     torch.cuda.empty_cache()
 
-
-def nfs_by_literature_01():
-    """
-    来自文献
-    Too Many Frames, Not All Useful: Efficient Strategies for Long-Form Video QA
-    """
-    pass
-
-
-def nfs_by_bro():
-    """
-    来自Bro
-    """
-    pass
