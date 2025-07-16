@@ -40,7 +40,7 @@ def step02_query_llm(
     process_prompt="",
     llm_query_out_dir="/root/tfnet/out/llm_query_out",
 ):
-    client = OpenAI(api_key="sk-dd060a90600d43f4923e24908eddee16",
+    client = OpenAI(api_key="sk-e79076e67324476095076a50bf2a3f12",
                     base_url="https://api.deepseek.com")
     summe_nfs_json = Path(nfs_dir, "SumMe_nfs_output.json")
     tvsum_nfs_json = Path(nfs_dir, "TVSum_nfs_output.json")
@@ -71,13 +71,17 @@ def step02_query_llm(
             prompt = process_prompt + "Video Caption: " + video_caption + "\n"
             prompt += f"Frame {frame_idx}: {caption}\n"
             
-            response = client.chat.completions.create(
-                model="deepseek-chat",
-                messages=[
-                    {"role": "user", "content": f"{prompt}"},
-                ]
-            )
-            llm_query_out[str(frame_idx)] = response.choices[0].message.content
+            try:
+                response = client.chat.completions.create(
+                    model="deepseek-chat",
+                    messages=[
+                        {"role": "user", "content": f"{prompt}"},
+                    ]
+                )
+                llm_query_out[str(frame_idx)] = response.choices[0].message.content
+            except Exception as e:
+                print(f"Error processing frame {frame_idx}: {e}")
+                llm_query_out[str(frame_idx)] = "0"
         return llm_query_out
 
     def process_dataset(dataset_name, nfs_json, frame_caption_dir, llm_query_out_dir):
@@ -99,6 +103,9 @@ def step02_query_llm(
                 out_frames, frame_caption_json, process_prompt, video_caption)
             llm_query_out[video_name] = response_content
 
+        # 确保输出目录存在
+        Path(llm_query_out_dir).mkdir(parents=True, exist_ok=True)
+        
         llm_query_out_json = Path(
             llm_query_out_dir, f"{dataset_name}_llm_query_out.json")
         with open(llm_query_out_json, "w") as f:

@@ -74,23 +74,23 @@ def evaluate_single_summary(predicted_summary, user_summary, eval_method):
     return max(f_scores) if eval_method == "max" else sum(f_scores) / len(f_scores)
 
 
-class Evaluator:
-    def __init__(self, dataset_name, data_dir, eval_method):
-        self.dataset = VideoSummarizationDataset(data_dir, dataset_name)
-        self.eval_method = eval_method
+# class Evaluator:
+#     def __init__(self, dataset_name, data_dir, eval_method):
+#         self.dataset = VideoSummarizationDataset(data_dir, dataset_name)
+#         self.eval_method = eval_method
 
-    def evaluate(self, video_index, pred_scores):
-        data = self.dataset[video_index]
-        summary = generate_single_summary(
-            data["change_points"], pred_scores, data["n_frames"], data["picks"]
-        )
-        f_score = evaluate_single_summary(summary, data["user_summary"], self.eval_method)
-        return f_score, summary
+#     def evaluate(self, video_index, pred_scores):
+#         data = self.dataset[video_index]
+#         summary = generate_single_summary(
+#             data["change_points"], pred_scores, data["n_frames"], data["picks"]
+#         )
+#         f_score = evaluate_single_summary(summary, data["user_summary"], self.eval_method)
+#         return f_score, summary
 
-    def evaluate_batch(self, pred_score_dict):
-        all_scores = []
-        for video_i, pred_scores in tqdm(pred_score_dict.items()):
-            idx = int(video_i.split("_")[1]) - 1
-            f1, _ = self.evaluate(idx, pred_scores)
-            all_scores.append(f1)
-        return np.mean(all_scores) if all_scores else 0.0
+#     def evaluate_batch(self, pred_score_dict):
+#         all_scores = []
+#         for video_i, pred_scores in tqdm(pred_score_dict.items()):
+#             idx = int(video_i.split("_")[1]) - 1
+#             f1, _ = self.evaluate(idx, pred_scores)
+#             all_scores.append(f1)
+#         return np.mean(all_scores) if all_scores else 0.0
