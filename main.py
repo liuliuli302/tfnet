@@ -36,33 +36,34 @@ def create_tensorboard_logger(logging_config: dict) -> TensorBoardLogger:
     """创建TensorBoard logger"""
     if not logging_config.get("enabled", True):
         return None
-    
+
     experiment_name = logging_config.get("experiment_name", None)
     if experiment_name is None:
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         experiment_name = f"video_summary_step1_{timestamp}"
-    
+
     tb_logger = TensorBoardLogger(
         save_dir=logging_config.get("log_dir", "./tensorboard_logs"),
         name=experiment_name,
         version=logging_config.get("version", None),
         default_hp_metric=False
     )
-    
+
     return tb_logger
 
 
 def main():
     """主函数：运行视频摘要流程"""
-    parser = argparse.ArgumentParser(description="Video Summarization Pipeline")
-    parser.add_argument("--config", type=str, default="config.yaml", 
-                       help="Path to YAML configuration file (default: config.yaml)")
+    parser = argparse.ArgumentParser(
+        description="Video Summarization Pipeline")
+    parser.add_argument("--config", type=str, default="config.yaml",
+                        help="Path to YAML configuration file (default: config.yaml)")
     args = parser.parse_args()
 
     config = load_config(args.config)
     logging_config = config.get("logging", {})
     tb_logger = create_tensorboard_logger(logging_config)
-    
+
     pipeline = VideoSummaryPipeline(
         dataset_paths=config["dataset_paths"],
         frame_context_window=config["frame_context_window"],
