@@ -1,0 +1,26 @@
+# SumMe Dataset Configuration
+# SumMe数据集配置文件
+
+# Basic dataset information
+# 基本数据集信息
+
+# 数据集名称
+dataset_name: "TVSum"
+# 数据集路径
+dataset_path: "/root/autodl-tmp/datasets/TVSum"
+# 数据集视频文件目录
+videos_dir: "/root/autodl-tmp/datasets/TVSum/ydata-tvsum50-v1_1/video"
+# 数据集h5特征文件路径
+h5file_path: "/root/autodl-tmp/datasets/eccv16_dataset_tvsum_google_pool5.h5"
+# 数据集划分文件路径
+split_files: 
+  split_5: "/root/autodl-tmp/datasets/splits/tvsum_splits_5.json"
+  split_50: "/root/autodl-tmp/datasets/splits/tvsum_splits_50.json"
+# 原视频名与视频标号名称的映射文件路径
+video_name_mapping_file_path: "/root/autodl-tmp/datasets/tvsum_mapping.json"
+
+# Some less critical parameters
+# 一些不太关键的参数
+
+# 视频文件扩展名
+video_extension: ".mp4"
