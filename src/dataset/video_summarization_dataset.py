@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 import json
 import os
 import h5py
@@ -7,28 +8,15 @@ from torch.utils.data import Dataset
 from src.config.config import BasicConfig
 
 
+@dataclass
 class VideoSummarizationDatasetConfig(BasicConfig):
-
-    def __init__(
-        self,
-        dataset_name,
-        dataset_dir,
-        video_dir,
-        h5file_path,
-        split_files,
-        video_name_mapping_file_path,
-        video_extension,
-        **kwargs
-    ):
-        super().__init__(**kwargs)
-
-        self.dataset_name = dataset_name
-        self.dataset_dir = dataset_dir
-        self.video_dir = video_dir
-        self.h5file_path = h5file_path
-        self.split_files = split_files
-        self.video_name_mapping_file_path = video_name_mapping_file_path
-        self.video_extension = video_extension
+    dataset_name: str
+    dataset_dir: str
+    video_dir: str
+    h5file_path: str
+    split_files: dict
+    video_name_mapping_file_path: str
+    video_extension: str
 
 
 class VideoSummarizationDataset(Dataset):
@@ -59,8 +47,13 @@ class VideoSummarizationDataset(Dataset):
             h5_dict = self.h5_to_dict(h5file)
             keys = list(h5_dict.keys())
             for key in keys:
-                h5_dict[key]['video_name'] = h5_dict[key]['video_name'].decode(
-                    'utf-8')
+                # TVSum数据集的h5文件中没有video_name，需要通过name mapping
+                if self.dataset_name == "TVSum":
+                    h5_dict[key]['video_name'] = self.video_name_mapping.get(
+                        key)
+                else:
+                    h5_dict[key]['video_name'] = h5_dict[key]['video_name'].decode(
+                        'utf-8')
                 h5_dict[key]['video_path'] = os.path.join(
                     self.video_dir,
                     h5_dict[key]['video_name'] + self.video_extension

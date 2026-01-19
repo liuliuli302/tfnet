@@ -1,0 +1,10 @@
+frame_caption_config_file: "/root/tfnet/configs/model/frame_caption_llava.yaml"
+
+summe_dataset_config_file: "/root/tfnet/configs/dataset/summe.yaml"
+tvsum_dataset_config_file: "/root/tfnet/configs/dataset/tvsum.yaml"
+
+summe_caption_json_file: "/root/tfnet/data/captions/frame_caption/llava/summe_captions.json"
+tvsum_caption_json_file: "/root/tfnet/data/captions/frame_caption/llava/tvsum_captions.json"
+
+caption_save_dir: "/root/tfnet/data/captions/frame_caption/llava/"
+frame_caption_prompt: "Please describe this image in details."

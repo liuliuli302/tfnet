@@ -1,0 +1,9 @@
+# 帧字幕生成配置
+pretrained: "lmms-lab/LLaVA-Video-7B-Qwen2"
+model_base: null
+model_name: "llava_qwen"
+device: "cuda"
+device_map: "auto"
+conv_template: "qwen_1_5"
+torch_dtype: "float16"
+max_new_tokens: 4096

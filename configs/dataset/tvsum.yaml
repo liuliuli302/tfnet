@@ -7,9 +7,9 @@
 # 数据集名称
 dataset_name: "TVSum"
 # 数据集路径
-dataset_path: "/root/autodl-tmp/datasets/TVSum"
+dataset_dir: "/root/autodl-tmp/datasets/TVSum"
 # 数据集视频文件目录
-videos_dir: "/root/autodl-tmp/datasets/TVSum/ydata-tvsum50-v1_1/video"
+video_dir: "/root/autodl-tmp/datasets/TVSum/ydata-tvsum50-v1_1/video"
 # 数据集h5特征文件路径
 h5file_path: "/root/autodl-tmp/datasets/eccv16_dataset_tvsum_google_pool5.h5"
 # 数据集划分文件路径
