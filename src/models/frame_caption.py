@@ -19,16 +19,11 @@ from decord import VideoReader
 from src.utils.video_loader import VideoLoader
 
 
+@dataclass
 class BlipFrameCaptionerConfig(BasicConfig):
-
-    def __init__(
-        self,
-        model_path: str = 'Salesforce/blip-image-captioning-base',
-        **kwargs,
-    ):
-        super().__init__(**kwargs)
-        self.model_path = model_path
-        self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
+    model_path: str
+    device: str
+    model_name: str
 
 
 class BlipFrameCaptioner:
@@ -48,6 +43,7 @@ class BlipFrameCaptioner:
             raise TypeError("config参数必须为BlipFrameCaptionerConfig类型")
         self.config = config
         self.device = torch.device(config.device)
+        self.model_name = config.model_name
         self._load_model(config.model_path)
 
     def _load_model(self, model_path: str):
@@ -63,20 +59,17 @@ class BlipFrameCaptioner:
     def caption_image(
         self,
         image:  Image.Image,
-        prompt: str = "",
         return_logits: bool = False,
     ):
         """
         Generate caption for a single image.
 
         :param image: The input image (either path or PIL Image).
-        :param prompt: Optional prompt for condition generation.
         :param return_logits: If True, return the logits and sequence too.
         :return: Generated caption or dictionary with logits.
         """
         inputs = self.processor(
             images=image,
-            text=prompt,
             return_tensors="pt",
         ).to(self.device)
 
@@ -88,12 +81,11 @@ class BlipFrameCaptioner:
         return caption
 
     @torch.no_grad()
-    def caption_image_batch(self, image_batch: List[Image.Image], prompt: str = "", batch_size: int = 32):
+    def caption_image_batch(self, image_batch: List[Image.Image], batch_size: int = 32):
         """
         Generate captions for all frames in the video.
 
         :param image_batch: List of PIL images.
-        :param prompt: Optional prompt for condition generation.
         :param batch_size: Batch size for inference.
         :return: List of captions for each frame.
         """
@@ -103,12 +95,9 @@ class BlipFrameCaptioner:
 
         for i in range(0, len(image_batch), batch_size):
             batch_imgs = image_batch[i: i + batch_size]
-            # When processing a batch, processor expects a list of text logic if images is a list
-            batch_prompts = [prompt] * len(batch_imgs)
 
             inputs = self.processor(
                 images=batch_imgs,
-                text=batch_prompts,
                 return_tensors="pt",
             ).to(self.device)
 
@@ -130,6 +119,7 @@ class LlavaFrameCaptionerConfig(BasicConfig):
     conv_template: str
     torch_dtype: str
     max_new_tokens: int
+    frame_caption_prompt: str
 
 
 class LlavaFrameCaptioner:
@@ -214,7 +204,7 @@ class LlavaFrameCaptioner:
         return captions
 
 
-def main():
+def main_llava():
     print(">>> 正在启动 LlavaFrameCaptioner 测试流程...")
 
     # -------------------------------------------------------------------------
@@ -321,11 +311,80 @@ def main():
     print("\n>>> 全部测试完成")
 
 
+def main_blip():
+    print(">>> 正在启动 BlipFrameCaptioner 测试流程...")
+
+    # -------------------------------------------------------------------------
+    # 1. 环境与路径设置
+    # -------------------------------------------------------------------------
+    project_root = "/root/tfnet"
+    if project_root not in sys.path:
+        sys.path.insert(0, project_root)
+    print(f"Info: 项目根目录已设置为 {project_root}")
+
+    # -------------------------------------------------------------------------
+    # 2. 导入项目模块 (需在 sys.path 设置后进行)
+    # -------------------------------------------------------------------------
+    try:
+        from src.models.frame_caption import BlipFrameCaptioner, BlipFrameCaptionerConfig
+    except ImportError as e:
+        print(f"Error: 无法导入项目模块: {e}")
+        return
+
+    # -------------------------------------------------------------------------
+    # 3. 构造假配置 (需要本地已下载 BLIP 权重)
+    # -------------------------------------------------------------------------
+    config = BlipFrameCaptionerConfig.load_config_from_file(
+        "configs/model/frame_caption_blip.yaml"
+    )
+
+    # -------------------------------------------------------------------------
+    # 4. 初始化模型
+    # -------------------------------------------------------------------------
+    print("\n>>> 初始化 Blip 模型 (首次加载可能需要下载权重)...")
+    try:
+        captioner = BlipFrameCaptioner(config)
+        print("✅ Blip 模型初始化成功")
+    except Exception as e:
+        print(f"❌ Blip 模型初始化失败: {e}")
+        traceback.print_exc()
+        return
+
+    # -------------------------------------------------------------------------
+    # 5. 执行测试 (假数据)
+    # -------------------------------------------------------------------------
+    print("\n>>> 准备测试数据 (纯色图片)...")
+    img_red = Image.new('RGB', (224, 224), color=(255, 0, 0))
+    img_green = Image.new('RGB', (224, 224), color=(0, 255, 0))
+    img_blue = Image.new('RGB', (224, 224), color=(0, 0, 255))
+
+    # Test 1: 单图
+    print("\n--- Test 1: caption_image (单图) ---")
+    try:
+        result = captioner.caption_image(img_red)
+        print(f"Result: {result}")
+    except Exception as e:
+        print(f"Test 1 Failed: {e}")
+        traceback.print_exc()
+
+    # Test 2: 批量
+    print("\n--- Test 2: caption_image_batch (批量) ---")
+    try:
+        results = captioner.caption_image_batch(
+            [img_red, img_green, img_blue], batch_size=2)
+        for i, res in enumerate(results):
+            print(f"Image {i}: {res}")
+    except Exception as e:
+        print(f"Test 2 Failed: {e}")
+        traceback.print_exc()
+
+    print("\n>>> BlipFrameCaptioner 测试完成")
+
+
 if __name__ == "__main__":
     import warnings
     warnings.filterwarnings(
         "ignore",
         message=".*copying from a non-meta parameter.*"
     )
-
-    main()
+    main_blip()

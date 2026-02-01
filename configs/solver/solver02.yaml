@@ -1,10 +1,11 @@
-frame_caption_config_file: "/root/tfnet/configs/model/frame_caption_llava.yaml"
-
+# 数据集配置文件
 summe_dataset_config_file: "/root/tfnet/configs/dataset/summe.yaml"
 tvsum_dataset_config_file: "/root/tfnet/configs/dataset/tvsum.yaml"
 
-summe_caption_json_file: "/root/tfnet/data/captions/frame_caption/llava/summe_captions.json"
-tvsum_caption_json_file: "/root/tfnet/data/captions/frame_caption/llava/tvsum_captions.json"
+# 帧和场景字幕提取配置文件
+frame_caption_config_file: "/root/tfnet/configs/model/frame_caption_blip.yaml"
+scene_caption_config_file: "/root/tfnet/configs/model/scene_caption_gpt5.yaml"
 
-caption_save_dir: "/root/tfnet/data/captions/frame_caption/llava/"
-frame_caption_prompt: "Please describe this image in details."
+# 字幕 JSON 文件保存的文件夹
+frame_caption_save_dir: "/root/tfnet/data/captions/frame_caption/"
+scene_caption_save_dir: "/root/tfnet/data/captions/scene_caption/"

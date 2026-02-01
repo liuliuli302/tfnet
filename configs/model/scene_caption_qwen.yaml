@@ -1,0 +1,49 @@
+model_name: "gpt5"
+llm_client_config_file_path: "/root/tfnet/configs/llm_client/gpt5.yaml"
+max_retries: 3
+retry_delay: 5
+scene_caption_prompt:
+  - >
+    You are given a set of frame-level captions sampled from the same video scene.
+    These captions may contain redundancy, minor variations, or noise.
+
+    Your task is to:
+    1. Identify the main objects, actions, and events shared across the frames.
+    2. Remove redundant or irrelevant details.
+    3. Summarize the scene into ONE concise and coherent scene-level caption.
+
+    Frame-level captions:
+    {frame_captions}
+
+    Requirements:
+    - The caption should describe the overall scene, not individual frames.
+    - Use high-level, abstract language.
+    - Do NOT list frames or repeat similar phrases.
+  - >
+    You are an expert video understanding model.
+
+    A video scene consists of multiple frames, each with a caption describing local visual content.
+    These frame-level captions may be redundant, incomplete, or noisy.
+
+    Your task is to generate a single scene-level caption by following these steps:
+
+    Step 1: Identify the consistent visual elements across frames
+    - Main subjects (people, objects, environment)
+    - Core actions or activities
+    - Scene context (location, setting)
+
+    Step 2: Detect temporal or semantic changes if they exist
+    - Action progression
+    - Interaction changes
+    - Motion or state transitions
+
+    Step 3: Abstract and summarize
+    - Remove frame-specific details
+    - Focus on the dominant event or activity
+    - Use concise, natural language
+
+    Frame-level captions:
+    {frame_captions}
+
+    Output:
+    - Scene description

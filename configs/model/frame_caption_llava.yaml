@@ -7,3 +7,5 @@ device_map: "auto"
 conv_template: "qwen_1_5"
 torch_dtype: "float16"
 max_new_tokens: 4096
+
+frame_caption_prompt: "Please describe this image in details."

@@ -8,7 +8,7 @@ from tqdm import tqdm
 
 from src.config.config import BasicConfig
 from src.models.frame_seclection import nfs_from_lvnet
-from src.models.llm_query import LLMQueryConfig, LLMQueryRunner, deepseek, moonshot, save_result
+from utils.llm_client import LLMQueryConfig, LLMQueryRunner, deepseek, moonshot, save_result
 import yaml
 
 

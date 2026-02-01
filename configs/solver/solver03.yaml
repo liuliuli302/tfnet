@@ -1,0 +1,11 @@
+# 数据集配置文件
+summe_dataset_config_file: "/root/tfnet/configs/dataset/summe.yaml"
+tvsum_dataset_config_file: "/root/tfnet/configs/dataset/tvsum.yaml"
+
+# 帧和场景字幕提取配置文件
+frame_caption_config_file: "/root/tfnet/configs/model/frame_caption_llava.yaml"
+scene_caption_config_file: "/root/tfnet/configs/model/scence_caption_gpt5.yaml"
+
+# 字幕 JSON 文件保存的文件夹
+frame_caption_save_dir: "/root/tfnet/data/captions/frame_caption/"
+scene_caption_save_dir: "/root/tfnet/data/captions/scene_caption/"

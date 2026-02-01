@@ -1,0 +1,19 @@
+model_name: "gpt5"
+llm_client_config_file_path: "/root/tfnet/configs/llm_client/gpt5.yaml"
+max_retries: 3
+retry_delay: 5
+scene_caption_prompt: >
+  You are given a set of frame-level captions sampled from the same video scene.
+  These captions may contain redundancy, minor variations, or noise.
+
+  Your task is to:
+  1. Identify the main objects, actions, and events shared across the frames.
+  2. Remove redundant or irrelevant details.
+  3. Summarize the scene.
+
+  Frame-level captions:
+  {frame_captions}
+
+  Requirements:
+  - The caption should describe the overall scene, not individual frames.
+  - Do not just list frames or repeat similar phrases.
