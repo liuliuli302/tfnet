@@ -1,0 +1,11 @@
+model_name: "gpt5"
+llm_client_config_file_path: "/root/tfnet/configs/llm_client/gpt5.yaml"
+max_retries: 3
+retry_delay: 5
+video_caption_prompt: >
+  You are given a chronological list of scene-level captions from a long video.
+
+  Your task is to synthesize these scene descriptions into a summary of the entire video.
+
+  Scene Captions:
+  {scene_captions}

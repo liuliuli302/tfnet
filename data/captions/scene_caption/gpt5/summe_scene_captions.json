@@ -9881,5 +9881,4895 @@
                 3119
             ]
         }
+    },
+    "Base_jumping": {
+        "0": {
+            "scene_idx": 0,
+            "picks": [
+                0,
+                15,
+                30,
+                45,
+                60
+            ],
+            "scene_caption": "A person in a red jacket stands at the edge atop a high mountain cliff.",
+            "change_points": [
+                0,
+                70
+            ]
+        },
+        "1": {
+            "scene_idx": 1,
+            "picks": [
+                75,
+                90,
+                105,
+                120,
+                135,
+                150
+            ],
+            "scene_caption": "A person stands atop a mountain summit, having reached the peak; a flag marks the spot.",
+            "change_points": [
+                71,
+                154
+            ]
+        },
+        "2": {
+            "scene_idx": 2,
+            "picks": [
+                165,
+                180,
+                195,
+                210,
+                225,
+                240
+            ],
+            "scene_caption": "A person stands at a mountain summit overlooking a lake, with a flag fluttering in the wind.",
+            "change_points": [
+                155,
+                251
+            ]
+        },
+        "3": {
+            "scene_idx": 3,
+            "picks": [
+                255,
+                270,
+                285,
+                300,
+                315
+            ],
+            "scene_caption": "People stand on a mountain summit, with a flag fluttering nearby and a body of water visible below.",
+            "change_points": [
+                252,
+                320
+            ]
+        },
+        "4": {
+            "scene_idx": 4,
+            "picks": [
+                330,
+                345,
+                360,
+                375,
+                390,
+                405,
+                420,
+                435,
+                450
+            ],
+            "scene_caption": "Aerial footage surveys rugged cliffs and mountains beside a broad body of water. The camera looks down from above as a lone person appears on a rock in the water, and a helicopter passes over the landscape.",
+            "change_points": [
+                321,
+                454
+            ]
+        },
+        "5": {
+            "scene_idx": 5,
+            "picks": [
+                465,
+                480,
+                495,
+                510,
+                525,
+                540,
+                555,
+                570,
+                585,
+                600,
+                615,
+                630,
+                645,
+                660,
+                675,
+                690,
+                705,
+                720,
+                735,
+                750,
+                765
+            ],
+            "scene_caption": "A man in a red jacket stands on a mountain summit, overlooking a lake, beside a flag that flutters in the wind.",
+            "change_points": [
+                455,
+                780
+            ]
+        },
+        "6": {
+            "scene_idx": 6,
+            "picks": [
+                795,
+                810,
+                825,
+                840
+            ],
+            "scene_caption": "A panoramic view from a mountain summit looking down over a lake surrounded by mountain peaks.",
+            "change_points": [
+                781,
+                847
+            ]
+        },
+        "7": {
+            "scene_idx": 7,
+            "picks": [
+                855,
+                870,
+                885,
+                900,
+                915,
+                930,
+                945,
+                960,
+                975,
+                990,
+                1005
+            ],
+            "scene_caption": "A high, panoramic view from a mountain summit overlooks a lake nestled among surrounding peaks; a helicopter passes overhead, and a person jumps from a cliff into the water below.",
+            "change_points": [
+                848,
+                1020
+            ]
+        },
+        "8": {
+            "scene_idx": 8,
+            "picks": [
+                1035,
+                1050,
+                1065,
+                1080,
+                1095,
+                1110,
+                1125,
+                1140,
+                1155
+            ],
+            "scene_caption": "A sweeping high-altitude view overlooks a lake nestled among mountain peaks, and a helicopter flies across the landscape over the water.",
+            "change_points": [
+                1021,
+                1162
+            ]
+        },
+        "9": {
+            "scene_idx": 9,
+            "picks": [
+                1170,
+                1185,
+                1200,
+                1215,
+                1230,
+                1245,
+                1260,
+                1275,
+                1290,
+                1305,
+                1320,
+                1335,
+                1350
+            ],
+            "scene_caption": "Sweeping aerial views of a mountainous landscape dominated by a large lake, with a helicopter gliding over the ridgeline as the camera looks down toward the water and surrounding peaks.",
+            "change_points": [
+                1163,
+                1351
+            ]
+        },
+        "10": {
+            "scene_idx": 10,
+            "picks": [
+                1365,
+                1380,
+                1395,
+                1410,
+                1425,
+                1440,
+                1455,
+                1470,
+                1485,
+                1500,
+                1515
+            ],
+            "scene_caption": "An aerial sequence shows a helicopter flying over a lake nestled in a mountain range, with sweeping views down onto the water and surrounding peaks.",
+            "change_points": [
+                1352,
+                1520
+            ]
+        },
+        "11": {
+            "scene_idx": 11,
+            "picks": [
+                1530,
+                1545,
+                1560,
+                1575,
+                1590,
+                1605,
+                1620,
+                1635,
+                1650,
+                1665,
+                1680,
+                1695,
+                1710,
+                1725,
+                1740,
+                1755,
+                1770,
+                1785
+            ],
+            "scene_caption": "A helicopter glides over a vast mountain lake, offering sweeping aerial views of the water nestled among rugged peaks.",
+            "change_points": [
+                1521,
+                1787
+            ]
+        },
+        "12": {
+            "scene_idx": 12,
+            "picks": [
+                1800,
+                1815,
+                1830,
+                1845,
+                1860,
+                1875,
+                1890,
+                1905,
+                1920
+            ],
+            "scene_caption": "A sweeping aerial view of a mountainous landscape with a lake nestled at its center, seen from a high vantage point looking down.",
+            "change_points": [
+                1788,
+                1931
+            ]
+        },
+        "13": {
+            "scene_idx": 13,
+            "picks": [
+                1935,
+                1950,
+                1965,
+                1980,
+                1995,
+                2010,
+                2025,
+                2040,
+                2055,
+                2070
+            ],
+            "scene_caption": "A panoramic view from a mountain summit overlooks a large lake nestled below, surrounded by distant mountain ranges. The scene is a wide, tranquil landscape with no people or activity, captured from a high vantage point.",
+            "change_points": [
+                1932,
+                2077
+            ]
+        },
+        "14": {
+            "scene_idx": 14,
+            "picks": [
+                2085,
+                2100,
+                2115,
+                2130,
+                2145,
+                2160,
+                2175,
+                2190,
+                2205
+            ],
+            "scene_caption": "An aerial view shows a helicopter flying over a lake nestled in a mountain range, its forested shores encircling the water.",
+            "change_points": [
+                2078,
+                2212
+            ]
+        },
+        "15": {
+            "scene_idx": 15,
+            "picks": [
+                2220,
+                2235,
+                2250,
+                2265,
+                2280,
+                2295,
+                2310,
+                2325,
+                2340,
+                2355,
+                2370,
+                2385,
+                2400,
+                2415,
+                2430,
+                2445,
+                2460
+            ],
+            "scene_caption": "An expansive mountain landscape featuring a large lake nestled in a central valley, encircled by surrounding peaks.",
+            "change_points": [
+                2213,
+                2474
+            ]
+        },
+        "16": {
+            "scene_idx": 16,
+            "picks": [
+                2475,
+                2490,
+                2505,
+                2520,
+                2535,
+                2550,
+                2565,
+                2580,
+                2595
+            ],
+            "scene_caption": "An expansive mountain lake with forested shores and peaks in the background is viewed from above. Across the scene, the sky over the water is active, with a helicopter and recreational flyers\u2014a parachute/paraglider and a kite\u2014moving over the lake.",
+            "change_points": [
+                2475,
+                2604
+            ]
+        },
+        "17": {
+            "scene_idx": 17,
+            "picks": [
+                2610,
+                2625,
+                2640,
+                2655,
+                2670,
+                2685,
+                2700
+            ],
+            "scene_caption": "By a mountain lake, a person in a red jacket flies a red kite near the water while aircraft pass overhead.",
+            "change_points": [
+                2605,
+                2703
+            ]
+        },
+        "18": {
+            "scene_idx": 18,
+            "picks": [
+                2715,
+                2730,
+                2745,
+                2760,
+                2775,
+                2790,
+                2805,
+                2820,
+                2835,
+                2850
+            ],
+            "scene_caption": "A sweeping aerial view of a large mountain lake encircled by mountains, showing the broad expanse of water and the surrounding peaks from above.",
+            "change_points": [
+                2704,
+                2861
+            ]
+        },
+        "19": {
+            "scene_idx": 19,
+            "picks": [
+                2865,
+                2880,
+                2895,
+                2910,
+                2925,
+                2940,
+                2955
+            ],
+            "scene_caption": "A person is paragliding over a lake, with mountains visible in the background.",
+            "change_points": [
+                2862,
+                2967
+            ]
+        },
+        "20": {
+            "scene_idx": 20,
+            "picks": [
+                2970,
+                2985,
+                3000,
+                3015,
+                3030,
+                3045,
+                3060,
+                3075,
+                3090,
+                3105,
+                3120,
+                3135,
+                3150,
+                3165,
+                3180,
+                3195,
+                3210
+            ],
+            "scene_caption": "A helicopter flies over a large mountain lake, with expansive water and surrounding peaks dominating the scenic landscape.",
+            "change_points": [
+                2968,
+                3217
+            ]
+        },
+        "21": {
+            "scene_idx": 21,
+            "picks": [
+                3225,
+                3240,
+                3255,
+                3270,
+                3285,
+                3300,
+                3315,
+                3330,
+                3345,
+                3360,
+                3375,
+                3390
+            ],
+            "scene_caption": "A helicopter glides over a lake nestled in a forested mountain range, seen from an aerial vantage.",
+            "change_points": [
+                3218,
+                3397
+            ]
+        },
+        "22": {
+            "scene_idx": 22,
+            "picks": [
+                3405,
+                3420,
+                3435,
+                3450,
+                3465,
+                3480,
+                3495,
+                3510,
+                3525,
+                3540,
+                3555,
+                3570
+            ],
+            "scene_caption": "Aerial footage surveys a river cutting through forested mountains, highlighting a bridge spanning the water and a prominent waterfall along its course.",
+            "change_points": [
+                3398,
+                3580
+            ]
+        },
+        "23": {
+            "scene_idx": 23,
+            "picks": [
+                3585,
+                3600,
+                3615,
+                3630,
+                3645,
+                3660
+            ],
+            "scene_caption": "A helicopter flies over a scenic mountainous landscape, passing a large waterfall and gliding above lush forests and a lake.",
+            "change_points": [
+                3581,
+                3670
+            ]
+        },
+        "24": {
+            "scene_idx": 24,
+            "picks": [
+                3675,
+                3690,
+                3705,
+                3720,
+                3735,
+                3750,
+                3765,
+                3780,
+                3795,
+                3810
+            ],
+            "scene_caption": "A motorcyclist travels along a winding mountain road beside a large body of water, captured in sweeping, scenic shots of the coastal route.",
+            "change_points": [
+                3671,
+                3820
+            ]
+        },
+        "25": {
+            "scene_idx": 25,
+            "picks": [
+                3825,
+                3840,
+                3855,
+                3870,
+                3885,
+                3900,
+                3915,
+                3930,
+                3945
+            ],
+            "scene_caption": "- Shared elements: outdoor travel shots (sky, trees, road), vehicles/transport (car, airplane), people gathered beside a wall, individuals walking/standing (including a man in a suit and another in a red jacket), and a group displaying green-and-white flags; brief cutaways to art with a green motif (painted portrait, child\u2019s handprint).\n\nOverall scene: A montage moves from open-sky and road travel imagery to a street-side gathering where people stand by a wall\u2014some waving green-and-white flags\u2014intercut with green-themed artwork, suggesting a community or cultural event unfolding in an outdoor urban setting.",
+            "change_points": [
+                3821,
+                3951
+            ]
+        },
+        "26": {
+            "scene_idx": 26,
+            "picks": [
+                3960,
+                3975,
+                3990,
+                4005,
+                4020,
+                4035,
+                4050,
+                4065,
+                4080,
+                4095,
+                4110,
+                4125,
+                4140,
+                4155,
+                4170,
+                4185,
+                4200,
+                4215,
+                4230,
+                4245,
+                4260,
+                4275,
+                4290,
+                4305,
+                4320
+            ],
+            "scene_caption": "A man rides a motorcycle downhill along a winding mountain road through forested scenery.",
+            "change_points": [
+                3952,
+                4321
+            ]
+        },
+        "27": {
+            "scene_idx": 27,
+            "picks": [
+                4335,
+                4350,
+                4365,
+                4380,
+                4395
+            ],
+            "scene_caption": "A man in a red jacket is on a street with a bike, alternating between riding it and flying a kite.",
+            "change_points": [
+                4322,
+                4397
+            ]
+        },
+        "28": {
+            "scene_idx": 28,
+            "picks": [
+                4410,
+                4425,
+                4440,
+                4455,
+                4470,
+                4485,
+                4500
+            ],
+            "scene_caption": "A person stands on the street holding a plastic bag, wearing casual clothing (seen in white or red). The scene centers on them and the bag with no other notable activity.",
+            "change_points": [
+                4398,
+                4505
+            ]
+        },
+        "29": {
+            "scene_idx": 29,
+            "picks": [
+                4515,
+                4530
+            ],
+            "scene_caption": "A man in a red jacket moves along a road, transitioning from walking to riding a bicycle.",
+            "change_points": [
+                4506,
+                4541
+            ]
+        },
+        "30": {
+            "scene_idx": 30,
+            "picks": [
+                4545,
+                4560,
+                4575,
+                4590,
+                4605,
+                4620,
+                4635,
+                4650
+            ],
+            "scene_caption": "A man in a red jacket rides a motorcycle along a mountain road, briefly stopping near a roadside tent before continuing his journey.",
+            "change_points": [
+                4542,
+                4657
+            ]
+        },
+        "31": {
+            "scene_idx": 31,
+            "picks": [
+                4665,
+                4680,
+                4695,
+                4710,
+                4725
+            ],
+            "scene_caption": "A person in a red jacket is on a road in a wintry setting, moving along and interacting with a snowman positioned in the roadway, creating a playful winter scene.",
+            "change_points": [
+                4658,
+                4728
+            ]
+        }
+    },
+    "Bike_Polo": {
+        "0": {
+            "scene_idx": 0,
+            "picks": [
+                0,
+                15,
+                30,
+                45,
+                60
+            ],
+            "scene_caption": "A skateboarder rides and performs tricks on a ramp in a skate park at night.",
+            "change_points": [
+                0,
+                64
+            ]
+        },
+        "1": {
+            "scene_idx": 1,
+            "picks": [
+                75,
+                90,
+                105,
+                120,
+                135,
+                150,
+                165
+            ],
+            "scene_caption": "At a lit skate park at night, a man rides his skateboard across and down the concrete ramps.",
+            "change_points": [
+                65,
+                166
+            ]
+        },
+        "2": {
+            "scene_idx": 2,
+            "picks": [
+                180,
+                195,
+                210,
+                225,
+                240,
+                255,
+                270,
+                285,
+                300,
+                315
+            ],
+            "scene_caption": "At a lit skate park at night, a man rides a skateboard and works a ramp.",
+            "change_points": [
+                167,
+                319
+            ]
+        },
+        "3": {
+            "scene_idx": 3,
+            "picks": [
+                330,
+                345,
+                360,
+                375,
+                390,
+                405,
+                420,
+                435,
+                450,
+                465,
+                480,
+                495,
+                510,
+                525,
+                540,
+                555,
+                570,
+                585,
+                600,
+                615,
+                630,
+                645,
+                660,
+                675,
+                690
+            ],
+            "scene_caption": "A nighttime session at a skate park shows riders using the ramps. A skateboarder drops in and rides, then BMX cyclists take over, rolling along the deck and dropping down the ramps. As the scene continues, more cyclists join, with pairs and groups riding together across the park.",
+            "change_points": [
+                320,
+                696
+            ]
+        },
+        "4": {
+            "scene_idx": 4,
+            "picks": [
+                705,
+                720,
+                735,
+                750,
+                765,
+                780
+            ],
+            "scene_caption": "A group of riders at a skate park or track take turns using a ramp, with both cyclists and skateboarders riding across the top and making runs down the slope.",
+            "change_points": [
+                697,
+                788
+            ]
+        },
+        "5": {
+            "scene_idx": 5,
+            "picks": [
+                795,
+                810,
+                825,
+                840,
+                855,
+                870,
+                885,
+                900,
+                915,
+                930
+            ],
+            "scene_caption": "At night in a skate park, several people ride bicycles together, taking turns navigating the ramps and riding along the tops and down the sides.",
+            "change_points": [
+                789,
+                933
+            ]
+        },
+        "6": {
+            "scene_idx": 6,
+            "picks": [
+                945,
+                960,
+                975,
+                990,
+                1005
+            ],
+            "scene_caption": "A cyclist rides a bike on a ramped track, moving downhill.",
+            "change_points": [
+                934,
+                1007
+            ]
+        },
+        "7": {
+            "scene_idx": 7,
+            "picks": [
+                1020,
+                1035,
+                1050,
+                1065,
+                1080,
+                1095,
+                1110
+            ],
+            "scene_caption": "At night, a skateboarder rides down a ramp, performing tricks as he descends.",
+            "change_points": [
+                1008,
+                1117
+            ]
+        },
+        "8": {
+            "scene_idx": 8,
+            "picks": [
+                1125,
+                1140,
+                1155,
+                1170,
+                1185,
+                1200,
+                1215,
+                1230,
+                1245
+            ],
+            "scene_caption": "At night, a man rides a bicycle on a ramp, moving along the top and then descending down the side.",
+            "change_points": [
+                1118,
+                1249
+            ]
+        },
+        "9": {
+            "scene_idx": 9,
+            "picks": [
+                1260,
+                1275,
+                1290,
+                1305,
+                1320,
+                1335,
+                1350,
+                1365
+            ],
+            "scene_caption": "- Main objects: a man (person), a bike, a ramp\n- Main action/event: riding the bike along the top of the ramp\n\nScene summary: A man rides a bike along the top of a ramp, maintaining his line across the ramp\u2019s crest.",
+            "change_points": [
+                1250,
+                1367
+            ]
+        },
+        "10": {
+            "scene_idx": 10,
+            "picks": [
+                1380,
+                1395,
+                1410,
+                1425,
+                1440,
+                1455,
+                1470,
+                1485,
+                1500
+            ],
+            "scene_caption": "At a nighttime skate park, a man rides his bike along and down the ramps, joined by other cyclists, and a skateboarder also drops down a ramp.",
+            "change_points": [
+                1368,
+                1502
+            ]
+        },
+        "11": {
+            "scene_idx": 11,
+            "picks": [
+                1515,
+                1530,
+                1545,
+                1560,
+                1575,
+                1590,
+                1605,
+                1620,
+                1635,
+                1650,
+                1665,
+                1680,
+                1695,
+                1710,
+                1725
+            ],
+            "scene_caption": "At night in a skatepark, a man on a skateboard rides a ramp, gliding along the top and dropping down the sides in repeated runs.",
+            "change_points": [
+                1503,
+                1731
+            ]
+        },
+        "12": {
+            "scene_idx": 12,
+            "picks": [
+                1740,
+                1755,
+                1770,
+                1785,
+                1800,
+                1815,
+                1830,
+                1845,
+                1860,
+                1875,
+                1890,
+                1905
+            ],
+            "scene_caption": "A man navigates a skate park, riding along the tops of ramps and dropping down them. The scene shows him using both a skateboard and a bike, with some shots captured at night.",
+            "change_points": [
+                1732,
+                1911
+            ]
+        },
+        "13": {
+            "scene_idx": 13,
+            "picks": [
+                1920,
+                1935,
+                1950,
+                1965,
+                1980,
+                1995,
+                2010,
+                2025,
+                2040,
+                2055,
+                2070
+            ],
+            "scene_caption": "A skate park scene where a group of riders on bikes navigate the ramps\u2014rolling down and across them\u2014while a skateboarder occasionally rides along the ramp tops.",
+            "change_points": [
+                1912,
+                2077
+            ]
+        },
+        "14": {
+            "scene_idx": 14,
+            "picks": [
+                2085,
+                2100,
+                2115,
+                2130,
+                2145
+            ],
+            "scene_caption": "A man rides a bicycle along the elevated ramps of a skate park.",
+            "change_points": [
+                2078,
+                2149
+            ]
+        },
+        "15": {
+            "scene_idx": 15,
+            "picks": [
+                2160,
+                2175,
+                2190,
+                2205,
+                2220,
+                2235,
+                2250
+            ],
+            "scene_caption": "At a nighttime skate park, riders use the ramps\u2014first a lone skateboarder, then a small group on BMX bikes\u2014taking turns rolling over the features together.",
+            "change_points": [
+                2150,
+                2261
+            ]
+        },
+        "16": {
+            "scene_idx": 16,
+            "picks": [
+                2265,
+                2280,
+                2295,
+                2310,
+                2325,
+                2340,
+                2355,
+                2370,
+                2385,
+                2400,
+                2415,
+                2430,
+                2445
+            ],
+            "scene_caption": "At a lit skate park at night, a man rides a skateboard across the concrete, moving onto and down ramps.",
+            "change_points": [
+                2262,
+                2455
+            ]
+        },
+        "17": {
+            "scene_idx": 17,
+            "picks": [
+                2460,
+                2475,
+                2490,
+                2505,
+                2520,
+                2535,
+                2550,
+                2565
+            ],
+            "scene_caption": "At a skate park at night, a man rides a BMX bike, rolling over the park and dropping down ramps.",
+            "change_points": [
+                2456,
+                2580
+            ]
+        },
+        "18": {
+            "scene_idx": 18,
+            "picks": [
+                2595,
+                2610,
+                2625,
+                2640,
+                2655,
+                2670
+            ],
+            "scene_caption": "At a skatepark, a man rides his skateboard down a ramp, repeatedly descending along the side.",
+            "change_points": [
+                2581,
+                2673
+            ]
+        },
+        "19": {
+            "scene_idx": 19,
+            "picks": [
+                2685,
+                2700,
+                2715,
+                2730,
+                2745,
+                2760,
+                2775,
+                2790,
+                2805,
+                2820,
+                2835,
+                2850,
+                2865,
+                2880,
+                2895
+            ],
+            "scene_caption": "A lit skate park at night, where a man rides a bike across the park and down the ramps; at times, other riders are also using the features.",
+            "change_points": [
+                2674,
+                2904
+            ]
+        },
+        "20": {
+            "scene_idx": 20,
+            "picks": [
+                2910,
+                2925,
+                2940,
+                2955,
+                2970,
+                2985,
+                3000,
+                3015,
+                3030,
+                3045,
+                3060
+            ],
+            "scene_caption": "At night under bright park lights, a skateboarder rides down a ramp and performs tricks in a skate park.",
+            "change_points": [
+                2905,
+                3063
+            ]
+        }
+    },
+    "Eiffel_Tower": {
+        "0": {
+            "scene_idx": 0,
+            "picks": [
+                0,
+                15,
+                30,
+                45
+            ],
+            "scene_caption": "A boat moves along a river near a bridge.",
+            "change_points": [
+                0,
+                55
+            ]
+        },
+        "1": {
+            "scene_idx": 1,
+            "picks": [
+                60,
+                75,
+                90,
+                105,
+                120,
+                135,
+                150,
+                165,
+                180,
+                195,
+                210
+            ],
+            "scene_caption": "A steady view of the Eiffel Tower, highlighting the iconic landmark.",
+            "change_points": [
+                56,
+                213
+            ]
+        },
+        "2": {
+            "scene_idx": 2,
+            "picks": [
+                225,
+                240,
+                255,
+                270,
+                285,
+                300,
+                315
+            ],
+            "scene_caption": "A clear view of the Eiffel Tower in Paris, France, with the landmark prominently featured in the scene.",
+            "change_points": [
+                214,
+                319
+            ]
+        },
+        "3": {
+            "scene_idx": 3,
+            "picks": [
+                330,
+                345,
+                360,
+                375,
+                390,
+                405,
+                420,
+                435,
+                450,
+                465,
+                480,
+                495,
+                510,
+                525,
+                540,
+                555,
+                570,
+                585
+            ],
+            "scene_caption": "A steady view of the Eiffel Tower in Paris, with the landmark dominating the scene from a distance; no notable actions or events, just the tower as the central focus.",
+            "change_points": [
+                320,
+                590
+            ]
+        },
+        "4": {
+            "scene_idx": 4,
+            "picks": [
+                600,
+                615,
+                630,
+                645,
+                660,
+                675,
+                690,
+                705,
+                720
+            ],
+            "scene_caption": "- Main objects: a small tree/plant, building facade, stone/brick wall\n- Actions/events: the plant growing; static view with a close-up of the building and tree\n- Irrelevant details removed: corrupted \u201ceiff\u2026\u201d text suggesting unrelated content\n\nScene summary: A close-up view of a building\u2019s facade with a stone or brick wall, where a small tree or plant is growing at its base in front of the structure.",
+            "change_points": [
+                591,
+                726
+            ]
+        },
+        "5": {
+            "scene_idx": 5,
+            "picks": [
+                735,
+                750,
+                765,
+                780,
+                795,
+                810,
+                825,
+                840,
+                855,
+                870,
+                885
+            ],
+            "scene_caption": "A static shot centered on the Eiffel Tower, with the landmark prominently framed as the primary subject. No notable actions or events\u2014just a lingering view of the structure.",
+            "change_points": [
+                727,
+                891
+            ]
+        },
+        "6": {
+            "scene_idx": 6,
+            "picks": [
+                900,
+                915,
+                930,
+                945,
+                960,
+                975,
+                990,
+                1005,
+                1020,
+                1035,
+                1050,
+                1065,
+                1080,
+                1095,
+                1110,
+                1125,
+                1140,
+                1155
+            ],
+            "scene_caption": "A continuous shot centered on the Eiffel Tower, highlighting the landmark as the main focus against the surrounding skyline; no notable actions or events occur beyond this steady view.",
+            "change_points": [
+                892,
+                1162
+            ]
+        },
+        "7": {
+            "scene_idx": 7,
+            "picks": [
+                1170,
+                1185,
+                1200,
+                1215
+            ],
+            "scene_caption": "A panoramic view from atop the Eiffel Tower, looking out over the park below and the surrounding Paris cityscape.",
+            "change_points": [
+                1163,
+                1225
+            ]
+        },
+        "8": {
+            "scene_idx": 8,
+            "picks": [
+                1230,
+                1245,
+                1260,
+                1275,
+                1290
+            ],
+            "scene_caption": "A scenic view of the Eiffel Tower in Paris, seen from a distance.",
+            "change_points": [
+                1226,
+                1304
+            ]
+        },
+        "9": {
+            "scene_idx": 9,
+            "picks": [
+                1305,
+                1320,
+                1335,
+                1350,
+                1365,
+                1380,
+                1395,
+                1410,
+                1425
+            ],
+            "scene_caption": "A busy bridge near the Eiffel Tower is lined with groups of people, while a large construction crane stands over or beside the structure, suggesting ongoing construction or maintenance in the area.",
+            "change_points": [
+                1305,
+                1433
+            ]
+        },
+        "10": {
+            "scene_idx": 10,
+            "picks": [
+                1440,
+                1455,
+                1470,
+                1485,
+                1500,
+                1515,
+                1530,
+                1545
+            ],
+            "scene_caption": "A steady shot centered on the Eiffel Tower, with no notable actions or events.",
+            "change_points": [
+                1434,
+                1546
+            ]
+        },
+        "11": {
+            "scene_idx": 11,
+            "picks": [
+                1560,
+                1575,
+                1590,
+                1605,
+                1620,
+                1635,
+                1650,
+                1665
+            ],
+            "scene_caption": "A close-up of a building\u2019s stone wall shows a small plant sprouting from a crack, with some greenery or a tree in front of the facade.",
+            "change_points": [
+                1547,
+                1676
+            ]
+        },
+        "12": {
+            "scene_idx": 12,
+            "picks": [
+                1680,
+                1695,
+                1710,
+                1725,
+                1740,
+                1755,
+                1770,
+                1785,
+                1800
+            ],
+            "scene_caption": "A springtime roadside and garden scene features bright yellow forsythia blooms around a building and along the street. A car occasionally descends the nearby hill, and a bird briefly perches on the building.",
+            "change_points": [
+                1677,
+                1808
+            ]
+        },
+        "13": {
+            "scene_idx": 13,
+            "picks": [
+                1815,
+                1830,
+                1845,
+                1860,
+                1875,
+                1890,
+                1905
+            ],
+            "scene_caption": "A close-up view of a cluster of yellow flowers along the stone wall of a building, suggesting a small garden or planted bed beside the facade.",
+            "change_points": [
+                1809,
+                1919
+            ]
+        },
+        "14": {
+            "scene_idx": 14,
+            "picks": [
+                1920,
+                1935,
+                1950,
+                1965,
+                1980,
+                1995,
+                2010,
+                2025,
+                2040
+            ],
+            "scene_caption": "A steady shot centered on the Eiffel Tower, highlighting the iconic landmark with no notable actions or events.",
+            "change_points": [
+                1920,
+                2049
+            ]
+        },
+        "15": {
+            "scene_idx": 15,
+            "picks": [
+                2055,
+                2070,
+                2085,
+                2100,
+                2115,
+                2130,
+                2145,
+                2160,
+                2175,
+                2190,
+                2205,
+                2220,
+                2235,
+                2250,
+                2265,
+                2280,
+                2295,
+                2310
+            ],
+            "scene_caption": "A scenic view of the Eiffel Tower in Paris, with the landmark prominently dominating the scene.",
+            "change_points": [
+                2050,
+                2320
+            ]
+        },
+        "16": {
+            "scene_idx": 16,
+            "picks": [
+                2325,
+                2340,
+                2355,
+                2370,
+                2385,
+                2400,
+                2415,
+                2430
+            ],
+            "scene_caption": "On a sunny day, a moving car passes beneath a bridge, with a train running under the span and airplanes crossing the blue sky overhead\u2014capturing a busy transit scene from inside the vehicle.",
+            "change_points": [
+                2321,
+                2437
+            ]
+        },
+        "17": {
+            "scene_idx": 17,
+            "picks": [
+                2445,
+                2460,
+                2475,
+                2490,
+                2505,
+                2520,
+                2535,
+                2550,
+                2565,
+                2580,
+                2595,
+                2610,
+                2625,
+                2640,
+                2655,
+                2670,
+                2685,
+                2700,
+                2715,
+                2730
+            ],
+            "scene_caption": "A severe building fire is underway, with flames venting through the roof. Views shift between the exterior, where fire erupts from the rooftop, and the interior, showing heavy damage and destruction from the blaze. Irrelevant or noisy elements (like references to landmarks or trains) do not reflect the main scene.",
+            "change_points": [
+                2438,
+                2738
+            ]
+        },
+        "18": {
+            "scene_idx": 18,
+            "picks": [
+                2745,
+                2760,
+                2775,
+                2790,
+                2805,
+                2820,
+                2835,
+                2850,
+                2865,
+                2880,
+                2895,
+                2910,
+                2925,
+                2940,
+                2955,
+                2970,
+                2985,
+                3000
+            ],
+            "scene_caption": "A bustling outdoor tourist scene near the Eiffel Tower, with crowds gathering in a square and by a bridge. People stand along the roadside and move through the area, walking along streets and park-like spaces around the landmark.",
+            "change_points": [
+                2739,
+                3013
+            ]
+        },
+        "19": {
+            "scene_idx": 19,
+            "picks": [
+                3015,
+                3030,
+                3045,
+                3060,
+                3075,
+                3090,
+                3105
+            ],
+            "scene_caption": "A group of pedestrians moves together along a city street, briefly gathering in the roadway near a building.",
+            "change_points": [
+                3014,
+                3109
+            ]
+        },
+        "20": {
+            "scene_idx": 20,
+            "picks": [
+                3120,
+                3135,
+                3150,
+                3165,
+                3180,
+                3195
+            ],
+            "scene_caption": "A distant view of the Eiffel Tower in Paris.",
+            "change_points": [
+                3110,
+                3198
+            ]
+        },
+        "21": {
+            "scene_idx": 21,
+            "picks": [
+                3210,
+                3225,
+                3240,
+                3255,
+                3270,
+                3285,
+                3300,
+                3315
+            ],
+            "scene_caption": "A steady, wide view of the Eiffel Tower, with the landmark prominently framed as the central focus of the scene.",
+            "change_points": [
+                3199,
+                3317
+            ]
+        },
+        "22": {
+            "scene_idx": 22,
+            "picks": [
+                3330,
+                3345,
+                3360,
+                3375,
+                3390
+            ],
+            "scene_caption": "A scenic view of the Eiffel Tower, with the landmark framed from a distance as the central focus of the scene.",
+            "change_points": [
+                3318,
+                3391
+            ]
+        },
+        "23": {
+            "scene_idx": 23,
+            "picks": [
+                3405,
+                3420,
+                3435,
+                3450
+            ],
+            "scene_caption": "A scenic view of the Eiffel Tower in Paris.",
+            "change_points": [
+                3392,
+                3464
+            ]
+        },
+        "24": {
+            "scene_idx": 24,
+            "picks": [
+                3465,
+                3480,
+                3495,
+                3510,
+                3525,
+                3540,
+                3555,
+                3570,
+                3585,
+                3600,
+                3615
+            ],
+            "scene_caption": "A group of people, likely tourists, gather around the Eiffel Tower\u2014some standing in front of it for photos while others walk beneath its structure\u2014creating a busy sightseeing scene.",
+            "change_points": [
+                3465,
+                3622
+            ]
+        },
+        "25": {
+            "scene_idx": 25,
+            "picks": [
+                3630,
+                3645,
+                3660,
+                3675,
+                3690,
+                3705,
+                3720,
+                3735,
+                3750,
+                3765
+            ],
+            "scene_caption": "A view of the Eiffel Tower.",
+            "change_points": [
+                3623,
+                3773
+            ]
+        },
+        "26": {
+            "scene_idx": 26,
+            "picks": [
+                3780,
+                3795,
+                3810,
+                3825,
+                3840,
+                3855,
+                3870,
+                3885,
+                3900
+            ],
+            "scene_caption": "A crowd of people is gathered near the Eiffel Tower, with some standing in front of the landmark while others walk along the nearby street or plaza. The scene shows steady pedestrian activity around the tower.",
+            "change_points": [
+                3774,
+                3903
+            ]
+        },
+        "27": {
+            "scene_idx": 27,
+            "picks": [
+                3915,
+                3930,
+                3945,
+                3960,
+                3975,
+                3990,
+                4005,
+                4020,
+                4035,
+                4050,
+                4065
+            ],
+            "scene_caption": "A steady view centered on the Eiffel Tower in Paris, France.",
+            "change_points": [
+                3904,
+                4067
+            ]
+        },
+        "28": {
+            "scene_idx": 28,
+            "picks": [
+                4080,
+                4095,
+                4110,
+                4125,
+                4140,
+                4155,
+                4170
+            ],
+            "scene_caption": "- Main object: The Eiffel Tower.\n- Actions/events: None apparent; a steady, repeated view with no distinct activity.\n\nScene summary: A continuous shot centered on the Eiffel Tower, focusing on the landmark itself without notable actions or additional elements.",
+            "change_points": [
+                4068,
+                4174
+            ]
+        },
+        "29": {
+            "scene_idx": 29,
+            "picks": [
+                4185,
+                4200,
+                4215,
+                4230,
+                4245,
+                4260,
+                4275,
+                4290,
+                4305,
+                4320,
+                4335,
+                4350,
+                4365,
+                4380,
+                4395,
+                4410,
+                4425,
+                4440
+            ],
+            "scene_caption": "A view of the Eiffel Tower in Paris.",
+            "change_points": [
+                4175,
+                4445
+            ]
+        },
+        "30": {
+            "scene_idx": 30,
+            "picks": [
+                4455,
+                4470,
+                4485,
+                4500,
+                4515,
+                4530,
+                4545,
+                4560,
+                4575,
+                4590,
+                4605
+            ],
+            "scene_caption": "- Main objects: Bright yellow flowers (likely forsythia), roadside/road.\n- Actions/events: None; static view.\n\nScene summary: A dense cluster of bright yellow flowers is in bloom along the side of a road, with the shot focusing on the roadside flowers and little else happening.",
+            "change_points": [
+                4446,
+                4606
+            ]
+        },
+        "31": {
+            "scene_idx": 31,
+            "picks": [
+                4620,
+                4635,
+                4650
+            ],
+            "scene_caption": "A distant view of the Eiffel Tower.",
+            "change_points": [
+                4607,
+                4656
+            ]
+        },
+        "32": {
+            "scene_idx": 32,
+            "picks": [
+                4665,
+                4680,
+                4695,
+                4710,
+                4725,
+                4740,
+                4755,
+                4770,
+                4785,
+                4800,
+                4815
+            ],
+            "scene_caption": "Crowds of pedestrians and tourists walk through a plaza in front of the Eiffel Tower, with the scene alternating between wider views of the landmark and its busy surroundings.",
+            "change_points": [
+                4657,
+                4819
+            ]
+        },
+        "33": {
+            "scene_idx": 33,
+            "picks": [
+                4830,
+                4845,
+                4860,
+                4875,
+                4890,
+                4905,
+                4920,
+                4935,
+                4950,
+                4965
+            ],
+            "scene_caption": "A steady, static view of the Eiffel Tower dominates the scene, with no notable actions or events.",
+            "change_points": [
+                4820,
+                4970
+            ]
+        }
+    },
+    "Excavators_river_crossing": {
+        "0": {
+            "scene_idx": 0,
+            "picks": [
+                0,
+                15,
+                30,
+                45,
+                60,
+                75
+            ],
+            "scene_caption": "A group of people gathers around a boat in the water, with some standing aboard and others wading nearby.",
+            "change_points": [
+                0,
+                87
+            ]
+        },
+        "1": {
+            "scene_idx": 1,
+            "picks": [
+                90,
+                105,
+                120,
+                135,
+                150,
+                165,
+                180,
+                195
+            ],
+            "scene_caption": "A group of people gathers around a large bull by the water\u2019s edge, with the animal and some of them standing in the shallow water.",
+            "change_points": [
+                88,
+                207
+            ]
+        },
+        "2": {
+            "scene_idx": 2,
+            "picks": [
+                210,
+                225,
+                240,
+                255,
+                270,
+                285,
+                300,
+                315,
+                330,
+                345,
+                360,
+                375,
+                390,
+                405,
+                420,
+                435,
+                450,
+                465,
+                480,
+                495,
+                510
+            ],
+            "scene_caption": "- Main objects: a group of people; body of water/shoreline with rocks; a boat; snow and mountains; street/buildings.\n- Main actions/events: the group stands together on rocky shore by the water, appears on a boat in the water, and walks along a (snow-covered) street.\n\nScene summary: A group of people is gathered outdoors in a cold, mountainous coastal setting, spending time by the water on rocky shores and on a boat, and moving through a snowy street near buildings.",
+            "change_points": [
+                208,
+                521
+            ]
+        },
+        "3": {
+            "scene_idx": 3,
+            "picks": [
+                525,
+                540,
+                555,
+                570,
+                585,
+                600,
+                615,
+                630,
+                645,
+                660,
+                675,
+                690,
+                705,
+                720,
+                735
+            ],
+            "scene_caption": "A flooded street scene where people wade through high water and gather around boats, with some standing aboard. Amid the flooding, two men guide a large bull into the water, suggesting efforts to move both people and livestock through the area.",
+            "change_points": [
+                522,
+                738
+            ]
+        },
+        "4": {
+            "scene_idx": 4,
+            "picks": [
+                750,
+                765,
+                780,
+                795,
+                810,
+                825,
+                840,
+                855,
+                870
+            ],
+            "scene_caption": "A large yellow-and-black construction vehicle, likely a bulldozer, is at a construction site, positioned on piles of dirt and rubble. The scene suggests demolition or earthmoving work rather than any water setting.",
+            "change_points": [
+                739,
+                878
+            ]
+        },
+        "5": {
+            "scene_idx": 5,
+            "picks": [
+                885,
+                900,
+                915,
+                930,
+                945,
+                960
+            ],
+            "scene_caption": "A man stands by a boat in the water next to a bull.",
+            "change_points": [
+                879,
+                964
+            ]
+        },
+        "6": {
+            "scene_idx": 6,
+            "picks": [
+                975,
+                990,
+                1005,
+                1020,
+                1035,
+                1050,
+                1065,
+                1080,
+                1095
+            ],
+            "scene_caption": "A flooded area or river is shown, where a man moves through high water by boat and on foot while struggling to manage a bull in the water. The scene includes flood\u2011swamped equipment like a tractor and a crane, emphasizing the extent of the inundation and the effort to navigate or cope with the conditions.",
+            "change_points": [
+                965,
+                1097
+            ]
+        },
+        "7": {
+            "scene_idx": 7,
+            "picks": [
+                1110,
+                1125,
+                1140,
+                1155,
+                1170,
+                1185,
+                1200,
+                1215,
+                1230,
+                1245
+            ],
+            "scene_caption": "A flooded river scene with heavy yellow construction equipment\u2014often one or two tractors/excavators\u2014positioned in the middle of the water near a bridge and a construction area.",
+            "change_points": [
+                1098,
+                1259
+            ]
+        },
+        "8": {
+            "scene_idx": 8,
+            "picks": [
+                1260,
+                1275,
+                1290,
+                1305,
+                1320
+            ],
+            "scene_caption": "On a body of water, a boat is sinking while a crane stands/operates nearby in the water.",
+            "change_points": [
+                1260,
+                1328
+            ]
+        },
+        "9": {
+            "scene_idx": 9,
+            "picks": [
+                1335,
+                1350,
+                1365,
+                1380,
+                1395,
+                1410,
+                1425
+            ],
+            "scene_caption": "A vehicle is partially submerged and appears to be sinking in open water, suggesting an accident or breakdown.",
+            "change_points": [
+                1329,
+                1438
+            ]
+        },
+        "10": {
+            "scene_idx": 10,
+            "picks": [
+                1440,
+                1455,
+                1470,
+                1485,
+                1500,
+                1515,
+                1530,
+                1545,
+                1560,
+                1575,
+                1590,
+                1605
+            ],
+            "scene_caption": "A man wearing a life jacket is out on a small boat in open water; the boat begins to sink, and he ends up standing in the water beside it.",
+            "change_points": [
+                1439,
+                1619
+            ]
+        },
+        "11": {
+            "scene_idx": 11,
+            "picks": [
+                1620,
+                1635,
+                1650,
+                1665,
+                1680,
+                1695,
+                1710,
+                1725,
+                1740
+            ],
+            "scene_caption": "A man is riding on the back of a bull in shallow ocean water.",
+            "change_points": [
+                1620,
+                1749
+            ]
+        },
+        "12": {
+            "scene_idx": 12,
+            "picks": [
+                1755,
+                1770,
+                1785,
+                1800,
+                1815,
+                1830,
+                1845,
+                1860,
+                1875,
+                1890,
+                1905,
+                1920
+            ],
+            "scene_caption": "In a snowy outdoor setting, a man interacts with a bull, climbing onto and riding it, at times standing or sitting on its back.",
+            "change_points": [
+                1750,
+                1924
+            ]
+        },
+        "13": {
+            "scene_idx": 13,
+            "picks": [
+                1935,
+                1950,
+                1965,
+                1980,
+                1995,
+                2010,
+                2025,
+                2040,
+                2055,
+                2070,
+                2085,
+                2100
+            ],
+            "scene_caption": "A man in a small boat gets pulled into the water by a bull and ends up riding the bull in the water.",
+            "change_points": [
+                1925,
+                2114
+            ]
+        },
+        "14": {
+            "scene_idx": 14,
+            "picks": [
+                2115,
+                2130,
+                2145,
+                2160,
+                2175,
+                2190,
+                2205,
+                2220,
+                2235,
+                2250,
+                2265,
+                2280,
+                2295,
+                2310,
+                2325,
+                2340
+            ],
+            "scene_caption": "A man and a bull are in the water near a small boat. The bull pulls the man from the boat into the ocean, and the man ends up in the water, at times clinging to or sitting on the bull.",
+            "change_points": [
+                2115,
+                2344
+            ]
+        },
+        "15": {
+            "scene_idx": 15,
+            "picks": [
+                2355,
+                2370,
+                2385,
+                2400,
+                2415,
+                2430,
+                2445,
+                2460
+            ],
+            "scene_caption": "On a body of water, a man sits atop a small boat and then gets pulled off, ending up in the water as the boat moves. The references to a \u201cbull\u201d appear to be misrecognitions; the consistent elements are the man, the boat, and the water.",
+            "change_points": [
+                2345,
+                2469
+            ]
+        },
+        "16": {
+            "scene_idx": 16,
+            "picks": [
+                2475,
+                2490,
+                2505,
+                2520,
+                2535,
+                2550,
+                2565,
+                2580,
+                2595,
+                2610
+            ],
+            "scene_caption": "- Main objects: snowmobile, rider(s), snowy terrain\n- Main action/event: riding/driving a snowmobile across the snow\n- Removed as noise/irrelevant: mentions of a bull, water/boat, and a parked tractor\n\nScene summary: A person, sometimes accompanied by others, rides a snowmobile across a snowy landscape.",
+            "change_points": [
+                2470,
+                2613
+            ]
+        },
+        "17": {
+            "scene_idx": 17,
+            "picks": [
+                2625,
+                2640,
+                2655,
+                2670,
+                2685,
+                2700,
+                2715,
+                2730,
+                2745,
+                2760,
+                2775,
+                2790
+            ],
+            "scene_caption": "A crowd is gathered around the rubble of a collapsed building, with some people standing on the debris, while a bull nearby draws their attention.",
+            "change_points": [
+                2614,
+                2791
+            ]
+        },
+        "18": {
+            "scene_idx": 18,
+            "picks": [
+                2805,
+                2820,
+                2835,
+                2850,
+                2865,
+                2880
+            ],
+            "scene_caption": "- Main objects: A large bull; a group of people.\n- Shared actions/events: People gathered around the bull, appearing to manage or assist it.\n- Setting (inferred from consistent cues): In or near a river/shallow water.\n\nScene summary: A crowd has gathered around a large bull standing in a river, with people appearing to help control or rescue the animal.",
+            "change_points": [
+                2792,
+                2884
+            ]
+        },
+        "19": {
+            "scene_idx": 19,
+            "picks": [
+                2895,
+                2910,
+                2925,
+                2940
+            ],
+            "scene_caption": "Vehicles navigate a flooded street, with a car and a yellow truck driving through high water and a tractor sitting in the water near a construction site.",
+            "change_points": [
+                2885,
+                2953
+            ]
+        },
+        "20": {
+            "scene_idx": 20,
+            "picks": [
+                2955,
+                2970,
+                2985,
+                3000,
+                3015,
+                3030,
+                3045,
+                3060,
+                3075,
+                3090,
+                3105
+            ],
+            "scene_caption": "A group of people wade in a muddy, flooded river, gathered around a bull in the water.",
+            "change_points": [
+                2954,
+                3107
+            ]
+        },
+        "21": {
+            "scene_idx": 21,
+            "picks": [
+                3120,
+                3135,
+                3150,
+                3165,
+                3180,
+                3195
+            ],
+            "scene_caption": "In a flooded riverside area, a bull stands in muddy water while several people gather nearby along the bank. A partially submerged boat sits near a dock, with construction structures visible in the background, suggesting an urban waterfront affected by high water.",
+            "change_points": [
+                3108,
+                3197
+            ]
+        },
+        "22": {
+            "scene_idx": 22,
+            "picks": [
+                3210,
+                3225,
+                3240,
+                3255,
+                3270,
+                3285,
+                3300
+            ],
+            "scene_caption": "- Main objects: a bull, one or more men, excavators/diggers, a construction site/building, water.\n- Shared actions/events: the bull and men are in/wading through the water near the construction area; heavy machinery is also positioned in the water by the building.\n\nScene summary: In a waterlogged area beside a construction site, a bull stands in the water while men wade nearby, with excavators also situated in the water next to the building.",
+            "change_points": [
+                3198,
+                3312
+            ]
+        },
+        "23": {
+            "scene_idx": 23,
+            "picks": [
+                3315,
+                3330,
+                3345,
+                3360,
+                3375,
+                3390,
+                3405,
+                3420,
+                3435,
+                3450
+            ],
+            "scene_caption": "A man stands in shallow water beside a bull, while a large yellow construction machine sits out in the middle of the water nearby.",
+            "change_points": [
+                3313,
+                3453
+            ]
+        },
+        "24": {
+            "scene_idx": 24,
+            "picks": [
+                3465,
+                3480,
+                3495,
+                3510,
+                3525,
+                3540,
+                3555
+            ],
+            "scene_caption": "A scene on a body of water where a man is in a yellow boat, a crane is in the water, and a helicopter flies overhead.",
+            "change_points": [
+                3454,
+                3556
+            ]
+        },
+        "25": {
+            "scene_idx": 25,
+            "picks": [
+                3570,
+                3585,
+                3600,
+                3615,
+                3630,
+                3645,
+                3660,
+                3675,
+                3690
+            ],
+            "scene_caption": "A man rides atop a tractor in a snowy outdoor setting.",
+            "change_points": [
+                3557,
+                3699
+            ]
+        },
+        "26": {
+            "scene_idx": 26,
+            "picks": [
+                3705,
+                3720,
+                3735,
+                3750,
+                3765,
+                3780,
+                3795,
+                3810,
+                3825,
+                3840,
+                3855
+            ],
+            "scene_caption": "A man rides and poses atop a bull, alternately sitting and standing as the setting shifts between snowy terrain and open water, eventually leading the pair into the ocean.",
+            "change_points": [
+                3700,
+                3867
+            ]
+        },
+        "27": {
+            "scene_idx": 27,
+            "picks": [
+                3870,
+                3885,
+                3900,
+                3915,
+                3930,
+                3945,
+                3960,
+                3975,
+                3990,
+                4005
+            ],
+            "scene_caption": "On a snowy roadside, a tractor appears stuck while a man climbs onto its rear and others gather to help, working to get it moving.",
+            "change_points": [
+                3868,
+                4014
+            ]
+        },
+        "28": {
+            "scene_idx": 28,
+            "picks": [
+                4020,
+                4035,
+                4050,
+                4065,
+                4080,
+                4095,
+                4110,
+                4125,
+                4140,
+                4155
+            ],
+            "scene_caption": "In a snowy outdoor setting, a group of men work with wood on a small construction or repair project while a bull is present nearby, and at one point one of the men briefly rides the bull.",
+            "change_points": [
+                4015,
+                4170
+            ]
+        },
+        "29": {
+            "scene_idx": 29,
+            "picks": [
+                4185,
+                4200,
+                4215,
+                4230,
+                4245
+            ],
+            "scene_caption": "A boat on the water carries several people, with a man standing on the deck.",
+            "change_points": [
+                4171,
+                4248
+            ]
+        },
+        "30": {
+            "scene_idx": 30,
+            "picks": [
+                4260,
+                4275,
+                4290,
+                4305,
+                4320,
+                4335,
+                4350,
+                4365,
+                4380
+            ],
+            "scene_caption": "A bull is present near a body of water while a man in a wetsuit stands in the water and appears to be pulled or drawn further into it, suggesting a staged interaction or stunt involving the bull and the water.",
+            "change_points": [
+                4249,
+                4395
+            ]
+        },
+        "31": {
+            "scene_idx": 31,
+            "picks": [
+                4410,
+                4425,
+                4440,
+                4455,
+                4470,
+                4485,
+                4500,
+                4515,
+                4530
+            ],
+            "scene_caption": "At the edge of a body of water with scattered rubble, a man in a white shirt interacts with a bull\u2014standing beside it and at times on its back.",
+            "change_points": [
+                4396,
+                4545
+            ]
+        },
+        "32": {
+            "scene_idx": 32,
+            "picks": [
+                4560,
+                4575,
+                4590,
+                4605,
+                4620,
+                4635,
+                4650,
+                4665,
+                4680,
+                4695,
+                4710,
+                4725
+            ],
+            "scene_caption": "Main objects:\n- A bull\n- A group of people/men\n- A building/rooftop and a construction site with rubble\n\nMain actions/events:\n- People gather and stand on and around the building\n- Workers are active at the site\n- A man stands near/in front of the bull, suggesting efforts to manage or control it\n\nScene summary:\nA crowd and workers gather at a construction site, with some standing on a rooftop and others around rubble, while a bull is present and a man stands in front of it as people try to manage the situation.",
+            "change_points": [
+                4546,
+                4739
+            ]
+        },
+        "33": {
+            "scene_idx": 33,
+            "picks": [
+                4740,
+                4755,
+                4770,
+                4785,
+                4800,
+                4815,
+                4830,
+                4845,
+                4860,
+                4875
+            ],
+            "scene_caption": "A town street scene where a crowd gathers near a building and vehicles, surrounding a bull; a tractor moves through floodwater while a school bus passes by.",
+            "change_points": [
+                4740,
+                4886
+            ]
+        },
+        "34": {
+            "scene_idx": 34,
+            "picks": [
+                4890,
+                4905,
+                4920,
+                4935,
+                4950,
+                4965,
+                4980
+            ],
+            "scene_caption": "A snowy outdoor scene features a bull with a man standing nearby, while a yellow-and-black construction vehicle/tractor sits idle on rough, muddy ground or rubble in the background.",
+            "change_points": [
+                4887,
+                4990
+            ]
+        },
+        "35": {
+            "scene_idx": 35,
+            "picks": [
+                4995,
+                5010,
+                5025,
+                5040,
+                5055,
+                5070,
+                5085,
+                5100,
+                5115,
+                5130
+            ],
+            "scene_caption": "A group is on a boat in the water while a bull pulls a man into the water.",
+            "change_points": [
+                4991,
+                5132
+            ]
+        },
+        "36": {
+            "scene_idx": 36,
+            "picks": [
+                5145,
+                5160,
+                5175,
+                5190,
+                5205,
+                5220,
+                5235,
+                5250,
+                5265
+            ],
+            "scene_caption": "The scene consistently focuses on a single bull as the primary subject, with no other notable objects or actions indicated.",
+            "change_points": [
+                5133,
+                5276
+            ]
+        },
+        "37": {
+            "scene_idx": 37,
+            "picks": [
+                5280,
+                5295,
+                5310,
+                5325,
+                5340,
+                5355,
+                5370,
+                5385
+            ],
+            "scene_caption": "A bull stands in the middle of a river while a boat floats nearby along the shore.",
+            "change_points": [
+                5277,
+                5398
+            ]
+        },
+        "38": {
+            "scene_idx": 38,
+            "picks": [
+                5400,
+                5415,
+                5430,
+                5445,
+                5460,
+                5475,
+                5490,
+                5505,
+                5520,
+                5535,
+                5550,
+                5565,
+                5580,
+                5595,
+                5610,
+                5625,
+                5640,
+                5655,
+                5670,
+                5685,
+                5700
+            ],
+            "scene_caption": "A large yellow crane-like machine is situated in the middle of a body of water.",
+            "change_points": [
+                5399,
+                5711
+            ]
+        },
+        "39": {
+            "scene_idx": 39,
+            "picks": [
+                5715,
+                5730,
+                5745,
+                5760,
+                5775,
+                5790
+            ],
+            "scene_caption": "",
+            "change_points": [
+                5712,
+                5794
+            ]
+        },
+        "40": {
+            "scene_idx": 40,
+            "picks": [
+                5805,
+                5820,
+                5835,
+                5850,
+                5865,
+                5880
+            ],
+            "scene_caption": "A man in a black jacket interacts with a large yellow mechanical bull, standing beside it and climbing onto it as he prepares to ride.",
+            "change_points": [
+                5795,
+                5893
+            ]
+        },
+        "41": {
+            "scene_idx": 41,
+            "picks": [
+                5895,
+                5910,
+                5925,
+                5940,
+                5955,
+                5970,
+                5985,
+                6000,
+                6015,
+                6030,
+                6045,
+                6060,
+                6075,
+                6090,
+                6105,
+                6120,
+                6135,
+                6150,
+                6165,
+                6180,
+                6195,
+                6210,
+                6225,
+                6240,
+                6255,
+                6270
+            ],
+            "scene_caption": "In a snowy outdoor work site with trucks and machinery nearby, a group of men gathers around a bull. A man in a black jacket and hat interacts most closely with the animal\u2014standing beside it and at times climbing onto its back\u2014while others stand by to steady or restrain him. The activity suggests they are handling or preparing to move the bull.",
+            "change_points": [
+                5894,
+                6272
+            ]
+        },
+        "42": {
+            "scene_idx": 42,
+            "picks": [
+                6285,
+                6300,
+                6315,
+                6330,
+                6345,
+                6360,
+                6375,
+                6390,
+                6405,
+                6420,
+                6435
+            ],
+            "scene_caption": "A man rides a small watercraft on a river or open body of water, with scenes of him and others standing in the water nearby, including one person holding a surfboard.",
+            "change_points": [
+                6273,
+                6439
+            ]
+        },
+        "43": {
+            "scene_idx": 43,
+            "picks": [
+                6450,
+                6465,
+                6480,
+                6495,
+                6510,
+                6525,
+                6540,
+                6555,
+                6570,
+                6585,
+                6600,
+                6615,
+                6630
+            ],
+            "scene_caption": "In a waterlogged area, a small boat carries a man who stands or rides on it near a tractor sitting in the water. Later, the man is seen on land in front of a building, sitting beside a dog.",
+            "change_points": [
+                6440,
+                6643
+            ]
+        },
+        "44": {
+            "scene_idx": 44,
+            "picks": [
+                6645,
+                6660,
+                6675,
+                6690,
+                6705,
+                6720,
+                6735,
+                6750,
+                6765,
+                6780
+            ],
+            "scene_caption": "In a snowy setting, a group of people gather around and on a boat; a couple of men work on it while others stand with and guide a bull nearby.",
+            "change_points": [
+                6644,
+                6785
+            ]
+        },
+        "45": {
+            "scene_idx": 45,
+            "picks": [
+                6795,
+                6810,
+                6825,
+                6840,
+                6855,
+                6870,
+                6885,
+                6900,
+                6915,
+                6930,
+                6945,
+                6960,
+                6975,
+                6990,
+                7005,
+                7020,
+                7035,
+                7050,
+                7065
+            ],
+            "scene_caption": "A flood scene by a body of water: crowds gather outside a building and along the shoreline, with some people standing on boats. Heavy equipment\u2014likely a yellow Caterpillar bulldozer/truck\u2014works on debris nearby, and a bull (livestock) is seen stranded in the floodwaters as responders and onlookers manage the situation.",
+            "change_points": [
+                6786,
+                7068
+            ]
+        },
+        "46": {
+            "scene_idx": 46,
+            "picks": [
+                7080,
+                7095,
+                7110,
+                7125,
+                7140,
+                7155,
+                7170
+            ],
+            "scene_caption": "In a flooded street, people wade through the water as a boat operates nearby; a man is pulled into the water by the boat, and the group gathers aboard it.",
+            "change_points": [
+                7069,
+                7178
+            ]
+        },
+        "47": {
+            "scene_idx": 47,
+            "picks": [
+                7185,
+                7200,
+                7215,
+                7230
+            ],
+            "scene_caption": "A group of people ride in a boat on the water, towing someone behind who gets pulled into and splashes into the water.",
+            "change_points": [
+                7179,
+                7236
+            ]
+        },
+        "48": {
+            "scene_idx": 48,
+            "picks": [
+                7245,
+                7260,
+                7275,
+                7290,
+                7305,
+                7320,
+                7335,
+                7350,
+                7365,
+                7380,
+                7395
+            ],
+            "scene_caption": "A group of people ride together on the back of a boat, sharing a casual outing on the water.",
+            "change_points": [
+                7237,
+                7396
+            ]
+        },
+        "49": {
+            "scene_idx": 49,
+            "picks": [
+                7410,
+                7425,
+                7440,
+                7455,
+                7470,
+                7485,
+                7500,
+                7515,
+                7530,
+                7545,
+                7560,
+                7575,
+                7590,
+                7605,
+                7620,
+                7635,
+                7650,
+                7665,
+                7680
+            ],
+            "scene_caption": "A small boat in open water is partially submerged and appears to be sinking. A rope is attached as if it\u2019s being towed, and a man is on top of the vessel as it drifts in the river/ocean.",
+            "change_points": [
+                7397,
+                7689
+            ]
+        },
+        "50": {
+            "scene_idx": 50,
+            "picks": [
+                7695,
+                7710,
+                7725,
+                7740,
+                7755,
+                7770,
+                7785,
+                7800,
+                7815,
+                7830,
+                7845
+            ],
+            "scene_caption": "",
+            "change_points": [
+                7690,
+                7849
+            ]
+        },
+        "51": {
+            "scene_idx": 51,
+            "picks": [
+                7860,
+                7875,
+                7890,
+                7905,
+                7920,
+                7935,
+                7950,
+                7965,
+                7980,
+                7995,
+                8010,
+                8025,
+                8040
+            ],
+            "scene_caption": "A man is riding on a bull as it moves through a body of water, likely crossing or wading. The scene centers on the man atop the animal in the water; other mentions (e.g., boat, truck) appear to be noise.",
+            "change_points": [
+                7850,
+                8054
+            ]
+        },
+        "52": {
+            "scene_idx": 52,
+            "picks": [
+                8055,
+                8070,
+                8085,
+                8100,
+                8115,
+                8130
+            ],
+            "scene_caption": "",
+            "change_points": [
+                8055,
+                8134
+            ]
+        },
+        "53": {
+            "scene_idx": 53,
+            "picks": [
+                8145,
+                8160,
+                8175,
+                8190,
+                8205,
+                8220,
+                8235,
+                8250,
+                8265,
+                8280
+            ],
+            "scene_caption": "A flooded river scene near a bridge, where two excavators are operating in the water (with another machine on the bank). A tractor is also in the flooded channel, and several people stand in the water or on a small boat nearby, observing or assisting.",
+            "change_points": [
+                8135,
+                8295
+            ]
+        },
+        "54": {
+            "scene_idx": 54,
+            "picks": [
+                8310,
+                8325,
+                8340,
+                8355,
+                8370,
+                8385,
+                8400
+            ],
+            "scene_caption": "A man is by the water\u2019s edge, perched on or standing among rocks along a riverbank, while a train is nearby\u2014likely passing along the shoreline. The scene centers on the man near the body of water with the train in the background, emphasizing the riverside setting with rocky terrain.",
+            "change_points": [
+                8296,
+                8404
+            ]
+        },
+        "55": {
+            "scene_idx": 55,
+            "picks": [
+                8415,
+                8430,
+                8445,
+                8460,
+                8475,
+                8490,
+                8505
+            ],
+            "scene_caption": "Several men are gathered and working on a building\u2019s roof amid debris, while a bull is present on or near the rooftop\u2014at one point standing next to a man.",
+            "change_points": [
+                8405,
+                8507
+            ]
+        },
+        "56": {
+            "scene_idx": 56,
+            "picks": [
+                8520,
+                8535,
+                8550,
+                8565,
+                8580
+            ],
+            "scene_caption": "A surfer rides a wave in the ocean.",
+            "change_points": [
+                8508,
+                8592
+            ]
+        },
+        "57": {
+            "scene_idx": 57,
+            "picks": [
+                8595,
+                8610,
+                8625,
+                8640,
+                8655,
+                8670,
+                8685,
+                8700
+            ],
+            "scene_caption": "A large group of people is gathered outdoors in a mountainous setting, spending time together near a body of water; they appear to be a tour group, sometimes lining up or assembling by a bus or building as they take in the scenery.",
+            "change_points": [
+                8593,
+                8711
+            ]
+        },
+        "58": {
+            "scene_idx": 58,
+            "picks": [
+                8715,
+                8730,
+                8745,
+                8760,
+                8775,
+                8790,
+                8805,
+                8820,
+                8835,
+                8850,
+                8865
+            ],
+            "scene_caption": "A group of people gathers at the edge of a body of water, standing together on rocks and in the shallow water along the shoreline.",
+            "change_points": [
+                8712,
+                8868
+            ]
+        },
+        "59": {
+            "scene_idx": 59,
+            "picks": [
+                8880,
+                8895,
+                8910,
+                8925
+            ],
+            "scene_caption": "A flooded area near a bridge where heavy construction vehicles\u2014including a tractor and two diggers\u2014are in the water, with the tractor appearing stuck.",
+            "change_points": [
+                8869,
+                8938
+            ]
+        },
+        "60": {
+            "scene_idx": 60,
+            "picks": [
+                8940,
+                8955,
+                8970,
+                8985,
+                9000,
+                9015
+            ],
+            "scene_caption": "A flooded river scene near a bridge, where heavy construction equipment\u2014such as a crane and a yellow excavator\u2014operates in the water. A man stands nearby in the floodwaters as a small boat sinks.",
+            "change_points": [
+                8939,
+                9030
+            ]
+        },
+        "61": {
+            "scene_idx": 61,
+            "picks": [
+                9045,
+                9060,
+                9075,
+                9090,
+                9105,
+                9120,
+                9135,
+                9150,
+                9165,
+                9180,
+                9195,
+                9210,
+                9225
+            ],
+            "scene_caption": "A man in a yellow life jacket is out on the water near the shore with a small boat, alternately wading in the water and climbing or riding on the boat as it moves.",
+            "change_points": [
+                9031,
+                9232
+            ]
+        },
+        "62": {
+            "scene_idx": 62,
+            "picks": [
+                9240,
+                9255,
+                9270,
+                9285,
+                9300,
+                9315,
+                9330,
+                9345
+            ],
+            "scene_caption": "A large yellow industrial machine is positioned out in the middle of a body of water.",
+            "change_points": [
+                9233,
+                9358
+            ]
+        },
+        "63": {
+            "scene_idx": 63,
+            "picks": [
+                9360,
+                9375,
+                9390,
+                9405,
+                9420,
+                9435,
+                9450
+            ],
+            "scene_caption": "Several excavators are clustered in the middle of a water- or ice-covered area near a bridge, with one positioned on the bank, suggesting a construction operation taking place in the water.",
+            "change_points": [
+                9359,
+                9458
+            ]
+        },
+        "64": {
+            "scene_idx": 64,
+            "picks": [
+                9465,
+                9480,
+                9495,
+                9510,
+                9525,
+                9540,
+                9555,
+                9570,
+                9585,
+                9600,
+                9615,
+                9630,
+                9645,
+                9660,
+                9675,
+                9690,
+                9705
+            ],
+            "scene_caption": "- Main shared objects/actions/events:\n  - A flooded roadway/river area near a bridge.\n  - Multiple pieces of heavy construction equipment (excavators/diggers) in the water, with at least one on the bank.\n  - A truck attempting to move through floodwater, at times stationary and stuck in mud/water by the roadside.\n\n- Redundancy removed:\n  - Merge repeated mentions of \u201ctruck parked/driving/stuck/sitting in the water\u201d into a single event of a truck attempting to traverse the flooded road and ending up stationary in the muddy water.\n  - Consolidate \u201ctwo diggers/two large machines/tractor\u201d into \u201cseveral excavators/heavy machinery\u201d positioned in the water near a bridge/river.\n\n- Scene summary:\nA flooded road by a bridge is partially submerged, where several excavators stand in the water (with another on the bank) while a truck attempts to pass through the inundation and ends up stationary in the muddy floodwater.",
+            "change_points": [
+                9459,
+                9720
+            ]
+        }
+    },
+    "Fire_Domino": {
+        "0": {
+            "scene_idx": 0,
+            "picks": [
+                0,
+                15,
+                30,
+                45,
+                60,
+                75,
+                90,
+                105,
+                120,
+                135,
+                150,
+                165,
+                180,
+                195,
+                210,
+                225,
+                240,
+                255,
+                270,
+                285,
+                300,
+                315
+            ],
+            "scene_caption": "A tabletop display features a handmade, tower-like sculpture built from wooden sticks adorned with red and white beads. Nearby, a candle is lit by a person, suggesting the scene is being set or presented.",
+            "change_points": [
+                0,
+                326
+            ]
+        },
+        "1": {
+            "scene_idx": 1,
+            "picks": [
+                330,
+                345,
+                360,
+                375,
+                390,
+                405
+            ],
+            "scene_caption": "A room contains a model human skeleton on a table and a small Christmas tree with lights, while a candle or small flame burns in the center of the room.",
+            "change_points": [
+                327,
+                414
+            ]
+        },
+        "2": {
+            "scene_idx": 2,
+            "picks": [
+                420,
+                435,
+                450,
+                465,
+                480,
+                495,
+                510,
+                525
+            ],
+            "scene_caption": "A fire burns at the center of a room, serving as the scene\u2019s main focus.",
+            "change_points": [
+                415,
+                531
+            ]
+        },
+        "3": {
+            "scene_idx": 3,
+            "picks": [
+                540,
+                555,
+                570,
+                585,
+                600,
+                615,
+                630,
+                645
+            ],
+            "scene_caption": "In a dim room, a man stands by a lit fireplace, watching the fire burn.",
+            "change_points": [
+                532,
+                653
+            ]
+        },
+        "4": {
+            "scene_idx": 4,
+            "picks": [
+                660,
+                675,
+                690,
+                705,
+                720,
+                735,
+                750,
+                765
+            ],
+            "scene_caption": "A cozy living room scene with a crackling fire in the fireplace, a glowing candle, and a lit Christmas tree, creating a warm holiday atmosphere.",
+            "change_points": [
+                654,
+                778
+            ]
+        },
+        "5": {
+            "scene_idx": 5,
+            "picks": [
+                780,
+                795,
+                810,
+                825,
+                840,
+                855,
+                870,
+                885
+            ],
+            "scene_caption": "A warmly lit interior features a burning fire and an unconventional, handcrafted Christmas tree made from nontraditional materials, while a woman in a white dress stands near the glow.",
+            "change_points": [
+                779,
+                899
+            ]
+        },
+        "6": {
+            "scene_idx": 6,
+            "picks": [
+                900,
+                915,
+                930,
+                945,
+                960,
+                975,
+                990,
+                1005,
+                1020,
+                1035,
+                1050,
+                1065,
+                1080,
+                1095,
+                1110
+            ],
+            "scene_caption": "Inside a room, a small fire built from wooden sticks burns in the center. A woman in a white dress is present\u2014seen near a mirror and later standing by the fire\u2014while a pair of shoes burn in the flames.",
+            "change_points": [
+                900,
+                1114
+            ]
+        },
+        "7": {
+            "scene_idx": 7,
+            "picks": [
+                1125,
+                1140,
+                1155,
+                1170,
+                1185
+            ],
+            "scene_caption": "An indoor scene centers on a fire burning in the middle of a room.",
+            "change_points": [
+                1115,
+                1194
+            ]
+        },
+        "8": {
+            "scene_idx": 8,
+            "picks": [
+                1200,
+                1215,
+                1230,
+                1245,
+                1260,
+                1275,
+                1290,
+                1305,
+                1320,
+                1335
+            ],
+            "scene_caption": "A fashion show scene: a woman in a white dress walks and poses on a runway or platform, with a fire burning in the middle of the room serving as a dramatic backdrop.",
+            "change_points": [
+                1195,
+                1336
+            ]
+        },
+        "9": {
+            "scene_idx": 9,
+            "picks": [
+                1350,
+                1365,
+                1380,
+                1395
+            ],
+            "scene_caption": "A fire burns steadily in a room\u2019s fireplace, warming and lighting the interior.",
+            "change_points": [
+                1337,
+                1404
+            ]
+        },
+        "10": {
+            "scene_idx": 10,
+            "picks": [
+                1410,
+                1425,
+                1440,
+                1455,
+                1470,
+                1485,
+                1500,
+                1515,
+                1530,
+                1545,
+                1560,
+                1575,
+                1590,
+                1605
+            ],
+            "scene_caption": "A steady fire burns in a fireplace, with its flickering glow reflecting off the floor.",
+            "change_points": [
+                1405,
+                1611
+            ]
+        }
+    },
+    "Saving_dolphines": {
+        "0": {
+            "scene_idx": 0,
+            "picks": [
+                0,
+                15,
+                30,
+                45,
+                60,
+                75,
+                90,
+                105,
+                120,
+                135,
+                150,
+                165,
+                180,
+                195,
+                210,
+                225,
+                240,
+                255,
+                270,
+                285,
+                300
+            ],
+            "scene_caption": "A calm beach overlooks blue ocean waters, with distant mountains on the horizon and a small boat offshore.",
+            "change_points": [
+                0,
+                309
+            ]
+        },
+        "1": {
+            "scene_idx": 1,
+            "picks": [
+                315,
+                330,
+                345,
+                360,
+                375,
+                390,
+                405,
+                420,
+                435,
+                450,
+                465,
+                480,
+                495,
+                510,
+                525,
+                540,
+                555,
+                570,
+                585,
+                600,
+                615,
+                630,
+                645,
+                660,
+                675,
+                690,
+                705,
+                720,
+                735,
+                750,
+                765,
+                780,
+                795,
+                810,
+                825,
+                840,
+                855,
+                870,
+                885,
+                900,
+                915
+            ],
+            "scene_caption": "A sunny coastal scene shows a sandy beach facing a blue ocean with distant mountains along the shoreline. Gentle waves break onto the sand, and at times a lone swimmer and a surfer are visible out in the water.",
+            "change_points": [
+                310,
+                923
+            ]
+        },
+        "2": {
+            "scene_idx": 2,
+            "picks": [
+                930,
+                945,
+                960,
+                975,
+                990,
+                1005,
+                1020,
+                1035,
+                1050,
+                1065,
+                1080,
+                1095,
+                1110
+            ],
+            "scene_caption": "A sunny beach scene with gentle waves rolling onto the shore, swimmers in the water, and a small boat floating offshore.",
+            "change_points": [
+                924,
+                1114
+            ]
+        },
+        "3": {
+            "scene_idx": 3,
+            "picks": [
+                1125,
+                1140,
+                1155,
+                1170,
+                1185,
+                1200,
+                1215,
+                1230,
+                1245,
+                1260,
+                1275,
+                1290,
+                1305,
+                1320,
+                1335,
+                1350,
+                1365,
+                1380,
+                1395,
+                1410,
+                1425
+            ],
+            "scene_caption": "A coastal beach with waves rolling in, where people swim and surf near the shore. A small boat rests on the sand, and offshore a pod of dolphins swims past as a few onlookers watch from the beach.",
+            "change_points": [
+                1115,
+                1431
+            ]
+        },
+        "4": {
+            "scene_idx": 4,
+            "picks": [
+                1440,
+                1455,
+                1470,
+                1485,
+                1500,
+                1515,
+                1530,
+                1545,
+                1560,
+                1575,
+                1590,
+                1605,
+                1620,
+                1635,
+                1650,
+                1665
+            ],
+            "scene_caption": "On a coastal beach, a pod of dolphins swims and plays just offshore as waves crash onto the sand, while a surfer wades into the water with a board.",
+            "change_points": [
+                1432,
+                1674
+            ]
+        },
+        "5": {
+            "scene_idx": 5,
+            "picks": [
+                1680,
+                1695,
+                1710,
+                1725,
+                1740,
+                1755,
+                1770,
+                1785,
+                1800,
+                1815
+            ],
+            "scene_caption": "A man and woman spend time together on a beach by the ocean, alternating between standing and walking along the shoreline. The scene focuses on the pair near the water, with the seaside setting consistently visible.",
+            "change_points": [
+                1675,
+                1826
+            ]
+        },
+        "6": {
+            "scene_idx": 6,
+            "picks": [
+                1830,
+                1845,
+                1860,
+                1875,
+                1890,
+                1905
+            ],
+            "scene_caption": "A group of people walks together along the ocean shoreline on a beach.",
+            "change_points": [
+                1827,
+                1920
+            ]
+        },
+        "7": {
+            "scene_idx": 7,
+            "picks": [
+                1935,
+                1950,
+                1965,
+                1980,
+                1995,
+                2010,
+                2025,
+                2040,
+                2055,
+                2070
+            ],
+            "scene_caption": "A pod of dolphins swims and plays together in the ocean near the beach, surfacing and splashing close to shore.",
+            "change_points": [
+                1921,
+                2081
+            ]
+        },
+        "8": {
+            "scene_idx": 8,
+            "picks": [
+                2085,
+                2100,
+                2115,
+                2130,
+                2145,
+                2160,
+                2175,
+                2190
+            ],
+            "scene_caption": "At a beach, several dolphins swim and play close to shore while a man stands in the water near one; nearby, a surfer wades in with a board and a dog splashes in the shallows.",
+            "change_points": [
+                2082,
+                2201
+            ]
+        },
+        "9": {
+            "scene_idx": 9,
+            "picks": [
+                2205,
+                2220,
+                2235,
+                2250,
+                2265
+            ],
+            "scene_caption": "A small group of people, including a man, stands and walks along a beach by the ocean, casually gathered near the shoreline.",
+            "change_points": [
+                2202,
+                2279
+            ]
+        },
+        "10": {
+            "scene_idx": 10,
+            "picks": [
+                2280,
+                2295,
+                2310,
+                2325,
+                2340,
+                2355,
+                2370,
+                2385,
+                2400,
+                2415,
+                2430
+            ],
+            "scene_caption": "A group of people are gathered at the beach, with some standing on the sand while others play and wade in the shallow water along the shoreline. The scene shows casual, social beach activity.",
+            "change_points": [
+                2280,
+                2433
+            ]
+        },
+        "11": {
+            "scene_idx": 11,
+            "picks": [
+                2445,
+                2460,
+                2475,
+                2490,
+                2505,
+                2520,
+                2535
+            ],
+            "scene_caption": "A group of people enjoy a seaside scene, walking along the beach and playing in the ocean surf.",
+            "change_points": [
+                2434,
+                2543
+            ]
+        },
+        "12": {
+            "scene_idx": 12,
+            "picks": [
+                2550,
+                2565,
+                2580,
+                2595,
+                2610,
+                2625
+            ],
+            "scene_caption": "Dolphins play and splash in the shallow surf near the beach.",
+            "change_points": [
+                2544,
+                2631
+            ]
+        },
+        "13": {
+            "scene_idx": 13,
+            "picks": [
+                2640,
+                2655,
+                2670,
+                2685,
+                2700,
+                2715,
+                2730,
+                2745,
+                2760,
+                2775
+            ],
+            "scene_caption": "Two dolphins swim and play near the shoreline, surfacing in the ocean by a beach.",
+            "change_points": [
+                2632,
+                2776
+            ]
+        },
+        "14": {
+            "scene_idx": 14,
+            "picks": [
+                2790,
+                2805,
+                2820,
+                2835,
+                2850
+            ],
+            "scene_caption": "",
+            "change_points": [
+                2777,
+                2851
+            ]
+        },
+        "15": {
+            "scene_idx": 15,
+            "picks": [
+                2865,
+                2880,
+                2895,
+                2910,
+                2925
+            ],
+            "scene_caption": "",
+            "change_points": [
+                2852,
+                2932
+            ]
+        },
+        "16": {
+            "scene_idx": 16,
+            "picks": [
+                2940,
+                2955,
+                2970,
+                2985,
+                3000,
+                3015,
+                3030,
+                3045,
+                3060,
+                3075,
+                3090
+            ],
+            "scene_caption": "A group of people are gathered on a beach, casually playing and hanging out together, with some standing and watching.",
+            "change_points": [
+                2933,
+                3098
+            ]
+        },
+        "17": {
+            "scene_idx": 17,
+            "picks": [
+                3105,
+                3120,
+                3135,
+                3150,
+                3165,
+                3180,
+                3195,
+                3210
+            ],
+            "scene_caption": "A group of people are at the beach, wading and playing together in the shallow surf along the shoreline.",
+            "change_points": [
+                3099,
+                3212
+            ]
+        },
+        "18": {
+            "scene_idx": 18,
+            "picks": [
+                3225,
+                3240,
+                3255,
+                3270,
+                3285,
+                3300,
+                3315,
+                3330
+            ],
+            "scene_caption": "",
+            "change_points": [
+                3213,
+                3337
+            ]
+        },
+        "19": {
+            "scene_idx": 19,
+            "picks": [
+                3345,
+                3360,
+                3375,
+                3390,
+                3405,
+                3420,
+                3435,
+                3450
+            ],
+            "scene_caption": "On a beach, a group of people gathers at the shoreline, standing and playing as they interact with dolphins.",
+            "change_points": [
+                3338,
+                3458
+            ]
+        },
+        "20": {
+            "scene_idx": 20,
+            "picks": [
+                3465,
+                3480,
+                3495,
+                3510,
+                3525,
+                3540,
+                3555,
+                3570
+            ],
+            "scene_caption": "A group of people are gathered at the beach, with some standing on the shore while others play in the water.",
+            "change_points": [
+                3459,
+                3576
+            ]
+        },
+        "21": {
+            "scene_idx": 21,
+            "picks": [
+                3585,
+                3600,
+                3615,
+                3630,
+                3645,
+                3660,
+                3675,
+                3690,
+                3705
+            ],
+            "scene_caption": "A group of people are gathered at the shoreline, wading and playing together in the shallow water on a beach.",
+            "change_points": [
+                3577,
+                3707
+            ]
+        },
+        "22": {
+            "scene_idx": 22,
+            "picks": [
+                3720,
+                3735,
+                3750,
+                3765,
+                3780
+            ],
+            "scene_caption": "A group of people are gathered on a beach by the water, standing and walking along the shoreline.",
+            "change_points": [
+                3708,
+                3785
+            ]
+        },
+        "23": {
+            "scene_idx": 23,
+            "picks": [
+                3795,
+                3810,
+                3825,
+                3840,
+                3855,
+                3870,
+                3885,
+                3900,
+                3915,
+                3930
+            ],
+            "scene_caption": "A group of people enjoy time together on a beach by the ocean, playing and walking along the shoreline.",
+            "change_points": [
+                3786,
+                3934
+            ]
+        },
+        "24": {
+            "scene_idx": 24,
+            "picks": [
+                3945,
+                3960,
+                3975,
+                3990,
+                4005
+            ],
+            "scene_caption": "A group of people enjoy the beach, playing in the surf and walking along the shore, while a dolphin swims nearby.",
+            "change_points": [
+                3935,
+                4020
+            ]
+        },
+        "25": {
+            "scene_idx": 25,
+            "picks": [
+                4035,
+                4050,
+                4065,
+                4080,
+                4095,
+                4110
+            ],
+            "scene_caption": "A group of people at the shoreline wade in the shallow water, playing and interacting with a dolphin.",
+            "change_points": [
+                4021,
+                4121
+            ]
+        },
+        "26": {
+            "scene_idx": 26,
+            "picks": [
+                4125,
+                4140,
+                4155,
+                4170,
+                4185,
+                4200,
+                4215,
+                4230,
+                4245,
+                4260
+            ],
+            "scene_caption": "A group of people move together along an ocean shoreline, with some wading and playing in the surf.",
+            "change_points": [
+                4122,
+                4273
+            ]
+        },
+        "27": {
+            "scene_idx": 27,
+            "picks": [
+                4275,
+                4290,
+                4305,
+                4320
+            ],
+            "scene_caption": "",
+            "change_points": [
+                4274,
+                4332
+            ]
+        },
+        "28": {
+            "scene_idx": 28,
+            "picks": [
+                4335,
+                4350,
+                4365,
+                4380,
+                4395
+            ],
+            "scene_caption": "A surfer floats in the water on their board, waiting for a wave.",
+            "change_points": [
+                4333,
+                4409
+            ]
+        },
+        "29": {
+            "scene_idx": 29,
+            "picks": [
+                4410,
+                4425,
+                4440,
+                4455
+            ],
+            "scene_caption": "People enjoying the surf at a beach, splashing in the water with a surfboard.",
+            "change_points": [
+                4410,
+                4458
+            ]
+        },
+        "30": {
+            "scene_idx": 30,
+            "picks": [
+                4470,
+                4485,
+                4500,
+                4515,
+                4530,
+                4545
+            ],
+            "scene_caption": "A group of people are in the ocean, some on surfboards, playing and enjoying the water together.",
+            "change_points": [
+                4459,
+                4550
+            ]
+        },
+        "31": {
+            "scene_idx": 31,
+            "picks": [
+                4560,
+                4575,
+                4590,
+                4605,
+                4620,
+                4635,
+                4650,
+                4665,
+                4680
+            ],
+            "scene_caption": "A group of people enjoy playing together on a beach, splashing in the shallow surf along the shoreline.",
+            "change_points": [
+                4551,
+                4695
+            ]
+        },
+        "32": {
+            "scene_idx": 32,
+            "picks": [
+                4710,
+                4725,
+                4740,
+                4755,
+                4770,
+                4785,
+                4800,
+                4815,
+                4830,
+                4845,
+                4860,
+                4875,
+                4890,
+                4905,
+                4920,
+                4935
+            ],
+            "scene_caption": "A group of people spend time on a seaside beach, strolling along the shoreline and casually playing together near the water.",
+            "change_points": [
+                4696,
+                4949
+            ]
+        },
+        "33": {
+            "scene_idx": 33,
+            "picks": [
+                4950,
+                4965,
+                4980,
+                4995,
+                5010,
+                5025,
+                5040,
+                5055
+            ],
+            "scene_caption": "A group of beachgoers gathers at the shoreline, playing and splashing in the shallow water and occasionally walking along the sand.",
+            "change_points": [
+                4950,
+                5061
+            ]
+        },
+        "34": {
+            "scene_idx": 34,
+            "picks": [
+                5070,
+                5085,
+                5100,
+                5115,
+                5130,
+                5145,
+                5160,
+                5175,
+                5190,
+                5205,
+                5220,
+                5235,
+                5250
+            ],
+            "scene_caption": "On a seaside shoreline, a group of people spend time together\u2014walking along the beach and playing in the shallow water by the ocean.",
+            "change_points": [
+                5062,
+                5264
+            ]
+        },
+        "35": {
+            "scene_idx": 35,
+            "picks": [
+                5265,
+                5280,
+                5295,
+                5310,
+                5325,
+                5340
+            ],
+            "scene_caption": "A group of people wade and splash together in the shallow surf at a beach.",
+            "change_points": [
+                5265,
+                5355
+            ]
+        },
+        "36": {
+            "scene_idx": 36,
+            "picks": [
+                5370,
+                5385,
+                5400,
+                5415
+            ],
+            "scene_caption": "A small group strolls together along a sandy beach, walking by the shoreline.",
+            "change_points": [
+                5356,
+                5430
+            ]
+        },
+        "37": {
+            "scene_idx": 37,
+            "picks": [
+                5445,
+                5460,
+                5475,
+                5490,
+                5505,
+                5520,
+                5535,
+                5550,
+                5565,
+                5580,
+                5595,
+                5610,
+                5625,
+                5640
+            ],
+            "scene_caption": "Several people walk together along the ocean shoreline on a beach.",
+            "change_points": [
+                5431,
+                5648
+            ]
+        },
+        "38": {
+            "scene_idx": 38,
+            "picks": [
+                5655,
+                5670,
+                5685,
+                5700,
+                5715,
+                5730,
+                5745,
+                5760
+            ],
+            "scene_caption": "A group of people walks together along the shoreline of a beach by the ocean.",
+            "change_points": [
+                5649,
+                5773
+            ]
+        },
+        "39": {
+            "scene_idx": 39,
+            "picks": [
+                5775,
+                5790,
+                5805,
+                5820,
+                5835,
+                5850,
+                5865
+            ],
+            "scene_caption": "A group of people walk together along a beach by the ocean.",
+            "change_points": [
+                5774,
+                5866
+            ]
+        },
+        "40": {
+            "scene_idx": 40,
+            "picks": [
+                5880,
+                5895,
+                5910,
+                5925,
+                5940,
+                5955,
+                5970,
+                5985,
+                6000,
+                6015,
+                6030,
+                6045,
+                6060,
+                6075,
+                6090
+            ],
+            "scene_caption": "A group of beachgoers gather at the shoreline, wading and playing in the surf while others walk or stand along the beach.",
+            "change_points": [
+                5867,
+                6103
+            ]
+        },
+        "41": {
+            "scene_idx": 41,
+            "picks": [
+                6105,
+                6120,
+                6135,
+                6150,
+                6165,
+                6180,
+                6195,
+                6210,
+                6225,
+                6240
+            ],
+            "scene_caption": "",
+            "change_points": [
+                6104,
+                6244
+            ]
+        },
+        "42": {
+            "scene_idx": 42,
+            "picks": [
+                6255,
+                6270,
+                6285,
+                6300,
+                6315
+            ],
+            "scene_caption": "",
+            "change_points": [
+                6245,
+                6330
+            ]
+        },
+        "43": {
+            "scene_idx": 43,
+            "picks": [
+                6345,
+                6360,
+                6375,
+                6390,
+                6405,
+                6420,
+                6435,
+                6450,
+                6465,
+                6480,
+                6495,
+                6510
+            ],
+            "scene_caption": "A group of people walk together along the shoreline of a beach beside the ocean.",
+            "change_points": [
+                6331,
+                6521
+            ]
+        },
+        "44": {
+            "scene_idx": 44,
+            "picks": [
+                6525,
+                6540,
+                6555,
+                6570,
+                6585,
+                6600,
+                6615,
+                6630,
+                6645,
+                6660,
+                6675
+            ],
+            "scene_caption": "A person strolls along a beach beside the ocean while waves break on the shore, with expansive views of the sea throughout the scene.",
+            "change_points": [
+                6522,
+                6682
+            ]
+        }
+    },
+    "St_Maarten_Landing": {
+        "0": {
+            "scene_idx": 0,
+            "picks": [
+                0,
+                15
+            ],
+            "scene_caption": "People standing together on a sandy beach, with an umbrella visible among them.",
+            "change_points": [
+                0,
+                30
+            ]
+        },
+        "1": {
+            "scene_idx": 1,
+            "picks": [
+                45,
+                60,
+                75,
+                90,
+                105,
+                120,
+                135,
+                150,
+                165,
+                180,
+                195,
+                210,
+                225,
+                240,
+                255,
+                270,
+                285,
+                300,
+                315,
+                330,
+                345,
+                360,
+                375,
+                390,
+                405,
+                420,
+                435,
+                450,
+                465,
+                480,
+                495,
+                510,
+                525,
+                540,
+                555,
+                570,
+                585,
+                600,
+                615,
+                630
+            ],
+            "scene_caption": "On a sunny day at the coast, a man spends time along the shoreline\u2014on the beach, on rocks, and at a cliff\u2014mostly gazing out at the ocean. He occasionally flies a kite and raises his arms, and an airplane passes overhead above the water.",
+            "change_points": [
+                31,
+                639
+            ]
+        },
+        "2": {
+            "scene_idx": 2,
+            "picks": [
+                645,
+                660,
+                675,
+                690,
+                705,
+                720,
+                735,
+                750,
+                765
+            ],
+            "scene_caption": "A single airplane cruises high above the ocean under a clear blue sky.",
+            "change_points": [
+                640,
+                778
+            ]
+        },
+        "3": {
+            "scene_idx": 3,
+            "picks": [
+                780,
+                795,
+                810,
+                825,
+                840,
+                855,
+                870
+            ],
+            "scene_caption": "On a clear day at the beach, an airplane flies over the ocean while people stand at the shoreline\u2014one raising their arms\u2014as they look out toward the water and sky.",
+            "change_points": [
+                779,
+                876
+            ]
+        },
+        "4": {
+            "scene_idx": 4,
+            "picks": [
+                885,
+                900,
+                915,
+                930,
+                945,
+                960
+            ],
+            "scene_caption": "A small group of people stand together on a sandy beach near the ocean, gathered by the shoreline.",
+            "change_points": [
+                877,
+                970
+            ]
+        },
+        "5": {
+            "scene_idx": 5,
+            "picks": [
+                975,
+                990,
+                1005,
+                1020,
+                1035,
+                1050,
+                1065,
+                1080,
+                1095,
+                1110,
+                1125,
+                1140,
+                1155,
+                1170,
+                1185
+            ],
+            "scene_caption": "On a sandy beach by the ocean, several beachgoers stand watching as an airplane passes low along the shoreline, with one person raising their arms toward it.",
+            "change_points": [
+                971,
+                1198
+            ]
+        },
+        "6": {
+            "scene_idx": 6,
+            "picks": [
+                1200,
+                1215,
+                1230,
+                1245,
+                1260
+            ],
+            "scene_caption": "An airplane flies low over the beach by the ocean as beachgoers stand and watch.",
+            "change_points": [
+                1199,
+                1264
+            ]
+        },
+        "7": {
+            "scene_idx": 7,
+            "picks": [
+                1275,
+                1290,
+                1305,
+                1320,
+                1335
+            ],
+            "scene_caption": "A commercial airplane departs from a coastal airport, lifting off the runway and climbing over a nearby beach by the ocean.",
+            "change_points": [
+                1265,
+                1342
+            ]
+        },
+        "8": {
+            "scene_idx": 8,
+            "picks": [
+                1350,
+                1365,
+                1380,
+                1395,
+                1410,
+                1425,
+                1440
+            ],
+            "scene_caption": "A parked airplane sits on an airport runway, viewed from behind a perimeter fence.",
+            "change_points": [
+                1343,
+                1449
+            ]
+        },
+        "9": {
+            "scene_idx": 9,
+            "picks": [
+                1455,
+                1470,
+                1485,
+                1500,
+                1515,
+                1530,
+                1545,
+                1560,
+                1575,
+                1590,
+                1605
+            ],
+            "scene_caption": "Viewed from outside an airport, a fence runs along a grassy airfield where a plane sits on the ground, with mountains in the distance.",
+            "change_points": [
+                1450,
+                1611
+            ]
+        },
+        "10": {
+            "scene_idx": 10,
+            "picks": [
+                1620,
+                1635,
+                1650
+            ],
+            "scene_caption": "A fence lines the edge of open grounds\u2014likely an airfield or field\u2014with mountains in the distance.",
+            "change_points": [
+                1612,
+                1665
+            ]
+        },
+        "11": {
+            "scene_idx": 11,
+            "picks": [
+                1680,
+                1695,
+                1710,
+                1725,
+                1740
+            ],
+            "scene_caption": "A chain-link fence borders the airport tarmac where a parked airplane is visible behind it.",
+            "change_points": [
+                1666,
+                1750
+            ]
+        }
+    },
+    "Statue_of_Liberty": {
+        "0": {
+            "scene_idx": 0,
+            "picks": [
+                0,
+                15,
+                30,
+                45,
+                60,
+                75,
+                90,
+                105,
+                120,
+                135,
+                150,
+                165
+            ],
+            "scene_caption": "A group of people are gathered along a riverfront, some standing on a bridge or pier while others walk along the adjacent waterside sidewalk. The scene focuses on people by the water in a shared public space.",
+            "change_points": [
+                0,
+                174
+            ]
+        },
+        "1": {
+            "scene_idx": 1,
+            "picks": [
+                180,
+                195,
+                210,
+                225,
+                240,
+                255,
+                270
+            ],
+            "scene_caption": "A group of people stroll together along a riverside walkway, occasionally pausing by the water and on the adjacent grassy area.",
+            "change_points": [
+                175,
+                278
+            ]
+        },
+        "2": {
+            "scene_idx": 2,
+            "picks": [
+                285,
+                300,
+                315,
+                330,
+                345,
+                360,
+                375,
+                390,
+                405
+            ],
+            "scene_caption": "In a grassy park by a stone building, a woman in a dress\u2014sometimes accompanied by a man\u2014stands near a bench.",
+            "change_points": [
+                279,
+                416
+            ]
+        },
+        "3": {
+            "scene_idx": 3,
+            "picks": [
+                420,
+                435,
+                450,
+                465,
+                480,
+                495,
+                510,
+                525,
+                540
+            ],
+            "scene_caption": "Outdoors in a green field, a person stands in front of a large stone structure or monument.",
+            "change_points": [
+                417,
+                553
+            ]
+        },
+        "4": {
+            "scene_idx": 4,
+            "picks": [
+                555,
+                570,
+                585,
+                600,
+                615,
+                630,
+                645,
+                660
+            ],
+            "scene_caption": "A man stands in front of a stone monument\u2014revealed to be the Statue of Liberty\u2014with the statue rising behind him in New York.",
+            "change_points": [
+                554,
+                664
+            ]
+        },
+        "5": {
+            "scene_idx": 5,
+            "picks": [
+                675,
+                690,
+                705,
+                720,
+                735,
+                750,
+                765,
+                780
+            ],
+            "scene_caption": "A shot focuses on the Statue of Liberty in New York City.",
+            "change_points": [
+                665,
+                783
+            ]
+        },
+        "6": {
+            "scene_idx": 6,
+            "picks": [
+                795,
+                810,
+                825,
+                840,
+                855,
+                870,
+                885,
+                900,
+                915,
+                930,
+                945,
+                960
+            ],
+            "scene_caption": "A steady view of the Statue of Liberty standing prominently in New York City.",
+            "change_points": [
+                784,
+                969
+            ]
+        },
+        "7": {
+            "scene_idx": 7,
+            "picks": [
+                975,
+                990,
+                1005,
+                1020,
+                1035,
+                1050,
+                1065,
+                1080,
+                1095,
+                1110,
+                1125,
+                1140
+            ],
+            "scene_caption": "A continuous, establishing shot centered on the Statue of Liberty in New York City. The scene consistently highlights the iconic monument with no notable actions or additional events.",
+            "change_points": [
+                970,
+                1152
+            ]
+        },
+        "8": {
+            "scene_idx": 8,
+            "picks": [
+                1155,
+                1170,
+                1185,
+                1200,
+                1215,
+                1230,
+                1245,
+                1260,
+                1275,
+                1290
+            ],
+            "scene_caption": "A sustained shot centers on the Statue of Liberty, highlighting the iconic monument with no other notable activity or events.",
+            "change_points": [
+                1153,
+                1299
+            ]
+        },
+        "9": {
+            "scene_idx": 9,
+            "picks": [
+                1305,
+                1320,
+                1335,
+                1350,
+                1365,
+                1380,
+                1395,
+                1410,
+                1425,
+                1440,
+                1455,
+                1470,
+                1485,
+                1500,
+                1515
+            ],
+            "scene_caption": "A continuous shot centered on the Statue of Liberty, with the iconic monument prominently in view and no notable changes or actions occurring.",
+            "change_points": [
+                1300,
+                1520
+            ]
+        },
+        "10": {
+            "scene_idx": 10,
+            "picks": [
+                1530,
+                1545,
+                1560,
+                1575,
+                1590,
+                1605,
+                1620,
+                1635,
+                1650,
+                1665,
+                1680
+            ],
+            "scene_caption": "A clear view of the Statue of Liberty.",
+            "change_points": [
+                1521,
+                1689
+            ]
+        },
+        "11": {
+            "scene_idx": 11,
+            "picks": [
+                1695,
+                1710,
+                1725,
+                1740,
+                1755,
+                1770,
+                1785,
+                1800,
+                1815,
+                1830,
+                1845,
+                1860,
+                1875,
+                1890,
+                1905,
+                1920
+            ],
+            "scene_caption": "A steady, uninterrupted view centered on the Statue of Liberty.",
+            "change_points": [
+                1690,
+                1921
+            ]
+        },
+        "12": {
+            "scene_idx": 12,
+            "picks": [
+                1935,
+                1950,
+                1965,
+                1980,
+                1995,
+                2010,
+                2025,
+                2040,
+                2055
+            ],
+            "scene_caption": "A view of the Statue of Liberty in New York City.",
+            "change_points": [
+                1922,
+                2062
+            ]
+        },
+        "13": {
+            "scene_idx": 13,
+            "picks": [
+                2070,
+                2085,
+                2100,
+                2115,
+                2130,
+                2145
+            ],
+            "scene_caption": "A view of the Statue of Liberty in New York City.",
+            "change_points": [
+                2063,
+                2157
+            ]
+        },
+        "14": {
+            "scene_idx": 14,
+            "picks": [
+                2160,
+                2175,
+                2190,
+                2205,
+                2220,
+                2235,
+                2250,
+                2265
+            ],
+            "scene_caption": "A wide view of the Statue of Liberty in New York under a clear blue sky.",
+            "change_points": [
+                2158,
+                2272
+            ]
+        },
+        "15": {
+            "scene_idx": 15,
+            "picks": [
+                2280,
+                2295,
+                2310,
+                2325,
+                2340,
+                2355,
+                2370
+            ],
+            "scene_caption": "A man stands near a fence at an outdoor sports field, with a crowd gathered behind him watching.",
+            "change_points": [
+                2273,
+                2378
+            ]
+        },
+        "16": {
+            "scene_idx": 16,
+            "picks": [
+                2385,
+                2400,
+                2415,
+                2430,
+                2445,
+                2460,
+                2475,
+                2490,
+                2505,
+                2520
+            ],
+            "scene_caption": "A group of people stand together on a building rooftop, gathered on the elevated structure.",
+            "change_points": [
+                2379,
+                2528
+            ]
+        },
+        "17": {
+            "scene_idx": 17,
+            "picks": [
+                2535,
+                2550,
+                2565,
+                2580,
+                2595,
+                2610,
+                2625,
+                2640,
+                2655,
+                2670,
+                2685,
+                2700,
+                2715,
+                2730,
+                2745,
+                2760,
+                2775,
+                2790,
+                2805,
+                2820,
+                2835,
+                2850
+            ],
+            "scene_caption": "A group of people are gathered along a waterfront, with many standing on a bridge and nearby pier, looking out over the river. The scene shows people congregating by the water\u2019s edge rather than engaging in any specific activity.",
+            "change_points": [
+                2529,
+                2854
+            ]
+        },
+        "18": {
+            "scene_idx": 18,
+            "picks": [
+                2865,
+                2880,
+                2895,
+                2910,
+                2925,
+                2940,
+                2955,
+                2970,
+                2985,
+                3000
+            ],
+            "scene_caption": "A group of people are gathered at a waterfront park, standing along the riverbank and on a pier. A man and woman stand together near the water, with a grassy field adjacent to the shoreline.",
+            "change_points": [
+                2855,
+                3008
+            ]
+        },
+        "19": {
+            "scene_idx": 19,
+            "picks": [
+                3015,
+                3030,
+                3045,
+                3060,
+                3075,
+                3090
+            ],
+            "scene_caption": "A group of people gather on a grassy field in a public area, standing together near a building and a monument.",
+            "change_points": [
+                3009,
+                3097
+            ]
+        },
+        "20": {
+            "scene_idx": 20,
+            "picks": [
+                3105,
+                3120,
+                3135,
+                3150,
+                3165,
+                3180,
+                3195
+            ],
+            "scene_caption": "Visitors gather and pose in front of a large stone monument or historic building, with a man and woman prominently standing near the structure.",
+            "change_points": [
+                3098,
+                3199
+            ]
+        },
+        "21": {
+            "scene_idx": 21,
+            "picks": [
+                3210,
+                3225,
+                3240,
+                3255,
+                3270
+            ],
+            "scene_caption": "A tourist scene at the Statue of Liberty, with people standing in front of the monument while historic buildings and a clock tower appear in the background.",
+            "change_points": [
+                3200,
+                3278
+            ]
+        },
+        "22": {
+            "scene_idx": 22,
+            "picks": [
+                3285,
+                3300,
+                3315,
+                3330,
+                3345
+            ],
+            "scene_caption": "A clear view of the Statue of Liberty in New York City, focusing on the iconic landmark.",
+            "change_points": [
+                3279,
+                3357
+            ]
+        },
+        "23": {
+            "scene_idx": 23,
+            "picks": [
+                3360,
+                3375,
+                3390,
+                3405,
+                3420,
+                3435,
+                3450,
+                3465,
+                3480,
+                3495,
+                3510,
+                3525
+            ],
+            "scene_caption": "A static view of the Statue of Liberty in New York City.",
+            "change_points": [
+                3358,
+                3531
+            ]
+        },
+        "24": {
+            "scene_idx": 24,
+            "picks": [
+                3540,
+                3555,
+                3570,
+                3585,
+                3600,
+                3615,
+                3630,
+                3645,
+                3660,
+                3675,
+                3690,
+                3705,
+                3720
+            ],
+            "scene_caption": "A steady, continuous shot centers on the Statue of Liberty, presenting the iconic monument prominently with no notable actions or events occurring around it.",
+            "change_points": [
+                3532,
+                3721
+            ]
+        },
+        "25": {
+            "scene_idx": 25,
+            "picks": [
+                3735,
+                3750,
+                3765,
+                3780,
+                3795,
+                3810,
+                3825,
+                3840,
+                3855
+            ],
+            "scene_caption": "A continuous, focused shot of the Statue of Liberty, highlighting the iconic monument.",
+            "change_points": [
+                3722,
+                3862
+            ]
+        }
     }
 }

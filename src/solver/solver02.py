@@ -4,6 +4,8 @@ from typing import Optional
 import os
 from tqdm import tqdm
 from src.models.scene_caption import SceneSummaryCaptionSummarizer, SceneSummaryCaptionSummarizerConfig
+from src.models.video_caption import VideoSummaryCaptionSummarizer, VideoSummaryCaptionSummarizerConfig
+from src.models.scene_score_query import SceneScoreQuery, SceneScoreQueryConfig
 from src.config.config import BasicConfig
 from src.models.frame_caption import LlavaFrameCaptioner, LlavaFrameCaptionerConfig, BlipFrameCaptionerConfig, BlipFrameCaptioner
 from src.dataset.video_summarization_dataset import VideoSummarizationDataset, VideoSummarizationDatasetConfig
@@ -33,6 +35,14 @@ class Solver02Config(BasicConfig):
     frame_caption_save_dir: str
     # 场景字幕提取的文件的保存文件夹
     scene_caption_save_dir: str
+    # 视频字幕总结模块的配置文件路径
+    video_caption_config_file: str
+    # 视频字幕提取的文件的保存文件夹
+    video_caption_save_dir: str
+    # 场景分数查询模块的配置文件路径
+    scene_score_config_file: str
+    # 场景分数提取的文件的保存文件夹
+    scene_score_save_dir: str
 
 
 class Solver02:
@@ -56,6 +66,16 @@ class Solver02:
         # 加载场景字幕总结模型配置文件
         self.scene_caption_config = SceneSummaryCaptionSummarizerConfig.load_config_from_file(
             self.solver_config.scene_caption_config_file
+        )
+
+        # 加载视频字幕总结模型配置文件
+        self.video_caption_config = VideoSummaryCaptionSummarizerConfig.load_config_from_file(
+            self.solver_config.video_caption_config_file
+        )
+
+        # 加载场景分数查询模型配置文件
+        self.scene_score_config = SceneScoreQueryConfig.load_config_from_file(
+            self.solver_config.scene_score_config_file
         )
 
         # 加载数据集配置文件
@@ -84,6 +104,21 @@ class Solver02:
         self.scene_caption_config.scene_caption_save_dir = os.path.join(
             self.solver_config.scene_caption_save_dir,
             self.scene_caption_config.model_name
+        )
+
+    def _load_video_caption_model(self):
+        self.video_caption_model = VideoSummaryCaptionSummarizer(
+            self.video_caption_config)
+        self.video_caption_config.video_caption_save_dir = os.path.join(
+            self.solver_config.video_caption_save_dir,
+            self.video_caption_config.model_name
+        )
+
+    def _load_scene_score_model(self):
+        self.scene_score_model = SceneScoreQuery(self.scene_score_config)
+        self.solver_config.scene_score_save_dir = os.path.join(
+            self.solver_config.scene_score_save_dir,
+            self.scene_score_config.model_name
         )
 
     def _frame_caption(self):
@@ -118,6 +153,7 @@ class Solver02:
         summe_frame_caption_json = {}
         tvsum_frame_caption_json = {}
 
+        # 加载文件，避免覆盖写
         if os.path.exists(summe_frame_caption_json_file):
             with open(summe_frame_caption_json_file, 'r') as f:
                 summe_frame_caption_json = json.load(f)
@@ -259,9 +295,15 @@ class Solver02:
 
         # 构建查找表以快速获取 Change Points
         # dataset.data_list values 包含 'video_name' 和 'change_points'
+        def _norm(name: str) -> str:
+            name = name.strip()
+            name = os.path.splitext(name)[0]
+            name = name.replace(" ", "_")
+            return name
+
         cps_map = {
-            'summe': {v['video_name']: v['change_points'] for v in self.summe_dataset.data_list.values()},
-            'tvsum': {v['video_name']: v['change_points'] for v in self.tvsum_dataset.data_list.values()}
+            'summe': {_norm(v['video_name']): v['change_points'] for v in self.summe_dataset.data_list.values()},
+            'tvsum': {_norm(v['video_name']): v['change_points'] for v in self.tvsum_dataset.data_list.values()}
         }
 
         # 遍历两个数据集准备任务
@@ -277,10 +319,14 @@ class Solver02:
         for ds_name, frame_data, scene_json in datasets_to_process:
             for video_name, data in frame_data.items():
                 if video_name in scene_json:
+                    logging.info(
+                        f"Scene captions for video {video_name} already exist, skipping...")
                     continue
 
-                cps = cps_map[ds_name].get(video_name)
+                cps = cps_map[ds_name].get(_norm(video_name))
                 if cps is None:
+                    logging.info(
+                        f"Change points for video {video_name} not found, skipping...")
                     continue
 
                 # Ensure cps is list-like
@@ -379,8 +425,247 @@ class Solver02:
 
         print("Batch scene captioning completed.")
 
+    def _video_caption(self):
+        video_caption_model_name = self.video_caption_config.model_name
+        save_dir = os.path.join(
+            self.solver_config.video_caption_save_dir,
+            video_caption_model_name
+        )
+
+        summe_video_caption_json_file = os.path.join(
+            save_dir, "summe_video_captions.json")
+        tvsum_video_caption_json_file = os.path.join(
+            save_dir, "tvsum_video_captions.json")
+
+        if os.path.exists(summe_video_caption_json_file) and os.path.exists(tvsum_video_caption_json_file):
+            logging.info("Video captions json already exist, skipping.")
+            return
+
+        self._load_video_caption_model()
+        os.makedirs(save_dir, exist_ok=True)
+
+        # Inputs are scene_captions, need to construct paths
+        scene_caption_model_name = self.scene_caption_config.model_name
+        scene_save_dir = os.path.join(
+            self.solver_config.scene_caption_save_dir,
+            scene_caption_model_name
+        )
+        summe_scene_caption_json_file = os.path.join(
+            scene_save_dir, "summe_scene_captions.json")
+        tvsum_scene_caption_json_file = os.path.join(
+            scene_save_dir, "tvsum_scene_captions.json")
+
+        if not os.path.exists(summe_scene_caption_json_file) or not os.path.exists(tvsum_scene_caption_json_file):
+            logging.info(
+                "Scene captions json not found. Please run _scene_caption first.")
+            return
+
+        with open(summe_scene_caption_json_file, 'r') as f:
+            summe_scene = json.load(f)
+        with open(tvsum_scene_caption_json_file, 'r') as f:
+            tvsum_scene = json.load(f)
+
+        # Prepare batch tasks
+        batch_input_captions = []
+        batch_meta = []  # (dataset_name, video_name)
+
+        datasets = [('summe', summe_scene), ('tvsum', tvsum_scene)]
+
+        for ds_name, scene_data in datasets:
+            for video_name, scenes in scene_data.items():
+                # scenes is dict of "0": {...}, "1": {...}
+                # Sort scenes by index
+                try:
+                    sorted_indices = sorted(
+                        scenes.keys(), key=lambda x: int(x))
+                except Exception:
+                    # In case keys are not integers or mixed, fallback to sorted strings
+                    sorted_indices = sorted(scenes.keys())
+
+                captions_list = []
+                for idx in sorted_indices:
+                    val = scenes[idx]
+                    if 'scene_caption' in val and val['scene_caption']:
+                        captions_list.append(val['scene_caption'])
+
+                if captions_list:
+                    batch_input_captions.append(captions_list)
+                    batch_meta.append((ds_name, video_name))
+
+        if not batch_input_captions:
+            logging.info("No videos to caption.")
+            return
+
+        logging.info(f"Summarizing {len(batch_input_captions)} videos...")
+
+        async def run_batch():
+            return await self.video_caption_model.batch_caption_videos_async(batch_input_captions)
+
+        results = asyncio.run(run_batch())
+
+        results_map = {'summe': {}, 'tvsum': {}}
+        for i, res in enumerate(results):
+            ds_name, video_name = batch_meta[i]
+            results_map[ds_name][video_name] = res
+
+        # Write outputs
+        with open(summe_video_caption_json_file, 'w') as f:
+            json.dump(results_map['summe'], f, indent=4)
+        with open(tvsum_video_caption_json_file, 'w') as f:
+            json.dump(results_map['tvsum'], f, indent=4)
+
+        print("Video captioning completed.")
+
+    def _scene_score_query(self):
+        scene_score_model_name = self.scene_score_config.model_name
+        save_dir = os.path.join(
+            self.solver_config.scene_score_save_dir,
+            scene_score_model_name
+        )
+
+        # Define output files
+        summe_scene_score_json_file = os.path.join(
+            save_dir, "summe_scene_scores.json")
+        tvsum_scene_score_json_file = os.path.join(
+            save_dir, "tvsum_scene_scores.json")
+
+        self._load_scene_score_model()
+        os.makedirs(save_dir, exist_ok=True)
+
+        # Load inputs: Scene Captions AND Video Captions
+        scene_caption_model_name = self.scene_caption_config.model_name
+        scene_save_dir = os.path.join(
+            self.solver_config.scene_caption_save_dir,
+            scene_caption_model_name
+        )
+        summe_scene_caption_json_file = os.path.join(
+            scene_save_dir, "summe_scene_captions.json")
+        tvsum_scene_caption_json_file = os.path.join(
+            scene_save_dir, "tvsum_scene_captions.json")
+
+        video_caption_model_name = self.video_caption_config.model_name
+        video_save_dir = os.path.join(
+            self.solver_config.video_caption_save_dir,
+            video_caption_model_name
+        )
+        summe_video_caption_json_file = os.path.join(
+            video_save_dir, "summe_video_captions.json")
+        tvsum_video_caption_json_file = os.path.join(
+            video_save_dir, "tvsum_video_captions.json")
+
+        if not all(os.path.exists(f) for f in [summe_scene_caption_json_file, tvsum_scene_caption_json_file, summe_video_caption_json_file, tvsum_video_caption_json_file]):
+            logging.info(
+                "Input caption files not found. Please run previous steps first.")
+            return
+
+        with open(summe_scene_caption_json_file, 'r') as f:
+            summe_scene_data = json.load(f)
+        with open(tvsum_scene_caption_json_file, 'r') as f:
+            tvsum_scene_data = json.load(f)
+        with open(summe_video_caption_json_file, 'r') as f:
+            summe_video_data = json.load(f)
+        with open(tvsum_video_caption_json_file, 'r') as f:
+            tvsum_video_data = json.load(f)
+
+        # Resume logic
+        if os.path.exists(summe_scene_score_json_file):
+            summe_scores = json.load(open(summe_scene_score_json_file))
+        else:
+            summe_scores = {}
+
+        if os.path.exists(tvsum_scene_score_json_file):
+            tvsum_scores = json.load(open(tvsum_scene_score_json_file))
+        else:
+            tvsum_scores = {}
+
+        datasets = [
+            ('summe', summe_scene_data, summe_video_data,
+             summe_scores, summe_scene_score_json_file),
+            ('tvsum', tvsum_scene_data, tvsum_video_data,
+             tvsum_scores, tvsum_scene_score_json_file)
+        ]
+
+        batch_scene_caps = []
+        batch_video_caps = []
+        batch_meta = []  # (ds_name, video_name, scene_idx)
+
+        logging.info("Preparing batch tasks for scene scoring...")
+
+        for ds_name, scene_data, video_data, score_data, _ in datasets:
+            for video_name, scenes in scene_data.items():
+                video_cap = video_data.get(video_name)
+
+                if not video_cap:
+                    continue
+
+                if isinstance(video_cap, dict):
+                    # If format assumes 'video_caption' key
+                    video_cap = video_cap.get('video_caption', '')
+
+                if not isinstance(video_cap, str) or not video_cap:
+                    continue
+
+                # Iterate scenes
+                sorted_scenes = sorted(scenes.items(), key=lambda item: int(
+                    item[0]) if item[0].isdigit() else item[0])
+
+                for scene_key, scene_info in sorted_scenes:
+                    # Check if already scored
+                    if video_name in score_data and scene_key in score_data[video_name]:
+                        continue
+
+                    scene_cap = scene_info.get('scene_caption', '')
+                    if not scene_cap:
+                        continue
+
+                    batch_scene_caps.append(scene_cap)
+                    batch_video_caps.append(video_cap)
+                    batch_meta.append((ds_name, video_name, scene_key))
+
+        if not batch_scene_caps:
+            logging.info("No scenes to score.")
+            return
+
+        logging.info(f"Scoring {len(batch_scene_caps)} scenes...")
+
+        async def run_batch():
+            return await self.scene_score_model.batch_query_scores_async(batch_scene_caps, batch_video_caps)
+
+        results = asyncio.run(run_batch())
+
+        # Collect results
+        # temp_results[ds_name][video_name][scene_key] = res
+        temp_results = {'summe': {}, 'tvsum': {}}
+
+        for idx, res in enumerate(results):
+            ds_name, video_name, scene_key = batch_meta[idx]
+            if video_name not in temp_results[ds_name]:
+                temp_results[ds_name][video_name] = {}
+            temp_results[ds_name][video_name][scene_key] = res
+
+        # Update and Save
+        for ds_name, _, _, score_data, json_file in datasets:
+            updated_videos = temp_results[ds_name]
+            if not updated_videos:
+                continue
+
+            for video_name, scores_map in updated_videos.items():
+                if video_name not in score_data:
+                    score_data[video_name] = {}
+                for scene_key, score in scores_map.items():
+                    score_data[video_name][scene_key] = score
+
+            with open(json_file, 'w') as f:
+                json.dump(score_data, f, indent=4)
+
+        print("Scene scoring completed.")
+
     def run(self):
         # 进行帧字幕提取
         self._frame_caption()
         # 进行场景字幕总结
         self._scene_caption()
+        # 进行视频字幕总结
+        self._video_caption()
+        # 进行场景分数查询
+        self._scene_score_query()

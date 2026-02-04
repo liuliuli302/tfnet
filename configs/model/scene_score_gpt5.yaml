@@ -1,0 +1,23 @@
+model_name: "gpt5"
+scene_score_prompt: |
+  User:
+  I will provide you with a video caption and a scene caption.
+  The video caption describes the overall content and theme of the video.
+  The scene caption describes the specific events and details of a scene within that video.
+
+  Video Caption:
+  {video_caption}
+
+  Scene Caption:
+  {scene_caption}
+
+  Task:
+  Evaluate the importance of this scene to the overall video summary on a scale from 1 to 100.
+  1 means the scene is irrelevant or redundant.
+  100 means the scene is crucial and must be included in the summary.
+
+  Output Format:
+  Return ONLY a single integer number (1, 2, 3, 4, ..., or 100). Do not include any explanation or additional text.
+llm_client_config_file_path: "configs/llm_client/gpt5.yaml"
+max_retries: 3
+retry_delay: 2
