@@ -6,6 +6,8 @@ from tqdm import tqdm
 from src.models.scene_caption import SceneSummaryCaptionSummarizer, SceneSummaryCaptionSummarizerConfig
 from src.models.video_caption import VideoSummaryCaptionSummarizer, VideoSummaryCaptionSummarizerConfig
 from src.models.scene_score_query import SceneScoreQuery, SceneScoreQueryConfig
+from src.models.frame_scene_contribution import FramSceneContribution, FrameSceneContributionConfig
+from src.models.frame_video_contribution import FramVideoContribution, FrameVideoContributionConfig
 from src.config.config import BasicConfig
 from src.models.frame_caption import LlavaFrameCaptioner, LlavaFrameCaptionerConfig, BlipFrameCaptionerConfig, BlipFrameCaptioner
 from src.dataset.video_summarization_dataset import VideoSummarizationDataset, VideoSummarizationDatasetConfig
@@ -39,6 +41,10 @@ class Solver02Config(BasicConfig):
     video_caption_config_file: str
     # 视频字幕提取的文件的保存文件夹
     video_caption_save_dir: str
+    # 帧-场景贡献配置文件路径
+    frame_scene_contribution_config_file: str
+    # 帧-视频贡献配置文件路径
+    frame_video_contribution_config_file: str
     # 场景分数查询模块的配置文件路径
     scene_score_config_file: str
     # 场景分数提取的文件的保存文件夹
@@ -71,6 +77,16 @@ class Solver02:
         # 加载视频字幕总结模型配置文件
         self.video_caption_config = VideoSummaryCaptionSummarizerConfig.load_config_from_file(
             self.solver_config.video_caption_config_file
+        )
+
+        # 帧-场景贡献配置
+        self.frame_scene_contribution_config = FrameSceneContributionConfig.load_config_from_file(
+            self.solver_config.frame_scene_contribution_config_file
+        )
+
+        # 帧-视频贡献配置
+        self.frame_video_contribution_config = FrameVideoContributionConfig.load_config_from_file(
+            self.solver_config.frame_video_contribution_config_file
         )
 
         # 加载场景分数查询模型配置文件
@@ -660,6 +676,36 @@ class Solver02:
 
         print("Scene scoring completed.")
 
+    def _frame_scene_contribution(self):
+        cfg = self.frame_scene_contribution_config
+        expected_outputs = [
+            os.path.join(cfg.output_dir, f"{ds}_frame_scene_contribution.json")
+            for ds in cfg.datasets
+        ]
+
+        if all(os.path.exists(p) for p in expected_outputs):
+            logging.info(
+                "Frame-scene contribution outputs already exist, skipping.")
+            return
+
+        contrib = FramSceneContribution(cfg)
+        contrib.run()
+
+    def _frame_video_contribution(self):
+        cfg = self.frame_video_contribution_config
+        expected_outputs = [
+            os.path.join(cfg.output_dir, f"{ds}_frame_video_contribution.json")
+            for ds in cfg.datasets
+        ]
+
+        if all(os.path.exists(p) for p in expected_outputs):
+            logging.info(
+                "Frame-video contribution outputs already exist, skipping.")
+            return
+
+        contrib = FramVideoContribution(cfg)
+        contrib.run()
+
     def run(self):
         # 进行帧字幕提取
         self._frame_caption()
@@ -667,5 +713,9 @@ class Solver02:
         self._scene_caption()
         # 进行视频字幕总结
         self._video_caption()
+        # 计算帧-场景贡献
+        self._frame_scene_contribution()
+        # 计算帧-视频贡献
+        self._frame_video_contribution()
         # 进行场景分数查询
         self._scene_score_query()

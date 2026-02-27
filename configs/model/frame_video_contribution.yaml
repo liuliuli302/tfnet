@@ -1,0 +1,9 @@
+datasets:
+  - summe
+  - tvsum
+frame_caption_dir: "/root/tfnet/data/captions/frame_caption/llava"
+video_caption_dir: "/root/tfnet/data/captions/video_caption/gpt5"
+nfs_dir: "/root/tfnet/data/nfs/nfs_lvnet"
+output_dir: "/root/tfnet/data/scores/frame_video_contribution"
+resize_short_side: 256
+text_eps: 1.0e-8

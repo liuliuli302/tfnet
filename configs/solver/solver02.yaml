@@ -2,18 +2,18 @@
 summe_dataset_config_file: "/root/tfnet/configs/dataset/summe.yaml"
 tvsum_dataset_config_file: "/root/tfnet/configs/dataset/tvsum.yaml"
 
-# 帧和场景字幕提取配置文件
+# 帧、场景和视频字幕提取配置文件
 frame_caption_config_file: "/root/tfnet/configs/model/frame_caption_blip.yaml"
 scene_caption_config_file: "/root/tfnet/configs/model/scene_caption_gpt5.yaml"
+video_caption_config_file: "/root/tfnet/configs/model/video_caption_gpt5.yaml"
+frame_scene_contribution_config_file: "/root/tfnet/configs/model/frame_scene_contribution.yaml"
+frame_video_contribution_config_file: "/root/tfnet/configs/model/frame_video_contribution.yaml"
 
 # 字幕 JSON 文件保存的文件夹
 frame_caption_save_dir: "/root/tfnet/data/captions/frame_caption/"
 scene_caption_save_dir: "/root/tfnet/data/captions/scene_caption/"
 video_caption_save_dir: "/root/tfnet/data/captions/video_caption/"
 
-# 视频字幕总结配置文件
-video_caption_config_file: "/root/tfnet/configs/model/video_caption_gpt5.yaml"
-
 # 场景分数查询配置文件
 scene_score_config_file: "/root/tfnet/configs/model/scene_score_gpt5.yaml"
-scene_score_save_dir: "/root/tfnet/data/captions/scene_score/"
+scene_score_save_dir: "/root/tfnet/data/scores/scene_score/"
