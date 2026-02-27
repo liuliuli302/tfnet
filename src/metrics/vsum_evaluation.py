@@ -626,7 +626,8 @@ def _compose_pick_scores(
             formulas["s_mul_fs_add_fv"][pick] = scene_frame_term + f_video
             formulas["s_mul_fs"][pick] = scene_frame_term
             formulas["s_only"][pick] = scene_score
-            formulas["s_add_fs"][pick] = alpha_scene_frame * scene_score + f_scene
+            formulas["s_add_fs"][pick] = alpha_scene_frame * \
+                scene_score + f_scene
 
     return formulas, stats
 
