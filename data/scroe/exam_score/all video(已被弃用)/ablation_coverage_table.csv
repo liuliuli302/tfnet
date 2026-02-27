@@ -1,0 +1,9 @@
+dataset,formula,total_videos,evaluated_ok,missing_inputs,error_or_other,coverage
+summe,s_mul_fs_add_fv,25,17,8,0,0.68
+summe,s_mul_fs,25,17,8,0,0.68
+summe,s_only,25,17,8,0,0.68
+summe,s_add_fs,25,17,8,0,0.68
+tvsum,s_mul_fs_add_fv,50,50,0,0,1.0
+tvsum,s_mul_fs,50,50,0,0,1.0
+tvsum,s_only,50,50,0,0,1.0
+tvsum,s_add_fs,50,50,0,0,1.0

@@ -1,0 +1,138 @@
+{
+  "best_by_f1": {
+    "summe": {
+      "dataset": "summe",
+      "formula": "s_mul_fs",
+      "mean_f1": 0.3771613845053841,
+      "mean_rho": 0.013839539950288159,
+      "mean_tau": 0.010757308078699923,
+      "num_videos": 17
+    },
+    "tvsum": {
+      "dataset": "tvsum",
+      "formula": "s_add_fs",
+      "mean_f1": 0.567887931406498,
+      "mean_rho": 0.007622610193427279,
+      "mean_tau": 0.006240952102510862,
+      "num_videos": 50
+    }
+  },
+  "best_by_corr": {
+    "summe": {
+      "dataset": "summe",
+      "formula": "s_mul_fs_add_fv",
+      "mean_f1": 0.3625569948378731,
+      "mean_rho": 0.01657186807524789,
+      "mean_tau": 0.013646797758762411,
+      "num_videos": 17,
+      "corr_score": 0.030218665834010304
+    },
+    "tvsum": {
+      "dataset": "tvsum",
+      "formula": "s_only",
+      "mean_f1": 0.5359758594930172,
+      "mean_rho": 0.011495098547873171,
+      "mean_tau": 0.010227506358956369,
+      "num_videos": 50,
+      "corr_score": 0.02172260490682954
+    }
+  },
+  "best_by_multi": {
+    "summe": {
+      "dataset": "summe",
+      "formula": "s_mul_fs_add_fv",
+      "mean_f1": 0.3625569948378731,
+      "mean_rho": 0.01657186807524789,
+      "mean_tau": 0.013646797758762411,
+      "num_videos": 17,
+      "norm_rho": 1.0,
+      "norm_tau": 1.0,
+      "multi_score": 0.6812784974189365
+    },
+    "tvsum": {
+      "dataset": "tvsum",
+      "formula": "s_only",
+      "mean_f1": 0.5359758594930172,
+      "mean_rho": 0.011495098547873171,
+      "mean_tau": 0.010227506358956369,
+      "num_videos": 50,
+      "norm_rho": 1.0,
+      "norm_tau": 1.0,
+      "multi_score": 0.7679879297465086
+    }
+  },
+  "coverage": [
+    {
+      "dataset": "summe",
+      "formula": "s_mul_fs_add_fv",
+      "total": 25,
+      "ok": 17,
+      "missing": 8,
+      "other": 0,
+      "coverage": 0.68
+    },
+    {
+      "dataset": "summe",
+      "formula": "s_mul_fs",
+      "total": 25,
+      "ok": 17,
+      "missing": 8,
+      "other": 0,
+      "coverage": 0.68
+    },
+    {
+      "dataset": "summe",
+      "formula": "s_only",
+      "total": 25,
+      "ok": 17,
+      "missing": 8,
+      "other": 0,
+      "coverage": 0.68
+    },
+    {
+      "dataset": "summe",
+      "formula": "s_add_fs",
+      "total": 25,
+      "ok": 17,
+      "missing": 8,
+      "other": 0,
+      "coverage": 0.68
+    },
+    {
+      "dataset": "tvsum",
+      "formula": "s_mul_fs_add_fv",
+      "total": 50,
+      "ok": 50,
+      "missing": 0,
+      "other": 0,
+      "coverage": 1.0
+    },
+    {
+      "dataset": "tvsum",
+      "formula": "s_mul_fs",
+      "total": 50,
+      "ok": 50,
+      "missing": 0,
+      "other": 0,
+      "coverage": 1.0
+    },
+    {
+      "dataset": "tvsum",
+      "formula": "s_only",
+      "total": 50,
+      "ok": 50,
+      "missing": 0,
+      "other": 0,
+      "coverage": 1.0
+    },
+    {
+      "dataset": "tvsum",
+      "formula": "s_add_fs",
+      "total": 50,
+      "ok": 50,
+      "missing": 0,
+      "other": 0,
+      "coverage": 1.0
+    }
+  ]
+}
