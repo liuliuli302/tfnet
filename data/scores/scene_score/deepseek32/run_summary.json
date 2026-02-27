@@ -1,0 +1,27 @@
+{
+  "model_name": "deepseek32",
+  "llm_client_config": "/root/tfnet/configs/llm_client/deepseek3_2.yaml",
+  "scene_caption_dir": "/root/tfnet/data/captions/scene_caption/gpt5",
+  "video_caption_dir": "/root/tfnet/data/captions/video_caption/gpt5",
+  "output_dir": "/root/tfnet/data/scores/scene_score/deepseek32",
+  "datasets": [
+    "summe",
+    "tvsum"
+  ],
+  "batch_size": 64,
+  "elapsed_seconds": 297.08106541633606,
+  "stats": [
+    {
+      "dataset": "summe",
+      "pending": 744,
+      "saved_file": "/root/tfnet/data/scores/scene_score/deepseek32/summe_scene_scores.json",
+      "skipped_no_video_caption": 0
+    },
+    {
+      "dataset": "tvsum",
+      "pending": 2373,
+      "saved_file": "/root/tfnet/data/scores/scene_score/deepseek32/tvsum_scene_scores.json",
+      "skipped_no_video_caption": 0
+    }
+  ]
+}

@@ -1,0 +1,601 @@
+{
+  "meta": {
+    "generated_at": "2026-02-27T16:03:04",
+    "description": "Alpha sweep for scene-score*frame-scene term: a in [0.0, 1.0], step=0.1",
+    "alpha_range": {
+      "start": 0.0,
+      "end": 1.0,
+      "step": 0.1,
+      "values": [
+        0.0,
+        0.1,
+        0.2,
+        0.3,
+        0.4,
+        0.5,
+        0.6,
+        0.7,
+        0.8,
+        0.9,
+        1.0
+      ]
+    }
+  },
+  "rows": [
+    {
+      "alpha": 0.0,
+      "no_smooth": {
+        "path": "/root/tfnet/data/scroe/exam_score/deepseek/exam_evaluation_results_no_smooth_a_0.0.json",
+        "best_by_dataset": {
+          "summe": {
+            "dataset": "summe",
+            "formula": "s_mul_fs_add_fv",
+            "mean_f1": 0.43906037211418153,
+            "mean_rho": 0.010611192278920899,
+            "mean_tau": 0.008685049351053376,
+            "num_videos": 5.0,
+            "num_splits": 5
+          },
+          "tvsum": {
+            "dataset": "tvsum",
+            "formula": "s_mul_fs_add_fv",
+            "mean_f1": 0.590830524981022,
+            "mean_rho": -0.013712100633224653,
+            "mean_tau": -0.011731484033930078,
+            "num_videos": 10.0,
+            "num_splits": 5
+          }
+        }
+      },
+      "smooth": {
+        "path": "/root/tfnet/data/scroe/exam_score/deepseek/exam_evaluation_results_smooth_a_0.0.json",
+        "best_by_dataset": {
+          "summe": {
+            "dataset": "summe",
+            "formula": "s_mul_fs_add_fv",
+            "mean_f1": 0.46434723734855654,
+            "mean_rho": 0.00988782713849525,
+            "mean_tau": 0.00806409558202544,
+            "num_videos": 5.0,
+            "num_splits": 5
+          },
+          "tvsum": {
+            "dataset": "tvsum",
+            "formula": "s_mul_fs_add_fv",
+            "mean_f1": 0.5986512742638588,
+            "mean_rho": -0.007855654060156122,
+            "mean_tau": -0.006482788966720889,
+            "num_videos": 10.0,
+            "num_splits": 5
+          }
+        }
+      }
+    },
+    {
+      "alpha": 0.1,
+      "no_smooth": {
+        "path": "/root/tfnet/data/scroe/exam_score/deepseek/exam_evaluation_results_no_smooth_a_0.1.json",
+        "best_by_dataset": {
+          "summe": {
+            "dataset": "summe",
+            "formula": "s_mul_fs_add_fv",
+            "mean_f1": 0.44745503067970277,
+            "mean_rho": 0.007269920868974713,
+            "mean_tau": 0.006048662271830941,
+            "num_videos": 5.0,
+            "num_splits": 5
+          },
+          "tvsum": {
+            "dataset": "tvsum",
+            "formula": "s_mul_fs_add_fv",
+            "mean_f1": 0.5971028010249138,
+            "mean_rho": -0.011861945811435837,
+            "mean_tau": -0.009675943379998801,
+            "num_videos": 10.0,
+            "num_splits": 5
+          }
+        }
+      },
+      "smooth": {
+        "path": "/root/tfnet/data/scroe/exam_score/deepseek/exam_evaluation_results_smooth_a_0.1.json",
+        "best_by_dataset": {
+          "summe": {
+            "dataset": "summe",
+            "formula": "s_mul_fs_add_fv",
+            "mean_f1": 0.4749681293964386,
+            "mean_rho": 0.007445116024006995,
+            "mean_tau": 0.006063045357544497,
+            "num_videos": 5.0,
+            "num_splits": 5
+          },
+          "tvsum": {
+            "dataset": "tvsum",
+            "formula": "s_mul_fs_add_fv",
+            "mean_f1": 0.6027260462641717,
+            "mean_rho": -0.008135947738108737,
+            "mean_tau": -0.0066519047142728676,
+            "num_videos": 10.0,
+            "num_splits": 5
+          }
+        }
+      }
+    },
+    {
+      "alpha": 0.2,
+      "no_smooth": {
+        "path": "/root/tfnet/data/scroe/exam_score/deepseek/exam_evaluation_results_no_smooth_a_0.2.json",
+        "best_by_dataset": {
+          "summe": {
+            "dataset": "summe",
+            "formula": "s_mul_fs_add_fv",
+            "mean_f1": 0.46367701292037966,
+            "mean_rho": 0.005944406310717247,
+            "mean_tau": 0.004956435315274284,
+            "num_videos": 5.0,
+            "num_splits": 5
+          },
+          "tvsum": {
+            "dataset": "tvsum",
+            "formula": "s_mul_fs_add_fv",
+            "mean_f1": 0.603480333507061,
+            "mean_rho": -0.012261005927178674,
+            "mean_tau": -0.010007250782374936,
+            "num_videos": 10.0,
+            "num_splits": 5
+          }
+        }
+      },
+      "smooth": {
+        "path": "/root/tfnet/data/scroe/exam_score/deepseek/exam_evaluation_results_smooth_a_0.2.json",
+        "best_by_dataset": {
+          "summe": {
+            "dataset": "summe",
+            "formula": "s_mul_fs_add_fv",
+            "mean_f1": 0.4810472965240479,
+            "mean_rho": 0.008569349281414904,
+            "mean_tau": 0.006984658800637406,
+            "num_videos": 5.0,
+            "num_splits": 5
+          },
+          "tvsum": {
+            "dataset": "tvsum",
+            "formula": "s_mul_fs_add_fv",
+            "mean_f1": 0.6065492103695869,
+            "mean_rho": -0.007919769501256918,
+            "mean_tau": -0.006474233257423556,
+            "num_videos": 10.0,
+            "num_splits": 5
+          }
+        }
+      }
+    },
+    {
+      "alpha": 0.3,
+      "no_smooth": {
+        "path": "/root/tfnet/data/scroe/exam_score/deepseek/exam_evaluation_results_no_smooth_a_0.3.json",
+        "best_by_dataset": {
+          "summe": {
+            "dataset": "summe",
+            "formula": "s_mul_fs_add_fv",
+            "mean_f1": 0.46189178228378297,
+            "mean_rho": 0.005867360333715784,
+            "mean_tau": 0.004893400665272869,
+            "num_videos": 5.0,
+            "num_splits": 5
+          },
+          "tvsum": {
+            "dataset": "tvsum",
+            "formula": "s_add_fs",
+            "mean_f1": 0.6058226798176765,
+            "mean_rho": 0.007162014583063205,
+            "mean_tau": 0.005916813659907127,
+            "num_videos": 10.0,
+            "num_splits": 5
+          }
+        }
+      },
+      "smooth": {
+        "path": "/root/tfnet/data/scroe/exam_score/deepseek/exam_evaluation_results_smooth_a_0.3.json",
+        "best_by_dataset": {
+          "summe": {
+            "dataset": "summe",
+            "formula": "s_mul_fs_add_fv",
+            "mean_f1": 0.46725171208381655,
+            "mean_rho": 0.010742628327684,
+            "mean_tau": 0.008766248379149844,
+            "num_videos": 5.0,
+            "num_splits": 5
+          },
+          "tvsum": {
+            "dataset": "tvsum",
+            "formula": "s_mul_fs_add_fv",
+            "mean_f1": 0.6104710177779198,
+            "mean_rho": -0.008845156537286222,
+            "mean_tau": -0.0072290339966630795,
+            "num_videos": 10.0,
+            "num_splits": 5
+          }
+        }
+      }
+    },
+    {
+      "alpha": 0.4,
+      "no_smooth": {
+        "path": "/root/tfnet/data/scroe/exam_score/deepseek/exam_evaluation_results_no_smooth_a_0.4.json",
+        "best_by_dataset": {
+          "summe": {
+            "dataset": "summe",
+            "formula": "s_mul_fs_add_fv",
+            "mean_f1": 0.44885873794555664,
+            "mean_rho": 0.004498239484914143,
+            "mean_tau": 0.003762193940785914,
+            "num_videos": 5.0,
+            "num_splits": 5
+          },
+          "tvsum": {
+            "dataset": "tvsum",
+            "formula": "s_add_fs",
+            "mean_f1": 0.605698019683361,
+            "mean_rho": 0.0024894840306989097,
+            "mean_tau": 0.0020669759331506587,
+            "num_videos": 10.0,
+            "num_splits": 5
+          }
+        }
+      },
+      "smooth": {
+        "path": "/root/tfnet/data/scroe/exam_score/deepseek/exam_evaluation_results_smooth_a_0.4.json",
+        "best_by_dataset": {
+          "summe": {
+            "dataset": "summe",
+            "formula": "s_mul_fs_add_fv",
+            "mean_f1": 0.4683678150177002,
+            "mean_rho": 0.009859701202139016,
+            "mean_tau": 0.008043878512209593,
+            "num_videos": 5.0,
+            "num_splits": 5
+          },
+          "tvsum": {
+            "dataset": "tvsum",
+            "formula": "s_add_fs",
+            "mean_f1": 0.6065203706622124,
+            "mean_rho": 0.00582227339082453,
+            "mean_tau": 0.004765112847106675,
+            "num_videos": 10.0,
+            "num_splits": 5
+          }
+        }
+      }
+    },
+    {
+      "alpha": 0.5,
+      "no_smooth": {
+        "path": "/root/tfnet/data/scroe/exam_score/deepseek/exam_evaluation_results_no_smooth_a_0.5.json",
+        "best_by_dataset": {
+          "summe": {
+            "dataset": "summe",
+            "formula": "s_mul_fs_add_fv",
+            "mean_f1": 0.4470262885093689,
+            "mean_rho": 0.003862051059754695,
+            "mean_tau": 0.003233369219855252,
+            "num_videos": 5.0,
+            "num_splits": 5
+          },
+          "tvsum": {
+            "dataset": "tvsum",
+            "formula": "s_add_fs",
+            "mean_f1": 0.6059625796675683,
+            "mean_rho": -8.264209717097106e-05,
+            "mean_tau": -2.1529008758872093e-05,
+            "num_videos": 10.0,
+            "num_splits": 5
+          }
+        }
+      },
+      "smooth": {
+        "path": "/root/tfnet/data/scroe/exam_score/deepseek/exam_evaluation_results_smooth_a_0.5.json",
+        "best_by_dataset": {
+          "summe": {
+            "dataset": "summe",
+            "formula": "s_mul_fs_add_fv",
+            "mean_f1": 0.4552772521972656,
+            "mean_rho": 0.01000324650121576,
+            "mean_tau": 0.008162819432173177,
+            "num_videos": 5.0,
+            "num_splits": 5
+          },
+          "tvsum": {
+            "dataset": "tvsum",
+            "formula": "s_add_fs",
+            "mean_f1": 0.6054481665492057,
+            "mean_rho": 0.0008752835771689814,
+            "mean_tau": 0.0007205768081797792,
+            "num_videos": 10.0,
+            "num_splits": 5
+          }
+        }
+      }
+    },
+    {
+      "alpha": 0.6,
+      "no_smooth": {
+        "path": "/root/tfnet/data/scroe/exam_score/deepseek/exam_evaluation_results_no_smooth_a_0.6.json",
+        "best_by_dataset": {
+          "summe": {
+            "dataset": "summe",
+            "formula": "s_mul_fs_add_fv",
+            "mean_f1": 0.4470262885093689,
+            "mean_rho": 0.002932746751083103,
+            "mean_tau": 0.0024705329382970014,
+            "num_videos": 5.0,
+            "num_splits": 5
+          },
+          "tvsum": {
+            "dataset": "tvsum",
+            "formula": "s_add_fs",
+            "mean_f1": 0.6081396011710167,
+            "mean_rho": -0.0026387984583965012,
+            "mean_tau": -0.0021333260542232583,
+            "num_videos": 10.0,
+            "num_splits": 5
+          }
+        }
+      },
+      "smooth": {
+        "path": "/root/tfnet/data/scroe/exam_score/deepseek/exam_evaluation_results_smooth_a_0.6.json",
+        "best_by_dataset": {
+          "summe": {
+            "dataset": "summe",
+            "formula": "s_add_fs",
+            "mean_f1": 0.4595519185066223,
+            "mean_rho": 0.0010301029913203392,
+            "mean_tau": 0.0008324599366811902,
+            "num_videos": 5.0,
+            "num_splits": 5
+          },
+          "tvsum": {
+            "dataset": "tvsum",
+            "formula": "s_add_fs",
+            "mean_f1": 0.6076924697756768,
+            "mean_rho": -0.0017036028857323996,
+            "mean_tau": -0.0013870819344913843,
+            "num_videos": 10.0,
+            "num_splits": 5
+          }
+        }
+      }
+    },
+    {
+      "alpha": 0.7,
+      "no_smooth": {
+        "path": "/root/tfnet/data/scroe/exam_score/deepseek/exam_evaluation_results_no_smooth_a_0.7.json",
+        "best_by_dataset": {
+          "summe": {
+            "dataset": "summe",
+            "formula": "s_add_fs",
+            "mean_f1": 0.4538544833660126,
+            "mean_rho": -0.0017413453970609263,
+            "mean_tau": -0.0014212631327264128,
+            "num_videos": 5.0,
+            "num_splits": 5
+          },
+          "tvsum": {
+            "dataset": "tvsum",
+            "formula": "s_add_fs",
+            "mean_f1": 0.6039903030991554,
+            "mean_rho": -0.004571040841213211,
+            "mean_tau": -0.003731454463816318,
+            "num_videos": 10.0,
+            "num_splits": 5
+          }
+        }
+      },
+      "smooth": {
+        "path": "/root/tfnet/data/scroe/exam_score/deepseek/exam_evaluation_results_smooth_a_0.7.json",
+        "best_by_dataset": {
+          "summe": {
+            "dataset": "summe",
+            "formula": "s_add_fs",
+            "mean_f1": 0.46370285749435425,
+            "mean_rho": 0.004130578618072579,
+            "mean_tau": 0.0033718953869179384,
+            "num_videos": 5.0,
+            "num_splits": 5
+          },
+          "tvsum": {
+            "dataset": "tvsum",
+            "formula": "s_add_fs",
+            "mean_f1": 0.6052687816023827,
+            "mean_rho": -0.003618213545759722,
+            "mean_tau": -0.0029526625054505434,
+            "num_videos": 10.0,
+            "num_splits": 5
+          }
+        }
+      }
+    },
+    {
+      "alpha": 0.8,
+      "no_smooth": {
+        "path": "/root/tfnet/data/scroe/exam_score/deepseek/exam_evaluation_results_no_smooth_a_0.8.json",
+        "best_by_dataset": {
+          "summe": {
+            "dataset": "summe",
+            "formula": "s_add_fs",
+            "mean_f1": 0.4538544833660126,
+            "mean_rho": -0.0019218384084632566,
+            "mean_tau": -0.0015585163964760777,
+            "num_videos": 5.0,
+            "num_splits": 5
+          },
+          "tvsum": {
+            "dataset": "tvsum",
+            "formula": "s_add_fs",
+            "mean_f1": 0.6017369685769081,
+            "mean_rho": -0.005995872057080785,
+            "mean_tau": -0.00490182223603994,
+            "num_videos": 10.0,
+            "num_splits": 5
+          }
+        }
+      },
+      "smooth": {
+        "path": "/root/tfnet/data/scroe/exam_score/deepseek/exam_evaluation_results_smooth_a_0.8.json",
+        "best_by_dataset": {
+          "summe": {
+            "dataset": "summe",
+            "formula": "s_add_fs",
+            "mean_f1": 0.46370285749435425,
+            "mean_rho": 0.006780040051410342,
+            "mean_tau": 0.005542086143020134,
+            "num_videos": 5.0,
+            "num_splits": 5
+          },
+          "tvsum": {
+            "dataset": "tvsum",
+            "formula": "s_add_fs",
+            "mean_f1": 0.6061196325421333,
+            "mean_rho": -0.005203369453029337,
+            "mean_tau": -0.004248568898231155,
+            "num_videos": 10.0,
+            "num_splits": 5
+          }
+        }
+      }
+    },
+    {
+      "alpha": 0.9,
+      "no_smooth": {
+        "path": "/root/tfnet/data/scroe/exam_score/deepseek/exam_evaluation_results_no_smooth_a_0.9.json",
+        "best_by_dataset": {
+          "summe": {
+            "dataset": "summe",
+            "formula": "s_add_fs",
+            "mean_f1": 0.4538544833660126,
+            "mean_rho": 0.0004087668367052773,
+            "mean_tau": 0.0003693664774848506,
+            "num_videos": 5.0,
+            "num_splits": 5
+          },
+          "tvsum": {
+            "dataset": "tvsum",
+            "formula": "s_add_fs",
+            "mean_f1": 0.6012163357138635,
+            "mean_rho": -0.007387628777084022,
+            "mean_tau": -0.0060458766478138784,
+            "num_videos": 10.0,
+            "num_splits": 5
+          }
+        }
+      },
+      "smooth": {
+        "path": "/root/tfnet/data/scroe/exam_score/deepseek/exam_evaluation_results_smooth_a_0.9.json",
+        "best_by_dataset": {
+          "summe": {
+            "dataset": "summe",
+            "formula": "s_add_fs",
+            "mean_f1": 0.46370285749435425,
+            "mean_rho": 0.009117905675010595,
+            "mean_tau": 0.007457112311279285,
+            "num_videos": 5.0,
+            "num_splits": 5
+          },
+          "tvsum": {
+            "dataset": "tvsum",
+            "formula": "s_add_fs",
+            "mean_f1": 0.6012338982224466,
+            "mean_rho": -0.006936267895941467,
+            "mean_tau": -0.005665287987444312,
+            "num_videos": 10.0,
+            "num_splits": 5
+          }
+        }
+      }
+    },
+    {
+      "alpha": 1.0,
+      "no_smooth": {
+        "path": "/root/tfnet/data/scroe/exam_score/deepseek/exam_evaluation_results_no_smooth_a_1.0.json",
+        "best_by_dataset": {
+          "summe": {
+            "dataset": "summe",
+            "formula": "s_add_fs",
+            "mean_f1": 0.4608853876590729,
+            "mean_rho": 0.0008211181265881488,
+            "mean_tau": 0.0007127879833205345,
+            "num_videos": 5.0,
+            "num_splits": 5
+          },
+          "tvsum": {
+            "dataset": "tvsum",
+            "formula": "s_add_fs",
+            "mean_f1": 0.597148249566555,
+            "mean_rho": -0.009002937487463693,
+            "mean_tau": -0.007373866157317272,
+            "num_videos": 10.0,
+            "num_splits": 5
+          }
+        }
+      },
+      "smooth": {
+        "path": "/root/tfnet/data/scroe/exam_score/deepseek/exam_evaluation_results_smooth_a_1.0.json",
+        "best_by_dataset": {
+          "summe": {
+            "dataset": "summe",
+            "formula": "s_add_fs",
+            "mean_f1": 0.46370285749435425,
+            "mean_rho": 0.011707834399620937,
+            "mean_tau": 0.009578567732550173,
+            "num_videos": 5.0,
+            "num_splits": 5
+          },
+          "tvsum": {
+            "dataset": "tvsum",
+            "formula": "s_add_fs",
+            "mean_f1": 0.6012338982224466,
+            "mean_rho": -0.00869142550166655,
+            "mean_tau": -0.007100650568868122,
+            "num_videos": 10.0,
+            "num_splits": 5
+          }
+        }
+      }
+    }
+  ],
+  "summary": {
+    "best_alpha": {
+      "no_smooth": {
+        "summe": {
+          "alpha": 0.2,
+          "formula": "s_mul_fs_add_fv",
+          "mean_f1": 0.46367701292037966,
+          "mean_rho": 0.005944406310717247,
+          "mean_tau": 0.004956435315274284
+        },
+        "tvsum": {
+          "alpha": 0.6,
+          "formula": "s_add_fs",
+          "mean_f1": 0.6081396011710167,
+          "mean_rho": -0.0026387984583965012,
+          "mean_tau": -0.0021333260542232583
+        }
+      },
+      "smooth": {
+        "summe": {
+          "alpha": 0.2,
+          "formula": "s_mul_fs_add_fv",
+          "mean_f1": 0.4810472965240479,
+          "mean_rho": 0.008569349281414904,
+          "mean_tau": 0.006984658800637406
+        },
+        "tvsum": {
+          "alpha": 0.3,
+          "formula": "s_mul_fs_add_fv",
+          "mean_f1": 0.6104710177779198,
+          "mean_rho": -0.008845156537286222,
+          "mean_tau": -0.0072290339966630795
+        }
+      }
+    }
+  }
+}

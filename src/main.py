@@ -1,4 +1,4 @@
-from src.solver.solver02 import Solver02, Solver02Config
+from src.solver.solver03 import Solver03, Solver03Config
 import warnings
 warnings.filterwarnings(
     "ignore",
@@ -6,6 +6,6 @@ warnings.filterwarnings(
 )
 
 if __name__ == "__main__":
-    solver_config = Solver02Config.load_config_from_file(
-        "configs/solver/solver02.yaml")
-    Solver02(solver_config).run()
+    solver_config = Solver03Config.load_config_from_file(
+        "configs/solver/solver03.yaml")
+    Solver03(solver_config).run()

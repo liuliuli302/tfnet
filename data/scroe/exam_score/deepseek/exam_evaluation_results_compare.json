@@ -1,0 +1,204 @@
+{
+  "meta": {
+    "generated_at": "2026-02-27T16:00:38",
+    "description": "Side-by-side summary for no_smooth vs smooth split-based evaluation"
+  },
+  "paths": {
+    "no_smooth": "/root/tfnet/data/scroe/exam_score/deepseek/exam_evaluation_results_no_smooth.json",
+    "smooth": "/root/tfnet/data/scroe/exam_score/deepseek/exam_evaluation_results_smooth.json"
+  },
+  "summary": {
+    "no_smooth": {
+      "rows": [
+        {
+          "dataset": "summe",
+          "formula": "s_mul_fs_add_fv",
+          "mean_f1": 0.44431204795837403,
+          "mean_rho": -0.00045308373641152476,
+          "mean_tau": -0.0003276618061728603,
+          "num_videos": 5.0,
+          "num_splits": 5
+        },
+        {
+          "dataset": "summe",
+          "formula": "s_mul_fs",
+          "mean_f1": 0.4152929723262787,
+          "mean_rho": 0.002373788273126345,
+          "mean_tau": 0.0019822510836183327,
+          "num_videos": 5.0,
+          "num_splits": 5
+        },
+        {
+          "dataset": "summe",
+          "formula": "s_only",
+          "mean_f1": 0.4271529674530029,
+          "mean_rho": 0.005035452379080328,
+          "mean_tau": 0.0048267877390902585,
+          "num_videos": 5.0,
+          "num_splits": 5
+        },
+        {
+          "dataset": "summe",
+          "formula": "s_add_fs",
+          "mean_f1": 0.4608853876590729,
+          "mean_rho": 0.0008211181265881488,
+          "mean_tau": 0.0007127879833205345,
+          "num_videos": 5.0,
+          "num_splits": 5
+        },
+        {
+          "dataset": "tvsum",
+          "formula": "s_mul_fs_add_fv",
+          "mean_f1": 0.5724798963665962,
+          "mean_rho": -0.018347100129903957,
+          "mean_tau": -0.015050753671417972,
+          "num_videos": 10.0,
+          "num_splits": 5
+        },
+        {
+          "dataset": "tvsum",
+          "formula": "s_mul_fs",
+          "mean_f1": 0.5048824874460698,
+          "mean_rho": -0.02088786429160968,
+          "mean_tau": -0.017185654866078665,
+          "num_videos": 10.0,
+          "num_splits": 5
+        },
+        {
+          "dataset": "tvsum",
+          "formula": "s_only",
+          "mean_f1": 0.5248381257057189,
+          "mean_rho": -0.01937952242710855,
+          "mean_tau": -0.017010082411557766,
+          "num_videos": 10.0,
+          "num_splits": 5
+        },
+        {
+          "dataset": "tvsum",
+          "formula": "s_add_fs",
+          "mean_f1": 0.597148249566555,
+          "mean_rho": -0.009002937487463693,
+          "mean_tau": -0.007373866157317272,
+          "num_videos": 10.0,
+          "num_splits": 5
+        }
+      ],
+      "best_by_dataset": {
+        "summe": {
+          "dataset": "summe",
+          "formula": "s_add_fs",
+          "mean_f1": 0.4608853876590729,
+          "mean_rho": 0.0008211181265881488,
+          "mean_tau": 0.0007127879833205345,
+          "num_videos": 5.0,
+          "num_splits": 5
+        },
+        "tvsum": {
+          "dataset": "tvsum",
+          "formula": "s_add_fs",
+          "mean_f1": 0.597148249566555,
+          "mean_rho": -0.009002937487463693,
+          "mean_tau": -0.007373866157317272,
+          "num_videos": 10.0,
+          "num_splits": 5
+        }
+      }
+    },
+    "smooth": {
+      "rows": [
+        {
+          "dataset": "summe",
+          "formula": "s_mul_fs_add_fv",
+          "mean_f1": 0.4547883689403534,
+          "mean_rho": 0.007013879306894753,
+          "mean_tau": 0.0057201500309427165,
+          "num_videos": 5.0,
+          "num_splits": 5
+        },
+        {
+          "dataset": "summe",
+          "formula": "s_mul_fs",
+          "mean_f1": 0.401569128036499,
+          "mean_rho": 0.012437269112539081,
+          "mean_tau": 0.010177126503130495,
+          "num_videos": 5.0,
+          "num_splits": 5
+        },
+        {
+          "dataset": "summe",
+          "formula": "s_only",
+          "mean_f1": 0.42240707874298095,
+          "mean_rho": 0.04201512237031139,
+          "mean_tau": 0.036558547711388445,
+          "num_videos": 5.0,
+          "num_splits": 5
+        },
+        {
+          "dataset": "summe",
+          "formula": "s_add_fs",
+          "mean_f1": 0.46370285749435425,
+          "mean_rho": 0.011707834399620937,
+          "mean_tau": 0.009578567732550173,
+          "num_videos": 5.0,
+          "num_splits": 5
+        },
+        {
+          "dataset": "tvsum",
+          "formula": "s_mul_fs_add_fv",
+          "mean_f1": 0.5792254624962807,
+          "mean_rho": -0.014546029103553066,
+          "mean_tau": -0.011889366415044718,
+          "num_videos": 10.0,
+          "num_splits": 5
+        },
+        {
+          "dataset": "tvsum",
+          "formula": "s_mul_fs",
+          "mean_f1": 0.5064739243090154,
+          "mean_rho": -0.01693271004553091,
+          "mean_tau": -0.013840895796186733,
+          "num_videos": 10.0,
+          "num_splits": 5
+        },
+        {
+          "dataset": "tvsum",
+          "formula": "s_only",
+          "mean_f1": 0.5284537756443024,
+          "mean_rho": -0.01946109433148014,
+          "mean_tau": -0.015966276509905945,
+          "num_videos": 10.0,
+          "num_splits": 5
+        },
+        {
+          "dataset": "tvsum",
+          "formula": "s_add_fs",
+          "mean_f1": 0.6012338982224466,
+          "mean_rho": -0.00869142550166655,
+          "mean_tau": -0.007100650568868122,
+          "num_videos": 10.0,
+          "num_splits": 5
+        }
+      ],
+      "best_by_dataset": {
+        "summe": {
+          "dataset": "summe",
+          "formula": "s_add_fs",
+          "mean_f1": 0.46370285749435425,
+          "mean_rho": 0.011707834399620937,
+          "mean_tau": 0.009578567732550173,
+          "num_videos": 5.0,
+          "num_splits": 5
+        },
+        "tvsum": {
+          "dataset": "tvsum",
+          "formula": "s_add_fs",
+          "mean_f1": 0.6012338982224466,
+          "mean_rho": -0.00869142550166655,
+          "mean_tau": -0.007100650568868122,
+          "num_videos": 10.0,
+          "num_splits": 5
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1009 @@
+{
+  "meta": {
+    "generated_at": "2026-02-27T16:02:44",
+    "description": "Evaluate frame-score composition experiments from data/scores with four formulas.",
+    "temporal_smoothing": {
+      "enabled": false,
+      "norm": "none",
+      "method": "scene-level cosine transition smoothing"
+    },
+    "alpha_scene_frame": 0.9,
+    "score_formulas": {
+      "s_mul_fs_add_fv": "f_j = a * (s_i/100 * f_s_j) + f_v_j",
+      "s_mul_fs": "f_j = a * (s_i/100 * f_s_j)",
+      "s_only": "f_j = s_i/100",
+      "s_add_fs": "f_j = a * (s_i/100) + f_s_j"
+    },
+    "input_paths": {
+      "scores_root": "/root/tfnet/data/scores",
+      "scene_score_source": "deepseek32",
+      "summe_h5_path": "/root/autodl-tmp/datasets/eccv16_dataset_summe_google_pool5.h5",
+      "tvsum_h5_path": "/root/autodl-tmp/datasets/eccv16_dataset_tvsum_google_pool5.h5",
+      "video_name_dict_path": "/root/tfnet/data/video_name_dict.json",
+      "summe_split_path": "/root/autodl-tmp/datasets/splits/summe_splits_5.json",
+      "tvsum_split_path": "/root/autodl-tmp/datasets/splits/tvsum_splits_5.json"
+    },
+    "notes": [
+      "scene score is normalized by dividing 100",
+      "a is an adjustable coefficient for scene-score terms in s_mul_fs_add_fv, s_mul_fs and s_add_fs",
+      "F1 reduction uses max for SumMe and avg for TVSum",
+      "Rank correlation uses Spearman rho and Kendall tau-b",
+      "Metrics are computed on each split test set, then averaged across splits",
+      "best_split in each formula is selected by (mean_f1, mean_rho, mean_tau)"
+    ]
+  },
+  "summary": {
+    "rows": [
+      {
+        "dataset": "summe",
+        "formula": "s_mul_fs_add_fv",
+        "mean_f1": 0.44431204795837403,
+        "mean_rho": 0.0006733234750889938,
+        "mean_tau": 0.0006048770697372044,
+        "num_videos": 5.0,
+        "num_splits": 5
+      },
+      {
+        "dataset": "summe",
+        "formula": "s_mul_fs",
+        "mean_f1": 0.4152929723262787,
+        "mean_rho": 0.002373788273126345,
+        "mean_tau": 0.0019822510836183327,
+        "num_videos": 5.0,
+        "num_splits": 5
+      },
+      {
+        "dataset": "summe",
+        "formula": "s_only",
+        "mean_f1": 0.4271529674530029,
+        "mean_rho": 0.005035452379080328,
+        "mean_tau": 0.0048267877390902585,
+        "num_videos": 5.0,
+        "num_splits": 5
+      },
+      {
+        "dataset": "summe",
+        "formula": "s_add_fs",
+        "mean_f1": 0.4538544833660126,
+        "mean_rho": 0.0004087668367052773,
+        "mean_tau": 0.0003693664774848506,
+        "num_videos": 5.0,
+        "num_splits": 5
+      },
+      {
+        "dataset": "tvsum",
+        "formula": "s_mul_fs_add_fv",
+        "mean_f1": 0.5770327220559119,
+        "mean_rho": -0.01813709804776334,
+        "mean_tau": -0.01487680990068987,
+        "num_videos": 10.0,
+        "num_splits": 5
+      },
+      {
+        "dataset": "tvsum",
+        "formula": "s_mul_fs",
+        "mean_f1": 0.5048824874460698,
+        "mean_rho": -0.02088786429160968,
+        "mean_tau": -0.017185654866078665,
+        "num_videos": 10.0,
+        "num_splits": 5
+      },
+      {
+        "dataset": "tvsum",
+        "formula": "s_only",
+        "mean_f1": 0.5248381257057189,
+        "mean_rho": -0.01937952242710855,
+        "mean_tau": -0.017010082411557766,
+        "num_videos": 10.0,
+        "num_splits": 5
+      },
+      {
+        "dataset": "tvsum",
+        "formula": "s_add_fs",
+        "mean_f1": 0.6012163357138635,
+        "mean_rho": -0.007387628777084022,
+        "mean_tau": -0.0060458766478138784,
+        "num_videos": 10.0,
+        "num_splits": 5
+      }
+    ],
+    "best_by_dataset": {
+      "summe": {
+        "dataset": "summe",
+        "formula": "s_add_fs",
+        "mean_f1": 0.4538544833660126,
+        "mean_rho": 0.0004087668367052773,
+        "mean_tau": 0.0003693664774848506,
+        "num_videos": 5.0,
+        "num_splits": 5
+      },
+      "tvsum": {
+        "dataset": "tvsum",
+        "formula": "s_add_fs",
+        "mean_f1": 0.6012163357138635,
+        "mean_rho": -0.007387628777084022,
+        "mean_tau": -0.0060458766478138784,
+        "num_videos": 10.0,
+        "num_splits": 5
+      }
+    }
+  },
+  "results": {
+    "summe": {
+      "s_mul_fs_add_fv": {
+        "mean_f1": 0.44431204795837403,
+        "mean_rho": 0.0006733234750889938,
+        "mean_tau": 0.0006048770697372044,
+        "num_videos_avg_per_split": 5.0,
+        "num_splits": 5,
+        "split_results": [
+          {
+            "split_id": 1,
+            "test_keys": [
+              "video_16",
+              "video_21",
+              "video_25",
+              "video_4",
+              "video_9"
+            ],
+            "mean_f1": 0.43910035490989685,
+            "mean_rho": -0.004236501301140376,
+            "mean_tau": -0.003530592012887202,
+            "num_videos": 5
+          },
+          {
+            "split_id": 2,
+            "test_keys": [
+              "video_15",
+              "video_18",
+              "video_20",
+              "video_4",
+              "video_7"
+            ],
+            "mean_f1": 0.4626217782497406,
+            "mean_rho": 0.037277907488260376,
+            "mean_tau": 0.030697576819558325,
+            "num_videos": 5
+          },
+          {
+            "split_id": 3,
+            "test_keys": [
+              "video_10",
+              "video_13",
+              "video_19",
+              "video_23",
+              "video_9"
+            ],
+            "mean_f1": 0.4057442545890808,
+            "mean_rho": -0.04759323110775356,
+            "mean_tau": -0.038906572330714165,
+            "num_videos": 5
+          },
+          {
+            "split_id": 4,
+            "test_keys": [
+              "video_1",
+              "video_13",
+              "video_14",
+              "video_18",
+              "video_25"
+            ],
+            "mean_f1": 0.4227483868598938,
+            "mean_rho": -0.037922611223273964,
+            "mean_tau": -0.03133440183797927,
+            "num_videos": 5
+          },
+          {
+            "split_id": 5,
+            "test_keys": [
+              "video_11",
+              "video_15",
+              "video_22",
+              "video_24",
+              "video_25"
+            ],
+            "mean_f1": 0.49134546518325806,
+            "mean_rho": 0.05584105351935249,
+            "mean_tau": 0.04609837471070833,
+            "num_videos": 5
+          }
+        ],
+        "best_split": {
+          "split_id": 5,
+          "test_keys": [
+            "video_11",
+            "video_15",
+            "video_22",
+            "video_24",
+            "video_25"
+          ],
+          "mean_f1": 0.49134546518325806,
+          "mean_rho": 0.05584105351935249,
+          "mean_tau": 0.04609837471070833,
+          "num_videos": 5
+        },
+        "metric_f1_reduction": "max"
+      },
+      "s_mul_fs": {
+        "mean_f1": 0.4152929723262787,
+        "mean_rho": 0.002373788273126345,
+        "mean_tau": 0.0019822510836183327,
+        "num_videos_avg_per_split": 5.0,
+        "num_splits": 5,
+        "split_results": [
+          {
+            "split_id": 1,
+            "test_keys": [
+              "video_16",
+              "video_21",
+              "video_25",
+              "video_4",
+              "video_9"
+            ],
+            "mean_f1": 0.35597190260887146,
+            "mean_rho": -0.005744748396496237,
+            "mean_tau": -0.004686650845481234,
+            "num_videos": 5
+          },
+          {
+            "split_id": 2,
+            "test_keys": [
+              "video_15",
+              "video_18",
+              "video_20",
+              "video_4",
+              "video_7"
+            ],
+            "mean_f1": 0.4117979109287262,
+            "mean_rho": 0.006508520793772436,
+            "mean_tau": 0.0052813658293076726,
+            "num_videos": 5
+          },
+          {
+            "split_id": 3,
+            "test_keys": [
+              "video_10",
+              "video_13",
+              "video_19",
+              "video_23",
+              "video_9"
+            ],
+            "mean_f1": 0.4208410382270813,
+            "mean_rho": 0.0036826676668455403,
+            "mean_tau": 0.003315578866540432,
+            "num_videos": 5
+          },
+          {
+            "split_id": 4,
+            "test_keys": [
+              "video_1",
+              "video_13",
+              "video_14",
+              "video_18",
+              "video_25"
+            ],
+            "mean_f1": 0.41224414110183716,
+            "mean_rho": -0.010139118937104933,
+            "mean_tau": -0.008515813848759036,
+            "num_videos": 5
+          },
+          {
+            "split_id": 5,
+            "test_keys": [
+              "video_11",
+              "video_15",
+              "video_22",
+              "video_24",
+              "video_25"
+            ],
+            "mean_f1": 0.4756098687648773,
+            "mean_rho": 0.017561620238614916,
+            "mean_tau": 0.01451677541648383,
+            "num_videos": 5
+          }
+        ],
+        "best_split": {
+          "split_id": 5,
+          "test_keys": [
+            "video_11",
+            "video_15",
+            "video_22",
+            "video_24",
+            "video_25"
+          ],
+          "mean_f1": 0.4756098687648773,
+          "mean_rho": 0.017561620238614916,
+          "mean_tau": 0.01451677541648383,
+          "num_videos": 5
+        },
+        "metric_f1_reduction": "max"
+      },
+      "s_only": {
+        "mean_f1": 0.4271529674530029,
+        "mean_rho": 0.005035452379080328,
+        "mean_tau": 0.0048267877390902585,
+        "num_videos_avg_per_split": 5.0,
+        "num_splits": 5,
+        "split_results": [
+          {
+            "split_id": 1,
+            "test_keys": [
+              "video_16",
+              "video_21",
+              "video_25",
+              "video_4",
+              "video_9"
+            ],
+            "mean_f1": 0.3889046907424927,
+            "mean_rho": 0.0073221874448861956,
+            "mean_tau": 0.007749119974881628,
+            "num_videos": 5
+          },
+          {
+            "split_id": 2,
+            "test_keys": [
+              "video_15",
+              "video_18",
+              "video_20",
+              "video_4",
+              "video_7"
+            ],
+            "mean_f1": 0.4001253545284271,
+            "mean_rho": -0.02274131763576224,
+            "mean_tau": -0.021440233468951474,
+            "num_videos": 5
+          },
+          {
+            "split_id": 3,
+            "test_keys": [
+              "video_10",
+              "video_13",
+              "video_19",
+              "video_23",
+              "video_9"
+            ],
+            "mean_f1": 0.4821237027645111,
+            "mean_rho": 0.034150374029984575,
+            "mean_tau": 0.0322072974684776,
+            "num_videos": 5
+          },
+          {
+            "split_id": 4,
+            "test_keys": [
+              "video_1",
+              "video_13",
+              "video_14",
+              "video_18",
+              "video_25"
+            ],
+            "mean_f1": 0.37802815437316895,
+            "mean_rho": 0.02714967050297009,
+            "mean_tau": 0.025359145757364886,
+            "num_videos": 5
+          },
+          {
+            "split_id": 5,
+            "test_keys": [
+              "video_11",
+              "video_15",
+              "video_22",
+              "video_24",
+              "video_25"
+            ],
+            "mean_f1": 0.4865829348564148,
+            "mean_rho": -0.020703652446676983,
+            "mean_tau": -0.01974139103632135,
+            "num_videos": 5
+          }
+        ],
+        "best_split": {
+          "split_id": 5,
+          "test_keys": [
+            "video_11",
+            "video_15",
+            "video_22",
+            "video_24",
+            "video_25"
+          ],
+          "mean_f1": 0.4865829348564148,
+          "mean_rho": -0.020703652446676983,
+          "mean_tau": -0.01974139103632135,
+          "num_videos": 5
+        },
+        "metric_f1_reduction": "max"
+      },
+      "s_add_fs": {
+        "mean_f1": 0.4538544833660126,
+        "mean_rho": 0.0004087668367052773,
+        "mean_tau": 0.0003693664774848506,
+        "num_videos_avg_per_split": 5.0,
+        "num_splits": 5,
+        "split_results": [
+          {
+            "split_id": 1,
+            "test_keys": [
+              "video_16",
+              "video_21",
+              "video_25",
+              "video_4",
+              "video_9"
+            ],
+            "mean_f1": 0.38897332549095154,
+            "mean_rho": -0.006670314144409941,
+            "mean_tau": -0.005451107967622628,
+            "num_videos": 5
+          },
+          {
+            "split_id": 2,
+            "test_keys": [
+              "video_15",
+              "video_18",
+              "video_20",
+              "video_4",
+              "video_7"
+            ],
+            "mean_f1": 0.43338432908058167,
+            "mean_rho": 0.006820366440372418,
+            "mean_tau": 0.005534828323972524,
+            "num_videos": 5
+          },
+          {
+            "split_id": 3,
+            "test_keys": [
+              "video_10",
+              "video_13",
+              "video_19",
+              "video_23",
+              "video_9"
+            ],
+            "mean_f1": 0.4520680010318756,
+            "mean_rho": 0.007166651774409399,
+            "mean_tau": 0.0062161820992977495,
+            "num_videos": 5
+          },
+          {
+            "split_id": 4,
+            "test_keys": [
+              "video_1",
+              "video_13",
+              "video_14",
+              "video_18",
+              "video_25"
+            ],
+            "mean_f1": 0.503501296043396,
+            "mean_rho": -0.016435628159420616,
+            "mean_tau": -0.013693898645991923,
+            "num_videos": 5
+          },
+          {
+            "split_id": 5,
+            "test_keys": [
+              "video_11",
+              "video_15",
+              "video_22",
+              "video_24",
+              "video_25"
+            ],
+            "mean_f1": 0.49134546518325806,
+            "mean_rho": 0.011162758272575127,
+            "mean_tau": 0.00924082857776853,
+            "num_videos": 5
+          }
+        ],
+        "best_split": {
+          "split_id": 4,
+          "test_keys": [
+            "video_1",
+            "video_13",
+            "video_14",
+            "video_18",
+            "video_25"
+          ],
+          "mean_f1": 0.503501296043396,
+          "mean_rho": -0.016435628159420616,
+          "mean_tau": -0.013693898645991923,
+          "num_videos": 5
+        },
+        "metric_f1_reduction": "max"
+      }
+    },
+    "tvsum": {
+      "s_mul_fs_add_fv": {
+        "mean_f1": 0.5770327220559119,
+        "mean_rho": -0.01813709804776334,
+        "mean_tau": -0.01487680990068987,
+        "num_videos_avg_per_split": 10.0,
+        "num_splits": 5,
+        "split_results": [
+          {
+            "split_id": 1,
+            "test_keys": [
+              "video_14",
+              "video_22",
+              "video_31",
+              "video_34",
+              "video_38",
+              "video_43",
+              "video_45",
+              "video_5",
+              "video_6",
+              "video_8"
+            ],
+            "mean_f1": 0.5710884717106819,
+            "mean_rho": -0.014902638723240633,
+            "mean_tau": -0.012070465728624616,
+            "num_videos": 10
+          },
+          {
+            "split_id": 2,
+            "test_keys": [
+              "video_10",
+              "video_11",
+              "video_13",
+              "video_15",
+              "video_19",
+              "video_24",
+              "video_33",
+              "video_44",
+              "video_45",
+              "video_47"
+            ],
+            "mean_f1": 0.5701250073313713,
+            "mean_rho": 0.03559489325414156,
+            "mean_tau": 0.029174265927935938,
+            "num_videos": 10
+          },
+          {
+            "split_id": 3,
+            "test_keys": [
+              "video_16",
+              "video_19",
+              "video_27",
+              "video_31",
+              "video_32",
+              "video_4",
+              "video_47",
+              "video_50",
+              "video_7",
+              "video_9"
+            ],
+            "mean_f1": 0.5455203145742417,
+            "mean_rho": -0.03796426856747184,
+            "mean_tau": -0.03125155789884697,
+            "num_videos": 10
+          },
+          {
+            "split_id": 4,
+            "test_keys": [
+              "video_1",
+              "video_11",
+              "video_17",
+              "video_26",
+              "video_30",
+              "video_37",
+              "video_4",
+              "video_43",
+              "video_45",
+              "video_50"
+            ],
+            "mean_f1": 0.6013487932085991,
+            "mean_rho": -0.04196928808589725,
+            "mean_tau": -0.03458503764184566,
+            "num_videos": 10
+          },
+          {
+            "split_id": 5,
+            "test_keys": [
+              "video_1",
+              "video_11",
+              "video_12",
+              "video_15",
+              "video_16",
+              "video_36",
+              "video_42",
+              "video_5",
+              "video_50",
+              "video_6"
+            ],
+            "mean_f1": 0.5970810234546662,
+            "mean_rho": -0.031444188116348526,
+            "mean_tau": -0.025651254162068038,
+            "num_videos": 10
+          }
+        ],
+        "best_split": {
+          "split_id": 4,
+          "test_keys": [
+            "video_1",
+            "video_11",
+            "video_17",
+            "video_26",
+            "video_30",
+            "video_37",
+            "video_4",
+            "video_43",
+            "video_45",
+            "video_50"
+          ],
+          "mean_f1": 0.6013487932085991,
+          "mean_rho": -0.04196928808589725,
+          "mean_tau": -0.03458503764184566,
+          "num_videos": 10
+        },
+        "metric_f1_reduction": "avg"
+      },
+      "s_mul_fs": {
+        "mean_f1": 0.5048824874460698,
+        "mean_rho": -0.02088786429160968,
+        "mean_tau": -0.017185654866078665,
+        "num_videos_avg_per_split": 10.0,
+        "num_splits": 5,
+        "split_results": [
+          {
+            "split_id": 1,
+            "test_keys": [
+              "video_14",
+              "video_22",
+              "video_31",
+              "video_34",
+              "video_38",
+              "video_43",
+              "video_45",
+              "video_5",
+              "video_6",
+              "video_8"
+            ],
+            "mean_f1": 0.49716881677508357,
+            "mean_rho": -0.03455108850136764,
+            "mean_tau": -0.028291324785498274,
+            "num_videos": 10
+          },
+          {
+            "split_id": 2,
+            "test_keys": [
+              "video_10",
+              "video_11",
+              "video_13",
+              "video_15",
+              "video_19",
+              "video_24",
+              "video_33",
+              "video_44",
+              "video_45",
+              "video_47"
+            ],
+            "mean_f1": 0.49731156095862394,
+            "mean_rho": 0.04775964100865441,
+            "mean_tau": 0.03917784522349949,
+            "num_videos": 10
+          },
+          {
+            "split_id": 3,
+            "test_keys": [
+              "video_16",
+              "video_19",
+              "video_27",
+              "video_31",
+              "video_32",
+              "video_4",
+              "video_47",
+              "video_50",
+              "video_7",
+              "video_9"
+            ],
+            "mean_f1": 0.47719305753707886,
+            "mean_rho": -0.04048627058888209,
+            "mean_tau": -0.03337565242582827,
+            "num_videos": 10
+          },
+          {
+            "split_id": 4,
+            "test_keys": [
+              "video_1",
+              "video_11",
+              "video_17",
+              "video_26",
+              "video_30",
+              "video_37",
+              "video_4",
+              "video_43",
+              "video_45",
+              "video_50"
+            ],
+            "mean_f1": 0.5472175823152066,
+            "mean_rho": -0.04073114732161827,
+            "mean_tau": -0.03360544760895935,
+            "num_videos": 10
+          },
+          {
+            "split_id": 5,
+            "test_keys": [
+              "video_1",
+              "video_11",
+              "video_12",
+              "video_15",
+              "video_16",
+              "video_36",
+              "video_42",
+              "video_5",
+              "video_50",
+              "video_6"
+            ],
+            "mean_f1": 0.5055214196443558,
+            "mean_rho": -0.0364304560548348,
+            "mean_tau": -0.029833694733606912,
+            "num_videos": 10
+          }
+        ],
+        "best_split": {
+          "split_id": 4,
+          "test_keys": [
+            "video_1",
+            "video_11",
+            "video_17",
+            "video_26",
+            "video_30",
+            "video_37",
+            "video_4",
+            "video_43",
+            "video_45",
+            "video_50"
+          ],
+          "mean_f1": 0.5472175823152066,
+          "mean_rho": -0.04073114732161827,
+          "mean_tau": -0.03360544760895935,
+          "num_videos": 10
+        },
+        "metric_f1_reduction": "avg"
+      },
+      "s_only": {
+        "mean_f1": 0.5248381257057189,
+        "mean_rho": -0.01937952242710855,
+        "mean_tau": -0.017010082411557766,
+        "num_videos_avg_per_split": 10.0,
+        "num_splits": 5,
+        "split_results": [
+          {
+            "split_id": 1,
+            "test_keys": [
+              "video_14",
+              "video_22",
+              "video_31",
+              "video_34",
+              "video_38",
+              "video_43",
+              "video_45",
+              "video_5",
+              "video_6",
+              "video_8"
+            ],
+            "mean_f1": 0.513670814037323,
+            "mean_rho": -0.0055601184398332,
+            "mean_tau": -0.004713812722110015,
+            "num_videos": 10
+          },
+          {
+            "split_id": 2,
+            "test_keys": [
+              "video_10",
+              "video_11",
+              "video_13",
+              "video_15",
+              "video_19",
+              "video_24",
+              "video_33",
+              "video_44",
+              "video_45",
+              "video_47"
+            ],
+            "mean_f1": 0.5092012196779251,
+            "mean_rho": 0.03135895138388647,
+            "mean_tau": 0.027706149321804607,
+            "num_videos": 10
+          },
+          {
+            "split_id": 3,
+            "test_keys": [
+              "video_16",
+              "video_19",
+              "video_27",
+              "video_31",
+              "video_32",
+              "video_4",
+              "video_47",
+              "video_50",
+              "video_7",
+              "video_9"
+            ],
+            "mean_f1": 0.4896488130092621,
+            "mean_rho": -0.029037278020356345,
+            "mean_tau": -0.025597263954361675,
+            "num_videos": 10
+          },
+          {
+            "split_id": 4,
+            "test_keys": [
+              "video_1",
+              "video_11",
+              "video_17",
+              "video_26",
+              "video_30",
+              "video_37",
+              "video_4",
+              "video_43",
+              "video_45",
+              "video_50"
+            ],
+            "mean_f1": 0.5733081340789795,
+            "mean_rho": -0.04219526896384529,
+            "mean_tau": -0.03718693086102022,
+            "num_videos": 10
+          },
+          {
+            "split_id": 5,
+            "test_keys": [
+              "video_1",
+              "video_11",
+              "video_12",
+              "video_15",
+              "video_16",
+              "video_36",
+              "video_42",
+              "video_5",
+              "video_50",
+              "video_6"
+            ],
+            "mean_f1": 0.5383616477251053,
+            "mean_rho": -0.05146389809539438,
+            "mean_tau": -0.045258553842101534,
+            "num_videos": 10
+          }
+        ],
+        "best_split": {
+          "split_id": 4,
+          "test_keys": [
+            "video_1",
+            "video_11",
+            "video_17",
+            "video_26",
+            "video_30",
+            "video_37",
+            "video_4",
+            "video_43",
+            "video_45",
+            "video_50"
+          ],
+          "mean_f1": 0.5733081340789795,
+          "mean_rho": -0.04219526896384529,
+          "mean_tau": -0.03718693086102022,
+          "num_videos": 10
+        },
+        "metric_f1_reduction": "avg"
+      },
+      "s_add_fs": {
+        "mean_f1": 0.6012163357138635,
+        "mean_rho": -0.007387628777084022,
+        "mean_tau": -0.0060458766478138784,
+        "num_videos_avg_per_split": 10.0,
+        "num_splits": 5,
+        "split_results": [
+          {
+            "split_id": 1,
+            "test_keys": [
+              "video_14",
+              "video_22",
+              "video_31",
+              "video_34",
+              "video_38",
+              "video_43",
+              "video_45",
+              "video_5",
+              "video_6",
+              "video_8"
+            ],
+            "mean_f1": 0.6069945421814918,
+            "mean_rho": -0.014512824140165775,
+            "mean_tau": -0.011746826688598009,
+            "num_videos": 10
+          },
+          {
+            "split_id": 2,
+            "test_keys": [
+              "video_10",
+              "video_11",
+              "video_13",
+              "video_15",
+              "video_19",
+              "video_24",
+              "video_33",
+              "video_44",
+              "video_45",
+              "video_47"
+            ],
+            "mean_f1": 0.6013448533415795,
+            "mean_rho": 0.04665659622745062,
+            "mean_tau": 0.03827108492625582,
+            "num_videos": 10
+          },
+          {
+            "split_id": 3,
+            "test_keys": [
+              "video_16",
+              "video_19",
+              "video_27",
+              "video_31",
+              "video_32",
+              "video_4",
+              "video_47",
+              "video_50",
+              "video_7",
+              "video_9"
+            ],
+            "mean_f1": 0.5694781064987182,
+            "mean_rho": -0.026434062850206552,
+            "mean_tau": -0.021816390877019514,
+            "num_videos": 10
+          },
+          {
+            "split_id": 4,
+            "test_keys": [
+              "video_1",
+              "video_11",
+              "video_17",
+              "video_26",
+              "video_30",
+              "video_37",
+              "video_4",
+              "video_43",
+              "video_45",
+              "video_50"
+            ],
+            "mean_f1": 0.6019977089762688,
+            "mean_rho": -0.01794066254786033,
+            "mean_tau": -0.014778955084550346,
+            "num_videos": 10
+          },
+          {
+            "split_id": 5,
+            "test_keys": [
+              "video_1",
+              "video_11",
+              "video_12",
+              "video_15",
+              "video_16",
+              "video_36",
+              "video_42",
+              "video_5",
+              "video_50",
+              "video_6"
+            ],
+            "mean_f1": 0.6262664675712586,
+            "mean_rho": -0.024707190574638077,
+            "mean_tau": -0.020158295515157344,
+            "num_videos": 10
+          }
+        ],
+        "best_split": {
+          "split_id": 5,
+          "test_keys": [
+            "video_1",
+            "video_11",
+            "video_12",
+            "video_15",
+            "video_16",
+            "video_36",
+            "video_42",
+            "video_5",
+            "video_50",
+            "video_6"
+          ],
+          "mean_f1": 0.6262664675712586,
+          "mean_rho": -0.024707190574638077,
+          "mean_tau": -0.020158295515157344,
+          "num_videos": 10
+        },
+        "metric_f1_reduction": "avg"
+      }
+    }
+  }
+}

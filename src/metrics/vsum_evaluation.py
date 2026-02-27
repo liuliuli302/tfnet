@@ -864,6 +864,7 @@ def _aggregate_split_formula_results(split_formula_results):
 
 def run_exam_score_evaluation(
     scores_root="/root/tfnet/data/scores",
+    scene_score_source="gpt5",
     summe_h5_path="/root/autodl-tmp/datasets/eccv16_dataset_summe_google_pool5.h5",
     tvsum_h5_path="/root/autodl-tmp/datasets/eccv16_dataset_tvsum_google_pool5.h5",
     video_name_dict_path="/root/tfnet/data/video_name_dict.json",
@@ -876,9 +877,9 @@ def run_exam_score_evaluation(
     alpha_scene_frame=1.0
 ):
     scene_score_summe_path = os.path.join(
-        scores_root, "scene_score", "gpt5", "summe_scene_scores.json")
+        scores_root, "scene_score", scene_score_source, "summe_scene_scores.json")
     scene_score_tvsum_path = os.path.join(
-        scores_root, "scene_score", "gpt5", "tvsum_scene_scores.json")
+        scores_root, "scene_score", scene_score_source, "tvsum_scene_scores.json")
     frame_scene_summe_path = os.path.join(
         scores_root, "frame_scene_contribution", "summe.json")
     frame_scene_tvsum_path = os.path.join(
@@ -1044,6 +1045,7 @@ def run_exam_score_evaluation(
             },
             "input_paths": {
                 "scores_root": scores_root,
+                "scene_score_source": scene_score_source,
                 "summe_h5_path": summe_h5_path,
                 "tvsum_h5_path": tvsum_h5_path,
                 "video_name_dict_path": video_name_dict_path,
@@ -1081,6 +1083,7 @@ def run_exam_score_evaluation(
 
 def run_exam_score_evaluation_dual(
     scores_root="/root/tfnet/data/scores",
+    scene_score_source="gpt5",
     summe_h5_path="/root/autodl-tmp/datasets/eccv16_dataset_summe_google_pool5.h5",
     tvsum_h5_path="/root/autodl-tmp/datasets/eccv16_dataset_tvsum_google_pool5.h5",
     video_name_dict_path="/root/tfnet/data/video_name_dict.json",
@@ -1092,6 +1095,7 @@ def run_exam_score_evaluation_dual(
 ):
     no_smooth_path, no_smooth_data = run_exam_score_evaluation(
         scores_root=scores_root,
+        scene_score_source=scene_score_source,
         summe_h5_path=summe_h5_path,
         tvsum_h5_path=tvsum_h5_path,
         video_name_dict_path=video_name_dict_path,
@@ -1106,6 +1110,7 @@ def run_exam_score_evaluation_dual(
 
     smooth_path, smooth_data = run_exam_score_evaluation(
         scores_root=scores_root,
+        scene_score_source=scene_score_source,
         summe_h5_path=summe_h5_path,
         tvsum_h5_path=tvsum_h5_path,
         video_name_dict_path=video_name_dict_path,
@@ -1147,6 +1152,7 @@ def run_exam_score_evaluation_dual(
 
 def run_exam_score_alpha_sweep_dual(
     scores_root="/root/tfnet/data/scores",
+    scene_score_source="gpt5",
     summe_h5_path="/root/autodl-tmp/datasets/eccv16_dataset_summe_google_pool5.h5",
     tvsum_h5_path="/root/autodl-tmp/datasets/eccv16_dataset_tvsum_google_pool5.h5",
     video_name_dict_path="/root/tfnet/data/video_name_dict.json",
@@ -1174,6 +1180,7 @@ def run_exam_score_alpha_sweep_dual(
 
         no_smooth_path, no_smooth_data = run_exam_score_evaluation(
             scores_root=scores_root,
+            scene_score_source=scene_score_source,
             summe_h5_path=summe_h5_path,
             tvsum_h5_path=tvsum_h5_path,
             video_name_dict_path=video_name_dict_path,
@@ -1188,6 +1195,7 @@ def run_exam_score_alpha_sweep_dual(
 
         smooth_path, smooth_data = run_exam_score_evaluation(
             scores_root=scores_root,
+            scene_score_source=scene_score_source,
             summe_h5_path=summe_h5_path,
             tvsum_h5_path=tvsum_h5_path,
             video_name_dict_path=video_name_dict_path,
