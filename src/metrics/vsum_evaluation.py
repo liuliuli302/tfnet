@@ -593,7 +593,7 @@ def _compose_pick_scores(
         "s_mul_fs_add_fv": {},   # f_j = s_i/100 * f_s_j + f_v_j
         "s_mul_fs": {},          # f_j = s_i/100 * f_s_j
         "s_only": {},            # f_j = s_i/100
-        "s_add_fs": {}           # f_j = s_i/100 + f_s_j
+        "s_add_fs": {}           # f_j = a * (s_i/100) + f_s_j
     }
 
     stats = {
@@ -626,7 +626,7 @@ def _compose_pick_scores(
             formulas["s_mul_fs_add_fv"][pick] = scene_frame_term + f_video
             formulas["s_mul_fs"][pick] = scene_frame_term
             formulas["s_only"][pick] = scene_score
-            formulas["s_add_fs"][pick] = scene_score + f_scene
+            formulas["s_add_fs"][pick] = alpha_scene_frame * scene_score + f_scene
 
     return formulas, stats
 
@@ -1039,7 +1039,7 @@ def run_exam_score_evaluation(
                 "s_mul_fs_add_fv": "f_j = a * (s_i/100 * f_s_j) + f_v_j",
                 "s_mul_fs": "f_j = a * (s_i/100 * f_s_j)",
                 "s_only": "f_j = s_i/100",
-                "s_add_fs": "f_j = s_i/100 + f_s_j"
+                "s_add_fs": "f_j = a * (s_i/100) + f_s_j"
             },
             "input_paths": {
                 "scores_root": scores_root,
@@ -1051,7 +1051,7 @@ def run_exam_score_evaluation(
             },
             "notes": [
                 "scene score is normalized by dividing 100",
-                "a is an adjustable coefficient for scene-score * frame-scene-contribution term",
+                "a is an adjustable coefficient for scene-score terms in s_mul_fs_add_fv, s_mul_fs and s_add_fs",
                 "F1 reduction uses max for SumMe and avg for TVSum",
                 "Rank correlation uses Spearman rho and Kendall tau-b",
                 "Metrics are computed on each split test set, then averaged across splits",
