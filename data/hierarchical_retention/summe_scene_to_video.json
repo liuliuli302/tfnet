@@ -1,0 +1,231 @@
+{
+  "dataset": "summe",
+  "level": "scene_to_video",
+  "bertscore_model": "microsoft/deberta-xlarge-mnli",
+  "metrics": {
+    "rouge1_recall": {
+      "mean": 0.283,
+      "std": 0.1326,
+      "median": 0.273,
+      "min": 0.084,
+      "max": 0.581
+    },
+    "bertscore_recall": {
+      "mean": 0.8621,
+      "std": 0.0218,
+      "median": 0.8608,
+      "min": 0.8156,
+      "max": 0.9134
+    },
+    "compression_ratio": {
+      "mean": 0.4347,
+      "std": 0.2392,
+      "median": 0.3975,
+      "min": 0.1209,
+      "max": 1.0261,
+      "description": "candidate_length / reference_length (字符数)"
+    }
+  },
+  "per_video": [
+    {
+      "video_name": "Air_Force_One",
+      "num_scenes": 30,
+      "reference_length": 2412,
+      "candidate_length": 613,
+      "rouge1_recall": 0.1346,
+      "bertscore_recall": 0.8156
+    },
+    {
+      "video_name": "Base_jumping",
+      "num_scenes": 32,
+      "reference_length": 4707,
+      "candidate_length": 1497,
+      "rouge1_recall": 0.2428,
+      "bertscore_recall": 0.8439
+    },
+    {
+      "video_name": "Bearpark_climbing",
+      "num_scenes": 22,
+      "reference_length": 1992,
+      "candidate_length": 800,
+      "rouge1_recall": 0.2976,
+      "bertscore_recall": 0.8573
+    },
+    {
+      "video_name": "Bike_Polo",
+      "num_scenes": 21,
+      "reference_length": 2648,
+      "candidate_length": 670,
+      "rouge1_recall": 0.1579,
+      "bertscore_recall": 0.8504
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "num_scenes": 35,
+      "reference_length": 4075,
+      "candidate_length": 1637,
+      "rouge1_recall": 0.2913,
+      "bertscore_recall": 0.858
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "num_scenes": 34,
+      "reference_length": 5296,
+      "candidate_length": 1400,
+      "rouge1_recall": 0.1904,
+      "bertscore_recall": 0.8608
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "num_scenes": 61,
+      "reference_length": 7080,
+      "candidate_length": 856,
+      "rouge1_recall": 0.084,
+      "bertscore_recall": 0.8351
+    },
+    {
+      "video_name": "Cooking",
+      "num_scenes": 9,
+      "reference_length": 824,
+      "candidate_length": 615,
+      "rouge1_recall": 0.3673,
+      "bertscore_recall": 0.8816
+    },
+    {
+      "video_name": "Eiffel_Tower",
+      "num_scenes": 34,
+      "reference_length": 4821,
+      "candidate_length": 1173,
+      "rouge1_recall": 0.1924,
+      "bertscore_recall": 0.8456
+    },
+    {
+      "video_name": "Excavators_river_crossing",
+      "num_scenes": 62,
+      "reference_length": 11817,
+      "candidate_length": 1618,
+      "rouge1_recall": 0.0983,
+      "bertscore_recall": 0.8527
+    },
+    {
+      "video_name": "Fire_Domino",
+      "num_scenes": 11,
+      "reference_length": 1434,
+      "candidate_length": 1218,
+      "rouge1_recall": 0.4457,
+      "bertscore_recall": 0.8759
+    },
+    {
+      "video_name": "Jumps",
+      "num_scenes": 7,
+      "reference_length": 958,
+      "candidate_length": 983,
+      "rouge1_recall": 0.581,
+      "bertscore_recall": 0.9025
+    },
+    {
+      "video_name": "Kids_playing_in_leaves",
+      "num_scenes": 7,
+      "reference_length": 1188,
+      "candidate_length": 808,
+      "rouge1_recall": 0.5189,
+      "bertscore_recall": 0.8955
+    },
+    {
+      "video_name": "Notre_Dame",
+      "num_scenes": 31,
+      "reference_length": 4017,
+      "candidate_length": 1593,
+      "rouge1_recall": 0.2637,
+      "bertscore_recall": 0.8481
+    },
+    {
+      "video_name": "Paintball",
+      "num_scenes": 39,
+      "reference_length": 5363,
+      "candidate_length": 2020,
+      "rouge1_recall": 0.273,
+      "bertscore_recall": 0.8411
+    },
+    {
+      "video_name": "Playing_on_water_slide",
+      "num_scenes": 5,
+      "reference_length": 621,
+      "candidate_length": 603,
+      "rouge1_recall": 0.5641,
+      "bertscore_recall": 0.9134
+    },
+    {
+      "video_name": "Saving_dolphines",
+      "num_scenes": 39,
+      "reference_length": 4412,
+      "candidate_length": 1107,
+      "rouge1_recall": 0.187,
+      "bertscore_recall": 0.8698
+    },
+    {
+      "video_name": "Scuba",
+      "num_scenes": 15,
+      "reference_length": 1786,
+      "candidate_length": 829,
+      "rouge1_recall": 0.3259,
+      "bertscore_recall": 0.8735
+    },
+    {
+      "video_name": "St_Maarten_Landing",
+      "num_scenes": 12,
+      "reference_length": 1422,
+      "candidate_length": 676,
+      "rouge1_recall": 0.3619,
+      "bertscore_recall": 0.8782
+    },
+    {
+      "video_name": "Statue_of_Liberty",
+      "num_scenes": 26,
+      "reference_length": 2941,
+      "candidate_length": 1169,
+      "rouge1_recall": 0.2764,
+      "bertscore_recall": 0.8698
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "num_scenes": 65,
+      "reference_length": 6189,
+      "candidate_length": 1001,
+      "rouge1_recall": 0.1147,
+      "bertscore_recall": 0.843
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "num_scenes": 34,
+      "reference_length": 4637,
+      "candidate_length": 1571,
+      "rouge1_recall": 0.2445,
+      "bertscore_recall": 0.8713
+    },
+    {
+      "video_name": "car_over_camera",
+      "num_scenes": 28,
+      "reference_length": 3012,
+      "candidate_length": 1468,
+      "rouge1_recall": 0.2972,
+      "bertscore_recall": 0.8394
+    },
+    {
+      "video_name": "paluma_jump",
+      "num_scenes": 15,
+      "reference_length": 1293,
+      "candidate_length": 530,
+      "rouge1_recall": 0.2348,
+      "bertscore_recall": 0.8674
+    },
+    {
+      "video_name": "playing_ball",
+      "num_scenes": 18,
+      "reference_length": 3081,
+      "candidate_length": 1363,
+      "rouge1_recall": 0.3299,
+      "bertscore_recall": 0.8629
+    }
+  ]
+}

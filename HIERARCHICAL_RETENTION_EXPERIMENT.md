@@ -2,7 +2,7 @@
 
 ## 1. 实验目标
 
-定量评估论文 3.2.2 节层级语义聚合过程中的信息保留情况：
+定量评估层级语义聚合过程中的信息保留情况：
 
 | 聚合层级      | Reference（源文本）    | Candidate（聚合文本） | 含义                         |
 | ------------- | ---------------------- | --------------------- | ---------------------------- |
@@ -18,19 +18,6 @@
 
 ---
 
-## 2. 环境依赖
-
-```bash
-pip install rouge-score bert-score torch numpy
-```
-
-版本参考：
-- `rouge-score >= 0.1.2`
-- `bert-score >= 0.3.13`
-- `torch`（BERTScore 后端依赖）
-
----
-
 ## 3. 数据源
 
 实验**无需重新运行 VLM/LLM**，直接使用已存储的 caption 文件。
@@ -38,7 +25,7 @@ pip install rouge-score bert-score torch numpy
 ### 3.1 文件路径
 
 ```
-Codes/tfnet/data/captions/
+root/tfnet/data/captions/
 ├── frame_caption/llava/
 │   ├── tvsum_frame_captions.json      # 帧级描述
 │   └── summe_frame_captions.json
@@ -182,7 +169,7 @@ bertscore_recall = R[0].item()  # float, [0, 1]
 ### 6.1 输出目录
 
 ```
-Codes/tfnet/figure/results/hierarchical_retention/
+/root/tfnet/outputs/hierarchical_retention/
 ```
 
 ### 6.2 输出文件
@@ -296,7 +283,7 @@ Scene→Video,TVSum,0.xxx±0.xxx,0.xxx±0.xxx,0.xxx
 ### 7.1 脚本位置
 
 ```
-Codes/tfnet/figure/evaluate_hierarchical_retention.py
+/root/tfnet/scripts/evaluate_hierarchical_retention.py
 ```
 
 ### 7.2 命令行接口
@@ -360,10 +347,3 @@ class HierarchicalRetentionEvaluator:
 
 ---
 
-## 9. 论文写作要点
-
-结果写入 3.2.2 节时，可配以下分析文字（模板）：
-
-> 为定量评估层级语义聚合中的信息保留率，我们分别计算了帧→场景和场景→视频两个层级的 ROUGE-1 Recall 和 BERTScore Recall。ROUGE-1 Recall 测量 unigram 级别的词面重叠，反映表层信息的保留比率；BERTScore Recall 基于上下文语义嵌入的余弦相似度，能够容忍同义词替换，更适合评估语义级保留。
->
-> 如表 X 所示，帧→场景聚合在 TVSum 上 ROUGE-1 R 为 X.XX，BERTScore R 为 X.XX，SumMe 上分别为 X.XX 和 X.XX。BERTScore R 显著高于 ROUGE-1 R（差值约 X.XX），说明 LLM 在聚合中进行了大量语义层面的重述而非简单删除，验证了层级聚合机制的有效性。场景→视频层级的保留率适度下降（BERTScore R 约为 X.XX），符合从细粒度到粗粒度摘要的预期信息压缩行为。

@@ -1,0 +1,5 @@
+Level,Dataset,ROUGE-1 R (μ±σ),BERTScore R (μ±σ),Compression Ratio
+Frame→Scene,TVSum,0.0095±0.0080,0.7894±0.0113,0.0117
+Scene→Video,TVSum,0.2270±0.0919,0.8515±0.0087,0.3233
+Frame→Scene,SumMe,0.0078±0.0065,0.7896±0.0088,0.0110
+Scene→Video,SumMe,0.2830±0.1326,0.8621±0.0218,0.4347

@@ -1,0 +1,4230 @@
+{
+  "dataset": "summe",
+  "level": "frame_to_scene",
+  "bertscore_model": "microsoft/deberta-xlarge-mnli",
+  "metrics": {
+    "rouge1_recall": {
+      "mean": 0.0078,
+      "std": 0.0065,
+      "median": 0.0061,
+      "min": 0.0006,
+      "max": 0.0573
+    },
+    "bertscore_recall": {
+      "mean": 0.7896,
+      "std": 0.0088,
+      "median": 0.7889,
+      "min": 0.7646,
+      "max": 0.8154
+    },
+    "compression_ratio": {
+      "mean": 0.011,
+      "std": 0.0114,
+      "median": 0.0077,
+      "min": 0.0008,
+      "max": 0.0908,
+      "description": "candidate_length / reference_length (字符数)"
+    }
+  },
+  "per_scene": [
+    {
+      "video_name": "Air_Force_One",
+      "scene_idx": 0,
+      "num_frames": 17,
+      "reference_length": 31413,
+      "candidate_length": 156,
+      "rouge1_recall": 0.0046,
+      "bertscore_recall": 0.8009
+    },
+    {
+      "video_name": "Air_Force_One",
+      "scene_idx": 1,
+      "num_frames": 15,
+      "reference_length": 27989,
+      "candidate_length": 102,
+      "rouge1_recall": 0.0032,
+      "bertscore_recall": 0.7885
+    },
+    {
+      "video_name": "Air_Force_One",
+      "scene_idx": 2,
+      "num_frames": 24,
+      "reference_length": 42408,
+      "candidate_length": 102,
+      "rouge1_recall": 0.0023,
+      "bertscore_recall": 0.7858
+    },
+    {
+      "video_name": "Air_Force_One",
+      "scene_idx": 3,
+      "num_frames": 17,
+      "reference_length": 31276,
+      "candidate_length": 64,
+      "rouge1_recall": 0.0021,
+      "bertscore_recall": 0.7888
+    },
+    {
+      "video_name": "Air_Force_One",
+      "scene_idx": 4,
+      "num_frames": 10,
+      "reference_length": 20326,
+      "candidate_length": 65,
+      "rouge1_recall": 0.003,
+      "bertscore_recall": 0.7888
+    },
+    {
+      "video_name": "Air_Force_One",
+      "scene_idx": 5,
+      "num_frames": 13,
+      "reference_length": 23450,
+      "candidate_length": 81,
+      "rouge1_recall": 0.0033,
+      "bertscore_recall": 0.7834
+    },
+    {
+      "video_name": "Air_Force_One",
+      "scene_idx": 6,
+      "num_frames": 6,
+      "reference_length": 10953,
+      "candidate_length": 96,
+      "rouge1_recall": 0.007,
+      "bertscore_recall": 0.7943
+    },
+    {
+      "video_name": "Air_Force_One",
+      "scene_idx": 7,
+      "num_frames": 7,
+      "reference_length": 12315,
+      "candidate_length": 70,
+      "rouge1_recall": 0.0044,
+      "bertscore_recall": 0.7851
+    },
+    {
+      "video_name": "Air_Force_One",
+      "scene_idx": 8,
+      "num_frames": 10,
+      "reference_length": 18965,
+      "candidate_length": 93,
+      "rouge1_recall": 0.0035,
+      "bertscore_recall": 0.7899
+    },
+    {
+      "video_name": "Air_Force_One",
+      "scene_idx": 9,
+      "num_frames": 12,
+      "reference_length": 23018,
+      "candidate_length": 81,
+      "rouge1_recall": 0.0031,
+      "bertscore_recall": 0.7769
+    },
+    {
+      "video_name": "Air_Force_One",
+      "scene_idx": 10,
+      "num_frames": 2,
+      "reference_length": 3723,
+      "candidate_length": 93,
+      "rouge1_recall": 0.0148,
+      "bertscore_recall": 0.7826
+    },
+    {
+      "video_name": "Air_Force_One",
+      "scene_idx": 11,
+      "num_frames": 7,
+      "reference_length": 10863,
+      "candidate_length": 91,
+      "rouge1_recall": 0.0055,
+      "bertscore_recall": 0.7778
+    },
+    {
+      "video_name": "Air_Force_One",
+      "scene_idx": 12,
+      "num_frames": 20,
+      "reference_length": 37522,
+      "candidate_length": 87,
+      "rouge1_recall": 0.0019,
+      "bertscore_recall": 0.7931
+    },
+    {
+      "video_name": "Air_Force_One",
+      "scene_idx": 13,
+      "num_frames": 9,
+      "reference_length": 17167,
+      "candidate_length": 74,
+      "rouge1_recall": 0.0028,
+      "bertscore_recall": 0.7825
+    },
+    {
+      "video_name": "Air_Force_One",
+      "scene_idx": 14,
+      "num_frames": 8,
+      "reference_length": 14915,
+      "candidate_length": 91,
+      "rouge1_recall": 0.0044,
+      "bertscore_recall": 0.7795
+    },
+    {
+      "video_name": "Air_Force_One",
+      "scene_idx": 15,
+      "num_frames": 16,
+      "reference_length": 29138,
+      "candidate_length": 102,
+      "rouge1_recall": 0.0029,
+      "bertscore_recall": 0.7927
+    },
+    {
+      "video_name": "Air_Force_One",
+      "scene_idx": 16,
+      "num_frames": 17,
+      "reference_length": 31074,
+      "candidate_length": 120,
+      "rouge1_recall": 0.0023,
+      "bertscore_recall": 0.7872
+    },
+    {
+      "video_name": "Air_Force_One",
+      "scene_idx": 17,
+      "num_frames": 14,
+      "reference_length": 25559,
+      "candidate_length": 92,
+      "rouge1_recall": 0.0028,
+      "bertscore_recall": 0.7848
+    },
+    {
+      "video_name": "Air_Force_One",
+      "scene_idx": 18,
+      "num_frames": 10,
+      "reference_length": 19627,
+      "candidate_length": 101,
+      "rouge1_recall": 0.0037,
+      "bertscore_recall": 0.7903
+    },
+    {
+      "video_name": "Air_Force_One",
+      "scene_idx": 19,
+      "num_frames": 9,
+      "reference_length": 16034,
+      "candidate_length": 85,
+      "rouge1_recall": 0.0041,
+      "bertscore_recall": 0.7862
+    },
+    {
+      "video_name": "Air_Force_One",
+      "scene_idx": 20,
+      "num_frames": 16,
+      "reference_length": 29276,
+      "candidate_length": 73,
+      "rouge1_recall": 0.0025,
+      "bertscore_recall": 0.7852
+    },
+    {
+      "video_name": "Air_Force_One",
+      "scene_idx": 21,
+      "num_frames": 3,
+      "reference_length": 5990,
+      "candidate_length": 61,
+      "rouge1_recall": 0.0082,
+      "bertscore_recall": 0.7854
+    },
+    {
+      "video_name": "Air_Force_One",
+      "scene_idx": 22,
+      "num_frames": 3,
+      "reference_length": 5800,
+      "candidate_length": 34,
+      "rouge1_recall": 0.0064,
+      "bertscore_recall": 0.7804
+    },
+    {
+      "video_name": "Air_Force_One",
+      "scene_idx": 23,
+      "num_frames": 2,
+      "reference_length": 3323,
+      "candidate_length": 29,
+      "rouge1_recall": 0.0089,
+      "bertscore_recall": 0.7854
+    },
+    {
+      "video_name": "Air_Force_One",
+      "scene_idx": 24,
+      "num_frames": 3,
+      "reference_length": 4535,
+      "candidate_length": 38,
+      "rouge1_recall": 0.0092,
+      "bertscore_recall": 0.7824
+    },
+    {
+      "video_name": "Air_Force_One",
+      "scene_idx": 25,
+      "num_frames": 4,
+      "reference_length": 7809,
+      "candidate_length": 32,
+      "rouge1_recall": 0.0054,
+      "bertscore_recall": 0.7739
+    },
+    {
+      "video_name": "Air_Force_One",
+      "scene_idx": 26,
+      "num_frames": 6,
+      "reference_length": 12319,
+      "candidate_length": 43,
+      "rouge1_recall": 0.0039,
+      "bertscore_recall": 0.7842
+    },
+    {
+      "video_name": "Air_Force_One",
+      "scene_idx": 27,
+      "num_frames": 4,
+      "reference_length": 6604,
+      "candidate_length": 74,
+      "rouge1_recall": 0.011,
+      "bertscore_recall": 0.7823
+    },
+    {
+      "video_name": "Air_Force_One",
+      "scene_idx": 28,
+      "num_frames": 4,
+      "reference_length": 5977,
+      "candidate_length": 79,
+      "rouge1_recall": 0.0109,
+      "bertscore_recall": 0.7886
+    },
+    {
+      "video_name": "Air_Force_One",
+      "scene_idx": 29,
+      "num_frames": 10,
+      "reference_length": 20310,
+      "candidate_length": 74,
+      "rouge1_recall": 0.003,
+      "bertscore_recall": 0.7853
+    },
+    {
+      "video_name": "Bearpark_climbing",
+      "scene_idx": 0,
+      "num_frames": 13,
+      "reference_length": 24736,
+      "candidate_length": 114,
+      "rouge1_recall": 0.0046,
+      "bertscore_recall": 0.7927
+    },
+    {
+      "video_name": "Bearpark_climbing",
+      "scene_idx": 1,
+      "num_frames": 9,
+      "reference_length": 17638,
+      "candidate_length": 63,
+      "rouge1_recall": 0.0033,
+      "bertscore_recall": 0.7905
+    },
+    {
+      "video_name": "Bearpark_climbing",
+      "scene_idx": 2,
+      "num_frames": 14,
+      "reference_length": 23923,
+      "candidate_length": 63,
+      "rouge1_recall": 0.0027,
+      "bertscore_recall": 0.7842
+    },
+    {
+      "video_name": "Bearpark_climbing",
+      "scene_idx": 3,
+      "num_frames": 12,
+      "reference_length": 21706,
+      "candidate_length": 65,
+      "rouge1_recall": 0.0027,
+      "bertscore_recall": 0.7817
+    },
+    {
+      "video_name": "Bearpark_climbing",
+      "scene_idx": 5,
+      "num_frames": 17,
+      "reference_length": 32753,
+      "candidate_length": 121,
+      "rouge1_recall": 0.0034,
+      "bertscore_recall": 0.802
+    },
+    {
+      "video_name": "Bearpark_climbing",
+      "scene_idx": 6,
+      "num_frames": 3,
+      "reference_length": 6374,
+      "candidate_length": 60,
+      "rouge1_recall": 0.0091,
+      "bertscore_recall": 0.7858
+    },
+    {
+      "video_name": "Bearpark_climbing",
+      "scene_idx": 7,
+      "num_frames": 10,
+      "reference_length": 17783,
+      "candidate_length": 96,
+      "rouge1_recall": 0.0043,
+      "bertscore_recall": 0.797
+    },
+    {
+      "video_name": "Bearpark_climbing",
+      "scene_idx": 8,
+      "num_frames": 3,
+      "reference_length": 4868,
+      "candidate_length": 44,
+      "rouge1_recall": 0.0084,
+      "bertscore_recall": 0.7769
+    },
+    {
+      "video_name": "Bearpark_climbing",
+      "scene_idx": 9,
+      "num_frames": 16,
+      "reference_length": 30000,
+      "candidate_length": 56,
+      "rouge1_recall": 0.0021,
+      "bertscore_recall": 0.7973
+    },
+    {
+      "video_name": "Bearpark_climbing",
+      "scene_idx": 10,
+      "num_frames": 9,
+      "reference_length": 18150,
+      "candidate_length": 89,
+      "rouge1_recall": 0.0039,
+      "bertscore_recall": 0.8009
+    },
+    {
+      "video_name": "Bearpark_climbing",
+      "scene_idx": 11,
+      "num_frames": 11,
+      "reference_length": 20172,
+      "candidate_length": 128,
+      "rouge1_recall": 0.0058,
+      "bertscore_recall": 0.8098
+    },
+    {
+      "video_name": "Bearpark_climbing",
+      "scene_idx": 12,
+      "num_frames": 5,
+      "reference_length": 8016,
+      "candidate_length": 55,
+      "rouge1_recall": 0.0065,
+      "bertscore_recall": 0.7853
+    },
+    {
+      "video_name": "Bearpark_climbing",
+      "scene_idx": 13,
+      "num_frames": 8,
+      "reference_length": 16916,
+      "candidate_length": 51,
+      "rouge1_recall": 0.0035,
+      "bertscore_recall": 0.7934
+    },
+    {
+      "video_name": "Bearpark_climbing",
+      "scene_idx": 14,
+      "num_frames": 25,
+      "reference_length": 47718,
+      "candidate_length": 121,
+      "rouge1_recall": 0.0023,
+      "bertscore_recall": 0.7915
+    },
+    {
+      "video_name": "Bearpark_climbing",
+      "scene_idx": 15,
+      "num_frames": 7,
+      "reference_length": 13045,
+      "candidate_length": 110,
+      "rouge1_recall": 0.005,
+      "bertscore_recall": 0.7974
+    },
+    {
+      "video_name": "Bearpark_climbing",
+      "scene_idx": 16,
+      "num_frames": 9,
+      "reference_length": 15143,
+      "candidate_length": 61,
+      "rouge1_recall": 0.0034,
+      "bertscore_recall": 0.7917
+    },
+    {
+      "video_name": "Bearpark_climbing",
+      "scene_idx": 17,
+      "num_frames": 8,
+      "reference_length": 16825,
+      "candidate_length": 204,
+      "rouge1_recall": 0.0098,
+      "bertscore_recall": 0.8046
+    },
+    {
+      "video_name": "Bearpark_climbing",
+      "scene_idx": 18,
+      "num_frames": 5,
+      "reference_length": 9202,
+      "candidate_length": 78,
+      "rouge1_recall": 0.005,
+      "bertscore_recall": 0.7864
+    },
+    {
+      "video_name": "Bearpark_climbing",
+      "scene_idx": 19,
+      "num_frames": 6,
+      "reference_length": 11481,
+      "candidate_length": 107,
+      "rouge1_recall": 0.0072,
+      "bertscore_recall": 0.8004
+    },
+    {
+      "video_name": "Bearpark_climbing",
+      "scene_idx": 20,
+      "num_frames": 6,
+      "reference_length": 10647,
+      "candidate_length": 92,
+      "rouge1_recall": 0.0061,
+      "bertscore_recall": 0.7897
+    },
+    {
+      "video_name": "Bearpark_climbing",
+      "scene_idx": 21,
+      "num_frames": 9,
+      "reference_length": 18282,
+      "candidate_length": 128,
+      "rouge1_recall": 0.0055,
+      "bertscore_recall": 0.7995
+    },
+    {
+      "video_name": "Bearpark_climbing",
+      "scene_idx": 22,
+      "num_frames": 7,
+      "reference_length": 12569,
+      "candidate_length": 65,
+      "rouge1_recall": 0.0024,
+      "bertscore_recall": 0.7837
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 0,
+      "num_frames": 4,
+      "reference_length": 7132,
+      "candidate_length": 39,
+      "rouge1_recall": 0.0059,
+      "bertscore_recall": 0.7822
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 1,
+      "num_frames": 36,
+      "reference_length": 61074,
+      "candidate_length": 127,
+      "rouge1_recall": 0.0012,
+      "bertscore_recall": 0.787
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 2,
+      "num_frames": 43,
+      "reference_length": 72928,
+      "candidate_length": 115,
+      "rouge1_recall": 0.0012,
+      "bertscore_recall": 0.7874
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 3,
+      "num_frames": 8,
+      "reference_length": 14003,
+      "candidate_length": 158,
+      "rouge1_recall": 0.0091,
+      "bertscore_recall": 0.7944
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 4,
+      "num_frames": 5,
+      "reference_length": 8664,
+      "candidate_length": 138,
+      "rouge1_recall": 0.0139,
+      "bertscore_recall": 0.7939
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 5,
+      "num_frames": 6,
+      "reference_length": 9981,
+      "candidate_length": 104,
+      "rouge1_recall": 0.0072,
+      "bertscore_recall": 0.7878
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 6,
+      "num_frames": 13,
+      "reference_length": 23012,
+      "candidate_length": 241,
+      "rouge1_recall": 0.0071,
+      "bertscore_recall": 0.8044
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 7,
+      "num_frames": 10,
+      "reference_length": 15984,
+      "candidate_length": 57,
+      "rouge1_recall": 0.0023,
+      "bertscore_recall": 0.7821
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 8,
+      "num_frames": 4,
+      "reference_length": 6466,
+      "candidate_length": 81,
+      "rouge1_recall": 0.0056,
+      "bertscore_recall": 0.7799
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 9,
+      "num_frames": 17,
+      "reference_length": 29660,
+      "candidate_length": 101,
+      "rouge1_recall": 0.002,
+      "bertscore_recall": 0.793
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 10,
+      "num_frames": 16,
+      "reference_length": 28119,
+      "candidate_length": 140,
+      "rouge1_recall": 0.0037,
+      "bertscore_recall": 0.787
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 11,
+      "num_frames": 13,
+      "reference_length": 20754,
+      "candidate_length": 64,
+      "rouge1_recall": 0.0021,
+      "bertscore_recall": 0.7861
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 12,
+      "num_frames": 8,
+      "reference_length": 13567,
+      "candidate_length": 54,
+      "rouge1_recall": 0.0022,
+      "bertscore_recall": 0.7768
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 13,
+      "num_frames": 9,
+      "reference_length": 15723,
+      "candidate_length": 114,
+      "rouge1_recall": 0.0043,
+      "bertscore_recall": 0.7813
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 14,
+      "num_frames": 5,
+      "reference_length": 8371,
+      "candidate_length": 73,
+      "rouge1_recall": 0.0058,
+      "bertscore_recall": 0.784
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 15,
+      "num_frames": 10,
+      "reference_length": 17391,
+      "candidate_length": 116,
+      "rouge1_recall": 0.0038,
+      "bertscore_recall": 0.7851
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 16,
+      "num_frames": 3,
+      "reference_length": 5366,
+      "candidate_length": 125,
+      "rouge1_recall": 0.0113,
+      "bertscore_recall": 0.7795
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 17,
+      "num_frames": 7,
+      "reference_length": 11473,
+      "candidate_length": 160,
+      "rouge1_recall": 0.009,
+      "bertscore_recall": 0.7822
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 18,
+      "num_frames": 3,
+      "reference_length": 4884,
+      "candidate_length": 45,
+      "rouge1_recall": 0.0098,
+      "bertscore_recall": 0.7646
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 19,
+      "num_frames": 4,
+      "reference_length": 6721,
+      "candidate_length": 187,
+      "rouge1_recall": 0.0202,
+      "bertscore_recall": 0.7932
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 20,
+      "num_frames": 12,
+      "reference_length": 20233,
+      "candidate_length": 189,
+      "rouge1_recall": 0.0065,
+      "bertscore_recall": 0.7892
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 21,
+      "num_frames": 6,
+      "reference_length": 10845,
+      "candidate_length": 170,
+      "rouge1_recall": 0.009,
+      "bertscore_recall": 0.7936
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 22,
+      "num_frames": 5,
+      "reference_length": 8310,
+      "candidate_length": 54,
+      "rouge1_recall": 0.0072,
+      "bertscore_recall": 0.7786
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 23,
+      "num_frames": 8,
+      "reference_length": 13796,
+      "candidate_length": 137,
+      "rouge1_recall": 0.0057,
+      "bertscore_recall": 0.78
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 24,
+      "num_frames": 10,
+      "reference_length": 17204,
+      "candidate_length": 287,
+      "rouge1_recall": 0.0103,
+      "bertscore_recall": 0.7977
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 25,
+      "num_frames": 4,
+      "reference_length": 6624,
+      "candidate_length": 197,
+      "rouge1_recall": 0.0251,
+      "bertscore_recall": 0.7901
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 26,
+      "num_frames": 6,
+      "reference_length": 11033,
+      "candidate_length": 145,
+      "rouge1_recall": 0.0066,
+      "bertscore_recall": 0.7916
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 27,
+      "num_frames": 8,
+      "reference_length": 12657,
+      "candidate_length": 69,
+      "rouge1_recall": 0.0034,
+      "bertscore_recall": 0.7849
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 28,
+      "num_frames": 6,
+      "reference_length": 10836,
+      "candidate_length": 160,
+      "rouge1_recall": 0.0084,
+      "bertscore_recall": 0.7999
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 29,
+      "num_frames": 8,
+      "reference_length": 12895,
+      "candidate_length": 68,
+      "rouge1_recall": 0.0028,
+      "bertscore_recall": 0.7796
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 30,
+      "num_frames": 8,
+      "reference_length": 13824,
+      "candidate_length": 81,
+      "rouge1_recall": 0.004,
+      "bertscore_recall": 0.7849
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 31,
+      "num_frames": 5,
+      "reference_length": 9128,
+      "candidate_length": 74,
+      "rouge1_recall": 0.0055,
+      "bertscore_recall": 0.7787
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 32,
+      "num_frames": 8,
+      "reference_length": 13609,
+      "candidate_length": 58,
+      "rouge1_recall": 0.0018,
+      "bertscore_recall": 0.7848
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 33,
+      "num_frames": 10,
+      "reference_length": 17755,
+      "candidate_length": 57,
+      "rouge1_recall": 0.0014,
+      "bertscore_recall": 0.7801
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "scene_idx": 34,
+      "num_frames": 11,
+      "reference_length": 17638,
+      "candidate_length": 56,
+      "rouge1_recall": 0.001,
+      "bertscore_recall": 0.7771
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 0,
+      "num_frames": 22,
+      "reference_length": 40568,
+      "candidate_length": 154,
+      "rouge1_recall": 0.0039,
+      "bertscore_recall": 0.7937
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 1,
+      "num_frames": 17,
+      "reference_length": 27102,
+      "candidate_length": 94,
+      "rouge1_recall": 0.0028,
+      "bertscore_recall": 0.7895
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 2,
+      "num_frames": 29,
+      "reference_length": 50861,
+      "candidate_length": 140,
+      "rouge1_recall": 0.0022,
+      "bertscore_recall": 0.7927
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 3,
+      "num_frames": 17,
+      "reference_length": 28125,
+      "candidate_length": 270,
+      "rouge1_recall": 0.0072,
+      "bertscore_recall": 0.807
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 4,
+      "num_frames": 37,
+      "reference_length": 63612,
+      "candidate_length": 150,
+      "rouge1_recall": 0.002,
+      "bertscore_recall": 0.7859
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 5,
+      "num_frames": 29,
+      "reference_length": 46539,
+      "candidate_length": 75,
+      "rouge1_recall": 0.0016,
+      "bertscore_recall": 0.7848
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 6,
+      "num_frames": 5,
+      "reference_length": 10738,
+      "candidate_length": 137,
+      "rouge1_recall": 0.0084,
+      "bertscore_recall": 0.7852
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 7,
+      "num_frames": 7,
+      "reference_length": 10925,
+      "candidate_length": 208,
+      "rouge1_recall": 0.0122,
+      "bertscore_recall": 0.7976
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 8,
+      "num_frames": 14,
+      "reference_length": 23327,
+      "candidate_length": 254,
+      "rouge1_recall": 0.0087,
+      "bertscore_recall": 0.804
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 9,
+      "num_frames": 3,
+      "reference_length": 5001,
+      "candidate_length": 33,
+      "rouge1_recall": 0.0047,
+      "bertscore_recall": 0.7769
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 10,
+      "num_frames": 10,
+      "reference_length": 16090,
+      "candidate_length": 181,
+      "rouge1_recall": 0.0097,
+      "bertscore_recall": 0.7929
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 11,
+      "num_frames": 10,
+      "reference_length": 23499,
+      "candidate_length": 143,
+      "rouge1_recall": 0.0053,
+      "bertscore_recall": 0.7942
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 12,
+      "num_frames": 5,
+      "reference_length": 9685,
+      "candidate_length": 42,
+      "rouge1_recall": 0.0042,
+      "bertscore_recall": 0.7824
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 13,
+      "num_frames": 10,
+      "reference_length": 15807,
+      "candidate_length": 219,
+      "rouge1_recall": 0.0113,
+      "bertscore_recall": 0.7977
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 14,
+      "num_frames": 6,
+      "reference_length": 10543,
+      "candidate_length": 137,
+      "rouge1_recall": 0.0082,
+      "bertscore_recall": 0.7824
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 15,
+      "num_frames": 5,
+      "reference_length": 8083,
+      "candidate_length": 120,
+      "rouge1_recall": 0.0094,
+      "bertscore_recall": 0.7883
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 16,
+      "num_frames": 9,
+      "reference_length": 13752,
+      "candidate_length": 221,
+      "rouge1_recall": 0.0096,
+      "bertscore_recall": 0.8038
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 17,
+      "num_frames": 6,
+      "reference_length": 10181,
+      "candidate_length": 175,
+      "rouge1_recall": 0.0092,
+      "bertscore_recall": 0.7917
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 18,
+      "num_frames": 4,
+      "reference_length": 7443,
+      "candidate_length": 160,
+      "rouge1_recall": 0.0125,
+      "bertscore_recall": 0.7815
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 19,
+      "num_frames": 2,
+      "reference_length": 4816,
+      "candidate_length": 237,
+      "rouge1_recall": 0.0305,
+      "bertscore_recall": 0.7875
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 20,
+      "num_frames": 9,
+      "reference_length": 14992,
+      "candidate_length": 157,
+      "rouge1_recall": 0.0077,
+      "bertscore_recall": 0.7951
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 21,
+      "num_frames": 7,
+      "reference_length": 11337,
+      "candidate_length": 145,
+      "rouge1_recall": 0.0096,
+      "bertscore_recall": 0.7918
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 22,
+      "num_frames": 7,
+      "reference_length": 10309,
+      "candidate_length": 150,
+      "rouge1_recall": 0.014,
+      "bertscore_recall": 0.7921
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 23,
+      "num_frames": 10,
+      "reference_length": 16257,
+      "candidate_length": 168,
+      "rouge1_recall": 0.0078,
+      "bertscore_recall": 0.7963
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 24,
+      "num_frames": 6,
+      "reference_length": 12838,
+      "candidate_length": 156,
+      "rouge1_recall": 0.0111,
+      "bertscore_recall": 0.7947
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 25,
+      "num_frames": 5,
+      "reference_length": 8217,
+      "candidate_length": 181,
+      "rouge1_recall": 0.0161,
+      "bertscore_recall": 0.8009
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 26,
+      "num_frames": 7,
+      "reference_length": 12556,
+      "candidate_length": 144,
+      "rouge1_recall": 0.0107,
+      "bertscore_recall": 0.7888
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 27,
+      "num_frames": 3,
+      "reference_length": 5078,
+      "candidate_length": 170,
+      "rouge1_recall": 0.0231,
+      "bertscore_recall": 0.7949
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 28,
+      "num_frames": 6,
+      "reference_length": 10672,
+      "candidate_length": 93,
+      "rouge1_recall": 0.0039,
+      "bertscore_recall": 0.7767
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 29,
+      "num_frames": 10,
+      "reference_length": 16158,
+      "candidate_length": 195,
+      "rouge1_recall": 0.0089,
+      "bertscore_recall": 0.794
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 30,
+      "num_frames": 4,
+      "reference_length": 4991,
+      "candidate_length": 121,
+      "rouge1_recall": 0.0217,
+      "bertscore_recall": 0.7927
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 31,
+      "num_frames": 8,
+      "reference_length": 12602,
+      "candidate_length": 164,
+      "rouge1_recall": 0.0106,
+      "bertscore_recall": 0.7852
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 32,
+      "num_frames": 4,
+      "reference_length": 7092,
+      "candidate_length": 110,
+      "rouge1_recall": 0.0124,
+      "bertscore_recall": 0.7862
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "scene_idx": 33,
+      "num_frames": 6,
+      "reference_length": 9650,
+      "candidate_length": 159,
+      "rouge1_recall": 0.0107,
+      "bertscore_recall": 0.7931
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 0,
+      "num_frames": 12,
+      "reference_length": 21711,
+      "candidate_length": 84,
+      "rouge1_recall": 0.0045,
+      "bertscore_recall": 0.795
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 1,
+      "num_frames": 5,
+      "reference_length": 9048,
+      "candidate_length": 67,
+      "rouge1_recall": 0.0069,
+      "bertscore_recall": 0.7962
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 2,
+      "num_frames": 9,
+      "reference_length": 16504,
+      "candidate_length": 93,
+      "rouge1_recall": 0.0059,
+      "bertscore_recall": 0.7949
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 3,
+      "num_frames": 12,
+      "reference_length": 21171,
+      "candidate_length": 62,
+      "rouge1_recall": 0.0032,
+      "bertscore_recall": 0.7924
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 4,
+      "num_frames": 20,
+      "reference_length": 37582,
+      "candidate_length": 111,
+      "rouge1_recall": 0.0026,
+      "bertscore_recall": 0.799
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 5,
+      "num_frames": 6,
+      "reference_length": 10236,
+      "candidate_length": 108,
+      "rouge1_recall": 0.0097,
+      "bertscore_recall": 0.7972
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 6,
+      "num_frames": 4,
+      "reference_length": 7248,
+      "candidate_length": 112,
+      "rouge1_recall": 0.0143,
+      "bertscore_recall": 0.8054
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 7,
+      "num_frames": 9,
+      "reference_length": 16330,
+      "candidate_length": 176,
+      "rouge1_recall": 0.0093,
+      "bertscore_recall": 0.809
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 8,
+      "num_frames": 7,
+      "reference_length": 12811,
+      "candidate_length": 229,
+      "rouge1_recall": 0.0159,
+      "bertscore_recall": 0.8146
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 9,
+      "num_frames": 9,
+      "reference_length": 17157,
+      "candidate_length": 85,
+      "rouge1_recall": 0.005,
+      "bertscore_recall": 0.7959
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 10,
+      "num_frames": 21,
+      "reference_length": 37562,
+      "candidate_length": 121,
+      "rouge1_recall": 0.0028,
+      "bertscore_recall": 0.8069
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 11,
+      "num_frames": 5,
+      "reference_length": 8944,
+      "candidate_length": 103,
+      "rouge1_recall": 0.0107,
+      "bertscore_recall": 0.7975
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 12,
+      "num_frames": 9,
+      "reference_length": 15892,
+      "candidate_length": 94,
+      "rouge1_recall": 0.005,
+      "bertscore_recall": 0.7895
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 13,
+      "num_frames": 13,
+      "reference_length": 25141,
+      "candidate_length": 115,
+      "rouge1_recall": 0.0044,
+      "bertscore_recall": 0.7937
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 14,
+      "num_frames": 8,
+      "reference_length": 14073,
+      "candidate_length": 118,
+      "rouge1_recall": 0.0061,
+      "bertscore_recall": 0.787
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 15,
+      "num_frames": 10,
+      "reference_length": 18921,
+      "candidate_length": 112,
+      "rouge1_recall": 0.0035,
+      "bertscore_recall": 0.778
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 16,
+      "num_frames": 7,
+      "reference_length": 13367,
+      "candidate_length": 54,
+      "rouge1_recall": 0.0037,
+      "bertscore_recall": 0.7807
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 17,
+      "num_frames": 4,
+      "reference_length": 7254,
+      "candidate_length": 112,
+      "rouge1_recall": 0.0059,
+      "bertscore_recall": 0.7914
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 18,
+      "num_frames": 4,
+      "reference_length": 7171,
+      "candidate_length": 73,
+      "rouge1_recall": 0.011,
+      "bertscore_recall": 0.7932
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 19,
+      "num_frames": 11,
+      "reference_length": 18544,
+      "candidate_length": 102,
+      "rouge1_recall": 0.0053,
+      "bertscore_recall": 0.7908
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 20,
+      "num_frames": 16,
+      "reference_length": 30000,
+      "candidate_length": 112,
+      "rouge1_recall": 0.0035,
+      "bertscore_recall": 0.8093
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 21,
+      "num_frames": 8,
+      "reference_length": 15293,
+      "candidate_length": 126,
+      "rouge1_recall": 0.0081,
+      "bertscore_recall": 0.798
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 22,
+      "num_frames": 4,
+      "reference_length": 7478,
+      "candidate_length": 87,
+      "rouge1_recall": 0.0098,
+      "bertscore_recall": 0.7968
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 23,
+      "num_frames": 6,
+      "reference_length": 11392,
+      "candidate_length": 98,
+      "rouge1_recall": 0.008,
+      "bertscore_recall": 0.8032
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 24,
+      "num_frames": 9,
+      "reference_length": 15473,
+      "candidate_length": 67,
+      "rouge1_recall": 0.0051,
+      "bertscore_recall": 0.7959
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 25,
+      "num_frames": 22,
+      "reference_length": 39789,
+      "candidate_length": 99,
+      "rouge1_recall": 0.0018,
+      "bertscore_recall": 0.7965
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 26,
+      "num_frames": 12,
+      "reference_length": 22703,
+      "candidate_length": 94,
+      "rouge1_recall": 0.0022,
+      "bertscore_recall": 0.7919
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 27,
+      "num_frames": 8,
+      "reference_length": 14961,
+      "candidate_length": 112,
+      "rouge1_recall": 0.0074,
+      "bertscore_recall": 0.8043
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 28,
+      "num_frames": 8,
+      "reference_length": 14588,
+      "candidate_length": 119,
+      "rouge1_recall": 0.0083,
+      "bertscore_recall": 0.7986
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 29,
+      "num_frames": 5,
+      "reference_length": 8267,
+      "candidate_length": 97,
+      "rouge1_recall": 0.0095,
+      "bertscore_recall": 0.7787
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 30,
+      "num_frames": 7,
+      "reference_length": 13114,
+      "candidate_length": 83,
+      "rouge1_recall": 0.0047,
+      "bertscore_recall": 0.7943
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 31,
+      "num_frames": 11,
+      "reference_length": 21087,
+      "candidate_length": 129,
+      "rouge1_recall": 0.0059,
+      "bertscore_recall": 0.7983
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 32,
+      "num_frames": 14,
+      "reference_length": 25355,
+      "candidate_length": 190,
+      "rouge1_recall": 0.0063,
+      "bertscore_recall": 0.8086
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 33,
+      "num_frames": 11,
+      "reference_length": 20037,
+      "candidate_length": 122,
+      "rouge1_recall": 0.0046,
+      "bertscore_recall": 0.795
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 34,
+      "num_frames": 17,
+      "reference_length": 30589,
+      "candidate_length": 134,
+      "rouge1_recall": 0.0034,
+      "bertscore_recall": 0.7889
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 35,
+      "num_frames": 24,
+      "reference_length": 44219,
+      "candidate_length": 134,
+      "rouge1_recall": 0.0024,
+      "bertscore_recall": 0.7942
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 36,
+      "num_frames": 3,
+      "reference_length": 5289,
+      "candidate_length": 60,
+      "rouge1_recall": 0.0082,
+      "bertscore_recall": 0.7775
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 37,
+      "num_frames": 3,
+      "reference_length": 5242,
+      "candidate_length": 90,
+      "rouge1_recall": 0.0158,
+      "bertscore_recall": 0.7835
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 38,
+      "num_frames": 10,
+      "reference_length": 18126,
+      "candidate_length": 62,
+      "rouge1_recall": 0.0024,
+      "bertscore_recall": 0.7762
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 39,
+      "num_frames": 5,
+      "reference_length": 8968,
+      "candidate_length": 121,
+      "rouge1_recall": 0.0089,
+      "bertscore_recall": 0.7806
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 40,
+      "num_frames": 3,
+      "reference_length": 5793,
+      "candidate_length": 87,
+      "rouge1_recall": 0.0124,
+      "bertscore_recall": 0.7832
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 41,
+      "num_frames": 11,
+      "reference_length": 21682,
+      "candidate_length": 163,
+      "rouge1_recall": 0.0059,
+      "bertscore_recall": 0.7987
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 42,
+      "num_frames": 10,
+      "reference_length": 18801,
+      "candidate_length": 118,
+      "rouge1_recall": 0.0062,
+      "bertscore_recall": 0.7962
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 43,
+      "num_frames": 16,
+      "reference_length": 27373,
+      "candidate_length": 111,
+      "rouge1_recall": 0.0042,
+      "bertscore_recall": 0.7973
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 44,
+      "num_frames": 7,
+      "reference_length": 12871,
+      "candidate_length": 119,
+      "rouge1_recall": 0.0077,
+      "bertscore_recall": 0.7977
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 45,
+      "num_frames": 13,
+      "reference_length": 25140,
+      "candidate_length": 232,
+      "rouge1_recall": 0.008,
+      "bertscore_recall": 0.8104
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 46,
+      "num_frames": 20,
+      "reference_length": 36351,
+      "candidate_length": 243,
+      "rouge1_recall": 0.006,
+      "bertscore_recall": 0.7987
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 47,
+      "num_frames": 5,
+      "reference_length": 8655,
+      "candidate_length": 117,
+      "rouge1_recall": 0.0078,
+      "bertscore_recall": 0.787
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 48,
+      "num_frames": 5,
+      "reference_length": 8613,
+      "candidate_length": 82,
+      "rouge1_recall": 0.0071,
+      "bertscore_recall": 0.7864
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 49,
+      "num_frames": 9,
+      "reference_length": 16697,
+      "candidate_length": 180,
+      "rouge1_recall": 0.0066,
+      "bertscore_recall": 0.8029
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 50,
+      "num_frames": 9,
+      "reference_length": 17773,
+      "candidate_length": 136,
+      "rouge1_recall": 0.0076,
+      "bertscore_recall": 0.805
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 51,
+      "num_frames": 9,
+      "reference_length": 17017,
+      "candidate_length": 148,
+      "rouge1_recall": 0.0072,
+      "bertscore_recall": 0.805
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 52,
+      "num_frames": 6,
+      "reference_length": 10978,
+      "candidate_length": 122,
+      "rouge1_recall": 0.0084,
+      "bertscore_recall": 0.8011
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 53,
+      "num_frames": 16,
+      "reference_length": 28114,
+      "candidate_length": 104,
+      "rouge1_recall": 0.0032,
+      "bertscore_recall": 0.7972
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 54,
+      "num_frames": 11,
+      "reference_length": 19020,
+      "candidate_length": 91,
+      "rouge1_recall": 0.0042,
+      "bertscore_recall": 0.7926
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 55,
+      "num_frames": 11,
+      "reference_length": 19155,
+      "candidate_length": 118,
+      "rouge1_recall": 0.0051,
+      "bertscore_recall": 0.7941
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 56,
+      "num_frames": 6,
+      "reference_length": 10867,
+      "candidate_length": 124,
+      "rouge1_recall": 0.0086,
+      "bertscore_recall": 0.798
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 57,
+      "num_frames": 7,
+      "reference_length": 12428,
+      "candidate_length": 160,
+      "rouge1_recall": 0.0087,
+      "bertscore_recall": 0.7905
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 58,
+      "num_frames": 12,
+      "reference_length": 20971,
+      "candidate_length": 71,
+      "rouge1_recall": 0.0023,
+      "bertscore_recall": 0.7859
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 59,
+      "num_frames": 10,
+      "reference_length": 17342,
+      "candidate_length": 121,
+      "rouge1_recall": 0.005,
+      "bertscore_recall": 0.7878
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "scene_idx": 60,
+      "num_frames": 14,
+      "reference_length": 25439,
+      "candidate_length": 106,
+      "rouge1_recall": 0.0036,
+      "bertscore_recall": 0.7861
+    },
+    {
+      "video_name": "Cooking",
+      "scene_idx": 0,
+      "num_frames": 26,
+      "reference_length": 45357,
+      "candidate_length": 128,
+      "rouge1_recall": 0.0025,
+      "bertscore_recall": 0.7932
+    },
+    {
+      "video_name": "Cooking",
+      "scene_idx": 1,
+      "num_frames": 3,
+      "reference_length": 4498,
+      "candidate_length": 45,
+      "rouge1_recall": 0.0124,
+      "bertscore_recall": 0.7876
+    },
+    {
+      "video_name": "Cooking",
+      "scene_idx": 2,
+      "num_frames": 3,
+      "reference_length": 5666,
+      "candidate_length": 55,
+      "rouge1_recall": 0.0112,
+      "bertscore_recall": 0.7793
+    },
+    {
+      "video_name": "Cooking",
+      "scene_idx": 3,
+      "num_frames": 12,
+      "reference_length": 24469,
+      "candidate_length": 58,
+      "rouge1_recall": 0.0016,
+      "bertscore_recall": 0.7735
+    },
+    {
+      "video_name": "Cooking",
+      "scene_idx": 4,
+      "num_frames": 18,
+      "reference_length": 34188,
+      "candidate_length": 145,
+      "rouge1_recall": 0.0039,
+      "bertscore_recall": 0.7981
+    },
+    {
+      "video_name": "Cooking",
+      "scene_idx": 5,
+      "num_frames": 5,
+      "reference_length": 8099,
+      "candidate_length": 64,
+      "rouge1_recall": 0.0057,
+      "bertscore_recall": 0.7719
+    },
+    {
+      "video_name": "Cooking",
+      "scene_idx": 6,
+      "num_frames": 3,
+      "reference_length": 5358,
+      "candidate_length": 156,
+      "rouge1_recall": 0.0252,
+      "bertscore_recall": 0.8023
+    },
+    {
+      "video_name": "Cooking",
+      "scene_idx": 7,
+      "num_frames": 7,
+      "reference_length": 11561,
+      "candidate_length": 63,
+      "rouge1_recall": 0.0051,
+      "bertscore_recall": 0.7847
+    },
+    {
+      "video_name": "Cooking",
+      "scene_idx": 8,
+      "num_frames": 9,
+      "reference_length": 16878,
+      "candidate_length": 102,
+      "rouge1_recall": 0.0055,
+      "bertscore_recall": 0.7927
+    },
+    {
+      "video_name": "Jumps",
+      "scene_idx": 0,
+      "num_frames": 10,
+      "reference_length": 20055,
+      "candidate_length": 113,
+      "rouge1_recall": 0.0053,
+      "bertscore_recall": 0.7888
+    },
+    {
+      "video_name": "Jumps",
+      "scene_idx": 1,
+      "num_frames": 11,
+      "reference_length": 18652,
+      "candidate_length": 87,
+      "rouge1_recall": 0.0038,
+      "bertscore_recall": 0.7882
+    },
+    {
+      "video_name": "Jumps",
+      "scene_idx": 2,
+      "num_frames": 10,
+      "reference_length": 19900,
+      "candidate_length": 136,
+      "rouge1_recall": 0.0063,
+      "bertscore_recall": 0.7804
+    },
+    {
+      "video_name": "Jumps",
+      "scene_idx": 3,
+      "num_frames": 8,
+      "reference_length": 14782,
+      "candidate_length": 140,
+      "rouge1_recall": 0.0064,
+      "bertscore_recall": 0.7997
+    },
+    {
+      "video_name": "Jumps",
+      "scene_idx": 4,
+      "num_frames": 13,
+      "reference_length": 27439,
+      "candidate_length": 243,
+      "rouge1_recall": 0.0085,
+      "bertscore_recall": 0.8075
+    },
+    {
+      "video_name": "Jumps",
+      "scene_idx": 5,
+      "num_frames": 6,
+      "reference_length": 11282,
+      "candidate_length": 115,
+      "rouge1_recall": 0.0094,
+      "bertscore_recall": 0.792
+    },
+    {
+      "video_name": "Jumps",
+      "scene_idx": 6,
+      "num_frames": 6,
+      "reference_length": 11719,
+      "candidate_length": 118,
+      "rouge1_recall": 0.0091,
+      "bertscore_recall": 0.7892
+    },
+    {
+      "video_name": "Kids_playing_in_leaves",
+      "scene_idx": 0,
+      "num_frames": 12,
+      "reference_length": 17445,
+      "candidate_length": 195,
+      "rouge1_recall": 0.0088,
+      "bertscore_recall": 0.8079
+    },
+    {
+      "video_name": "Kids_playing_in_leaves",
+      "scene_idx": 8,
+      "num_frames": 7,
+      "reference_length": 11171,
+      "candidate_length": 182,
+      "rouge1_recall": 0.0138,
+      "bertscore_recall": 0.7924
+    },
+    {
+      "video_name": "Kids_playing_in_leaves",
+      "scene_idx": 9,
+      "num_frames": 11,
+      "reference_length": 16072,
+      "candidate_length": 212,
+      "rouge1_recall": 0.007,
+      "bertscore_recall": 0.7925
+    },
+    {
+      "video_name": "Kids_playing_in_leaves",
+      "scene_idx": 10,
+      "num_frames": 5,
+      "reference_length": 7784,
+      "candidate_length": 122,
+      "rouge1_recall": 0.009,
+      "bertscore_recall": 0.7804
+    },
+    {
+      "video_name": "Kids_playing_in_leaves",
+      "scene_idx": 11,
+      "num_frames": 6,
+      "reference_length": 8776,
+      "candidate_length": 82,
+      "rouge1_recall": 0.0061,
+      "bertscore_recall": 0.7776
+    },
+    {
+      "video_name": "Kids_playing_in_leaves",
+      "scene_idx": 13,
+      "num_frames": 4,
+      "reference_length": 5319,
+      "candidate_length": 105,
+      "rouge1_recall": 0.0113,
+      "bertscore_recall": 0.7818
+    },
+    {
+      "video_name": "Kids_playing_in_leaves",
+      "scene_idx": 15,
+      "num_frames": 7,
+      "reference_length": 12229,
+      "candidate_length": 284,
+      "rouge1_recall": 0.0185,
+      "bertscore_recall": 0.8094
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 0,
+      "num_frames": 12,
+      "reference_length": 21854,
+      "candidate_length": 109,
+      "rouge1_recall": 0.0058,
+      "bertscore_recall": 0.7806
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 1,
+      "num_frames": 11,
+      "reference_length": 20473,
+      "candidate_length": 138,
+      "rouge1_recall": 0.0072,
+      "bertscore_recall": 0.7996
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 2,
+      "num_frames": 10,
+      "reference_length": 18368,
+      "candidate_length": 68,
+      "rouge1_recall": 0.0024,
+      "bertscore_recall": 0.7853
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 3,
+      "num_frames": 14,
+      "reference_length": 25828,
+      "candidate_length": 92,
+      "rouge1_recall": 0.003,
+      "bertscore_recall": 0.7787
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 4,
+      "num_frames": 15,
+      "reference_length": 27655,
+      "candidate_length": 105,
+      "rouge1_recall": 0.003,
+      "bertscore_recall": 0.7828
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 5,
+      "num_frames": 10,
+      "reference_length": 17647,
+      "candidate_length": 108,
+      "rouge1_recall": 0.0066,
+      "bertscore_recall": 0.7944
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 6,
+      "num_frames": 6,
+      "reference_length": 12116,
+      "candidate_length": 122,
+      "rouge1_recall": 0.0073,
+      "bertscore_recall": 0.7767
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 7,
+      "num_frames": 12,
+      "reference_length": 21635,
+      "candidate_length": 131,
+      "rouge1_recall": 0.0047,
+      "bertscore_recall": 0.8029
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 8,
+      "num_frames": 4,
+      "reference_length": 8125,
+      "candidate_length": 91,
+      "rouge1_recall": 0.0102,
+      "bertscore_recall": 0.7936
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 9,
+      "num_frames": 10,
+      "reference_length": 17748,
+      "candidate_length": 193,
+      "rouge1_recall": 0.0071,
+      "bertscore_recall": 0.7932
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 10,
+      "num_frames": 11,
+      "reference_length": 20163,
+      "candidate_length": 217,
+      "rouge1_recall": 0.0079,
+      "bertscore_recall": 0.7983
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 11,
+      "num_frames": 8,
+      "reference_length": 14607,
+      "candidate_length": 100,
+      "rouge1_recall": 0.0043,
+      "bertscore_recall": 0.7842
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 12,
+      "num_frames": 19,
+      "reference_length": 35341,
+      "candidate_length": 165,
+      "rouge1_recall": 0.0036,
+      "bertscore_recall": 0.7979
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 13,
+      "num_frames": 11,
+      "reference_length": 20680,
+      "candidate_length": 131,
+      "rouge1_recall": 0.004,
+      "bertscore_recall": 0.7805
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 14,
+      "num_frames": 8,
+      "reference_length": 16690,
+      "candidate_length": 146,
+      "rouge1_recall": 0.0061,
+      "bertscore_recall": 0.7892
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 15,
+      "num_frames": 9,
+      "reference_length": 17750,
+      "candidate_length": 199,
+      "rouge1_recall": 0.0093,
+      "bertscore_recall": 0.7928
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 16,
+      "num_frames": 5,
+      "reference_length": 9103,
+      "candidate_length": 88,
+      "rouge1_recall": 0.0064,
+      "bertscore_recall": 0.7825
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 17,
+      "num_frames": 14,
+      "reference_length": 26398,
+      "candidate_length": 167,
+      "rouge1_recall": 0.0048,
+      "bertscore_recall": 0.7933
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 18,
+      "num_frames": 6,
+      "reference_length": 10348,
+      "candidate_length": 117,
+      "rouge1_recall": 0.0062,
+      "bertscore_recall": 0.7809
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 19,
+      "num_frames": 5,
+      "reference_length": 8715,
+      "candidate_length": 96,
+      "rouge1_recall": 0.0087,
+      "bertscore_recall": 0.8004
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 20,
+      "num_frames": 7,
+      "reference_length": 12196,
+      "candidate_length": 118,
+      "rouge1_recall": 0.0087,
+      "bertscore_recall": 0.7943
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 21,
+      "num_frames": 10,
+      "reference_length": 18939,
+      "candidate_length": 220,
+      "rouge1_recall": 0.008,
+      "bertscore_recall": 0.7935
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 22,
+      "num_frames": 7,
+      "reference_length": 12311,
+      "candidate_length": 102,
+      "rouge1_recall": 0.0047,
+      "bertscore_recall": 0.7792
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 23,
+      "num_frames": 2,
+      "reference_length": 3476,
+      "candidate_length": 53,
+      "rouge1_recall": 0.0092,
+      "bertscore_recall": 0.7813
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 24,
+      "num_frames": 11,
+      "reference_length": 19930,
+      "candidate_length": 145,
+      "rouge1_recall": 0.0054,
+      "bertscore_recall": 0.7941
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 25,
+      "num_frames": 11,
+      "reference_length": 20983,
+      "candidate_length": 145,
+      "rouge1_recall": 0.0067,
+      "bertscore_recall": 0.803
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 26,
+      "num_frames": 15,
+      "reference_length": 25794,
+      "candidate_length": 132,
+      "rouge1_recall": 0.0047,
+      "bertscore_recall": 0.7939
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 27,
+      "num_frames": 4,
+      "reference_length": 7888,
+      "candidate_length": 78,
+      "rouge1_recall": 0.0065,
+      "bertscore_recall": 0.7764
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 28,
+      "num_frames": 7,
+      "reference_length": 13209,
+      "candidate_length": 102,
+      "rouge1_recall": 0.0053,
+      "bertscore_recall": 0.7891
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 29,
+      "num_frames": 16,
+      "reference_length": 28933,
+      "candidate_length": 170,
+      "rouge1_recall": 0.0046,
+      "bertscore_recall": 0.7914
+    },
+    {
+      "video_name": "Notre_Dame",
+      "scene_idx": 30,
+      "num_frames": 17,
+      "reference_length": 30111,
+      "candidate_length": 139,
+      "rouge1_recall": 0.004,
+      "bertscore_recall": 0.7912
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 0,
+      "num_frames": 20,
+      "reference_length": 33608,
+      "candidate_length": 85,
+      "rouge1_recall": 0.002,
+      "bertscore_recall": 0.781
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 1,
+      "num_frames": 142,
+      "reference_length": 243714,
+      "candidate_length": 398,
+      "rouge1_recall": 0.0014,
+      "bertscore_recall": 0.8088
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 2,
+      "num_frames": 3,
+      "reference_length": 5458,
+      "candidate_length": 112,
+      "rouge1_recall": 0.0113,
+      "bertscore_recall": 0.7862
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 3,
+      "num_frames": 1,
+      "reference_length": 2074,
+      "candidate_length": 86,
+      "rouge1_recall": 0.0197,
+      "bertscore_recall": 0.7892
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 4,
+      "num_frames": 3,
+      "reference_length": 5388,
+      "candidate_length": 66,
+      "rouge1_recall": 0.0055,
+      "bertscore_recall": 0.785
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 5,
+      "num_frames": 9,
+      "reference_length": 14875,
+      "candidate_length": 176,
+      "rouge1_recall": 0.0061,
+      "bertscore_recall": 0.7883
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 6,
+      "num_frames": 12,
+      "reference_length": 20151,
+      "candidate_length": 258,
+      "rouge1_recall": 0.0094,
+      "bertscore_recall": 0.7923
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 7,
+      "num_frames": 32,
+      "reference_length": 53289,
+      "candidate_length": 57,
+      "rouge1_recall": 0.0006,
+      "bertscore_recall": 0.7738
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 8,
+      "num_frames": 35,
+      "reference_length": 55690,
+      "candidate_length": 94,
+      "rouge1_recall": 0.0012,
+      "bertscore_recall": 0.782
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 9,
+      "num_frames": 48,
+      "reference_length": 80312,
+      "candidate_length": 769,
+      "rouge1_recall": 0.005,
+      "bertscore_recall": 0.8004
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 10,
+      "num_frames": 6,
+      "reference_length": 9435,
+      "candidate_length": 83,
+      "rouge1_recall": 0.0045,
+      "bertscore_recall": 0.7732
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 11,
+      "num_frames": 11,
+      "reference_length": 18878,
+      "candidate_length": 349,
+      "rouge1_recall": 0.0125,
+      "bertscore_recall": 0.7798
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 12,
+      "num_frames": 8,
+      "reference_length": 13549,
+      "candidate_length": 152,
+      "rouge1_recall": 0.0064,
+      "bertscore_recall": 0.7876
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 13,
+      "num_frames": 10,
+      "reference_length": 19234,
+      "candidate_length": 266,
+      "rouge1_recall": 0.0081,
+      "bertscore_recall": 0.7946
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 14,
+      "num_frames": 26,
+      "reference_length": 43564,
+      "candidate_length": 224,
+      "rouge1_recall": 0.0031,
+      "bertscore_recall": 0.7873
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 15,
+      "num_frames": 1,
+      "reference_length": 1988,
+      "candidate_length": 38,
+      "rouge1_recall": 0.0117,
+      "bertscore_recall": 0.7797
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 16,
+      "num_frames": 2,
+      "reference_length": 4763,
+      "candidate_length": 162,
+      "rouge1_recall": 0.0198,
+      "bertscore_recall": 0.7674
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 17,
+      "num_frames": 1,
+      "reference_length": 1462,
+      "candidate_length": 55,
+      "rouge1_recall": 0.0158,
+      "bertscore_recall": 0.7916
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 18,
+      "num_frames": 2,
+      "reference_length": 3305,
+      "candidate_length": 76,
+      "rouge1_recall": 0.0123,
+      "bertscore_recall": 0.7823
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 19,
+      "num_frames": 3,
+      "reference_length": 6081,
+      "candidate_length": 76,
+      "rouge1_recall": 0.011,
+      "bertscore_recall": 0.7837
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 20,
+      "num_frames": 3,
+      "reference_length": 5879,
+      "candidate_length": 189,
+      "rouge1_recall": 0.0148,
+      "bertscore_recall": 0.7917
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 21,
+      "num_frames": 1,
+      "reference_length": 1223,
+      "candidate_length": 111,
+      "rouge1_recall": 0.0386,
+      "bertscore_recall": 0.8045
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 23,
+      "num_frames": 1,
+      "reference_length": 1476,
+      "candidate_length": 84,
+      "rouge1_recall": 0.0229,
+      "bertscore_recall": 0.7906
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 24,
+      "num_frames": 1,
+      "reference_length": 2019,
+      "candidate_length": 55,
+      "rouge1_recall": 0.0266,
+      "bertscore_recall": 0.7871
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 25,
+      "num_frames": 1,
+      "reference_length": 1788,
+      "candidate_length": 69,
+      "rouge1_recall": 0.0196,
+      "bertscore_recall": 0.7858
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 26,
+      "num_frames": 2,
+      "reference_length": 4667,
+      "candidate_length": 89,
+      "rouge1_recall": 0.0148,
+      "bertscore_recall": 0.7818
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 27,
+      "num_frames": 1,
+      "reference_length": 1179,
+      "candidate_length": 85,
+      "rouge1_recall": 0.0573,
+      "bertscore_recall": 0.8042
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 28,
+      "num_frames": 6,
+      "reference_length": 10895,
+      "candidate_length": 192,
+      "rouge1_recall": 0.0109,
+      "bertscore_recall": 0.7897
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 29,
+      "num_frames": 1,
+      "reference_length": 2083,
+      "candidate_length": 106,
+      "rouge1_recall": 0.0283,
+      "bertscore_recall": 0.7878
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 30,
+      "num_frames": 1,
+      "reference_length": 2229,
+      "candidate_length": 52,
+      "rouge1_recall": 0.0246,
+      "bertscore_recall": 0.786
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 31,
+      "num_frames": 1,
+      "reference_length": 1435,
+      "candidate_length": 75,
+      "rouge1_recall": 0.0537,
+      "bertscore_recall": 0.8054
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 32,
+      "num_frames": 2,
+      "reference_length": 3874,
+      "candidate_length": 144,
+      "rouge1_recall": 0.0169,
+      "bertscore_recall": 0.7912
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 33,
+      "num_frames": 2,
+      "reference_length": 3358,
+      "candidate_length": 122,
+      "rouge1_recall": 0.0192,
+      "bertscore_recall": 0.7877
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 34,
+      "num_frames": 2,
+      "reference_length": 3538,
+      "candidate_length": 69,
+      "rouge1_recall": 0.01,
+      "bertscore_recall": 0.7789
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 36,
+      "num_frames": 1,
+      "reference_length": 2270,
+      "candidate_length": 88,
+      "rouge1_recall": 0.0162,
+      "bertscore_recall": 0.7887
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 37,
+      "num_frames": 1,
+      "reference_length": 1692,
+      "candidate_length": 42,
+      "rouge1_recall": 0.0221,
+      "bertscore_recall": 0.7751
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 38,
+      "num_frames": 1,
+      "reference_length": 1672,
+      "candidate_length": 61,
+      "rouge1_recall": 0.0215,
+      "bertscore_recall": 0.7937
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 39,
+      "num_frames": 1,
+      "reference_length": 1462,
+      "candidate_length": 51,
+      "rouge1_recall": 0.0237,
+      "bertscore_recall": 0.7937
+    },
+    {
+      "video_name": "Paintball",
+      "scene_idx": 40,
+      "num_frames": 1,
+      "reference_length": 1436,
+      "candidate_length": 59,
+      "rouge1_recall": 0.0277,
+      "bertscore_recall": 0.7964
+    },
+    {
+      "video_name": "Playing_on_water_slide",
+      "scene_idx": 1,
+      "num_frames": 8,
+      "reference_length": 13707,
+      "candidate_length": 124,
+      "rouge1_recall": 0.0082,
+      "bertscore_recall": 0.7977
+    },
+    {
+      "video_name": "Playing_on_water_slide",
+      "scene_idx": 8,
+      "num_frames": 13,
+      "reference_length": 23624,
+      "candidate_length": 134,
+      "rouge1_recall": 0.0058,
+      "bertscore_recall": 0.7959
+    },
+    {
+      "video_name": "Playing_on_water_slide",
+      "scene_idx": 12,
+      "num_frames": 5,
+      "reference_length": 8568,
+      "candidate_length": 105,
+      "rouge1_recall": 0.015,
+      "bertscore_recall": 0.7942
+    },
+    {
+      "video_name": "Playing_on_water_slide",
+      "scene_idx": 17,
+      "num_frames": 4,
+      "reference_length": 5899,
+      "candidate_length": 167,
+      "rouge1_recall": 0.022,
+      "bertscore_recall": 0.8036
+    },
+    {
+      "video_name": "Playing_on_water_slide",
+      "scene_idx": 18,
+      "num_frames": 11,
+      "reference_length": 18188,
+      "candidate_length": 87,
+      "rouge1_recall": 0.0056,
+      "bertscore_recall": 0.7984
+    },
+    {
+      "video_name": "Scuba",
+      "scene_idx": 0,
+      "num_frames": 9,
+      "reference_length": 15744,
+      "candidate_length": 114,
+      "rouge1_recall": 0.0066,
+      "bertscore_recall": 0.8004
+    },
+    {
+      "video_name": "Scuba",
+      "scene_idx": 1,
+      "num_frames": 8,
+      "reference_length": 14197,
+      "candidate_length": 87,
+      "rouge1_recall": 0.0061,
+      "bertscore_recall": 0.7947
+    },
+    {
+      "video_name": "Scuba",
+      "scene_idx": 2,
+      "num_frames": 9,
+      "reference_length": 15906,
+      "candidate_length": 107,
+      "rouge1_recall": 0.0069,
+      "bertscore_recall": 0.7964
+    },
+    {
+      "video_name": "Scuba",
+      "scene_idx": 3,
+      "num_frames": 13,
+      "reference_length": 22554,
+      "candidate_length": 100,
+      "rouge1_recall": 0.0041,
+      "bertscore_recall": 0.7997
+    },
+    {
+      "video_name": "Scuba",
+      "scene_idx": 4,
+      "num_frames": 10,
+      "reference_length": 17228,
+      "candidate_length": 144,
+      "rouge1_recall": 0.0072,
+      "bertscore_recall": 0.7972
+    },
+    {
+      "video_name": "Scuba",
+      "scene_idx": 5,
+      "num_frames": 23,
+      "reference_length": 40160,
+      "candidate_length": 237,
+      "rouge1_recall": 0.0049,
+      "bertscore_recall": 0.8154
+    },
+    {
+      "video_name": "Scuba",
+      "scene_idx": 6,
+      "num_frames": 14,
+      "reference_length": 24336,
+      "candidate_length": 207,
+      "rouge1_recall": 0.0081,
+      "bertscore_recall": 0.8043
+    },
+    {
+      "video_name": "Scuba",
+      "scene_idx": 7,
+      "num_frames": 22,
+      "reference_length": 38656,
+      "candidate_length": 111,
+      "rouge1_recall": 0.0021,
+      "bertscore_recall": 0.7993
+    },
+    {
+      "video_name": "Scuba",
+      "scene_idx": 8,
+      "num_frames": 8,
+      "reference_length": 14131,
+      "candidate_length": 158,
+      "rouge1_recall": 0.0109,
+      "bertscore_recall": 0.8084
+    },
+    {
+      "video_name": "Scuba",
+      "scene_idx": 9,
+      "num_frames": 4,
+      "reference_length": 6816,
+      "candidate_length": 108,
+      "rouge1_recall": 0.0142,
+      "bertscore_recall": 0.789
+    },
+    {
+      "video_name": "Scuba",
+      "scene_idx": 10,
+      "num_frames": 6,
+      "reference_length": 11444,
+      "candidate_length": 61,
+      "rouge1_recall": 0.0054,
+      "bertscore_recall": 0.7889
+    },
+    {
+      "video_name": "Scuba",
+      "scene_idx": 11,
+      "num_frames": 7,
+      "reference_length": 12171,
+      "candidate_length": 80,
+      "rouge1_recall": 0.0061,
+      "bertscore_recall": 0.7886
+    },
+    {
+      "video_name": "Scuba",
+      "scene_idx": 12,
+      "num_frames": 4,
+      "reference_length": 6327,
+      "candidate_length": 76,
+      "rouge1_recall": 0.0076,
+      "bertscore_recall": 0.7843
+    },
+    {
+      "video_name": "Scuba",
+      "scene_idx": 13,
+      "num_frames": 6,
+      "reference_length": 9842,
+      "candidate_length": 116,
+      "rouge1_recall": 0.0106,
+      "bertscore_recall": 0.7939
+    },
+    {
+      "video_name": "Scuba",
+      "scene_idx": 14,
+      "num_frames": 4,
+      "reference_length": 6631,
+      "candidate_length": 66,
+      "rouge1_recall": 0.0073,
+      "bertscore_recall": 0.7854
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 0,
+      "num_frames": 13,
+      "reference_length": 21864,
+      "candidate_length": 106,
+      "rouge1_recall": 0.0046,
+      "bertscore_recall": 0.782
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 1,
+      "num_frames": 9,
+      "reference_length": 14790,
+      "candidate_length": 86,
+      "rouge1_recall": 0.0066,
+      "bertscore_recall": 0.7908
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 2,
+      "num_frames": 4,
+      "reference_length": 6816,
+      "candidate_length": 73,
+      "rouge1_recall": 0.0089,
+      "bertscore_recall": 0.7881
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 3,
+      "num_frames": 8,
+      "reference_length": 12662,
+      "candidate_length": 69,
+      "rouge1_recall": 0.0053,
+      "bertscore_recall": 0.7844
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 4,
+      "num_frames": 9,
+      "reference_length": 16618,
+      "candidate_length": 47,
+      "rouge1_recall": 0.0029,
+      "bertscore_recall": 0.7779
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 5,
+      "num_frames": 5,
+      "reference_length": 9154,
+      "candidate_length": 59,
+      "rouge1_recall": 0.0054,
+      "bertscore_recall": 0.7784
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 6,
+      "num_frames": 18,
+      "reference_length": 34098,
+      "candidate_length": 185,
+      "rouge1_recall": 0.0039,
+      "bertscore_recall": 0.7929
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 7,
+      "num_frames": 9,
+      "reference_length": 15324,
+      "candidate_length": 54,
+      "rouge1_recall": 0.0032,
+      "bertscore_recall": 0.7819
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 8,
+      "num_frames": 6,
+      "reference_length": 9951,
+      "candidate_length": 84,
+      "rouge1_recall": 0.0068,
+      "bertscore_recall": 0.783
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 9,
+      "num_frames": 6,
+      "reference_length": 10512,
+      "candidate_length": 62,
+      "rouge1_recall": 0.0048,
+      "bertscore_recall": 0.7812
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 10,
+      "num_frames": 10,
+      "reference_length": 17650,
+      "candidate_length": 56,
+      "rouge1_recall": 0.0028,
+      "bertscore_recall": 0.7821
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 11,
+      "num_frames": 17,
+      "reference_length": 27938,
+      "candidate_length": 113,
+      "rouge1_recall": 0.0033,
+      "bertscore_recall": 0.7892
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 12,
+      "num_frames": 14,
+      "reference_length": 24709,
+      "candidate_length": 89,
+      "rouge1_recall": 0.0027,
+      "bertscore_recall": 0.7923
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 13,
+      "num_frames": 9,
+      "reference_length": 17275,
+      "candidate_length": 69,
+      "rouge1_recall": 0.0036,
+      "bertscore_recall": 0.7864
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 14,
+      "num_frames": 8,
+      "reference_length": 13540,
+      "candidate_length": 88,
+      "rouge1_recall": 0.0054,
+      "bertscore_recall": 0.7839
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 15,
+      "num_frames": 10,
+      "reference_length": 15674,
+      "candidate_length": 77,
+      "rouge1_recall": 0.0035,
+      "bertscore_recall": 0.7816
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 16,
+      "num_frames": 7,
+      "reference_length": 10946,
+      "candidate_length": 234,
+      "rouge1_recall": 0.0122,
+      "bertscore_recall": 0.7927
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 17,
+      "num_frames": 12,
+      "reference_length": 19903,
+      "candidate_length": 134,
+      "rouge1_recall": 0.0063,
+      "bertscore_recall": 0.7896
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 18,
+      "num_frames": 5,
+      "reference_length": 7378,
+      "candidate_length": 67,
+      "rouge1_recall": 0.0074,
+      "bertscore_recall": 0.7859
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 19,
+      "num_frames": 10,
+      "reference_length": 18361,
+      "candidate_length": 91,
+      "rouge1_recall": 0.0033,
+      "bertscore_recall": 0.7913
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 20,
+      "num_frames": 6,
+      "reference_length": 9735,
+      "candidate_length": 70,
+      "rouge1_recall": 0.0062,
+      "bertscore_recall": 0.7751
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 21,
+      "num_frames": 14,
+      "reference_length": 23835,
+      "candidate_length": 93,
+      "rouge1_recall": 0.0028,
+      "bertscore_recall": 0.7844
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 22,
+      "num_frames": 9,
+      "reference_length": 15536,
+      "candidate_length": 124,
+      "rouge1_recall": 0.0043,
+      "bertscore_recall": 0.7877
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 23,
+      "num_frames": 6,
+      "reference_length": 10610,
+      "candidate_length": 36,
+      "rouge1_recall": 0.0035,
+      "bertscore_recall": 0.7737
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 24,
+      "num_frames": 7,
+      "reference_length": 11367,
+      "candidate_length": 107,
+      "rouge1_recall": 0.007,
+      "bertscore_recall": 0.791
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 25,
+      "num_frames": 18,
+      "reference_length": 28812,
+      "candidate_length": 94,
+      "rouge1_recall": 0.0027,
+      "bertscore_recall": 0.7867
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 26,
+      "num_frames": 7,
+      "reference_length": 10583,
+      "candidate_length": 115,
+      "rouge1_recall": 0.0073,
+      "bertscore_recall": 0.7847
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 27,
+      "num_frames": 13,
+      "reference_length": 22539,
+      "candidate_length": 260,
+      "rouge1_recall": 0.0076,
+      "bertscore_recall": 0.7968
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 28,
+      "num_frames": 8,
+      "reference_length": 12007,
+      "candidate_length": 85,
+      "rouge1_recall": 0.0063,
+      "bertscore_recall": 0.7841
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 29,
+      "num_frames": 8,
+      "reference_length": 15239,
+      "candidate_length": 94,
+      "rouge1_recall": 0.0056,
+      "bertscore_recall": 0.7951
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 30,
+      "num_frames": 5,
+      "reference_length": 8004,
+      "candidate_length": 109,
+      "rouge1_recall": 0.0129,
+      "bertscore_recall": 0.7841
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 31,
+      "num_frames": 10,
+      "reference_length": 17047,
+      "candidate_length": 124,
+      "rouge1_recall": 0.0057,
+      "bertscore_recall": 0.7879
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 32,
+      "num_frames": 12,
+      "reference_length": 20889,
+      "candidate_length": 57,
+      "rouge1_recall": 0.0023,
+      "bertscore_recall": 0.777
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 33,
+      "num_frames": 14,
+      "reference_length": 24273,
+      "candidate_length": 167,
+      "rouge1_recall": 0.006,
+      "bertscore_recall": 0.8063
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 34,
+      "num_frames": 20,
+      "reference_length": 31499,
+      "candidate_length": 166,
+      "rouge1_recall": 0.0042,
+      "bertscore_recall": 0.7954
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 35,
+      "num_frames": 12,
+      "reference_length": 21886,
+      "candidate_length": 84,
+      "rouge1_recall": 0.003,
+      "bertscore_recall": 0.7899
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 36,
+      "num_frames": 5,
+      "reference_length": 8137,
+      "candidate_length": 64,
+      "rouge1_recall": 0.0075,
+      "bertscore_recall": 0.7846
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 37,
+      "num_frames": 17,
+      "reference_length": 29303,
+      "candidate_length": 126,
+      "rouge1_recall": 0.0035,
+      "bertscore_recall": 0.7928
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 38,
+      "num_frames": 5,
+      "reference_length": 9919,
+      "candidate_length": 60,
+      "rouge1_recall": 0.0049,
+      "bertscore_recall": 0.7781
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 39,
+      "num_frames": 7,
+      "reference_length": 11546,
+      "candidate_length": 89,
+      "rouge1_recall": 0.007,
+      "bertscore_recall": 0.7908
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 40,
+      "num_frames": 11,
+      "reference_length": 17871,
+      "candidate_length": 116,
+      "rouge1_recall": 0.0051,
+      "bertscore_recall": 0.7947
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 41,
+      "num_frames": 5,
+      "reference_length": 7895,
+      "candidate_length": 63,
+      "rouge1_recall": 0.0069,
+      "bertscore_recall": 0.7805
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 42,
+      "num_frames": 11,
+      "reference_length": 20149,
+      "candidate_length": 47,
+      "rouge1_recall": 0.0024,
+      "bertscore_recall": 0.7808
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 43,
+      "num_frames": 5,
+      "reference_length": 8392,
+      "candidate_length": 121,
+      "rouge1_recall": 0.0087,
+      "bertscore_recall": 0.7885
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 44,
+      "num_frames": 10,
+      "reference_length": 17563,
+      "candidate_length": 91,
+      "rouge1_recall": 0.0046,
+      "bertscore_recall": 0.798
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 45,
+      "num_frames": 13,
+      "reference_length": 22401,
+      "candidate_length": 136,
+      "rouge1_recall": 0.0057,
+      "bertscore_recall": 0.7947
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 46,
+      "num_frames": 11,
+      "reference_length": 18905,
+      "candidate_length": 56,
+      "rouge1_recall": 0.0026,
+      "bertscore_recall": 0.7772
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 47,
+      "num_frames": 8,
+      "reference_length": 15503,
+      "candidate_length": 72,
+      "rouge1_recall": 0.0044,
+      "bertscore_recall": 0.7883
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 48,
+      "num_frames": 7,
+      "reference_length": 11886,
+      "candidate_length": 60,
+      "rouge1_recall": 0.0045,
+      "bertscore_recall": 0.7856
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 49,
+      "num_frames": 27,
+      "reference_length": 45812,
+      "candidate_length": 121,
+      "rouge1_recall": 0.0024,
+      "bertscore_recall": 0.7814
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 50,
+      "num_frames": 4,
+      "reference_length": 5939,
+      "candidate_length": 99,
+      "rouge1_recall": 0.0111,
+      "bertscore_recall": 0.7813
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 51,
+      "num_frames": 6,
+      "reference_length": 10260,
+      "candidate_length": 101,
+      "rouge1_recall": 0.0091,
+      "bertscore_recall": 0.7921
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 52,
+      "num_frames": 8,
+      "reference_length": 14068,
+      "candidate_length": 74,
+      "rouge1_recall": 0.0053,
+      "bertscore_recall": 0.7824
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 53,
+      "num_frames": 14,
+      "reference_length": 21923,
+      "candidate_length": 111,
+      "rouge1_recall": 0.004,
+      "bertscore_recall": 0.7902
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 54,
+      "num_frames": 9,
+      "reference_length": 13679,
+      "candidate_length": 49,
+      "rouge1_recall": 0.0032,
+      "bertscore_recall": 0.7781
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 55,
+      "num_frames": 8,
+      "reference_length": 12159,
+      "candidate_length": 84,
+      "rouge1_recall": 0.0041,
+      "bertscore_recall": 0.7833
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 56,
+      "num_frames": 9,
+      "reference_length": 13679,
+      "candidate_length": 53,
+      "rouge1_recall": 0.0027,
+      "bertscore_recall": 0.7753
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 57,
+      "num_frames": 7,
+      "reference_length": 10639,
+      "candidate_length": 80,
+      "rouge1_recall": 0.0053,
+      "bertscore_recall": 0.7824
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 58,
+      "num_frames": 5,
+      "reference_length": 7599,
+      "candidate_length": 78,
+      "rouge1_recall": 0.0082,
+      "bertscore_recall": 0.7859
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 59,
+      "num_frames": 13,
+      "reference_length": 19759,
+      "candidate_length": 104,
+      "rouge1_recall": 0.0032,
+      "bertscore_recall": 0.7865
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 60,
+      "num_frames": 8,
+      "reference_length": 12159,
+      "candidate_length": 44,
+      "rouge1_recall": 0.0026,
+      "bertscore_recall": 0.7753
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 61,
+      "num_frames": 14,
+      "reference_length": 21279,
+      "candidate_length": 151,
+      "rouge1_recall": 0.0041,
+      "bertscore_recall": 0.7884
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 62,
+      "num_frames": 15,
+      "reference_length": 22799,
+      "candidate_length": 130,
+      "rouge1_recall": 0.0033,
+      "bertscore_recall": 0.7862
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 63,
+      "num_frames": 9,
+      "reference_length": 13679,
+      "candidate_length": 57,
+      "rouge1_recall": 0.0032,
+      "bertscore_recall": 0.7825
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "scene_idx": 64,
+      "num_frames": 9,
+      "reference_length": 13679,
+      "candidate_length": 60,
+      "rouge1_recall": 0.0036,
+      "bertscore_recall": 0.7849
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 0,
+      "num_frames": 7,
+      "reference_length": 13456,
+      "candidate_length": 177,
+      "rouge1_recall": 0.0133,
+      "bertscore_recall": 0.8053
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 1,
+      "num_frames": 16,
+      "reference_length": 31440,
+      "candidate_length": 93,
+      "rouge1_recall": 0.0028,
+      "bertscore_recall": 0.7735
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 2,
+      "num_frames": 5,
+      "reference_length": 9712,
+      "candidate_length": 93,
+      "rouge1_recall": 0.0077,
+      "bertscore_recall": 0.7865
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 3,
+      "num_frames": 33,
+      "reference_length": 65268,
+      "candidate_length": 341,
+      "rouge1_recall": 0.0038,
+      "bertscore_recall": 0.799
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 4,
+      "num_frames": 14,
+      "reference_length": 26439,
+      "candidate_length": 201,
+      "rouge1_recall": 0.0063,
+      "bertscore_recall": 0.7967
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 5,
+      "num_frames": 5,
+      "reference_length": 9512,
+      "candidate_length": 71,
+      "rouge1_recall": 0.003,
+      "bertscore_recall": 0.7792
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 6,
+      "num_frames": 13,
+      "reference_length": 25675,
+      "candidate_length": 147,
+      "rouge1_recall": 0.0054,
+      "bertscore_recall": 0.7937
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 7,
+      "num_frames": 9,
+      "reference_length": 17272,
+      "candidate_length": 114,
+      "rouge1_recall": 0.0043,
+      "bertscore_recall": 0.7867
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 8,
+      "num_frames": 19,
+      "reference_length": 36356,
+      "candidate_length": 187,
+      "rouge1_recall": 0.0029,
+      "bertscore_recall": 0.7824
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 9,
+      "num_frames": 14,
+      "reference_length": 28206,
+      "candidate_length": 143,
+      "rouge1_recall": 0.0033,
+      "bertscore_recall": 0.7864
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 10,
+      "num_frames": 7,
+      "reference_length": 13401,
+      "candidate_length": 210,
+      "rouge1_recall": 0.0116,
+      "bertscore_recall": 0.7956
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 11,
+      "num_frames": 7,
+      "reference_length": 12884,
+      "candidate_length": 111,
+      "rouge1_recall": 0.0067,
+      "bertscore_recall": 0.7838
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 12,
+      "num_frames": 6,
+      "reference_length": 10991,
+      "candidate_length": 53,
+      "rouge1_recall": 0.0016,
+      "bertscore_recall": 0.7795
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 13,
+      "num_frames": 11,
+      "reference_length": 20432,
+      "candidate_length": 387,
+      "rouge1_recall": 0.0101,
+      "bertscore_recall": 0.7973
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 14,
+      "num_frames": 13,
+      "reference_length": 25191,
+      "candidate_length": 109,
+      "rouge1_recall": 0.0036,
+      "bertscore_recall": 0.7797
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 16,
+      "num_frames": 10,
+      "reference_length": 20217,
+      "candidate_length": 237,
+      "rouge1_recall": 0.0066,
+      "bertscore_recall": 0.7942
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 17,
+      "num_frames": 7,
+      "reference_length": 13461,
+      "candidate_length": 102,
+      "rouge1_recall": 0.0043,
+      "bertscore_recall": 0.7851
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 18,
+      "num_frames": 19,
+      "reference_length": 37181,
+      "candidate_length": 142,
+      "rouge1_recall": 0.002,
+      "bertscore_recall": 0.7866
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 19,
+      "num_frames": 6,
+      "reference_length": 11919,
+      "candidate_length": 131,
+      "rouge1_recall": 0.0068,
+      "bertscore_recall": 0.7916
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 20,
+      "num_frames": 4,
+      "reference_length": 7944,
+      "candidate_length": 39,
+      "rouge1_recall": 0.0029,
+      "bertscore_recall": 0.7741
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 21,
+      "num_frames": 3,
+      "reference_length": 5363,
+      "candidate_length": 76,
+      "rouge1_recall": 0.0087,
+      "bertscore_recall": 0.7854
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 22,
+      "num_frames": 11,
+      "reference_length": 22104,
+      "candidate_length": 77,
+      "rouge1_recall": 0.0016,
+      "bertscore_recall": 0.7797
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 23,
+      "num_frames": 8,
+      "reference_length": 15765,
+      "candidate_length": 46,
+      "rouge1_recall": 0.0026,
+      "bertscore_recall": 0.784
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 24,
+      "num_frames": 5,
+      "reference_length": 9012,
+      "candidate_length": 175,
+      "rouge1_recall": 0.0114,
+      "bertscore_recall": 0.7916
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 25,
+      "num_frames": 12,
+      "reference_length": 23811,
+      "candidate_length": 110,
+      "rouge1_recall": 0.0022,
+      "bertscore_recall": 0.7851
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 26,
+      "num_frames": 13,
+      "reference_length": 25630,
+      "candidate_length": 98,
+      "rouge1_recall": 0.0022,
+      "bertscore_recall": 0.7702
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 27,
+      "num_frames": 7,
+      "reference_length": 13156,
+      "candidate_length": 110,
+      "rouge1_recall": 0.0048,
+      "bertscore_recall": 0.7805
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 28,
+      "num_frames": 11,
+      "reference_length": 22816,
+      "candidate_length": 54,
+      "rouge1_recall": 0.0015,
+      "bertscore_recall": 0.7737
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 29,
+      "num_frames": 18,
+      "reference_length": 34887,
+      "candidate_length": 88,
+      "rouge1_recall": 0.0012,
+      "bertscore_recall": 0.7755
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 30,
+      "num_frames": 6,
+      "reference_length": 12361,
+      "candidate_length": 132,
+      "rouge1_recall": 0.0061,
+      "bertscore_recall": 0.7964
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 31,
+      "num_frames": 5,
+      "reference_length": 9199,
+      "candidate_length": 152,
+      "rouge1_recall": 0.01,
+      "bertscore_recall": 0.7886
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 32,
+      "num_frames": 6,
+      "reference_length": 11767,
+      "candidate_length": 108,
+      "rouge1_recall": 0.0049,
+      "bertscore_recall": 0.7729
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 33,
+      "num_frames": 3,
+      "reference_length": 5265,
+      "candidate_length": 128,
+      "rouge1_recall": 0.0195,
+      "bertscore_recall": 0.7933
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "scene_idx": 34,
+      "num_frames": 5,
+      "reference_length": 9974,
+      "candidate_length": 162,
+      "rouge1_recall": 0.014,
+      "bertscore_recall": 0.7986
+    },
+    {
+      "video_name": "car_over_camera",
+      "scene_idx": 0,
+      "num_frames": 73,
+      "reference_length": 115782,
+      "candidate_length": 91,
+      "rouge1_recall": 0.0007,
+      "bertscore_recall": 0.7889
+    },
+    {
+      "video_name": "car_over_camera",
+      "scene_idx": 1,
+      "num_frames": 1,
+      "reference_length": 1354,
+      "candidate_length": 112,
+      "rouge1_recall": 0.0276,
+      "bertscore_recall": 0.8066
+    },
+    {
+      "video_name": "car_over_camera",
+      "scene_idx": 2,
+      "num_frames": 37,
+      "reference_length": 56229,
+      "candidate_length": 299,
+      "rouge1_recall": 0.0025,
+      "bertscore_recall": 0.7895
+    },
+    {
+      "video_name": "car_over_camera",
+      "scene_idx": 3,
+      "num_frames": 2,
+      "reference_length": 3652,
+      "candidate_length": 97,
+      "rouge1_recall": 0.0166,
+      "bertscore_recall": 0.7871
+    },
+    {
+      "video_name": "car_over_camera",
+      "scene_idx": 4,
+      "num_frames": 8,
+      "reference_length": 12936,
+      "candidate_length": 112,
+      "rouge1_recall": 0.0066,
+      "bertscore_recall": 0.7815
+    },
+    {
+      "video_name": "car_over_camera",
+      "scene_idx": 5,
+      "num_frames": 3,
+      "reference_length": 5303,
+      "candidate_length": 120,
+      "rouge1_recall": 0.0124,
+      "bertscore_recall": 0.787
+    },
+    {
+      "video_name": "car_over_camera",
+      "scene_idx": 6,
+      "num_frames": 1,
+      "reference_length": 1313,
+      "candidate_length": 31,
+      "rouge1_recall": 0.0094,
+      "bertscore_recall": 0.791
+    },
+    {
+      "video_name": "car_over_camera",
+      "scene_idx": 7,
+      "num_frames": 1,
+      "reference_length": 1634,
+      "candidate_length": 41,
+      "rouge1_recall": 0.0185,
+      "bertscore_recall": 0.7793
+    },
+    {
+      "video_name": "car_over_camera",
+      "scene_idx": 8,
+      "num_frames": 3,
+      "reference_length": 4745,
+      "candidate_length": 126,
+      "rouge1_recall": 0.0227,
+      "bertscore_recall": 0.7996
+    },
+    {
+      "video_name": "car_over_camera",
+      "scene_idx": 9,
+      "num_frames": 43,
+      "reference_length": 67463,
+      "candidate_length": 264,
+      "rouge1_recall": 0.0027,
+      "bertscore_recall": 0.8076
+    },
+    {
+      "video_name": "car_over_camera",
+      "scene_idx": 10,
+      "num_frames": 1,
+      "reference_length": 1356,
+      "candidate_length": 84,
+      "rouge1_recall": 0.0132,
+      "bertscore_recall": 0.7959
+    },
+    {
+      "video_name": "car_over_camera",
+      "scene_idx": 11,
+      "num_frames": 1,
+      "reference_length": 1652,
+      "candidate_length": 35,
+      "rouge1_recall": 0.011,
+      "bertscore_recall": 0.7854
+    },
+    {
+      "video_name": "car_over_camera",
+      "scene_idx": 12,
+      "num_frames": 2,
+      "reference_length": 3652,
+      "candidate_length": 48,
+      "rouge1_recall": 0.01,
+      "bertscore_recall": 0.7795
+    },
+    {
+      "video_name": "car_over_camera",
+      "scene_idx": 13,
+      "num_frames": 3,
+      "reference_length": 5238,
+      "candidate_length": 64,
+      "rouge1_recall": 0.0069,
+      "bertscore_recall": 0.7805
+    },
+    {
+      "video_name": "car_over_camera",
+      "scene_idx": 14,
+      "num_frames": 7,
+      "reference_length": 12050,
+      "candidate_length": 52,
+      "rouge1_recall": 0.0025,
+      "bertscore_recall": 0.7745
+    },
+    {
+      "video_name": "car_over_camera",
+      "scene_idx": 15,
+      "num_frames": 5,
+      "reference_length": 8529,
+      "candidate_length": 80,
+      "rouge1_recall": 0.0057,
+      "bertscore_recall": 0.7802
+    },
+    {
+      "video_name": "car_over_camera",
+      "scene_idx": 16,
+      "num_frames": 24,
+      "reference_length": 37848,
+      "candidate_length": 90,
+      "rouge1_recall": 0.0014,
+      "bertscore_recall": 0.7763
+    },
+    {
+      "video_name": "car_over_camera",
+      "scene_idx": 17,
+      "num_frames": 6,
+      "reference_length": 9601,
+      "candidate_length": 65,
+      "rouge1_recall": 0.0044,
+      "bertscore_recall": 0.7758
+    },
+    {
+      "video_name": "car_over_camera",
+      "scene_idx": 18,
+      "num_frames": 2,
+      "reference_length": 3392,
+      "candidate_length": 55,
+      "rouge1_recall": 0.0073,
+      "bertscore_recall": 0.7745
+    },
+    {
+      "video_name": "car_over_camera",
+      "scene_idx": 19,
+      "num_frames": 1,
+      "reference_length": 1652,
+      "candidate_length": 31,
+      "rouge1_recall": 0.011,
+      "bertscore_recall": 0.785
+    },
+    {
+      "video_name": "car_over_camera",
+      "scene_idx": 21,
+      "num_frames": 1,
+      "reference_length": 1893,
+      "candidate_length": 121,
+      "rouge1_recall": 0.0229,
+      "bertscore_recall": 0.7928
+    },
+    {
+      "video_name": "car_over_camera",
+      "scene_idx": 22,
+      "num_frames": 12,
+      "reference_length": 20422,
+      "candidate_length": 125,
+      "rouge1_recall": 0.0041,
+      "bertscore_recall": 0.7826
+    },
+    {
+      "video_name": "car_over_camera",
+      "scene_idx": 23,
+      "num_frames": 42,
+      "reference_length": 69320,
+      "candidate_length": 210,
+      "rouge1_recall": 0.0023,
+      "bertscore_recall": 0.7766
+    },
+    {
+      "video_name": "car_over_camera",
+      "scene_idx": 24,
+      "num_frames": 2,
+      "reference_length": 3581,
+      "candidate_length": 213,
+      "rouge1_recall": 0.0236,
+      "bertscore_recall": 0.7988
+    },
+    {
+      "video_name": "car_over_camera",
+      "scene_idx": 25,
+      "num_frames": 1,
+      "reference_length": 1758,
+      "candidate_length": 110,
+      "rouge1_recall": 0.0339,
+      "bertscore_recall": 0.7915
+    },
+    {
+      "video_name": "car_over_camera",
+      "scene_idx": 26,
+      "num_frames": 1,
+      "reference_length": 1382,
+      "candidate_length": 74,
+      "rouge1_recall": 0.009,
+      "bertscore_recall": 0.7903
+    },
+    {
+      "video_name": "car_over_camera",
+      "scene_idx": 27,
+      "num_frames": 5,
+      "reference_length": 8268,
+      "candidate_length": 113,
+      "rouge1_recall": 0.0073,
+      "bertscore_recall": 0.7881
+    },
+    {
+      "video_name": "car_over_camera",
+      "scene_idx": 29,
+      "num_frames": 4,
+      "reference_length": 7461,
+      "candidate_length": 122,
+      "rouge1_recall": 0.0089,
+      "bertscore_recall": 0.7867
+    },
+    {
+      "video_name": "paluma_jump",
+      "scene_idx": 0,
+      "num_frames": 7,
+      "reference_length": 11457,
+      "candidate_length": 76,
+      "rouge1_recall": 0.0068,
+      "bertscore_recall": 0.7885
+    },
+    {
+      "video_name": "paluma_jump",
+      "scene_idx": 2,
+      "num_frames": 19,
+      "reference_length": 30068,
+      "candidate_length": 96,
+      "rouge1_recall": 0.0026,
+      "bertscore_recall": 0.7914
+    },
+    {
+      "video_name": "paluma_jump",
+      "scene_idx": 3,
+      "num_frames": 4,
+      "reference_length": 6638,
+      "candidate_length": 121,
+      "rouge1_recall": 0.0165,
+      "bertscore_recall": 0.8035
+    },
+    {
+      "video_name": "paluma_jump",
+      "scene_idx": 4,
+      "num_frames": 14,
+      "reference_length": 23578,
+      "candidate_length": 73,
+      "rouge1_recall": 0.0036,
+      "bertscore_recall": 0.7873
+    },
+    {
+      "video_name": "paluma_jump",
+      "scene_idx": 5,
+      "num_frames": 20,
+      "reference_length": 32998,
+      "candidate_length": 78,
+      "rouge1_recall": 0.0024,
+      "bertscore_recall": 0.7921
+    },
+    {
+      "video_name": "paluma_jump",
+      "scene_idx": 6,
+      "num_frames": 12,
+      "reference_length": 21018,
+      "candidate_length": 86,
+      "rouge1_recall": 0.0041,
+      "bertscore_recall": 0.7875
+    },
+    {
+      "video_name": "paluma_jump",
+      "scene_idx": 7,
+      "num_frames": 14,
+      "reference_length": 22834,
+      "candidate_length": 133,
+      "rouge1_recall": 0.0053,
+      "bertscore_recall": 0.8099
+    },
+    {
+      "video_name": "paluma_jump",
+      "scene_idx": 8,
+      "num_frames": 24,
+      "reference_length": 39675,
+      "candidate_length": 93,
+      "rouge1_recall": 0.0023,
+      "bertscore_recall": 0.7926
+    },
+    {
+      "video_name": "paluma_jump",
+      "scene_idx": 10,
+      "num_frames": 5,
+      "reference_length": 8227,
+      "candidate_length": 63,
+      "rouge1_recall": 0.0075,
+      "bertscore_recall": 0.7902
+    },
+    {
+      "video_name": "paluma_jump",
+      "scene_idx": 11,
+      "num_frames": 2,
+      "reference_length": 3234,
+      "candidate_length": 63,
+      "rouge1_recall": 0.0186,
+      "bertscore_recall": 0.7877
+    },
+    {
+      "video_name": "paluma_jump",
+      "scene_idx": 12,
+      "num_frames": 7,
+      "reference_length": 11620,
+      "candidate_length": 107,
+      "rouge1_recall": 0.0099,
+      "bertscore_recall": 0.8018
+    },
+    {
+      "video_name": "paluma_jump",
+      "scene_idx": 13,
+      "num_frames": 2,
+      "reference_length": 3344,
+      "candidate_length": 60,
+      "rouge1_recall": 0.0217,
+      "bertscore_recall": 0.8015
+    },
+    {
+      "video_name": "paluma_jump",
+      "scene_idx": 14,
+      "num_frames": 7,
+      "reference_length": 11728,
+      "candidate_length": 117,
+      "rouge1_recall": 0.0092,
+      "bertscore_recall": 0.7995
+    },
+    {
+      "video_name": "paluma_jump",
+      "scene_idx": 15,
+      "num_frames": 4,
+      "reference_length": 7105,
+      "candidate_length": 60,
+      "rouge1_recall": 0.0102,
+      "bertscore_recall": 0.7951
+    },
+    {
+      "video_name": "paluma_jump",
+      "scene_idx": 17,
+      "num_frames": 4,
+      "reference_length": 6633,
+      "candidate_length": 53,
+      "rouge1_recall": 0.0102,
+      "bertscore_recall": 0.7902
+    },
+    {
+      "video_name": "playing_ball",
+      "scene_idx": 0,
+      "num_frames": 5,
+      "reference_length": 8203,
+      "candidate_length": 125,
+      "rouge1_recall": 0.0113,
+      "bertscore_recall": 0.7837
+    },
+    {
+      "video_name": "playing_ball",
+      "scene_idx": 1,
+      "num_frames": 5,
+      "reference_length": 8367,
+      "candidate_length": 43,
+      "rouge1_recall": 0.0055,
+      "bertscore_recall": 0.7873
+    },
+    {
+      "video_name": "playing_ball",
+      "scene_idx": 2,
+      "num_frames": 5,
+      "reference_length": 9118,
+      "candidate_length": 111,
+      "rouge1_recall": 0.01,
+      "bertscore_recall": 0.7919
+    },
+    {
+      "video_name": "playing_ball",
+      "scene_idx": 4,
+      "num_frames": 5,
+      "reference_length": 8059,
+      "candidate_length": 117,
+      "rouge1_recall": 0.0135,
+      "bertscore_recall": 0.7974
+    },
+    {
+      "video_name": "playing_ball",
+      "scene_idx": 6,
+      "num_frames": 24,
+      "reference_length": 39100,
+      "candidate_length": 87,
+      "rouge1_recall": 0.0022,
+      "bertscore_recall": 0.7924
+    },
+    {
+      "video_name": "playing_ball",
+      "scene_idx": 7,
+      "num_frames": 8,
+      "reference_length": 14168,
+      "candidate_length": 353,
+      "rouge1_recall": 0.0201,
+      "bertscore_recall": 0.8055
+    },
+    {
+      "video_name": "playing_ball",
+      "scene_idx": 9,
+      "num_frames": 8,
+      "reference_length": 13369,
+      "candidate_length": 93,
+      "rouge1_recall": 0.0073,
+      "bertscore_recall": 0.7794
+    },
+    {
+      "video_name": "playing_ball",
+      "scene_idx": 10,
+      "num_frames": 9,
+      "reference_length": 14264,
+      "candidate_length": 191,
+      "rouge1_recall": 0.0092,
+      "bertscore_recall": 0.7981
+    },
+    {
+      "video_name": "playing_ball",
+      "scene_idx": 11,
+      "num_frames": 8,
+      "reference_length": 17007,
+      "candidate_length": 304,
+      "rouge1_recall": 0.0183,
+      "bertscore_recall": 0.7881
+    },
+    {
+      "video_name": "playing_ball",
+      "scene_idx": 12,
+      "num_frames": 12,
+      "reference_length": 20240,
+      "candidate_length": 178,
+      "rouge1_recall": 0.0077,
+      "bertscore_recall": 0.8032
+    },
+    {
+      "video_name": "playing_ball",
+      "scene_idx": 13,
+      "num_frames": 11,
+      "reference_length": 20924,
+      "candidate_length": 164,
+      "rouge1_recall": 0.0061,
+      "bertscore_recall": 0.7913
+    },
+    {
+      "video_name": "playing_ball",
+      "scene_idx": 14,
+      "num_frames": 16,
+      "reference_length": 27484,
+      "candidate_length": 610,
+      "rouge1_recall": 0.0167,
+      "bertscore_recall": 0.8119
+    },
+    {
+      "video_name": "playing_ball",
+      "scene_idx": 15,
+      "num_frames": 8,
+      "reference_length": 14723,
+      "candidate_length": 54,
+      "rouge1_recall": 0.0035,
+      "bertscore_recall": 0.7909
+    },
+    {
+      "video_name": "playing_ball",
+      "scene_idx": 16,
+      "num_frames": 8,
+      "reference_length": 17662,
+      "candidate_length": 127,
+      "rouge1_recall": 0.008,
+      "bertscore_recall": 0.7846
+    },
+    {
+      "video_name": "playing_ball",
+      "scene_idx": 17,
+      "num_frames": 4,
+      "reference_length": 7375,
+      "candidate_length": 34,
+      "rouge1_recall": 0.0055,
+      "bertscore_recall": 0.7853
+    },
+    {
+      "video_name": "playing_ball",
+      "scene_idx": 18,
+      "num_frames": 10,
+      "reference_length": 16737,
+      "candidate_length": 210,
+      "rouge1_recall": 0.0123,
+      "bertscore_recall": 0.8089
+    },
+    {
+      "video_name": "playing_ball",
+      "scene_idx": 19,
+      "num_frames": 10,
+      "reference_length": 16513,
+      "candidate_length": 129,
+      "rouge1_recall": 0.0065,
+      "bertscore_recall": 0.7875
+    },
+    {
+      "video_name": "playing_ball",
+      "scene_idx": 20,
+      "num_frames": 18,
+      "reference_length": 32105,
+      "candidate_length": 134,
+      "rouge1_recall": 0.0045,
+      "bertscore_recall": 0.8034
+    }
+  ],
+  "per_video": [
+    {
+      "video_name": "Air_Force_One",
+      "num_scenes": 30,
+      "rouge1_recall_mean": 0.005,
+      "bertscore_recall_mean": 0.7857
+    },
+    {
+      "video_name": "Bearpark_climbing",
+      "num_scenes": 22,
+      "rouge1_recall_mean": 0.0049,
+      "bertscore_recall_mean": 0.7928
+    },
+    {
+      "video_name": "Bus_in_Rock_Tunnel",
+      "num_scenes": 35,
+      "rouge1_recall_mean": 0.0065,
+      "bertscore_recall_mean": 0.7858
+    },
+    {
+      "video_name": "Car_railcrossing",
+      "num_scenes": 34,
+      "rouge1_recall_mean": 0.0098,
+      "bertscore_recall_mean": 0.7912
+    },
+    {
+      "video_name": "Cockpit_Landing",
+      "num_scenes": 61,
+      "rouge1_recall_mean": 0.0065,
+      "bertscore_recall_mean": 0.7948
+    },
+    {
+      "video_name": "Cooking",
+      "num_scenes": 9,
+      "rouge1_recall_mean": 0.0081,
+      "bertscore_recall_mean": 0.787
+    },
+    {
+      "video_name": "Jumps",
+      "num_scenes": 7,
+      "rouge1_recall_mean": 0.007,
+      "bertscore_recall_mean": 0.7923
+    },
+    {
+      "video_name": "Kids_playing_in_leaves",
+      "num_scenes": 7,
+      "rouge1_recall_mean": 0.0106,
+      "bertscore_recall_mean": 0.7917
+    },
+    {
+      "video_name": "Notre_Dame",
+      "num_scenes": 31,
+      "rouge1_recall_mean": 0.006,
+      "bertscore_recall_mean": 0.7895
+    },
+    {
+      "video_name": "Paintball",
+      "num_scenes": 39,
+      "rouge1_recall_mean": 0.0163,
+      "bertscore_recall_mean": 0.7881
+    },
+    {
+      "video_name": "Playing_on_water_slide",
+      "num_scenes": 5,
+      "rouge1_recall_mean": 0.0113,
+      "bertscore_recall_mean": 0.798
+    },
+    {
+      "video_name": "Scuba",
+      "num_scenes": 15,
+      "rouge1_recall_mean": 0.0072,
+      "bertscore_recall_mean": 0.7964
+    },
+    {
+      "video_name": "Uncut_Evening_Flight",
+      "num_scenes": 65,
+      "rouge1_recall_mean": 0.0051,
+      "bertscore_recall_mean": 0.7859
+    },
+    {
+      "video_name": "Valparaiso_Downhill",
+      "num_scenes": 34,
+      "rouge1_recall_mean": 0.0059,
+      "bertscore_recall_mean": 0.7862
+    },
+    {
+      "video_name": "car_over_camera",
+      "num_scenes": 28,
+      "rouge1_recall_mean": 0.0109,
+      "bertscore_recall_mean": 0.7869
+    },
+    {
+      "video_name": "paluma_jump",
+      "num_scenes": 15,
+      "rouge1_recall_mean": 0.0087,
+      "bertscore_recall_mean": 0.7946
+    },
+    {
+      "video_name": "playing_ball",
+      "num_scenes": 18,
+      "rouge1_recall_mean": 0.0093,
+      "bertscore_recall_mean": 0.7939
+    }
+  ]
+}

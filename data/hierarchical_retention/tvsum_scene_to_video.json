@@ -1,0 +1,431 @@
+{
+  "dataset": "tvsum",
+  "level": "scene_to_video",
+  "bertscore_model": "microsoft/deberta-xlarge-mnli",
+  "metrics": {
+    "rouge1_recall": {
+      "mean": 0.227,
+      "std": 0.0919,
+      "median": 0.2167,
+      "min": 0.0944,
+      "max": 0.5228
+    },
+    "bertscore_recall": {
+      "mean": 0.8515,
+      "std": 0.0087,
+      "median": 0.8511,
+      "min": 0.8301,
+      "max": 0.881
+    },
+    "compression_ratio": {
+      "mean": 0.3233,
+      "std": 0.1469,
+      "median": 0.2951,
+      "min": 0.1298,
+      "max": 0.8435,
+      "description": "candidate_length / reference_length (字符数)"
+    }
+  },
+  "per_video": [
+    {
+      "video_name": "-esJrBWj2d8",
+      "num_scenes": 37,
+      "reference_length": 4244,
+      "candidate_length": 1218,
+      "rouge1_recall": 0.2321,
+      "bertscore_recall": 0.8478
+    },
+    {
+      "video_name": "0tmA_C6XwfM",
+      "num_scenes": 22,
+      "reference_length": 2616,
+      "candidate_length": 1563,
+      "rouge1_recall": 0.3402,
+      "bertscore_recall": 0.8579
+    },
+    {
+      "video_name": "37rzWOQsNIw",
+      "num_scenes": 37,
+      "reference_length": 4769,
+      "candidate_length": 2002,
+      "rouge1_recall": 0.3042,
+      "bertscore_recall": 0.8516
+    },
+    {
+      "video_name": "3eYKfiOEJNs",
+      "num_scenes": 25,
+      "reference_length": 3433,
+      "candidate_length": 1552,
+      "rouge1_recall": 0.3036,
+      "bertscore_recall": 0.8524
+    },
+    {
+      "video_name": "4wU_LUjG5Ic",
+      "num_scenes": 26,
+      "reference_length": 3422,
+      "candidate_length": 1158,
+      "rouge1_recall": 0.2392,
+      "bertscore_recall": 0.8439
+    },
+    {
+      "video_name": "91IHQYk1IQM",
+      "num_scenes": 21,
+      "reference_length": 2988,
+      "candidate_length": 1754,
+      "rouge1_recall": 0.4187,
+      "bertscore_recall": 0.8661
+    },
+    {
+      "video_name": "98MoyGZKHXc",
+      "num_scenes": 31,
+      "reference_length": 4606,
+      "candidate_length": 1322,
+      "rouge1_recall": 0.2115,
+      "bertscore_recall": 0.8301
+    },
+    {
+      "video_name": "AwmHb44_ouw",
+      "num_scenes": 71,
+      "reference_length": 8530,
+      "candidate_length": 1349,
+      "rouge1_recall": 0.1143,
+      "bertscore_recall": 0.85
+    },
+    {
+      "video_name": "Bhxk-O1Y7Ho",
+      "num_scenes": 72,
+      "reference_length": 11648,
+      "candidate_length": 1980,
+      "rouge1_recall": 0.1336,
+      "bertscore_recall": 0.8438
+    },
+    {
+      "video_name": "E11zDS9XGzg",
+      "num_scenes": 97,
+      "reference_length": 13271,
+      "candidate_length": 1907,
+      "rouge1_recall": 0.1069,
+      "bertscore_recall": 0.8456
+    },
+    {
+      "video_name": "EE-bNr36nyA",
+      "num_scenes": 20,
+      "reference_length": 2712,
+      "candidate_length": 1420,
+      "rouge1_recall": 0.3249,
+      "bertscore_recall": 0.8431
+    },
+    {
+      "video_name": "EYqVtI9YWJA",
+      "num_scenes": 34,
+      "reference_length": 5407,
+      "candidate_length": 1308,
+      "rouge1_recall": 0.178,
+      "bertscore_recall": 0.8526
+    },
+    {
+      "video_name": "GsAD1KT1xo8",
+      "num_scenes": 25,
+      "reference_length": 4722,
+      "candidate_length": 1743,
+      "rouge1_recall": 0.2558,
+      "bertscore_recall": 0.8566
+    },
+    {
+      "video_name": "HT5vyqe0Xaw",
+      "num_scenes": 64,
+      "reference_length": 7033,
+      "candidate_length": 1436,
+      "rouge1_recall": 0.1447,
+      "bertscore_recall": 0.8501
+    },
+    {
+      "video_name": "Hl-__g2gn_A",
+      "num_scenes": 38,
+      "reference_length": 3788,
+      "candidate_length": 1122,
+      "rouge1_recall": 0.2068,
+      "bertscore_recall": 0.8428
+    },
+    {
+      "video_name": "J0nA4VgnoCo",
+      "num_scenes": 86,
+      "reference_length": 13399,
+      "candidate_length": 1785,
+      "rouge1_recall": 0.0944,
+      "bertscore_recall": 0.8442
+    },
+    {
+      "video_name": "JKpqYvAdIsw",
+      "num_scenes": 25,
+      "reference_length": 3376,
+      "candidate_length": 1630,
+      "rouge1_recall": 0.3093,
+      "bertscore_recall": 0.8598
+    },
+    {
+      "video_name": "JgHubY5Vw3Y",
+      "num_scenes": 27,
+      "reference_length": 3990,
+      "candidate_length": 1656,
+      "rouge1_recall": 0.2681,
+      "bertscore_recall": 0.8635
+    },
+    {
+      "video_name": "LRw_obCPUt0",
+      "num_scenes": 40,
+      "reference_length": 5199,
+      "candidate_length": 1369,
+      "rouge1_recall": 0.1952,
+      "bertscore_recall": 0.8434
+    },
+    {
+      "video_name": "NyBmCxDoHJU",
+      "num_scenes": 29,
+      "reference_length": 5378,
+      "candidate_length": 1203,
+      "rouge1_recall": 0.1853,
+      "bertscore_recall": 0.8442
+    },
+    {
+      "video_name": "PJrm840pAUI",
+      "num_scenes": 41,
+      "reference_length": 7689,
+      "candidate_length": 1958,
+      "rouge1_recall": 0.2044,
+      "bertscore_recall": 0.8469
+    },
+    {
+      "video_name": "RBCABdttQmI",
+      "num_scenes": 71,
+      "reference_length": 9408,
+      "candidate_length": 2110,
+      "rouge1_recall": 0.1602,
+      "bertscore_recall": 0.8523
+    },
+    {
+      "video_name": "Se3oxnaPsz0",
+      "num_scenes": 27,
+      "reference_length": 3692,
+      "candidate_length": 1760,
+      "rouge1_recall": 0.3737,
+      "bertscore_recall": 0.8613
+    },
+    {
+      "video_name": "VuWGsYPqAX8",
+      "num_scenes": 34,
+      "reference_length": 7010,
+      "candidate_length": 1754,
+      "rouge1_recall": 0.1784,
+      "bertscore_recall": 0.8439
+    },
+    {
+      "video_name": "WG0MBPpPC6I",
+      "num_scenes": 60,
+      "reference_length": 5619,
+      "candidate_length": 1169,
+      "rouge1_recall": 0.1532,
+      "bertscore_recall": 0.8542
+    },
+    {
+      "video_name": "WxtbjNsCQ8A",
+      "num_scenes": 51,
+      "reference_length": 7171,
+      "candidate_length": 1945,
+      "rouge1_recall": 0.1907,
+      "bertscore_recall": 0.8427
+    },
+    {
+      "video_name": "XkqCExn6_Us",
+      "num_scenes": 34,
+      "reference_length": 6054,
+      "candidate_length": 2213,
+      "rouge1_recall": 0.2618,
+      "bertscore_recall": 0.8594
+    },
+    {
+      "video_name": "XzYM3PfTM4w",
+      "num_scenes": 23,
+      "reference_length": 2856,
+      "candidate_length": 1373,
+      "rouge1_recall": 0.3121,
+      "bertscore_recall": 0.8506
+    },
+    {
+      "video_name": "Yi4Ij2NM7U4",
+      "num_scenes": 60,
+      "reference_length": 7854,
+      "candidate_length": 1227,
+      "rouge1_recall": 0.122,
+      "bertscore_recall": 0.8464
+    },
+    {
+      "video_name": "_xMr-HKMfVA",
+      "num_scenes": 29,
+      "reference_length": 4820,
+      "candidate_length": 1376,
+      "rouge1_recall": 0.2115,
+      "bertscore_recall": 0.8397
+    },
+    {
+      "video_name": "akI8YFjEmUw",
+      "num_scenes": 27,
+      "reference_length": 3560,
+      "candidate_length": 1814,
+      "rouge1_recall": 0.3619,
+      "bertscore_recall": 0.8506
+    },
+    {
+      "video_name": "b626MiF1ew4",
+      "num_scenes": 38,
+      "reference_length": 5374,
+      "candidate_length": 1874,
+      "rouge1_recall": 0.2581,
+      "bertscore_recall": 0.8615
+    },
+    {
+      "video_name": "byxOvuiIJV0",
+      "num_scenes": 22,
+      "reference_length": 3217,
+      "candidate_length": 1215,
+      "rouge1_recall": 0.28,
+      "bertscore_recall": 0.8526
+    },
+    {
+      "video_name": "cjibtmSLxQ4",
+      "num_scenes": 128,
+      "reference_length": 22792,
+      "candidate_length": 3030,
+      "rouge1_recall": 0.0988,
+      "bertscore_recall": 0.8524
+    },
+    {
+      "video_name": "eQu1rNs0an0",
+      "num_scenes": 32,
+      "reference_length": 3853,
+      "candidate_length": 1528,
+      "rouge1_recall": 0.2427,
+      "bertscore_recall": 0.8579
+    },
+    {
+      "video_name": "fWutDQy1nnY",
+      "num_scenes": 116,
+      "reference_length": 15282,
+      "candidate_length": 1984,
+      "rouge1_recall": 0.0964,
+      "bertscore_recall": 0.8457
+    },
+    {
+      "video_name": "gzDbaEs1Rlg",
+      "num_scenes": 46,
+      "reference_length": 5959,
+      "candidate_length": 1883,
+      "rouge1_recall": 0.222,
+      "bertscore_recall": 0.8378
+    },
+    {
+      "video_name": "i3wAGJaaktw",
+      "num_scenes": 29,
+      "reference_length": 3469,
+      "candidate_length": 1025,
+      "rouge1_recall": 0.2102,
+      "bertscore_recall": 0.8554
+    },
+    {
+      "video_name": "iVt07TCkFM0",
+      "num_scenes": 15,
+      "reference_length": 2083,
+      "candidate_length": 1757,
+      "rouge1_recall": 0.5228,
+      "bertscore_recall": 0.881
+    },
+    {
+      "video_name": "jcoYJXDG9sw",
+      "num_scenes": 32,
+      "reference_length": 3555,
+      "candidate_length": 1099,
+      "rouge1_recall": 0.2293,
+      "bertscore_recall": 0.8534
+    },
+    {
+      "video_name": "kLxoNp-UchI",
+      "num_scenes": 20,
+      "reference_length": 2463,
+      "candidate_length": 1358,
+      "rouge1_recall": 0.3838,
+      "bertscore_recall": 0.8646
+    },
+    {
+      "video_name": "oDXZc0tZe04",
+      "num_scenes": 75,
+      "reference_length": 11355,
+      "candidate_length": 2285,
+      "rouge1_recall": 0.1439,
+      "bertscore_recall": 0.8395
+    },
+    {
+      "video_name": "qqR6AEXwxoQ",
+      "num_scenes": 52,
+      "reference_length": 5452,
+      "candidate_length": 1074,
+      "rouge1_recall": 0.1449,
+      "bertscore_recall": 0.8534
+    },
+    {
+      "video_name": "sTEELN-vY30",
+      "num_scenes": 30,
+      "reference_length": 3966,
+      "candidate_length": 1667,
+      "rouge1_recall": 0.2637,
+      "bertscore_recall": 0.8609
+    },
+    {
+      "video_name": "uGu_10sucQo",
+      "num_scenes": 26,
+      "reference_length": 4366,
+      "candidate_length": 1397,
+      "rouge1_recall": 0.2354,
+      "bertscore_recall": 0.8498
+    },
+    {
+      "video_name": "vdmoEJ5YbrQ",
+      "num_scenes": 62,
+      "reference_length": 11534,
+      "candidate_length": 2174,
+      "rouge1_recall": 0.1512,
+      "bertscore_recall": 0.8504
+    },
+    {
+      "video_name": "xmEERLqJ2kU",
+      "num_scenes": 88,
+      "reference_length": 8767,
+      "candidate_length": 1317,
+      "rouge1_recall": 0.1071,
+      "bertscore_recall": 0.8445
+    },
+    {
+      "video_name": "xwqBXPGE9pQ",
+      "num_scenes": 47,
+      "reference_length": 6456,
+      "candidate_length": 1903,
+      "rouge1_recall": 0.2221,
+      "bertscore_recall": 0.8558
+    },
+    {
+      "video_name": "xxdtq8mxegs",
+      "num_scenes": 23,
+      "reference_length": 3149,
+      "candidate_length": 1346,
+      "rouge1_recall": 0.3134,
+      "bertscore_recall": 0.861
+    },
+    {
+      "video_name": "z_6gVvQb2d0",
+      "num_scenes": 56,
+      "reference_length": 8429,
+      "candidate_length": 1582,
+      "rouge1_recall": 0.1282,
+      "bertscore_recall": 0.86
+    }
+  ]
+}
