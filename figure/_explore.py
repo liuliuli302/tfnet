@@ -1,52 +1,82 @@
-"""Exploration helper – run to inspect data & pick best-visualized videos."""
-import json, os, numpy as np
+"""Explore h5 GT data structure — deep dive into SumMe gtscore."""
+import h5py
+import numpy as np
 
-BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+h5 = h5py.File('/Users/allets/Resources/datasets/eccv16_dataset_summe_google_pool5.h5', 'r')
 
-def load(rel):
-    with open(os.path.join(BASE, rel)) as f:
-        return json.load(f)
+# Pick a specific video we plotted: playing_ball (top-1 by F1)
+target = "playing ball"
+vid = None
+for k in h5.keys():
+    vn = h5[k]['video_name'][()].decode()
+    if vn.lower().replace("_", " ") == target:
+        vid = h5[k]
+        break
+if vid is None:
+    # fallback: show all names
+    for k in h5.keys():
+        print(k, "->", h5[k]['video_name'][()].decode())
+    raise RuntimeError("not found")
 
-def compute_final_scores(dataset, alpha=0.2):
-    """Return {video_name: (picks, s_llm, s_fs, s_fv, final)} for a dataset."""
-    ss = load(f'data/scores/scene_score/deepseek32/{dataset}_scene_scores.json')
-    fs = load(f'data/scores/frame_scene_contribution/{dataset}.json')
-    fv = load(f'data/scores/frame_video_contribution/{dataset}.json')
+print(f"Video: {vid['video_name'][()].decode()}")
+print(f"n_frames: {int(np.asarray(vid['n_frames']))}")
+print(f"picks shape: {np.asarray(vid['picks']).shape}")
+print(f"picks[:10]: {np.asarray(vid['picks'])[:10]}")
+print(f"picks[-5:]: {np.asarray(vid['picks'])[-5:]}")
 
-    out = {}
-    for vname in fs:
-        scenes = fs[vname]
-        fv_frames = fv[vname]['frames'] if vname in fv else []
-        fv_map = {int(f['pick']): float(f['text_sim']) for f in fv_frames}
-        scene_scores_raw = ss.get(vname, {})
+gt = np.asarray(vid['gtscore'])
+print(f"\ngtscore shape: {gt.shape}")
+print(f"gtscore dtype: {gt.dtype}")
+print(f"gtscore range: [{gt.min():.4f}, {gt.max():.4f}]")
+print(f"gtscore unique values: {len(np.unique(gt))}")
+print(f"gtscore unique (sorted): {np.sort(np.unique(gt))}")
+print(f"gtscore[:20]: {gt[:20]}")
+print(f"gtscore histogram:")
+for val in np.sort(np.unique(gt)):
+    cnt = np.sum(gt == val)
+    print(f"  {val:.4f}: {cnt} frames ({cnt/len(gt)*100:.1f}%)")
 
-        picks, s_llm_arr, s_fs_arr, s_fv_arr, final_arr = [], [], [], [], []
-        for si, scene in enumerate(scenes):
-            s_score = float(scene_scores_raw.get(str(si), '0')) / 100.0
-            for frame in scene['frames']:
-                p = int(frame['pick'])
-                f_s = float(frame['sim'])
-                f_v = fv_map.get(p, 0.0)
-                final = alpha * s_score * f_s + f_v
-                picks.append(p)
-                s_llm_arr.append(s_score)
-                s_fs_arr.append(f_s)
-                s_fv_arr.append(f_v)
-                final_arr.append(final)
+us = np.asarray(vid['user_summary'])
+print(f"\nuser_summary shape: {us.shape}")
+print(f"user_summary dtype: {us.dtype}")
+print(f"user_summary range: [{us.min()}, {us.max()}]")
+print(f"\nHow gtscore is computed (check if it's mean of user_summary per-pick):")
+picks = np.asarray(vid['picks'])
+# reconstruct: for each pick, compute mean of user_summary at that frame
+n_users = us.shape[0]
+gt_reconstructed = np.array([us[:, p].mean() for p in picks])
+print(f"reconstructed shape: {gt_reconstructed.shape}")
+print(f"reconstructed[:20]: {np.round(gt_reconstructed[:20], 4)}")
+print(f"Match actual gtscore? max_diff={np.max(np.abs(gt - gt_reconstructed)):.6f}")
 
-        out[vname] = (
-            np.array(picks), np.array(s_llm_arr), np.array(s_fs_arr),
-            np.array(s_fv_arr), np.array(final_arr)
-        )
-    return out
+print(f"\n--- Also check Excavators river crossing ---")
+for k in h5.keys():
+    vn = h5[k]['video_name'][()].decode()
+    if "xcavator" in vn:
+        vid2 = h5[k]
+        break
+gt2 = np.asarray(vid2['gtscore'])
+us2 = np.asarray(vid2['user_summary'])
+picks2 = np.asarray(vid2['picks'])
+print(f"Video: {vid2['video_name'][()].decode()}")
+print(f"n_frames: {int(np.asarray(vid2['n_frames']))}")
+print(f"gtscore shape: {gt2.shape}, unique: {len(np.unique(gt2))}")
+print(f"gtscore unique: {np.sort(np.unique(gt2))}")
+print(f"user_summary shape: {us2.shape}")
+gt2_recon = np.array([us2[:, p].mean() for p in picks2])
+print(f"Match gtscore? max_diff={np.max(np.abs(gt2 - gt2_recon)):.6f}")
 
-# Rank videos by score variance (higher variance = more visually interesting)
-for ds in ['summe', 'tvsum']:
-    print(f'\n=== {ds.upper()} — variance ranking ===')
-    scores = compute_final_scores(ds)
-    ranked = sorted(scores.items(), key=lambda kv: -np.std(kv[1][4]))
-    for vname, (picks, sl, sf, sv, fn) in ranked[:8]:
-        print(f'  {vname:30s}  std={np.std(fn):.4f}  '
-              f'n_frames={len(picks)}  '
-              f'final_range=[{fn.min():.3f}, {fn.max():.3f}]  '
-              f's_llm_range=[{sl.min():.2f}, {sl.max():.2f}]')
+# Also check TVSum for contrast
+print(f"\n--- TVSum contrast (video_1) ---")
+h5t = h5py.File('/Users/allets/Resources/datasets/eccv16_dataset_tvsum_google_pool5.h5', 'r')
+vt = h5t['video_1']
+gtt = np.asarray(vt['gtscore'])
+print(f"gtscore shape: {gtt.shape}, unique: {len(np.unique(gtt))}")
+print(f"gtscore range: [{gtt.min():.4f}, {gtt.max():.4f}]")
+print(f"gtscore[:20]: {np.round(gtt[:20], 4)}")
+
+h5.close()
+h5t.close()
+if 'n_frames' in v0t:
+    print('n_frames:', v0t['n_frames'][...])
+h5t.close()
